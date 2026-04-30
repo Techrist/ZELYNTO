@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowRight,
@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
+// --- DONNÉES ---
 const features = [
   {
     icon: MessageSquareText,
@@ -54,10 +55,19 @@ const integrations = [
   { icon: Lock, label: "Entra ID" }
 ];
 
+// --- COMPOSANT PRINCIPAL ---
 function App() {
-  const path = window.location.pathname;
+  // Utilisation du hash pour éviter les erreurs 404 sur GitHub Pages
+  const [hash, setHash] = useState(window.location.hash || "#/");
 
-  if (path === "/contact") {
+  useEffect(() => {
+    const handleHashChange = () => setHash(window.location.hash || "#/");
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  // Définition des routes
+  if (hash === "#/contact") {
     return (
       <main className="landing">
         <SimpleHeader />
@@ -67,7 +77,7 @@ function App() {
     );
   }
 
-  if (path === "/connexion" || path === "/inscription") {
+  if (hash === "#/connexion" || hash === "#/inscription") {
     return (
       <main className="landing">
         <SimpleHeader />
@@ -76,11 +86,12 @@ function App() {
     );
   }
 
+  // Page d'accueil (Route par défaut)
   return (
     <main className="landing">
       <header className="siteHeader">
-        <a className="brand" href="/" aria-label="Zelynto accueil">
-          <img src="/zelynto-long.png" alt="Zelynto" />
+        <a className="brand" href="#/" aria-label="Zelynto accueil">
+          <img src="./zelynto-long.png" alt="Zelynto" />
         </a>
 
         <nav aria-label="Navigation principale">
@@ -97,12 +108,12 @@ function App() {
             </div>
           </div>
           <a href="#pricing">Pricing</a>
-          <a href="/contact">Contact</a>
+          <a href="#/contact">Contact</a>
         </nav>
 
         <div className="headerActions">
-          <a className="ghostLink" href="/connexion">Se connecter</a>
-          <a className="primaryLink" href="/contact">
+          <a className="ghostLink" href="#/connexion">Se connecter</a>
+          <a className="primaryLink" href="#/contact">
             Get started
             <ArrowRight size={17} />
           </a>
@@ -288,7 +299,7 @@ function App() {
               <strong>490€</strong>
               <span>/mois</span>
             </div>
-            <a className="planButton" href="#demo">Demander une demo</a>
+            <a className="planButton" href="#/contact">Demander une demo</a>
             <ul>
               <li><CheckCircle2 size={17} /> Chat d'exploration M365</li>
               <li><CheckCircle2 size={17} /> Audit continu initial</li>
@@ -308,7 +319,7 @@ function App() {
               <strong>1 490€</strong>
               <span>/mois</span>
             </div>
-            <a className="planButton primary" href="#demo">Planifier un appel</a>
+            <a className="planButton primary" href="#/contact">Planifier un appel</a>
             <ul>
               <li><CheckCircle2 size={17} /> Tout Starter</li>
               <li><CheckCircle2 size={17} /> Alerting Defender et Identity</li>
@@ -327,7 +338,7 @@ function App() {
             <div className="price custom">
               <strong>Sur devis</strong>
             </div>
-            <a className="planButton" href="#demo">Contacter l'equipe</a>
+            <a className="planButton" href="#/contact">Contacter l'equipe</a>
             <ul>
               <li><CheckCircle2 size={17} /> Tout Business</li>
               <li><CheckCircle2 size={17} /> Multi-tenant et MSP</li>
@@ -338,13 +349,13 @@ function App() {
         </div>
       </section>
 
-      <section className="ctaSection" id="audit">
+      <section className="ctaSection">
         <span>Pour une V1 exploitable</span>
         <h2>Faites de Zelynto votre cockpit Microsoft 365.</h2>
         <p>
           Un chat simple en surface, une couche Graph, securite, provisioning et audit en profondeur.
         </p>
-        <a className="primaryLink large" href="/contact">
+        <a className="primaryLink large" href="#/contact">
           Get started
           <ArrowRight size={18} />
         </a>
@@ -356,7 +367,7 @@ function App() {
             <span>Prêt pour la V1 ?</span>
             <h2>Centralisez votre administration Microsoft 365 avec Zelynto.</h2>
           </div>
-          <a className="primaryLink large" href="/contact">
+          <a className="primaryLink large" href="#/contact">
             Get started
             <ArrowRight size={18} />
           </a>
@@ -364,7 +375,7 @@ function App() {
 
         <div className="footerGrid">
           <div className="footerBrand">
-            <img src="/zelynto-long.png" alt="Zelynto" />
+            <img src="./zelynto-long.png" alt="Zelynto" />
             <p>
               Le copilote d'administration concu pour explorer, securiser, automatiser et auditer votre
               environnement Microsoft 365.
@@ -381,16 +392,16 @@ function App() {
 
           <div>
             <strong>Securite</strong>
-            <a href="#security">Alerting</a>
-            <a href="#audit">Audit continu</a>
-            <a href="#security">Gouvernance</a>
+            <a href="#security-copilot">Alerting</a>
+            <a href="#compliance">Audit continu</a>
+            <a href="#security-copilot">Gouvernance</a>
           </div>
 
           <div>
             <strong>Ressources</strong>
             <a href="#demo">Demo produit</a>
             <a href="#exploration">Microsoft Graph</a>
-            <a href="/contact">Contact</a>
+            <a href="#/contact">Contact</a>
           </div>
         </div>
 
@@ -406,6 +417,8 @@ function App() {
     </main>
   );
 }
+
+// --- SOUS-COMPOSANTS ---
 
 function AnimatedPanel({ variant }: { variant: "explore" | "security" | "automation" | "compliance" }) {
   const content = {
@@ -434,43 +447,35 @@ function AnimatedPanel({ variant }: { variant: "explore" | "security" | "automat
       rows: ["MFA admins", "Comptes dormants", "SharePoint externe"]
     }
   }[variant];
+
   const [input, setInput] = useState(content.prompt);
   const [question, setQuestion] = useState(content.prompt);
   const [submitted, setSubmitted] = useState(0);
 
   function submitQuestion() {
     const trimmed = input.trim();
-
-    if (!trimmed) {
-      return;
-    }
-
+    if (!trimmed) return;
     setQuestion(trimmed);
-    setSubmitted((value) => value + 1);
+    setSubmitted((v) => v + 1);
   }
 
   return (
     <div className={`animatedPanel ${variant}`}>
       <div className="panelChrome">
-        <span />
-        <span />
-        <span />
+        <span /><span /><span />
       </div>
-      <form className="panelInput" onSubmit={(event) => {
-        event.preventDefault();
-        submitQuestion();
-      }}>
+      <form className="panelInput" onSubmit={(e) => { e.preventDefault(); submitQuestion(); }}>
         <input
           value={input}
-          onChange={(event) => setInput(event.target.value)}
+          onChange={(e) => setInput(e.target.value)}
           aria-label="Question a poser a Zelynto"
         />
         <button type="submit">Ask</button>
       </form>
-      <div className="panelPrompt" key={`prompt-${submitted}`}>{question}</div>
-      <div className="panelAnswer" key={`answer-${submitted}`}>
+      <div className="panelPrompt" key={`p-${submitted}`}>{question}</div>
+      <div className="panelAnswer" key={`a-${submitted}`}>
         <div className="zelyntoAvatar">
-          <img src="/zelynto-long.png" alt="Zelynto" />
+          <img src="./zelynto-long.png" alt="Zelynto" />
         </div>
         <div>
           <strong>{content.title}</strong>
@@ -490,17 +495,7 @@ function AnimatedPanel({ variant }: { variant: "explore" | "security" | "automat
   );
 }
 
-function WorkflowNode({
-  className,
-  icon,
-  title,
-  text
-}: {
-  className: string;
-  icon: React.ReactNode;
-  title: string;
-  text: string;
-}) {
+function WorkflowNode({ className, icon, title, text }: { className: string; icon: React.ReactNode; title: string; text: string; }) {
   return (
     <div className={`workflowNode ${className}`}>
       <div>{icon}</div>
@@ -515,33 +510,25 @@ function WorkflowNode({
 function SimpleHeader() {
   return (
     <header className="siteHeader">
-        <a className="brand" href="/" aria-label="Zelynto accueil">
-        <img src="/zelynto-long.png" alt="Zelynto" />
+      <a className="brand" href="#/" aria-label="Zelynto accueil">
+        <img src="./zelynto-long.png" alt="Zelynto" />
       </a>
-
       <nav aria-label="Navigation principale">
         <div className="navDropdown">
-          <button type="button">
-            Produit
-            <ChevronDown size={14} />
-          </button>
+          <button type="button">Produit <ChevronDown size={14} /></button>
           <div className="dropdownMenu">
-            <a href="/#exploration">Exploration intelligente M365</a>
-            <a href="/#security-copilot">Security Copilot & Alerting</a>
-            <a href="/#automation">Automation & Provisioning</a>
-            <a href="/#compliance">Audit & Compliance Copilot</a>
+            <a href="#/index.html#exploration">Exploration intelligente</a>
+            <a href="#/index.html#security-copilot">Security & Alerting</a>
+            <a href="#/index.html#automation">Automation</a>
+            <a href="#/index.html#compliance">Audit & Compliance</a>
           </div>
         </div>
-        <a href="/#pricing">Pricing</a>
-        <a href="/contact">Contact</a>
+        <a href="#/index.html#pricing">Pricing</a>
+        <a href="#/contact">Contact</a>
       </nav>
-
       <div className="headerActions">
-        <a className="ghostLink" href="/connexion">Se connecter</a>
-        <a className="primaryLink" href="/contact">
-          Get started
-          <ArrowRight size={17} />
-        </a>
+        <a className="ghostLink" href="#/connexion">Se connecter</a>
+        <a className="primaryLink" href="#/contact">Get started <ArrowRight size={17} /></a>
       </div>
     </header>
   );
@@ -553,62 +540,23 @@ function ContactPage() {
       <div className="pageIntro">
         <span className="sectionLabel">Contact</span>
         <h1>Parlons de votre tenant Microsoft 365.</h1>
-        <p>
-          Demandez une demo, partagez votre contexte M365 et voyez comment Zelynto peut simplifier
-          l'administration, l'audit et la securite de votre organisation.
-        </p>
+        <p>Demandez une demo et voyez comment Zelynto simplifie l'administration.</p>
       </div>
-
       <div className="contactGrid">
         <form className="formCard">
-          <label>
-            Nom complet
-            <input type="text" placeholder="Votre nom" />
+          <label>Nom complet <input type="text" /></label>
+          <label>Email pro <input type="email" /></label>
+          <label>Entreprise <input type="text" /></label>
+          <label>Taille du tenant 
+            <select defaultValue=""><option value="" disabled>Choisir...</option><option>{"<"} 500</option><option>500 - 2500</option><option>{">"} 2500</option></select>
           </label>
-          <label>
-            Email professionnel
-            <input type="email" placeholder="vous@entreprise.com" />
-          </label>
-          <label>
-            Entreprise
-            <input type="text" placeholder="Nom de votre organisation" />
-          </label>
-          <label>
-            Taille du tenant
-            <select defaultValue="">
-              <option value="" disabled>Selectionner une option</option>
-              <option>Moins de 500 utilisateurs</option>
-              <option>500 a 2 500 utilisateurs</option>
-              <option>Plus de 2 500 utilisateurs</option>
-              <option>Multi-tenant / MSP</option>
-            </select>
-          </label>
-          <label>
-            Message
-            <textarea placeholder="Expliquez votre besoin : audit, securite, provisioning, optimisation licences..." />
-          </label>
-          <button type="button" className="formButton">
-            Envoyer la demande
-            <ArrowRight size={18} />
-          </button>
+          <label>Message <textarea /></label>
+          <button type="button" className="formButton">Envoyer <ArrowRight size={18} /></button>
         </form>
-
         <aside className="contactAside">
-          <div>
-            <Mail size={22} />
-            <strong>Email</strong>
-            <span>contact@zelynto.com</span>
-          </div>
-          <div>
-            <Phone size={22} />
-            <strong>Demo</strong>
-            <span>Reponse sous 24h ouvrables</span>
-          </div>
-          <div>
-            <Building2 size={22} />
-            <strong>Ideal pour</strong>
-            <span>Equipes IT, SecOps, MSP et DSI Microsoft 365</span>
-          </div>
+          <div><Mail size={22} /><strong>Email</strong><span>contact@zelynto.com</span></div>
+          <div><Phone size={22} /><strong>Demo</strong><span>Sous 24h</span></div>
+          <div><Building2 size={22} /><strong>Cible</strong><span>IT, SecOps, MSP</span></div>
         </aside>
       </div>
     </section>
@@ -620,60 +568,21 @@ function AuthPage() {
     <section className="pageShell authPage">
       <div className="authLayout">
         <div className="authIntro">
-          <span className="sectionLabel">Espace client</span>
-          <h1>Connectez votre equipe a Zelynto.</h1>
-          <p>
-            Accedez a votre futur cockpit M365 : audit continu, alertes, actions gouvernees et exploration
-            Microsoft Graph en langage naturel.
-          </p>
-          <div className="authBenefits">
-            <span><CheckCircle2 size={17} /> Connexion securisee</span>
-            <span><CheckCircle2 size={17} /> Tenant M365 isole</span>
-            <span><CheckCircle2 size={17} /> Actions journalisees</span>
-          </div>
+          <h1>Connectez-vous.</h1>
+          <p>Accedez a votre futur cockpit M365.</p>
         </div>
-
         <div className="authCards">
           <form className="formCard authCard">
-            <div className="formTitle">
-              <KeyRound size={22} />
-              <div>
-                <h2>Connexion</h2>
-                <p>Accedez a votre workspace Zelynto.</p>
-              </div>
-            </div>
-            <label>
-              Email professionnel
-              <input type="email" placeholder="admin@entreprise.com" />
-            </label>
-            <label>
-              Mot de passe
-              <input type="password" placeholder="Votre mot de passe" />
-            </label>
-            <button type="button" className="formButton">Se connecter</button>
+            <h2>Connexion</h2>
+            <label>Email <input type="email" /></label>
+            <label>Pass <input type="password" /></label>
+            <button type="button" className="formButton">Entrer</button>
           </form>
-
           <form className="formCard authCard">
-            <div className="formTitle">
-              <UserPlus size={22} />
-              <div>
-                <h2>Creation de compte</h2>
-                <p>Preparez votre acces demo ou votre onboarding.</p>
-              </div>
-            </div>
-            <label>
-              Nom complet
-              <input type="text" placeholder="Votre nom" />
-            </label>
-            <label>
-              Email professionnel
-              <input type="email" placeholder="vous@entreprise.com" />
-            </label>
-            <label>
-              Organisation
-              <input type="text" placeholder="Entreprise" />
-            </label>
-            <button type="button" className="formButton secondaryFormButton">Creer un compte</button>
+            <h2>Inscription</h2>
+            <label>Nom <input type="text" /></label>
+            <label>Email <input type="email" /></label>
+            <button type="button" className="formButton secondaryFormButton">Creer compte</button>
           </form>
         </div>
       </div>
@@ -685,21 +594,9 @@ function Footer() {
   return (
     <footer className="siteFooter">
       <div className="footerGrid compactFooter">
-        <div className="footerBrand">
-          <img src="/zelynto-long.png" alt="Zelynto" />
-          <p>Le copilote d'administration pour Microsoft 365.</p>
-        </div>
-        <div>
-          <strong>Navigation</strong>
-          <a href="/">Accueil</a>
-          <a href="/#pricing">Pricing</a>
-          <a href="/connexion">Connexion</a>
-        </div>
-        <div>
-          <strong>Contact</strong>
-          <a href="mailto:contact@zelynto.com">contact@zelynto.com</a>
-          <a href="/contact">Demander une demo</a>
-        </div>
+        <div className="footerBrand"><img src="./zelynto-long.png" alt="Z" /></div>
+        <div><strong>Navigation</strong><a href="#/">Accueil</a><a href="#/contact">Contact</a></div>
+        <div><strong>Contact</strong><a href="mailto:contact@zelynto.com">contact@zelynto.com</a></div>
       </div>
     </footer>
   );
