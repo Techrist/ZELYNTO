@@ -6,12 +6,12 @@
   "scripts": {
     "dev": "concurrently \"npm:dev:api\" \"npm:dev:web\"",
     "dev:api": "tsx watch src/server.ts",
-"dev:web": "npx vite --host 127.0.0.1",
-"build": "npx vite build",
+    "dev:web": "vite --host 127.0.0.1",
+    "build": "vite build",
     "start": "tsx src/server.ts",
     "typecheck": "tsc --noEmit"
   },
-"dependencies": {
+  "dependencies": {
     "@azure/msal-node": "^2.16.2",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "cors": "^2.8.5",
