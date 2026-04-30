@@ -19,7 +19,16 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/health", (_request, response) => {
-  response.json({ status: "ok", service: "zelynto-api" });
+  const hasGraphConfig = !!(
+    process.env.AZURE_TENANT_ID &&
+    process.env.AZURE_CLIENT_ID &&
+    process.env.AZURE_CLIENT_SECRET
+  );
+  response.json({
+    status: "ok",
+    service: "zelynto-api",
+    graph: hasGraphConfig ? "configured" : "mock"
+  });
 });
 
 app.post("/api/chat", async (request, response, next) => {

@@ -11,27 +11,27 @@
     "start": "tsx src/server.ts",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
+"dependencies": {
     "@azure/msal-node": "^2.16.2",
     "@microsoft/microsoft-graph-client": "^3.0.7",
-    "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "isomorphic-fetch": "^3.0.0",
-    "tsx": "^4.19.2",
-    "vite": "^6.0.7",
+    "lucide-react": "^0.468.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "lucide-react": "^0.468.0"
+    "tsx": "^4.19.2",
+    "vite": "^6.0.7"
   },
-"devDependencies": {
+  "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
     "typescript": "^5.7.2"
   }
 }

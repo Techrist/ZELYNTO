@@ -1,12 +1,12 @@
 import type { ZelyntoIntent } from "../types";
 
-const provisioningTerms = ["crée", "creer", "créer", "déploie", "deploie", "provision", "ajoute"];
-const securityTerms = ["alerte", "alertes", "critique", "risque", "risqués", "defender", "identity"];
-const auditTerms = ["audit", "conforme", "non conforme", "écart", "risques", "recommandation", "score"];
-const explorationTerms = ["liste", "donne", "combien", "quels", "quelles", "derniers", "configuration"];
+const provisioningTerms = ["creer", "cree", "deployer", "provision", "ajoute", "ajouter", "crée", "déploie"];
+const securityTerms = ["alerte", "alertes", "critique", "risque", "defender", "identity", "securite"];
+const auditTerms = ["audit", "conforme", "ecart", "score", "risques", "recommandation", "governance"];
+const explorationTerms = ["liste", "donne", "combien", "quel", "derni", "config", "utilisateur", "groupe", "licence"];
 
 export function detectIntent(prompt: string): ZelyntoIntent {
-  const normalized = prompt.toLowerCase();
+  const normalized = prompt.toLowerCase().normalize("NFD");
 
   if (provisioningTerms.some((term) => normalized.includes(term))) {
     return "m365_provisioning";
