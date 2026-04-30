@@ -1,1 +1,0 @@
-{\n  "build": {\n    "env": {\n      "BUILD_COMMAND": "chmod +x node_modules/.bin/* && npm run build"\n    }\n  }\n}
