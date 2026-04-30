@@ -120,7 +120,7 @@ function App() {
         </div>
       </header>
 
-      <section className="hero" id="top">
+<section className="hero" id="top">
         <div className="heroText">
           <div className="eyebrow">
             <Sparkles size={16} />
@@ -198,7 +198,7 @@ function App() {
         </div>
       </section>
 
-      <section className="integrationBand" aria-label="Integrations Microsoft 365">
+<section className="integrationBand container" aria-label="Integrations Microsoft 365">
         {integrations.map((item) => {
           const Icon = item.icon;
           return (
