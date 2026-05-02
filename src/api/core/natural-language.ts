@@ -1,4 +1,4 @@
-import type { ZelyntoIntent } from "../types";
+import type { ZelyntoIntent } from "../../types";
 
 const provisioningTerms = ["creer", "cree", "deployer", "provision", "ajoute", "ajouter", "crée", "déploie"];
 const securityTerms = ["alerte", "alertes", "critique", "risque", "defender", "identity", "securite"];

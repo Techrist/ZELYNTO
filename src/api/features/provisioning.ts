@@ -1,4 +1,4 @@
-import type { ActionPlan, ChatResponse } from "../types";
+import type { ActionPlan, ChatResponse } from "../../types";
 
 interface GraphLike {
   api(path: string): { post(payload: unknown): Promise<unknown> };

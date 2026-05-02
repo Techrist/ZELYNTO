@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm:dev:api\" \"npm:dev:web\"",
-    "dev:api": "tsx watch src/server.ts",
+    "dev:api": "tsx watch src/api/server.ts",
     "dev:web": "vite --host 127.0.0.1",
     "build": "vite build",
-    "start": "tsx src/server.ts",
+    "start": "tsx src/api/server.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

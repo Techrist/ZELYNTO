@@ -1,0 +1,39 @@
+.contactPage {
+  padding: 86px clamp(18px, 5vw, 76px);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.contactAside {
+  display: grid;
+  gap: 14px;
+}
+
+.contactAside div {
+  display: grid;
+  gap: 8px;
+  border: 1px solid #e2e7f0;
+  border-radius: 8px;
+  padding: 20px;
+  background: #f8f9fd;
+}
+
+.contactAside svg {
+  color: #635bff;
+}
+
+.contactAside strong,
+.contactAside span {
+  display: block;
+}
+
+.contactAside span {
+  color: #5d6779;
+  line-height: 1.5;
+}

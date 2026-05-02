@@ -7,7 +7,7 @@ import { answerM365Exploration } from "./features/exploration";
 import { answerProvisioning, buildProvisioningPlan } from "./features/provisioning";
 import { answerSecurity } from "./features/security";
 import { GraphClientFactory } from "./m365/graph-client";
-import type { ChatRequest, ChatResponse } from "./types";
+import type { ChatRequest, ChatResponse } from "../types";
 
 dotenv.config();
 

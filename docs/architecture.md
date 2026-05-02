@@ -22,14 +22,14 @@ flowchart LR
 
 ## Modules
 
-- `src/server.ts` expose l'API HTTP.
-- `src/core/natural-language.ts` détecte les intentions MVP.
-- `src/m365/graph-client.ts` encapsule Microsoft Graph.
-- `src/features/exploration.ts` répond aux questions d'inventaire.
-- `src/features/security.ts` synthétise les alertes.
-- `src/features/provisioning.ts` prépare et exécute les actions.
-- `src/features/audit.ts` calcule les écarts et recommandations.
-- `src/web` contient l'interface conversationnelle.
+- `src/api/server.ts` expose l'API HTTP.
+- `src/api/core/natural-language.ts` détecte les intentions MVP.
+- `src/api/m365/graph-client.ts` encapsule Microsoft Graph.
+- `src/api/features/exploration.ts` répond aux questions d'inventaire.
+- `src/api/features/security.ts` synthétise les alertes.
+- `src/api/features/provisioning.ts` prépare et exécute les actions.
+- `src/api/features/audit.ts` calcule les écarts et recommandations.
+- `src/` contient l'interface conversationnelle et les composants web.
 
 ## Passage en production
 

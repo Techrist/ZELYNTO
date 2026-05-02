@@ -1,4 +1,4 @@
-import type { AuditFinding, ChatResponse } from "../types";
+import type { AuditFinding, ChatResponse } from "../../types";
 
 interface GraphLike {
   api(path: string): { get(): Promise<unknown> };
