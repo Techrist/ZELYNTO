@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="zelMark" x1="38" y1="48" x2="170" y2="178" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#31b7e8"/>
+      <stop offset="48%" stop-color="#5b63d9"/>
+      <stop offset="100%" stop-color="#a43da0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="38" y="50" width="78" height="32" rx="16" fill="url(#zelMark)"/>
+  <circle cx="130" cy="66" r="9" fill="url(#zelMark)"/>
+  <circle cx="156" cy="68" r="13" fill="url(#zelMark)"/>
+
+  <circle cx="73" cy="94" r="6" fill="url(#zelMark)"/>
+  <ellipse cx="138" cy="94" rx="32" ry="18" fill="url(#zelMark)"/>
+
+  <ellipse cx="88" cy="122" rx="32" ry="18" fill="url(#zelMark)"/>
+  <circle cx="138" cy="122" r="8" fill="url(#zelMark)"/>
+
+  <circle cx="56" cy="152" r="12" fill="url(#zelMark)"/>
+  <circle cx="84" cy="154" r="9" fill="url(#zelMark)"/>
+  <rect x="100" y="138" width="78" height="32" rx="16" fill="url(#zelMark)"/>
+</svg>

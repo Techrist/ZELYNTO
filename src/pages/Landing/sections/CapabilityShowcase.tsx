@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimatedPanel } from "../../../components/shared/AnimatedPanel";
+import { ChatPanel } from "../../../components/shared/ChatPanel";
 import { FeatureList } from "../../../components/ui/FeatureList";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
 import type { Capability } from "../../../content/capabilities";
@@ -19,7 +19,7 @@ export function CapabilityShowcase({ capability }: CapabilityShowcaseProps) {
         <p>{capability.description}</p>
         <FeatureList items={capability.bullets} />
       </div>
-      <AnimatedPanel variant={capability.variant} />
+      <ChatPanel variant={capability.variant} />
     </section>
   );
 }
