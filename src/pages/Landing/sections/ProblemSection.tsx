@@ -6,7 +6,7 @@ export function ProblemSection() {
   return (
     <section className="problemSection" id="problem">
       <div className="sectionIntro">
-        <SectionLabel>Le problème</SectionLabel>
+        
         <h2>Microsoft 365 est devenu impossible à piloter à la main.</h2>
         <p>
           Plus le tenant grandit, plus l'effort opérationnel grimpe. Les équipes IT cherchent une vue claire,
