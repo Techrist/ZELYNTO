@@ -21,7 +21,7 @@ export default function App() {
         <>
           <Header variant="simple" />
           <ContactPage />
-          <Footer variant="simple" />
+          <Footer />
         </>
       );
     }

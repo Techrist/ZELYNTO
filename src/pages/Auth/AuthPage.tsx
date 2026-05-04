@@ -7,7 +7,7 @@ export function AuthPage() {
       <div className="authLayout">
         <div className="authIntro">
           <h1>Connectez-vous.</h1>
-          <p>Accedez a votre futur cockpit M365.</p>
+          <p>Accédez à votre futur cockpit M365.</p>
         </div>
         <div className="authCards">
           <form className="formCard authCard">
@@ -20,7 +20,7 @@ export function AuthPage() {
             <h2>Inscription</h2>
             <label>Nom <input type="text" /></label>
             <label>Email <input type="email" /></label>
-            <button type="button" className="formButton secondaryFormButton">Creer compte</button>
+            <button type="button" className="formButton secondaryFormButton">Créer compte</button>
           </form>
         </div>
       </div>

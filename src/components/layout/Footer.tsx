@@ -3,23 +3,7 @@ import { ArrowRight } from "lucide-react";
 import logo from "../../assets/zelynto-long.png";
 import "./Footer.css";
 
-interface FooterProps {
-  variant?: "full" | "simple";
-}
-
-export function Footer({ variant = "full" }: FooterProps) {
-  if (variant === "simple") {
-    return (
-      <footer className="siteFooter">
-        <div className="footerGrid compactFooter">
-          <div className="footerBrand"><img src={logo} alt="Zelynto" style={{ width: '100px' }} /></div>
-          <div><strong>Navigation</strong><a href="#/">Accueil</a><a href="#/contact">Contact</a></div>
-          <div><strong>Contact</strong><a href="mailto:contact@zelynto.com">contact@zelynto.com</a></div>
-        </div>
-      </footer>
-    );
-  }
-
+export function Footer() {
   return (
     <footer className="siteFooter">
       <div className="footerCta">
@@ -27,7 +11,7 @@ export function Footer({ variant = "full" }: FooterProps) {
           <span>Prêt pour la V1 ?</span>
           <h2>Centralisez votre administration Microsoft 365 avec Zelynto.</h2>
         </div>
-        <a className="primaryLink large" href="#/contact">
+        <a className="primaryLink large" href="https://cestfredy.github.io/zelynto-onboarding/">
           Get started
           <ArrowRight size={18} />
         </a>
@@ -37,7 +21,7 @@ export function Footer({ variant = "full" }: FooterProps) {
         <div className="footerBrand">
           <img src={logo} alt="Zelynto" />
           <p>
-            Le copilote d'administration concu pour explorer, securiser, automatiser et auditer votre
+            Le copilote d'administration conçu pour explorer, sécuriser, automatiser et auditer votre
             environnement Microsoft 365.
           </p>
         </div>
@@ -51,7 +35,7 @@ export function Footer({ variant = "full" }: FooterProps) {
         </div>
 
         <div>
-          <strong>Securite</strong>
+          <strong>Sécurité</strong>
           <a href="#security-copilot">Alerting</a>
           <a href="#compliance">Audit continu</a>
           <a href="#security-copilot">Gouvernance</a>
@@ -59,16 +43,16 @@ export function Footer({ variant = "full" }: FooterProps) {
 
         <div>
           <strong>Ressources</strong>
-          <a href="#demo">Demo produit</a>
+          <a href="#demo">Démo produit</a>
           <a href="#exploration">Microsoft Graph</a>
           <a href="#/contact">Contact</a>
         </div>
       </div>
 
       <div className="footerBottom">
-        <span>© 2026 Zelynto. Tous droits reserves.</span>
+        <span>© 2026 Zelynto. Tous droits réservés.</span>
         <div>
-          <a href="#top">Confidentialite</a>
+          <a href="#top">Confidentialité</a>
           <a href="#top">Conditions</a>
           <a href="#top">Statut</a>
         </div>

@@ -81,7 +81,7 @@ h1 {
 
 .workflowMockup {
   position: relative;
-  min-height: 560px;
+  min-height: 660px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
@@ -162,7 +162,9 @@ h1 {
 }
 
 .workflowCanvas {
-  height: 300px;
+  position: relative;
+  height: 360px;
+  margin-top: 8px;
 }
 
 .workflowLines {
@@ -228,32 +230,65 @@ h1 {
 }
 
 .nodePlan {
-  top: 152px;
-  left: 44px;
+  top: 6px;
+  left: 30px;
+}
+
+.nodePlan > div {
+  color: #5dd39e;
+  background: rgba(93, 211, 158, 0.16);
 }
 
 .nodeSharePoint {
-  top: 226px;
-  left: 44px;
+  top: 90px;
+  left: 30px;
   animation-delay: 120ms;
 }
 
 .nodeLicenses {
-  top: 230px;
-  right: 58px;
+  top: 90px;
+  right: 36px;
   animation-delay: 260ms;
 }
 
 .nodeCorrelate {
-  top: 310px;
-  left: 230px;
+  top: 178px;
+  left: 50%;
+  transform: translateX(-50%);
   animation-delay: 380ms;
 }
 
+.nodeCorrelate > div {
+  color: #ff9c6f;
+  background: rgba(255, 156, 111, 0.16);
+}
+
 .nodeAction {
-  top: 414px;
-  left: 230px;
+  top: 266px;
+  left: 50%;
+  transform: translateX(-50%);
   animation-delay: 520ms;
+}
+
+.nodeAction > div {
+  color: #c8cdda;
+  background: rgba(200, 205, 218, 0.12);
+}
+
+@keyframes nodeFloatCenter {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-6px);
+  }
+}
+
+.nodeCorrelate,
+.nodeAction {
+  animation-name: nodeFloatCenter;
 }
 
 .approvalBar {
@@ -305,7 +340,7 @@ h1 {
   gap: 14px;
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 clamp(18px, 5vw, 76px) 72px;
+  padding: 0 clamp(18px, 5vw, 76px) clamp(96px, 10vw, 130px);
 }
 
 .integrationBand div {
@@ -556,6 +591,21 @@ h2 {
   background: #151d2d;
   font-weight: 900;
   cursor: pointer;
+  transition: background 200ms ease, transform 160ms ease;
+}
+
+.animatedPanel[data-phase="submitted"] .panelInput button,
+.animatedPanel[data-phase="loading"] .panelInput button,
+.animatedPanel[data-phase="answering"] .panelInput button,
+.animatedPanel[data-phase="rows"] .panelInput button,
+.animatedPanel[data-phase="done"] .panelInput button {
+  background: #635bff;
+  transform: scale(0.97);
+}
+
+.panelInput input::placeholder {
+  color: #99a0b3;
+  font-weight: 600;
 }
 
 .panelPrompt {
@@ -612,6 +662,58 @@ h2 {
   margin-top: 6px;
   color: #5f6b7f;
   line-height: 1.55;
+  min-height: 1.55em;
+}
+
+.loadingDots {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 4px;
+}
+
+.loadingDots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #b6bccd;
+  animation: panelDotPulse 1.2s ease-in-out infinite;
+}
+
+.loadingDots span:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.loadingDots span:nth-child(3) {
+  animation-delay: 320ms;
+}
+
+@keyframes panelDotPulse {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(0.78);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: #635bff;
+  animation: caretBlink 800ms steps(1) infinite;
+}
+
+@keyframes caretBlink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .floatingRows {
@@ -872,6 +974,283 @@ h2 {
   margin-top: 28px;
 }
 
+/* ============================================================
+   Problem section
+   ============================================================ */
+
+.problemSection {
+  padding: 84px clamp(18px, 5vw, 76px);
+  background:
+    radial-gradient(ellipse 80% 70% at 5% 110%, rgba(255, 107, 122, 0.1), transparent 60%),
+    radial-gradient(ellipse 80% 70% at 95% 110%, rgba(255, 200, 90, 0.12), transparent 60%),
+    #ffffff;
+}
+
+.problemGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 44px;
+}
+
+.problemCard {
+  border: 1px solid #e7ecf4;
+  border-radius: 8px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 36px rgba(19, 25, 38, 0.06);
+  backdrop-filter: blur(6px);
+}
+
+.problemIcon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 8px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff8d6b, #a43da0);
+  box-shadow: 0 10px 24px rgba(164, 61, 160, 0.18);
+}
+
+.problemCard h3 {
+  margin-top: 18px;
+  color: #141a29;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.problemCard p {
+  margin-top: 10px;
+  color: #5c6678;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   How it works
+   ============================================================ */
+
+.howItWorksSection {
+  position: relative;
+  padding: 96px clamp(18px, 5vw, 76px);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(99, 91, 255, 0.1), transparent 42%),
+    linear-gradient(180deg, #f8f9fd, #ffffff);
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 44px;
+}
+
+.stepCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e2e7f0;
+  border-radius: 8px;
+  padding: 28px 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 44px rgba(19, 25, 38, 0.07);
+}
+
+.stepCard::before {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  content: "";
+  background: linear-gradient(90deg, #31b7e8, #5b63d9 50%, #a43da0);
+}
+
+.stepIndex {
+  display: inline-block;
+  color: transparent;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stepIcon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  margin-top: 14px;
+  border-radius: 8px;
+  color: #5b63d9;
+  background: rgba(99, 91, 255, 0.12);
+}
+
+.stepCard h3 {
+  margin-top: 18px;
+  color: #141a29;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.stepCard p {
+  margin-top: 10px;
+  color: #5c6678;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Security
+   ============================================================ */
+
+.securitySection {
+  padding: 84px clamp(18px, 5vw, 76px);
+  background:
+    radial-gradient(circle at 86% 10%, rgba(49, 183, 232, 0.16), transparent 36%),
+    radial-gradient(circle at 8% 90%, rgba(22, 163, 111, 0.12), transparent 36%),
+    #ffffff;
+}
+
+.securityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1080px;
+  margin: 44px auto 0;
+}
+
+.securityPillar {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  border: 1px solid #e1e6f0;
+  border-radius: 8px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 16px 40px rgba(19, 25, 38, 0.06);
+}
+
+.securityIcon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 8px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9);
+  box-shadow: 0 10px 22px rgba(91, 99, 217, 0.22);
+}
+
+.securityBody {
+  min-width: 0;
+}
+
+.securityPillar h3 {
+  margin: 0;
+  color: #131a29;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.securityPillar p {
+  margin: 8px 0 0;
+  color: #5c6678;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+
+.faqSection {
+  padding: 84px clamp(18px, 5vw, 76px);
+  background: #ffffff;
+}
+
+.faqList {
+  display: grid;
+  gap: 12px;
+  max-width: 880px;
+  margin: 44px auto 0;
+}
+
+.faqItem {
+  border: 1px solid #e2e7f0;
+  border-radius: 8px;
+  padding: 20px 22px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(19, 25, 38, 0.04);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.faqItem[open] {
+  border-color: rgba(99, 91, 255, 0.4);
+  box-shadow: 0 16px 40px rgba(99, 91, 255, 0.1);
+}
+
+.faqItem summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #141a29;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.4;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqChevron {
+  position: relative;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(99, 91, 255, 0.12);
+  transition: transform 220ms ease;
+}
+
+.faqChevron::before,
+.faqChevron::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 2px;
+  border-radius: 2px;
+  background: #5b63d9;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.faqChevron::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 220ms ease;
+}
+
+.faqItem[open] .faqChevron::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faqItem p {
+  margin: 14px 0 0;
+  color: #5c6678;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
 @media (max-width: 1080px) {
   .hero,
   .splitSection,
@@ -892,6 +1271,18 @@ h2 {
   .pricingGrid {
     grid-template-columns: 1fr;
   }
+
+  .problemGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .securityGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 780px) {
@@ -899,53 +1290,20 @@ h2 {
     padding-top: 44px;
   }
 
+  .heroVisual {
+    display: none;
+  }
+
   .integrationBand {
     grid-template-columns: 1fr;
   }
 
-  .workflowMockup {
-    min-height: 640px;
-  }
-
-  .workflowCanvas {
-    height: 370px;
-  }
-
-  .workflowNode {
-    min-width: 138px;
-  }
-
-  .nodePlan,
-  .nodeSharePoint,
-  .nodeLicenses,
-  .nodeCorrelate,
-  .nodeAction {
-    left: 18px;
-    right: auto;
-  }
-
-  .nodePlan {
-    top: 180px;
-  }
-
-  .nodeSharePoint {
-    top: 244px;
-  }
-
-  .nodeLicenses {
-    top: 308px;
-  }
-
-  .nodeCorrelate {
-    top: 372px;
-  }
-
-  .nodeAction {
-    top: 436px;
-  }
-
   .animatedPanel {
     min-height: 390px;
+  }
+
+  .problemGrid {
+    grid-template-columns: 1fr;
   }
 }
 

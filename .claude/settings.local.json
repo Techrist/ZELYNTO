@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/Users/tenim/Downloads/zelynto/.claude/worktrees/adoring-hodgkin-2af369 log --oneline)",
+      "Bash(git rm *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}
