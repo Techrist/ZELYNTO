@@ -5,7 +5,9 @@
       "Bash(git rm *)",
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "WebFetch(domain:linear.app)"
     ]
   }
 }

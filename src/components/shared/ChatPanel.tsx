@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
+  ArrowUp,
   CheckCircle2,
   ClipboardList,
   PanelLeft,
@@ -254,7 +255,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
             </div>
             <p>AI-powered answers for Microsoft 365.</p>
 
-            <div className="chatInputBar">
+            <div className="chatInputBar chatInputCenter">
               <button type="button" className="chatInputAdd" tabIndex={-1} aria-hidden="true">
                 <Plus size={16} />
               </button>
@@ -266,6 +267,14 @@ export function ChatPanel({ variant }: ChatPanelProps) {
                 aria-label="Prompt"
               />
               {phase === "typing" && <span className="caret" aria-hidden="true" />}
+              <button
+                type="button"
+                className={`chatInputSend${typedPrompt ? " active" : ""}`}
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                <ArrowUp size={15} />
+              </button>
             </div>
 
             <div className="chatChips">
@@ -277,44 +286,67 @@ export function ChatPanel({ variant }: ChatPanelProps) {
             </div>
           </div>
         ) : (
-          <div className="chatThread">
-            <div className="chatBubble chatUser" key={`user-${playId}`}>
-              {content.prompt}
+          <>
+            <div className="chatThread">
+              <div className="chatBubble chatUser" key={`user-${playId}`}>
+                {content.prompt}
+              </div>
+
+              {phase === "loading" && (
+                <div className="chatBubble chatAssistant" key={`load-${playId}`}>
+                  <img className="chatAssistantAvatar" src={zelyntoMark} alt="" aria-hidden="true" />
+                  <div className="loadingDots">
+                    <span /><span /><span />
+                  </div>
+                </div>
+              )}
+
+              {showAssistant && (
+                <div className="chatBubble chatAssistant" key={`ans-${playId}`}>
+                  <img className="chatAssistantAvatar" src={zelyntoMark} alt="" aria-hidden="true" />
+                  <div className="chatAssistantBody">
+                    <strong>{content.title}</strong>
+                    <p>
+                      {typedAnswer}
+                      {phase === "answering" && (
+                        <span className="caret" aria-hidden="true" />
+                      )}
+                    </p>
+                    {visibleRows > 0 && (
+                      <div className="chatBullets">
+                        {content.bullets.slice(0, visibleRows).map((bullet) => (
+                          <div key={bullet}>
+                            <CheckCircle2 size={14} /> {bullet}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
 
-            {phase === "loading" && (
-              <div className="chatBubble chatAssistant" key={`load-${playId}`}>
-                <img className="chatAssistantAvatar" src={zelyntoMark} alt="" aria-hidden="true" />
-                <div className="loadingDots">
-                  <span /><span /><span />
-                </div>
-              </div>
-            )}
-
-            {showAssistant && (
-              <div className="chatBubble chatAssistant" key={`ans-${playId}`}>
-                <img className="chatAssistantAvatar" src={zelyntoMark} alt="" aria-hidden="true" />
-                <div className="chatAssistantBody">
-                  <strong>{content.title}</strong>
-                  <p>
-                    {typedAnswer}
-                    {phase === "answering" && (
-                      <span className="caret" aria-hidden="true" />
-                    )}
-                  </p>
-                  {visibleRows > 0 && (
-                    <div className="chatBullets">
-                      {content.bullets.slice(0, visibleRows).map((bullet) => (
-                        <div key={bullet}>
-                          <CheckCircle2 size={14} /> {bullet}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
+            <div className="chatInputBar chatInputBottom">
+              <button type="button" className="chatInputAdd" tabIndex={-1} aria-hidden="true">
+                <Plus size={16} />
+              </button>
+              <input
+                type="text"
+                value=""
+                readOnly
+                placeholder="Ask your tenant"
+                aria-label="Prompt"
+              />
+              <button
+                type="button"
+                className="chatInputSend"
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                <ArrowUp size={15} />
+              </button>
+            </div>
+          </>
         )}
       </main>
     </div>

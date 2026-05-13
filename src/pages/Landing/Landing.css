@@ -83,15 +83,42 @@ h1 {
   position: relative;
   min-height: 660px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(143, 154, 255, 0.32);
   border-radius: 8px;
   padding: 22px;
   color: #f6f7fb;
   background:
     radial-gradient(circle at 18% 12%, rgba(99, 91, 255, 0.22), transparent 28%),
     linear-gradient(180deg, #191a1f, #101114);
-  box-shadow: 0 34px 90px rgba(17, 24, 39, 0.26);
-  animation: panelFloat 6s ease-in-out infinite;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 28px -4px rgba(99, 91, 255, 0.45),
+    0 0 70px -12px rgba(49, 183, 232, 0.32),
+    0 0 120px -24px rgba(164, 61, 160, 0.28),
+    0 34px 90px rgba(17, 24, 39, 0.3);
+  animation: panelFloat 6s ease-in-out infinite, mockupGlow 6s ease-in-out infinite;
+}
+
+@keyframes mockupGlow {
+  0%, 100% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 28px -4px rgba(99, 91, 255, 0.45),
+      0 0 70px -12px rgba(49, 183, 232, 0.32),
+      0 0 120px -24px rgba(164, 61, 160, 0.28),
+      0 34px 90px rgba(17, 24, 39, 0.3);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 0 36px -2px rgba(99, 91, 255, 0.6),
+      0 0 90px -10px rgba(49, 183, 232, 0.4),
+      0 0 150px -20px rgba(164, 61, 160, 0.35),
+      0 34px 90px rgba(17, 24, 39, 0.3);
+  }
 }
 
 .workflowMockup::before {
@@ -176,10 +203,50 @@ h1 {
 
 .workflowLines path {
   fill: none;
-  stroke: rgba(160, 166, 183, 0.26);
-  stroke-width: 2;
-  stroke-dasharray: 5 7;
-  animation: dashFlow 8s linear infinite;
+  stroke: rgba(160, 166, 183, 0.32);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.workflowLines .flowParticle {
+  fill: #b6c0ff;
+}
+
+.workflowPort {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #c4cbff;
+  box-shadow:
+    0 0 0 2px rgba(99, 91, 255, 0.25),
+    0 0 12px rgba(99, 91, 255, 0.55);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.workflowPort-top {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.workflowPort-bottom {
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.workflowPort-left {
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.workflowPort-right {
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .workflowNode {
@@ -456,15 +523,18 @@ h2 {
   max-width: 680px;
 }
 
-.productCopy,
-.chatPanel {
+.productCopy {
   animation: revealOnScroll 1s ease both;
   animation-timeline: --product-section;
   animation-range: entry 12% cover 42%;
 }
 
 .chatPanel {
-  animation-name: revealPanelOnScroll;
+  animation:
+    revealPanelOnScroll 1s ease both,
+    mockupGlow 6s ease-in-out infinite;
+  animation-timeline: --product-section, auto;
+  animation-range: entry 12% cover 42%, normal;
 }
 
 .productCopy p {
@@ -518,11 +588,23 @@ h2 {
   padding: 26px;
   background: #ffffff;
   box-shadow: 0 16px 40px rgba(19, 25, 38, 0.06);
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+
+.priceCard:hover {
+  transform: translateY(-4px);
+  border-color: #d0d8e6;
+  box-shadow: 0 28px 64px rgba(19, 25, 38, 0.12);
 }
 
 .priceCard.featured {
   border-color: rgba(99, 91, 255, 0.45);
   box-shadow: 0 24px 64px rgba(99, 91, 255, 0.16);
+}
+
+.priceCard.featured:hover {
+  border-color: rgba(99, 91, 255, 0.7);
+  box-shadow: 0 32px 80px rgba(99, 91, 255, 0.28);
 }
 
 .popularBadge {
@@ -740,6 +822,21 @@ h2 {
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 14px 36px rgba(19, 25, 38, 0.06);
   backdrop-filter: blur(6px);
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.problemCard:hover {
+  transform: translateY(-3px);
+  border-color: #d8dfeb;
+  box-shadow: 0 22px 50px rgba(19, 25, 38, 0.1);
+}
+
+.problemCard:hover .problemIcon {
+  transform: scale(1.05) rotate(-3deg);
+}
+
+.problemIcon {
+  transition: transform 240ms ease;
 }
 
 .problemIcon {
@@ -794,6 +891,20 @@ h2 {
   padding: 28px 24px;
   background: #ffffff;
   box-shadow: 0 18px 44px rgba(19, 25, 38, 0.07);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.stepCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 56px rgba(19, 25, 38, 0.1);
+}
+
+.stepCard:hover::before {
+  height: 6px;
+}
+
+.stepCard::before {
+  transition: height 240ms ease;
 }
 
 .stepCard::before {
@@ -870,6 +981,21 @@ h2 {
   padding: 24px;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 16px 40px rgba(19, 25, 38, 0.06);
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.securityPillar:hover {
+  transform: translateY(-3px);
+  border-color: #d0d8e6;
+  box-shadow: 0 24px 56px rgba(91, 99, 217, 0.14);
+}
+
+.securityPillar:hover .securityIcon {
+  transform: scale(1.06);
+}
+
+.securityIcon {
+  transition: transform 240ms ease;
 }
 
 .securityIcon {
@@ -1079,16 +1205,17 @@ h2 {
 }
 
 @supports not (animation-timeline: view()) {
-  .productCopy,
-  .chatPanel {
+  .productCopy {
     animation-duration: 700ms;
     animation-timeline: auto;
   }
-}
 
-@keyframes dashFlow {
-  to {
-    stroke-dashoffset: -120;
+  .chatPanel {
+    animation:
+      revealPanelOnScroll 700ms ease both,
+      mockupGlow 6s ease-in-out infinite;
+    animation-timeline: auto, auto;
+    animation-range: normal, normal;
   }
 }
 

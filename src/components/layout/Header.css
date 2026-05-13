@@ -7,19 +7,22 @@
   align-items: center;
   gap: 16px;
   border-bottom: 1px solid rgba(226, 232, 240, 0.86);
-  padding: 6px clamp(14px, 3vw, 40px);
+  padding: 0 clamp(14px, 3vw, 40px);
+  min-height: 68px;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(18px);
 }
 
 .brand {
   grid-column: 1;
+  display: flex;
+  align-items: center;
 }
 
 .brand img {
   display: block;
-  width: 104px;
-  height: auto;
+  height: 18px;
+  width: auto;
 }
 
 .headerCollapsible {
@@ -31,9 +34,9 @@
   justify-self: center;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
   color: #555d70;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -103,13 +106,19 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .ghostLink {
   color: #3d4659;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
+}
+
+.headerActions .primaryLink {
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 13px;
 }
 
 .burger {
