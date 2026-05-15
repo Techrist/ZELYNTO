@@ -1,18 +1,40 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
 import "./Footer.css";
 
+const productLinks: Array<{ key: string; href: string }> = [
+  { key: "chat", href: "#exploration" },
+  { key: "graph", href: "#exploration" },
+  { key: "provisioning", href: "#automation" },
+  { key: "pricing", href: "#pricing" }
+];
+
+const securityLinks: Array<{ key: string; href: string }> = [
+  { key: "alerting", href: "#security-copilot" },
+  { key: "audit", href: "#compliance" },
+  { key: "governance", href: "#security-copilot" }
+];
+
+const resourcesLinks: Array<{ key: string; href: string }> = [
+  { key: "demo", href: "#demo" },
+  { key: "graph", href: "#exploration" },
+  { key: "contact", href: "#/contact" }
+];
+
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="siteFooter">
       <div className="footerCta">
         <div>
-          <span>Prêt pour la V1 ?</span>
-          <h2>Centralisez votre administration Microsoft 365 avec Zelynto.</h2>
+          <span>{t("footer.ctaEyebrow")}</span>
+          <h2>{t("footer.ctaTitle")}</h2>
         </div>
         <a className="primaryLink large" href="https://cestfredy.github.io/zelynto-onboarding/">
-          Get started
+          {t("common.getStarted")}
           <ArrowRight size={18} />
         </a>
       </div>
@@ -20,41 +42,43 @@ export function Footer() {
       <div className="footerGrid">
         <div className="footerBrand">
           <img src={logo} alt="Zelynto" />
-          <p>
-            Le copilote d'administration conçu pour explorer, sécuriser, automatiser et auditer votre
-            environnement Microsoft 365.
-          </p>
+          <p>{t("footer.brandTagline")}</p>
         </div>
 
         <div>
-          <strong>Produit</strong>
-          <a href="#exploration">Chat M365</a>
-          <a href="#exploration">Graph Explorer</a>
-          <a href="#automation">Provisioning</a>
-          <a href="#pricing">Pricing</a>
+          <strong>{t("footer.columns.product.title")}</strong>
+          {productLinks.map((link) => (
+            <a key={`product-${link.key}`} href={link.href}>
+              {t(`footer.columns.product.links.${link.key}`)}
+            </a>
+          ))}
         </div>
 
         <div>
-          <strong>Sécurité</strong>
-          <a href="#security-copilot">Alerting</a>
-          <a href="#compliance">Audit continu</a>
-          <a href="#security-copilot">Gouvernance</a>
+          <strong>{t("footer.columns.security.title")}</strong>
+          {securityLinks.map((link) => (
+            <a key={`security-${link.key}`} href={link.href}>
+              {t(`footer.columns.security.links.${link.key}`)}
+            </a>
+          ))}
         </div>
 
         <div>
-          <strong>Ressources</strong>
-          <a href="#demo">Démo produit</a>
-          <a href="#exploration">Microsoft Graph</a>
-          <a href="#/contact">Contact</a>
+          <strong>{t("footer.columns.resources.title")}</strong>
+          {resourcesLinks.map((link) => (
+            <a key={`resources-${link.key}`} href={link.href}>
+              {t(`footer.columns.resources.links.${link.key}`)}
+            </a>
+          ))}
         </div>
       </div>
 
       <div className="footerBottom">
-        <span>© 2026 Zelynto. Tous droits réservés.</span>
+        <span>{t("footer.copyright")}</span>
         <div>
-          <a href="#top">Confidentialité</a>
-          <a href="#top">Conditions</a>
-          <a href="#top">Statut</a>
+          <a href="#top">{t("footer.legal.privacy")}</a>
+          <a href="#top">{t("footer.legal.terms")}</a>
+          <a href="#top">{t("footer.legal.status")}</a>
         </div>
       </div>
     </footer>

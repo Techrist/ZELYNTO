@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowUp,
   CheckCircle2,
@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   SquarePen
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import zelyntoMark from "../../assets/zelynto-mark.svg";
 import "./ChatPanel.css";
 
@@ -17,75 +18,12 @@ interface ChatPanelProps {
   variant: "explore" | "security" | "automation" | "compliance";
 }
 
-interface PanelContent {
+interface VariantContent {
   prompt: string;
   title: string;
   answer: string;
   bullets: string[];
 }
-
-const panelContent: Record<ChatPanelProps["variant"], PanelContent> = {
-  explore: {
-    prompt: "Liste les utilisateurs inactifs depuis 30 jours",
-    title: "14 utilisateurs inactifs détectés",
-    answer:
-      "J'ai trouvé 14 comptes sans connexion récente. 9 d'entre eux consomment encore une licence active.",
-    bullets: [
-      "Users : 14 comptes",
-      "Licences associées : 9",
-      "Risque : accès dormant"
-    ]
-  },
-  security: {
-    prompt: "Quelles alertes critiques sont ouvertes ?",
-    title: "3 alertes critiques en cours",
-    answer:
-      "3 alertes critiques sont ouvertes. La priorité absolue est le compte admin signalé en impossible travel.",
-    bullets: [
-      "Impossible travel — admin@",
-      "MFA fatigue — 4 utilisateurs",
-      "Privilege escalation — service account"
-    ]
-  },
-  automation: {
-    prompt: "Crée 5 groupes marketing avec gouvernance",
-    title: "Plan d'action prêt",
-    answer:
-      "5 groupes M365 prêts à créer avec convention de nommage MKT-*, propriétaires assignés et journalisation.",
-    bullets: [
-      "Valider la convention MKT-*",
-      "Créer les 5 groupes M365",
-      "Journaliser dans le registre"
-    ]
-  },
-  compliance: {
-    prompt: "Montre les écarts critiques de conformité",
-    title: "Score posture : 72 / 100",
-    answer:
-      "3 écarts critiques détectés : MFA admins, comptes dormants licenciés et partage externe SharePoint.",
-    bullets: [
-      "MFA admins : 4 / 12 sans MFA",
-      "Comptes dormants : 14 licenciés",
-      "SharePoint externe : 8 sites publics"
-    ]
-  }
-};
-
-const recents = [
-  "Audit MFA admins",
-  "Sites SharePoint inactifs",
-  "Inventaire licences M365",
-  "Comptes dormants > 90j",
-  "Partage externe à risque",
-  "Stratégies CA actives"
-];
-
-const suggestionChips = [
-  "Admins without MFA",
-  "Anonymous sharing links",
-  "Inactive licensed users",
-  "Risky guest access"
-];
 
 type Phase = "idle" | "typing" | "submitted" | "loading" | "answering" | "rows" | "done";
 
@@ -101,7 +39,29 @@ function wait(ms: number): Promise<void> {
 }
 
 export function ChatPanel({ variant }: ChatPanelProps) {
-  const content = panelContent[variant];
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+
+  const content = useMemo<VariantContent>(() => {
+    const base = `chat.variants.${variant}`;
+    const rawBullets = t(`${base}.bullets`, { returnObjects: true });
+    return {
+      prompt: t(`${base}.prompt`),
+      title: t(`${base}.title`),
+      answer: t(`${base}.answer`),
+      bullets: Array.isArray(rawBullets) ? (rawBullets as string[]) : []
+    };
+  }, [t, variant, lang]);
+
+  const recents = useMemo<string[]>(() => {
+    const raw = t("chat.recents", { returnObjects: true });
+    return Array.isArray(raw) ? (raw as string[]) : [];
+  }, [t, lang]);
+  const chips = useMemo<string[]>(() => {
+    const raw = t("chat.welcome.chips", { returnObjects: true });
+    return Array.isArray(raw) ? (raw as string[]) : [];
+  }, [t, lang]);
+
   const ref = useRef<HTMLDivElement>(null);
   const [playId, setPlayId] = useState(0);
   const [phase, setPhase] = useState<Phase>("idle");
@@ -127,9 +87,13 @@ export function ChatPanel({ variant }: ChatPanelProps) {
     return () => observer.disconnect();
   }, []);
 
+  // Replay when the language changes so the typed text matches
+  useEffect(() => {
+    setPlayId((id) => id + 1);
+  }, [lang]);
+
   useEffect(() => {
     if (playId === 0) return;
-    const c = panelContent[variant];
     let cancelled = false;
 
     async function run() {
@@ -138,9 +102,9 @@ export function ChatPanel({ variant }: ChatPanelProps) {
       setVisibleRows(0);
       setPhase("typing");
 
-      for (let i = 1; i <= c.prompt.length; i++) {
+      for (let i = 1; i <= content.prompt.length; i++) {
         if (cancelled) return;
-        setTypedPrompt(c.prompt.slice(0, i));
+        setTypedPrompt(content.prompt.slice(0, i));
         await wait(TYPE_PROMPT_MS);
       }
 
@@ -154,9 +118,9 @@ export function ChatPanel({ variant }: ChatPanelProps) {
 
       if (cancelled) return;
       setPhase("answering");
-      for (let i = 1; i <= c.answer.length; i++) {
+      for (let i = 1; i <= content.answer.length; i++) {
         if (cancelled) return;
-        setTypedAnswer(c.answer.slice(0, i));
+        setTypedAnswer(content.answer.slice(0, i));
         await wait(TYPE_ANSWER_MS);
       }
 
@@ -164,7 +128,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
       await wait(ANSWER_PAUSE_MS);
       setPhase("rows");
 
-      for (let i = 1; i <= c.bullets.length; i++) {
+      for (let i = 1; i <= content.bullets.length; i++) {
         if (cancelled) return;
         setVisibleRows(i);
         await wait(ROW_DELAY_MS);
@@ -179,7 +143,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
     return () => {
       cancelled = true;
     };
-  }, [playId, variant]);
+  }, [playId, content]);
 
   const showThread = phase !== "idle" && phase !== "typing";
   const showAssistant =
@@ -203,24 +167,24 @@ export function ChatPanel({ variant }: ChatPanelProps) {
         </div>
 
         <button type="button" className="chatSidebarItem" tabIndex={-1}>
-          <SquarePen size={15} /> New Chat
+          <SquarePen size={15} /> {t("chat.sidebar.newChat")}
         </button>
         <button type="button" className="chatSidebarItem" tabIndex={-1}>
-          <Search size={15} /> Search Chats
+          <Search size={15} /> {t("chat.sidebar.searchChats")}
         </button>
 
         <div className="chatSidebarSection">
-          <span className="chatSidebarLabel">Administration</span>
+          <span className="chatSidebarLabel">{t("chat.sidebar.administration")}</span>
           <button type="button" className="chatSidebarItem" tabIndex={-1}>
-            <ClipboardList size={15} /> Audit
+            <ClipboardList size={15} /> {t("chat.sidebar.audit")}
           </button>
           <button type="button" className="chatSidebarItem" tabIndex={-1}>
-            <Shield size={15} /> Security
+            <Shield size={15} /> {t("chat.sidebar.security")}
           </button>
         </div>
 
         <div className="chatSidebarSection chatSidebarRecents">
-          <span className="chatSidebarLabel">Recents</span>
+          <span className="chatSidebarLabel">{t("chat.sidebar.recents")}</span>
           {recents.map((item) => (
             <button
               key={item}
@@ -236,7 +200,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
         <div className="chatSidebarUser">
           <div className="chatSidebarAvatar">ZD</div>
           <div className="chatSidebarUserMeta">
-            <strong>Zelynto Developer</strong>
+            <strong>{t("chat.sidebar.user")}</strong>
             <span>developer@zelynto.com</span>
           </div>
         </div>
@@ -251,9 +215,9 @@ export function ChatPanel({ variant }: ChatPanelProps) {
           <div className="chatWelcome">
             <div className="chatWelcomeBrand">
               <img className="chatWelcomeMark" src={zelyntoMark} alt="" aria-hidden="true" />
-              <h3>Built for those who run everything.</h3>
+              <h3>{t("chat.welcome.title")}</h3>
             </div>
-            <p>AI-powered answers for Microsoft 365.</p>
+            <p>{t("chat.welcome.description")}</p>
 
             <div className="chatInputBar chatInputCenter">
               <button type="button" className="chatInputAdd" tabIndex={-1} aria-hidden="true">
@@ -263,7 +227,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
                 type="text"
                 value={typedPrompt}
                 readOnly
-                placeholder="Ask your tenant"
+                placeholder={t("chat.welcome.placeholder")}
                 aria-label="Prompt"
               />
               {phase === "typing" && <span className="caret" aria-hidden="true" />}
@@ -278,7 +242,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
             </div>
 
             <div className="chatChips">
-              {suggestionChips.map((chip) => (
+              {chips.map((chip) => (
                 <span key={chip} className="chatChip">
                   <Shield size={12} /> {chip}
                 </span>
@@ -334,7 +298,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
                 type="text"
                 value=""
                 readOnly
-                placeholder="Ask your tenant"
+                placeholder={t("chat.welcome.placeholder")}
                 aria-label="Prompt"
               />
               <button

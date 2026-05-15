@@ -9,6 +9,7 @@ import {
   Pause,
   Sparkles
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { PrimaryLink } from "../../../components/ui/PrimaryLink";
 import { WorkflowNode } from "../../../components/shared/WorkflowNode";
 
@@ -46,6 +47,7 @@ const EMPTY_GEOMETRY: CanvasGeometry = {
 };
 
 export function Hero() {
+  const { t } = useTranslation();
   const canvasRef = useRef<HTMLDivElement>(null);
   const planRef = useRef<HTMLDivElement>(null);
   const spRef = useRef<HTMLDivElement>(null);
@@ -132,29 +134,26 @@ export function Hero() {
       <div className="heroText">
         <div className="eyebrow">
           <Sparkles size={16} />
-          Copilote d'administration Microsoft 365
+          {t("hero.eyebrow")}
         </div>
 
-        <h1>Administrez Microsoft 365 en langage naturel.</h1>
-        <p>
-          Zelynto transforme les consoles Microsoft 365 complexes en une expérience conversationnelle simple
-          pour explorer, sécuriser, provisionner et auditer votre tenant.
-        </p>
+        <h1>{t("hero.title")}</h1>
+        <p>{t("hero.description")}</p>
 
         <div className="heroActions">
           <PrimaryLink href="https://cestfredy.github.io/zelynto-onboarding/" size="large">
-            Get started
+            {t("common.getStarted")}
           </PrimaryLink>
         </div>
 
         <div className="trustLine">
-          <span><CheckCircle2 size={16} /> Microsoft Graph-first</span>
-          <span><CheckCircle2 size={16} /> Audit tracé</span>
-          <span><CheckCircle2 size={16} /> Actions confirmées</span>
+          <span><CheckCircle2 size={16} /> {t("hero.trust.graph")}</span>
+          <span><CheckCircle2 size={16} /> {t("hero.trust.audit")}</span>
+          <span><CheckCircle2 size={16} /> {t("hero.trust.actions")}</span>
         </div>
       </div>
 
-      <div className="heroVisual" id="demo" aria-label="Workflow Zelynto">
+      <div className="heroVisual" id="demo" aria-label={t("hero.mockup.ariaLabel")}>
         <div className="workflowMockup">
           <div className="workflowTop">
             <div className="windowDots">
@@ -167,11 +166,7 @@ export function Hero() {
 
           <div className="workflowPrompt">
             <small>YOU</small>
-            <p>
-              Analyze the tenant for inactive SharePoint sites and underutilized licenses,
-              correlate usage across Teams and OneDrive, and generate a prioritized action
-              plan to reduce costs and improve security.
-            </p>
+            <p>{t("hero.mockup.prompt")}</p>
           </div>
 
           <div className="workflowCanvas" ref={canvasRef}>
@@ -198,27 +193,27 @@ export function Hero() {
               <path id="flow-cor-act" d={geometry.paths.corAct} />
 
               <circle className="flowParticle" r="2.6" filter="url(#flowGlow)">
-                <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="0s">
                   <mpath href="#flow-plan-sp" />
                 </animateMotion>
               </circle>
               <circle className="flowParticle" r="2.6" filter="url(#flowGlow)">
-                <animateMotion dur="3.2s" repeatCount="indefinite" begin="0.3s">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.4s">
                   <mpath href="#flow-plan-lic" />
                 </animateMotion>
               </circle>
               <circle className="flowParticle" r="2.6" filter="url(#flowGlow)">
-                <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.8s">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s">
                   <mpath href="#flow-sp-lic" />
                 </animateMotion>
               </circle>
               <circle className="flowParticle" r="2.6" filter="url(#flowGlow)">
-                <animateMotion dur="3s" repeatCount="indefinite" begin="1.4s">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s">
                   <mpath href="#flow-lic-cor" />
                 </animateMotion>
               </circle>
               <circle className="flowParticle" r="2.6" filter="url(#flowGlow)">
-                <animateMotion dur="2.4s" repeatCount="indefinite" begin="2s">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s">
                   <mpath href="#flow-cor-act" />
                 </animateMotion>
               </circle>
@@ -228,40 +223,40 @@ export function Hero() {
               ref={planRef}
               className="nodePlan"
               icon={<ListChecks size={18} />}
-              title="Plan"
-              text="5 steps · M365 …"
+              title={t("hero.mockup.nodes.plan.title")}
+              text={t("hero.mockup.nodes.plan.text")}
               ports={["right", "bottom"]}
             />
             <WorkflowNode
               ref={spRef}
               className="nodeSharePoint active"
               icon={<Database size={18} />}
-              title="SharePoint"
-              text="Inactive sites · 9…"
+              title={t("hero.mockup.nodes.sharepoint.title")}
+              text={t("hero.mockup.nodes.sharepoint.text")}
               ports={["top", "right"]}
             />
             <WorkflowNode
               ref={licRef}
               className="nodeLicenses"
               icon={<KeyRound size={18} />}
-              title="Licenses"
-              text="Underutilized · E…"
+              title={t("hero.mockup.nodes.licenses.title")}
+              text={t("hero.mockup.nodes.licenses.text")}
               ports={["left", "bottom"]}
             />
             <WorkflowNode
               ref={corRef}
               className="nodeCorrelate"
               icon={<Atom size={18} />}
-              title="Correlate"
-              text="Teams · OneDri…"
+              title={t("hero.mockup.nodes.correlate.title")}
+              text={t("hero.mockup.nodes.correlate.text")}
               ports={["top", "bottom"]}
             />
             <WorkflowNode
               ref={actRef}
               className="nodeAction"
               icon={<BarChart3 size={18} />}
-              title="Action plan"
-              text="Cost · Security · …"
+              title={t("hero.mockup.nodes.action.title")}
+              text={t("hero.mockup.nodes.action.text")}
               ports={["top"]}
             />
           </div>
@@ -269,10 +264,10 @@ export function Hero() {
           <div className="approvalBar">
             <div className="approvalIcon"><Pause size={16} /></div>
             <div>
-              <strong>Awaiting approval</strong>
-              <span>Archive 14 sites · reclaim 38 licenses · save €42k/yr</span>
+              <strong>{t("hero.mockup.approval.title")}</strong>
+              <span>{t("hero.mockup.approval.summary")}</span>
             </div>
-            <button>Review</button>
+            <button>{t("hero.mockup.approval.cta")}</button>
           </div>
         </div>
       </div>

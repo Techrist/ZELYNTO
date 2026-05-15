@@ -1,0 +1,433 @@
+{
+  "common": {
+    "getStarted": "Commencer",
+    "signIn": "Se connecter",
+    "contact": "Contact",
+    "pricing": "Tarifs",
+    "faq": "FAQ"
+  },
+  "header": {
+    "product": "Produit",
+    "productLinks": {
+      "exploration": "Exploration intelligente M365",
+      "security": "Sécurité & alertes",
+      "automation": "Automatisation & provisioning",
+      "compliance": "Audit & conformité"
+    },
+    "howItWorks": "Comment ça marche",
+    "mobileMenu": {
+      "open": "Ouvrir le menu",
+      "close": "Fermer le menu"
+    }
+  },
+  "hero": {
+    "eyebrow": "Copilote d'administration Microsoft 365",
+    "title": "Administrez Microsoft 365 en langage naturel.",
+    "description": "Zelynto transforme les consoles Microsoft 365 complexes en une expérience conversationnelle simple pour explorer, sécuriser, provisionner et auditer votre tenant.",
+    "trust": {
+      "graph": "Microsoft Graph-first",
+      "audit": "Audit tracé",
+      "actions": "Actions confirmées"
+    },
+    "mockup": {
+      "ariaLabel": "Workflow Zelynto",
+      "prompt": "Analyse le tenant pour les sites SharePoint inactifs et les licences sous-utilisées, corrèle l'usage avec Teams et OneDrive, et génère un plan d'action priorisé pour réduire les coûts et renforcer la sécurité.",
+      "nodes": {
+        "plan": { "title": "Plan", "text": "5 étapes · M365 …" },
+        "sharepoint": { "title": "SharePoint", "text": "Sites inactifs · 9…" },
+        "licenses": { "title": "Licences", "text": "Sous-utilisées · E…" },
+        "correlate": { "title": "Corrélation", "text": "Teams · OneDri…" },
+        "action": { "title": "Plan d'action", "text": "Coût · Sécurité · …" }
+      },
+      "approval": {
+        "title": "En attente d'approbation",
+        "summary": "Archiver 14 sites · récupérer 38 licences · économiser 42k€/an",
+        "cta": "Revoir"
+      }
+    }
+  },
+  "integrations": {
+    "ariaLabel": "Intégrations Microsoft 365"
+  },
+  "problem": {
+    "label": "Le problème",
+    "title": "Microsoft 365 est devenu impossible à piloter à la main.",
+    "description": "Plus le tenant grandit, plus l'effort opérationnel grimpe. Les équipes IT cherchent une vue claire, des actions sûres et une trace de tout ce qui est exécuté.",
+    "items": [
+      {
+        "title": "Trop de consoles",
+        "description": "Entra ID, Defender, Purview, Teams, SharePoint… vos admins jonglent entre dix portails pour répondre à une seule question."
+      },
+      {
+        "title": "Du temps perdu",
+        "description": "Les requêtes Graph et les rapports manuels prennent des heures alors que la plupart des questions reviennent chaque semaine."
+      },
+      {
+        "title": "Des angles morts",
+        "description": "Les alertes critiques se noient dans le bruit, les comptes dormants restent licenciés, le partage externe glisse hors de contrôle."
+      },
+      {
+        "title": "Aucune traçabilité",
+        "description": "Les actions admin sont rarement journalisées de bout en bout. Les audits internes deviennent un cauchemar à reconstituer."
+      }
+    ]
+  },
+  "capabilities": {
+    "explore": {
+      "label": "Exploration intelligente M365",
+      "title": "Interrogez Microsoft 365 comme si vous parliez à un expert.",
+      "description": "Zelynto traduit vos questions en requêtes Graph, recoupe les données du tenant et livre une réponse claire, structurée et actionnable.",
+      "bullets": [
+        "Questions sur utilisateurs, groupes, mails, fichiers et licences",
+        "Synthèses lisibles pour les équipes IT et DSI",
+        "Preuves et données sources conservées"
+      ]
+    },
+    "security": {
+      "label": "Sécurité & alertes",
+      "title": "Transformez vos alertes M365 en décisions rapides.",
+      "description": "Zelynto centralise les signaux Defender et Identity, explique les alertes critiques et priorise les comptes ou configurations à traiter.",
+      "bullets": [
+        "Vue unifiée des alertes critiques",
+        "Explication en langage naturel de chaque incident",
+        "Recommandations de remédiation contextualisées"
+      ]
+    },
+    "automation": {
+      "label": "Automatisation & provisioning",
+      "title": "Automatisez les actions admin sans perdre le contrôle.",
+      "description": "Créez des ressources Microsoft 365 par prompt, avec preview, conventions de nommage, gouvernance et confirmation avant exécution.",
+      "bullets": [
+        "Création de groupes, sites SharePoint et ressources Entra ID",
+        "Plan d'exécution lisible avant modification",
+        "Journalisation automatique des actions"
+      ]
+    },
+    "compliance": {
+      "label": "Audit & conformité",
+      "title": "Gardez votre tenant conforme en continu.",
+      "description": "Zelynto surveille les écarts de configuration, calcule un score de posture et explique pourquoi chaque point est prioritaire.",
+      "bullets": [
+        "Score par catégorie : identité, collaboration, licences, gouvernance",
+        "Recommandations inspirées des bonnes pratiques M365",
+        "Conversation avec les résultats d'audit"
+      ]
+    }
+  },
+  "howItWorks": {
+    "label": "Comment ça marche",
+    "title": "De l'application Entra ID à votre première action en moins d'une heure.",
+    "description": "Trois étapes, pas de déploiement lourd, pas d'agent à installer.",
+    "steps": [
+      {
+        "title": "Connectez votre tenant",
+        "description": "Une seule app Entra ID avec les permissions Graph minimales. Aucune donnée ne quitte votre environnement."
+      },
+      {
+        "title": "Posez vos questions",
+        "description": "Zelynto traduit votre intention en requêtes Graph, recoupe les résultats et propose une réponse claire."
+      },
+      {
+        "title": "Validez chaque action",
+        "description": "Pour toute opération sensible, un plan d'exécution s'affiche. Rien ne se déclenche sans votre confirmation."
+      }
+    ]
+  },
+  "security": {
+    "label": "Sécurité & conformité",
+    "title": "Conçu pour les contraintes des DSI les plus exigeantes.",
+    "description": "Zelynto applique le principe du moindre privilège, conserve les preuves nécessaires aux audits et minimise l'empreinte sur vos données.",
+    "pillars": [
+      {
+        "title": "Données isolées",
+        "description": "Vos données restent dans votre périmètre. Aucune information tenant n'est partagée avec des tiers, aucun entraînement de modèle sur vos contenus."
+      },
+      {
+        "title": "Permissions minimales",
+        "description": "Zelynto se connecte via une application Entra ID dédiée, avec un scope Graph strictement limité à votre besoin réel."
+      },
+      {
+        "title": "Aucun stockage prompt",
+        "description": "Les conversations ne sont pas conservées par défaut. Vous gardez la main sur ce qui est journalisé et combien de temps."
+      },
+      {
+        "title": "Audit immuable",
+        "description": "Chaque action exécutée est tracée dans un journal append-only, signé et exportable pour vos audits internes."
+      }
+    ]
+  },
+  "pricing": {
+    "label": "Tarifs",
+    "title": "Des offres simples pour déployer Zelynto selon votre niveau de maturité M365.",
+    "description": "Commencez par l'audit et l'exploration, puis activez progressivement l'automatisation et les contrôles avancés.",
+    "popularBadge": "Le plus demandé",
+    "plans": {
+      "starter": {
+        "label": "Starter",
+        "title": "Audit & exploration",
+        "description": "Pour démarrer avec une vision claire de votre tenant Microsoft 365.",
+        "ctaLabel": "Demander une démo",
+        "bullets": [
+          "Chat d'exploration M365",
+          "Audit continu initial",
+          "Rapport de risques priorisés",
+          "Jusqu'à 500 utilisateurs"
+        ]
+      },
+      "business": {
+        "label": "Business",
+        "title": "Copilote M365 complet",
+        "description": "Pour piloter sécurité, alerting, recommandations et actions gouvernées.",
+        "ctaLabel": "Planifier un appel",
+        "bullets": [
+          "Tout Starter",
+          "Alerting Defender et Identity",
+          "Preview des actions Graph",
+          "Recommandations de remédiation",
+          "Jusqu'à 2 500 utilisateurs"
+        ]
+      },
+      "enterprise": {
+        "label": "Enterprise",
+        "title": "Gouvernance avancée",
+        "description": "Pour les grands tenants, MSP et organisations avec exigences conformité fortes.",
+        "price": "Sur devis",
+        "ctaLabel": "Contacter l'équipe",
+        "bullets": [
+          "Tout Business",
+          "Multi-tenant et MSP",
+          "Règles d'audit personnalisées",
+          "SSO, SLA et support prioritaire"
+        ]
+      }
+    },
+    "monthly": "/mois"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Les réponses aux questions qu'on nous pose le plus.",
+    "items": [
+      {
+        "question": "Faut-il déployer un agent ou un connecteur dans notre tenant ?",
+        "answer": "Non. Zelynto utilise Microsoft Graph via une application Entra ID que vous créez en quelques minutes. Aucune installation côté serveur, aucun agent à pousser sur les postes."
+      },
+      {
+        "question": "Quelles permissions Microsoft Graph sont nécessaires ?",
+        "answer": "Le périmètre est ajusté selon les modules activés. Pour l'exploration et l'audit, des permissions de lecture suffisent (Directory.Read.All, AuditLog.Read.All). Le provisioning ajoute les écritures correspondantes."
+      },
+      {
+        "question": "Mes données quittent-elles mon environnement ?",
+        "answer": "Les requêtes Graph sont émises depuis Zelynto, mais aucune donnée tenant n'est conservée par défaut au-delà du temps de la conversation. Vous pouvez activer un journal d'actions chez vous pour la traçabilité."
+      },
+      {
+        "question": "Comment fonctionnent les actions automatisées ?",
+        "answer": "Toute action passe d'abord par une preview lisible — création de groupe, modification de policy, archivage de site. Rien n'est exécuté sans votre confirmation explicite."
+      },
+      {
+        "question": "Zelynto est-il adapté aux MSP gérant plusieurs tenants ?",
+        "answer": "Oui. L'offre Enterprise est pensée pour le multi-tenant : isolation des contextes, règles d'audit par client et tableau de bord consolidé."
+      },
+      {
+        "question": "Combien de temps pour démarrer ?",
+        "answer": "Comptez moins d'une heure entre la création de l'application Entra ID, la connexion à Zelynto et la première session d'exploration de votre tenant."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Pour une V1 exploitable",
+    "title": "Faites de Zelynto votre cockpit Microsoft 365.",
+    "description": "Un chat simple en surface, une couche Graph, sécurité, provisioning et audit en profondeur."
+  },
+  "footer": {
+    "ctaEyebrow": "Prêt pour la V1 ?",
+    "ctaTitle": "Centralisez votre administration Microsoft 365 avec Zelynto.",
+    "brandTagline": "Le copilote d'administration conçu pour explorer, sécuriser, automatiser et auditer votre environnement Microsoft 365.",
+    "columns": {
+      "product": {
+        "title": "Produit",
+        "links": {
+          "chat": "Chat M365",
+          "graph": "Graph Explorer",
+          "provisioning": "Provisioning",
+          "pricing": "Pricing"
+        }
+      },
+      "security": {
+        "title": "Sécurité",
+        "links": {
+          "alerting": "Alerting",
+          "audit": "Audit continu",
+          "governance": "Gouvernance"
+        }
+      },
+      "resources": {
+        "title": "Ressources",
+        "links": {
+          "demo": "Démo produit",
+          "graph": "Microsoft Graph",
+          "contact": "Contact"
+        }
+      }
+    },
+    "copyright": "© 2026 Zelynto. Tous droits réservés.",
+    "legal": {
+      "privacy": "Confidentialité",
+      "terms": "Conditions",
+      "status": "Statut"
+    }
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Parlons de votre tenant Microsoft 365.",
+    "description": "Demandez une démo et voyez comment Zelynto simplifie l'administration : exploration en langage naturel, alerting hiérarchisé, actions gouvernées et audit continu.",
+    "trust": {
+      "response": "Réponse sous 24h ouvrées",
+      "demo": "Démo personnalisée",
+      "commitment": "Sans engagement"
+    },
+    "form": {
+      "intro": {
+        "label": "Votre demande",
+        "title": "Quelques informations pour préparer notre échange."
+      },
+      "fields": {
+        "name": "Nom complet",
+        "namePlaceholder": "Camille Durand",
+        "email": "Email pro",
+        "emailPlaceholder": "camille@entreprise.com",
+        "company": "Entreprise",
+        "companyPlaceholder": "Nom de l'entreprise",
+        "role": "Rôle",
+        "rolePlaceholder": "DSI, RSSI, Admin M365…",
+        "tenantSize": "Taille du tenant",
+        "tenantPlaceholder": "Choisir une plage…",
+        "tenantOptions": {
+          "lt500": "Moins de 500 utilisateurs",
+          "500to2500": "500 – 2 500 utilisateurs",
+          "2500to10000": "2 500 – 10 000 utilisateurs",
+          "gt10000": "Plus de 10 000 utilisateurs"
+        },
+        "subject": "Sujet",
+        "subjectOptions": [
+          "Demander une démo",
+          "Évaluer Zelynto sur mon tenant",
+          "Question commerciale",
+          "Question technique",
+          "Partenariat / MSP",
+          "Autre"
+        ],
+        "message": "Message",
+        "messagePlaceholder": "Vos enjeux actuels, ce que vous aimeriez explorer pendant la démo…"
+      },
+      "submit": "Envoyer la demande",
+      "privacyNote": "Vos données sont utilisées uniquement pour vous recontacter.",
+      "success": "Merci ! Votre demande a bien été enregistrée. Notre équipe revient vers vous sous 24h."
+    },
+    "aside": {
+      "email": "Email",
+      "demoTitle": "Démo en moins de 24h",
+      "demoText": "Créneau personnalisé selon votre fuseau et vos cas d'usage.",
+      "audience": "Cible",
+      "audienceText": "DSI, RSSI, Admin M365, MSP gérant plusieurs tenants.",
+      "benefitsTitle": "Ce que vous obtenez",
+      "benefits": [
+        "Audit express de votre tenant",
+        "Démo personnalisée sur vos cas d'usage",
+        "Recommandations chiffrées avant engagement"
+      ]
+    }
+  },
+  "auth": {
+    "title": "Connectez-vous.",
+    "description": "Accédez à votre futur cockpit M365.",
+    "login": {
+      "title": "Connexion",
+      "email": "Email",
+      "password": "Mot de passe",
+      "cta": "Entrer"
+    },
+    "signup": {
+      "title": "Inscription",
+      "name": "Nom",
+      "email": "Email",
+      "cta": "Créer compte"
+    }
+  },
+  "chat": {
+    "sidebar": {
+      "newChat": "Nouvelle conversation",
+      "searchChats": "Rechercher",
+      "administration": "Administration",
+      "audit": "Audit",
+      "security": "Sécurité",
+      "recents": "Récents",
+      "user": "Zelynto Developer"
+    },
+    "recents": [
+      "Audit MFA admins",
+      "Sites SharePoint inactifs",
+      "Inventaire licences M365",
+      "Comptes dormants > 90j",
+      "Partage externe à risque",
+      "Stratégies CA actives"
+    ],
+    "welcome": {
+      "title": "Conçu pour ceux qui pilotent tout.",
+      "description": "Des réponses propulsées par l'IA pour Microsoft 365.",
+      "placeholder": "Interrogez votre tenant",
+      "chips": [
+        "Admins sans MFA",
+        "Liens de partage anonymes",
+        "Utilisateurs inactifs licenciés",
+        "Accès invités à risque"
+      ]
+    },
+    "variants": {
+      "explore": {
+        "prompt": "Liste les utilisateurs inactifs depuis 30 jours",
+        "title": "14 utilisateurs inactifs détectés",
+        "answer": "J'ai trouvé 14 comptes sans connexion récente. 9 d'entre eux consomment encore une licence active.",
+        "bullets": [
+          "Users : 14 comptes",
+          "Licences associées : 9",
+          "Risque : accès dormant"
+        ]
+      },
+      "security": {
+        "prompt": "Quelles alertes critiques sont ouvertes ?",
+        "title": "3 alertes critiques en cours",
+        "answer": "3 alertes critiques sont ouvertes. La priorité absolue est le compte admin signalé en impossible travel.",
+        "bullets": [
+          "Impossible travel — admin@",
+          "MFA fatigue — 4 utilisateurs",
+          "Privilege escalation — service account"
+        ]
+      },
+      "automation": {
+        "prompt": "Crée 5 groupes marketing avec gouvernance",
+        "title": "Plan d'action prêt",
+        "answer": "5 groupes M365 prêts à créer avec convention de nommage MKT-*, propriétaires assignés et journalisation.",
+        "bullets": [
+          "Valider la convention MKT-*",
+          "Créer les 5 groupes M365",
+          "Journaliser dans le registre"
+        ]
+      },
+      "compliance": {
+        "prompt": "Montre les écarts critiques de conformité",
+        "title": "Score posture : 72 / 100",
+        "answer": "3 écarts critiques détectés : MFA admins, comptes dormants licenciés et partage externe SharePoint.",
+        "bullets": [
+          "MFA admins : 4 / 12 sans MFA",
+          "Comptes dormants : 14 licenciés",
+          "SharePoint externe : 8 sites publics"
+        ]
+      }
+    }
+  },
+  "language": {
+    "label": "Langue",
+    "en": "EN",
+    "fr": "FR"
+  }
+}

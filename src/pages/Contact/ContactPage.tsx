@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Sparkles
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SectionLabel } from "../../components/ui/SectionLabel";
 import "./Contact.css";
 
@@ -21,29 +22,20 @@ interface ContactFormState {
   message: string;
 }
 
-const subjects = [
-  "Demander une démo",
-  "Évaluer Zelynto sur mon tenant",
-  "Question commerciale",
-  "Question technique",
-  "Partenariat / MSP",
-  "Autre"
-];
-
-const benefits = [
-  "Audit express de votre tenant",
-  "Démo personnalisée sur vos cas d'usage",
-  "Recommandations chiffrées avant engagement"
-];
-
 export function ContactPage() {
+  const { t } = useTranslation();
+  const rawSubjects = t("contact.form.fields.subjectOptions", { returnObjects: true });
+  const subjects: string[] = Array.isArray(rawSubjects) ? (rawSubjects as string[]) : [];
+  const rawBenefits = t("contact.aside.benefits", { returnObjects: true });
+  const benefits: string[] = Array.isArray(rawBenefits) ? (rawBenefits as string[]) : [];
+
   const [form, setForm] = useState<ContactFormState>({
     name: "",
     email: "",
     company: "",
     role: "",
     tenantSize: "",
-    subject: subjects[0]!,
+    subject: subjects[0] ?? "",
     message: ""
   });
   const [submitted, setSubmitted] = useState(false);
@@ -61,16 +53,13 @@ export function ContactPage() {
     <section className="contactPage">
       <div className="contactHero">
         <div className="contactHeroInner">
-          <SectionLabel>Contact</SectionLabel>
-          <h1>Parlons de votre tenant Microsoft 365.</h1>
-          <p>
-            Demandez une démo et voyez comment Zelynto simplifie l'administration : exploration en
-            langage naturel, alerting hiérarchisé, actions gouvernées et audit continu.
-          </p>
+          <SectionLabel>{t("contact.label")}</SectionLabel>
+          <h1>{t("contact.title")}</h1>
+          <p>{t("contact.description")}</p>
           <div className="contactTrust">
-            <span><CheckCircle2 size={16} /> Réponse sous 24h ouvrées</span>
-            <span><CheckCircle2 size={16} /> Démo personnalisée</span>
-            <span><CheckCircle2 size={16} /> Sans engagement</span>
+            <span><CheckCircle2 size={16} /> {t("contact.trust.response")}</span>
+            <span><CheckCircle2 size={16} /> {t("contact.trust.demo")}</span>
+            <span><CheckCircle2 size={16} /> {t("contact.trust.commitment")}</span>
           </div>
         </div>
       </div>
@@ -78,69 +67,69 @@ export function ContactPage() {
       <div className="contactBody">
         <form className="formCard contactForm" onSubmit={handleSubmit} noValidate>
           <div className="formIntro">
-            <SectionLabel>Votre demande</SectionLabel>
-            <h2>Quelques informations pour préparer notre échange.</h2>
+            <SectionLabel>{t("contact.form.intro.label")}</SectionLabel>
+            <h2>{t("contact.form.intro.title")}</h2>
           </div>
 
           <div className="formGrid">
             <label className="formField">
-              Nom complet
+              {t("contact.form.fields.name")}
               <input
                 type="text"
                 value={form.name}
                 onChange={(event) => update("name", event.target.value)}
-                placeholder="Camille Durand"
+                placeholder={t("contact.form.fields.namePlaceholder")}
                 required
               />
             </label>
 
             <label className="formField">
-              Email pro
+              {t("contact.form.fields.email")}
               <input
                 type="email"
                 value={form.email}
                 onChange={(event) => update("email", event.target.value)}
-                placeholder="camille@entreprise.com"
+                placeholder={t("contact.form.fields.emailPlaceholder")}
                 required
               />
             </label>
 
             <label className="formField">
-              Entreprise
+              {t("contact.form.fields.company")}
               <input
                 type="text"
                 value={form.company}
                 onChange={(event) => update("company", event.target.value)}
-                placeholder="Nom de l'entreprise"
+                placeholder={t("contact.form.fields.companyPlaceholder")}
               />
             </label>
 
             <label className="formField">
-              Rôle
+              {t("contact.form.fields.role")}
               <input
                 type="text"
                 value={form.role}
                 onChange={(event) => update("role", event.target.value)}
-                placeholder="DSI, RSSI, Admin M365…"
+                placeholder={t("contact.form.fields.rolePlaceholder")}
               />
             </label>
 
             <label className="formField">
-              Taille du tenant
+              {t("contact.form.fields.tenantSize")}
               <select
                 value={form.tenantSize}
                 onChange={(event) => update("tenantSize", event.target.value)}
               >
-                <option value="" disabled>Choisir une plage…</option>
-                <option value="lt-500">Moins de 500 utilisateurs</option>
-                <option value="500-2500">500 – 2 500 utilisateurs</option>
-                <option value="2500-10000">2 500 – 10 000 utilisateurs</option>
-                <option value="gt-10000">Plus de 10 000 utilisateurs</option>
+                <option value="" disabled>{t("contact.form.fields.tenantPlaceholder")}</option>
+                <option value="lt-500">{t("contact.form.fields.tenantOptions.lt500")}</option>
+                <option value="500-2500">{t("contact.form.fields.tenantOptions.500to2500")}</option>
+                <option value="2500-10000">{t("contact.form.fields.tenantOptions.2500to10000")}</option>
+                <option value="gt-10000">{t("contact.form.fields.tenantOptions.gt10000")}</option>
               </select>
             </label>
 
             <label className="formField">
-              Sujet
+              {t("contact.form.fields.subject")}
               <select
                 value={form.subject}
                 onChange={(event) => update("subject", event.target.value)}
@@ -153,29 +142,29 @@ export function ContactPage() {
           </div>
 
           <label className="formField">
-            Message
+            {t("contact.form.fields.message")}
             <textarea
               value={form.message}
               onChange={(event) => update("message", event.target.value)}
-              placeholder="Vos enjeux actuels, ce que vous aimeriez explorer pendant la démo…"
+              placeholder={t("contact.form.fields.messagePlaceholder")}
               rows={6}
             />
           </label>
 
           <div className="formFooter">
             <button type="submit" className="formButton">
-              Envoyer la demande
+              {t("contact.form.submit")}
               <ArrowRight size={18} />
             </button>
             <span className="formNote">
-              <ShieldCheck size={14} /> Vos données sont utilisées uniquement pour vous recontacter.
+              <ShieldCheck size={14} /> {t("contact.form.privacyNote")}
             </span>
           </div>
 
           {submitted && (
             <div className="formSuccess" role="status">
               <CheckCircle2 size={18} />
-              Merci ! Votre demande a bien été enregistrée. Notre équipe revient vers vous sous 24h.
+              {t("contact.form.success")}
             </div>
           )}
         </form>
@@ -184,7 +173,7 @@ export function ContactPage() {
           <div className="asideCard">
             <div className="asideIcon"><Mail size={20} /></div>
             <div>
-              <strong>Email</strong>
+              <strong>{t("contact.aside.email")}</strong>
               <a href="mailto:contact@zelynto.com">contact@zelynto.com</a>
             </div>
           </div>
@@ -192,23 +181,23 @@ export function ContactPage() {
           <div className="asideCard">
             <div className="asideIcon"><CalendarClock size={20} /></div>
             <div>
-              <strong>Démo en moins de 24h</strong>
-              <span>Créneau personnalisé selon votre fuseau et vos cas d'usage.</span>
+              <strong>{t("contact.aside.demoTitle")}</strong>
+              <span>{t("contact.aside.demoText")}</span>
             </div>
           </div>
 
           <div className="asideCard">
             <div className="asideIcon"><Building2 size={20} /></div>
             <div>
-              <strong>Cible</strong>
-              <span>DSI, RSSI, Admin M365, MSP gérant plusieurs tenants.</span>
+              <strong>{t("contact.aside.audience")}</strong>
+              <span>{t("contact.aside.audienceText")}</span>
             </div>
           </div>
 
           <div className="asideHighlight">
             <div className="asideHighlightHeader">
               <Sparkles size={18} />
-              <strong>Ce que vous obtenez</strong>
+              <strong>{t("contact.aside.benefitsTitle")}</strong>
             </div>
             <ul>
               {benefits.map((item) => (

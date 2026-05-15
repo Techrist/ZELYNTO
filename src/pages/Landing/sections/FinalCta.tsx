@@ -1,16 +1,16 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { PrimaryLink } from "../../../components/ui/PrimaryLink";
 
 export function FinalCta() {
+  const { t } = useTranslation();
   return (
     <section className="ctaSection">
-      <span>Pour une V1 exploitable</span>
-      <h2>Faites de Zelynto votre cockpit Microsoft 365.</h2>
-      <p>
-        Un chat simple en surface, une couche Graph, sécurité, provisioning et audit en profondeur.
-      </p>
+      <span>{t("cta.eyebrow")}</span>
+      <h2>{t("cta.title")}</h2>
+      <p>{t("cta.description")}</p>
       <PrimaryLink href="https://cestfredy.github.io/zelynto-onboarding/" size="large">
-        Get started
+        {t("common.getStarted")}
       </PrimaryLink>
     </section>
   );

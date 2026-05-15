@@ -1,17 +1,26 @@
 import React from "react";
-import { faqItems } from "../../../content/faq";
+import { useTranslation } from "react-i18next";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
 
+interface FaqEntry {
+  question: string;
+  answer: string;
+}
+
 export function FaqSection() {
+  const { t } = useTranslation();
+  const raw = t("faq.items", { returnObjects: true });
+  const items: FaqEntry[] = Array.isArray(raw) ? (raw as FaqEntry[]) : [];
+
   return (
     <section className="faqSection" id="faq">
       <div className="sectionIntro">
-        <SectionLabel>FAQ</SectionLabel>
-        <h2>Les réponses aux questions qu'on nous pose le plus.</h2>
+        <SectionLabel>{t("faq.label")}</SectionLabel>
+        <h2>{t("faq.title")}</h2>
       </div>
 
       <div className="faqList">
-        {faqItems.map((item, index) => (
+        {items.map((item, index) => (
           <details className="faqItem" key={item.question} open={index === 0}>
             <summary>
               <span>{item.question}</span>
