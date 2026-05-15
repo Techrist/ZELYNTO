@@ -417,12 +417,19 @@ h1 {
   min-height: 76px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   border: 1px solid #e2e7f0;
-  border-radius: 8px;
+  border-radius: 999px;
   color: #354058;
   background: #ffffff;
   font-weight: 900;
+}
+
+.integrationLogo {
+  width: 26px;
+  height: 26px;
+  display: block;
+  object-fit: contain;
 }
 
 .section,
@@ -668,7 +675,7 @@ h2 {
   align-items: center;
   justify-content: center;
   border: 1px solid #dce2ee;
-  border-radius: 8px;
+  border-radius: 999px;
   margin-top: 24px;
   color: #20283a;
   background: #ffffff;

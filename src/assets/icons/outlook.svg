@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <path d="M28 8H17V24H28C28.5523 24 29 23.5523 29 23V9C29 8.44772 28.5523 8 28 8Z" fill="#0078D4"/>
+  <path d="M29 11L23 15L17 11V9C17 8.44772 17.4477 8 18 8H28C28.5523 8 29 8.44772 29 9V11Z" fill="#50D9FF"/>
+  <path d="M17 11L23 15L29 11V13L23 17L17 13V11Z" fill="#0364B8"/>
+  <rect x="2" y="5" width="15" height="22" rx="1.5" fill="#0078D4"/>
+  <text x="9.5" y="20" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="14">O</text>
+</svg>

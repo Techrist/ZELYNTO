@@ -28,7 +28,6 @@ i18n
     interpolation: { escapeValue: false },
     returnNull: false,
     returnEmptyString: false,
-    initImmediate: false,
     react: {
       useSuspense: false
     }

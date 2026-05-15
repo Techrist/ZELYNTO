@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="entraGrad" x1="6" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#32D4F5"/>
+      <stop offset="100%" stop-color="#0078D4"/>
+    </linearGradient>
+  </defs>
+  <path d="M16 3L4 27L16 22L28 27L16 3Z" fill="url(#entraGrad)"/>
+  <path d="M16 9L10 23L16 21L22 23L16 9Z" fill="white" fill-opacity="0.35"/>
+</svg>

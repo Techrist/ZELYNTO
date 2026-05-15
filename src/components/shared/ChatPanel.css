@@ -308,6 +308,27 @@
   animation: chatCaret 800ms steps(1) infinite;
 }
 
+.chatInputMic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  color: #8b8f9a;
+  background: transparent;
+  cursor: default;
+  transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.chatInputMic:hover {
+  color: #f3f4f8;
+  background: #25272e;
+  transform: scale(1.05);
+}
+
 .chatInputSend {
   display: inline-flex;
   align-items: center;
@@ -317,21 +338,21 @@
   height: 28px;
   border: 0;
   border-radius: 50%;
-  color: #61656f;
-  background: #25272e;
+  color: #ffffff;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  box-shadow: 0 6px 16px rgba(91, 99, 217, 0.32);
   cursor: default;
-  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
 }
 
 .chatInputSend.active {
-  color: #0c0c10;
-  background: #f3f4f8;
-  transform: scale(1.04);
+  transform: scale(1.06);
+  box-shadow: 0 8px 22px rgba(91, 99, 217, 0.45);
 }
 
 .chatInputBottom .chatInputSend {
-  color: #0c0c10;
-  background: #f3f4f8;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  color: #ffffff;
 }
 
 @keyframes chatCaret {

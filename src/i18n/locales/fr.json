@@ -22,7 +22,7 @@
   },
   "hero": {
     "eyebrow": "Copilote d'administration Microsoft 365",
-    "title": "Administrez Microsoft 365 en langage naturel.",
+    "title": "Administrez Microsoft 365 en langage naturel",
     "description": "Zelynto transforme les consoles Microsoft 365 complexes en une expérience conversationnelle simple pour explorer, sécuriser, provisionner et auditer votre tenant.",
     "trust": {
       "graph": "Microsoft Graph-first",
@@ -33,11 +33,26 @@
       "ariaLabel": "Workflow Zelynto",
       "prompt": "Analyse le tenant pour les sites SharePoint inactifs et les licences sous-utilisées, corrèle l'usage avec Teams et OneDrive, et génère un plan d'action priorisé pour réduire les coûts et renforcer la sécurité.",
       "nodes": {
-        "plan": { "title": "Plan", "text": "5 étapes · M365 …" },
-        "sharepoint": { "title": "SharePoint", "text": "Sites inactifs · 9…" },
-        "licenses": { "title": "Licences", "text": "Sous-utilisées · E…" },
-        "correlate": { "title": "Corrélation", "text": "Teams · OneDri…" },
-        "action": { "title": "Plan d'action", "text": "Coût · Sécurité · …" }
+        "plan": {
+          "title": "Plan",
+          "text": "5 étapes · M365 …"
+        },
+        "sharepoint": {
+          "title": "SharePoint",
+          "text": "Sites inactifs · 9…"
+        },
+        "licenses": {
+          "title": "Licences",
+          "text": "Sous-utilisées · E…"
+        },
+        "correlate": {
+          "title": "Corrélation",
+          "text": "Teams · OneDri…"
+        },
+        "action": {
+          "title": "Plan d'action",
+          "text": "Coût · Sécurité · …"
+        }
       },
       "approval": {
         "title": "En attente d'approbation",
@@ -51,7 +66,7 @@
   },
   "problem": {
     "label": "Le problème",
-    "title": "Microsoft 365 est devenu impossible à piloter à la main.",
+    "title": "Microsoft 365 est devenu impossible à piloter à la main",
     "description": "Plus le tenant grandit, plus l'effort opérationnel grimpe. Les équipes IT cherchent une vue claire, des actions sûres et une trace de tout ce qui est exécuté.",
     "items": [
       {
@@ -75,7 +90,7 @@
   "capabilities": {
     "explore": {
       "label": "Exploration intelligente M365",
-      "title": "Interrogez Microsoft 365 comme si vous parliez à un expert.",
+      "title": "Interrogez Microsoft 365 comme si vous parliez à un expert",
       "description": "Zelynto traduit vos questions en requêtes Graph, recoupe les données du tenant et livre une réponse claire, structurée et actionnable.",
       "bullets": [
         "Questions sur utilisateurs, groupes, mails, fichiers et licences",
@@ -85,7 +100,7 @@
     },
     "security": {
       "label": "Sécurité & alertes",
-      "title": "Transformez vos alertes M365 en décisions rapides.",
+      "title": "Transformez vos alertes M365 en décisions rapides",
       "description": "Zelynto centralise les signaux Defender et Identity, explique les alertes critiques et priorise les comptes ou configurations à traiter.",
       "bullets": [
         "Vue unifiée des alertes critiques",
@@ -95,7 +110,7 @@
     },
     "automation": {
       "label": "Automatisation & provisioning",
-      "title": "Automatisez les actions admin sans perdre le contrôle.",
+      "title": "Automatisez les actions admin sans perdre le contrôle",
       "description": "Créez des ressources Microsoft 365 par prompt, avec preview, conventions de nommage, gouvernance et confirmation avant exécution.",
       "bullets": [
         "Création de groupes, sites SharePoint et ressources Entra ID",
@@ -105,7 +120,7 @@
     },
     "compliance": {
       "label": "Audit & conformité",
-      "title": "Gardez votre tenant conforme en continu.",
+      "title": "Gardez votre tenant conforme en continu",
       "description": "Zelynto surveille les écarts de configuration, calcule un score de posture et explique pourquoi chaque point est prioritaire.",
       "bullets": [
         "Score par catégorie : identité, collaboration, licences, gouvernance",
@@ -116,7 +131,7 @@
   },
   "howItWorks": {
     "label": "Comment ça marche",
-    "title": "De l'application Entra ID à votre première action en moins d'une heure.",
+    "title": "De l'application Entra ID à votre première action en moins d'une heure",
     "description": "Trois étapes, pas de déploiement lourd, pas d'agent à installer.",
     "steps": [
       {
@@ -135,7 +150,7 @@
   },
   "security": {
     "label": "Sécurité & conformité",
-    "title": "Conçu pour les contraintes des DSI les plus exigeantes.",
+    "title": "Conçu pour les contraintes des DSI les plus exigeantes",
     "description": "Zelynto applique le principe du moindre privilège, conserve les preuves nécessaires aux audits et minimise l'empreinte sur vos données.",
     "pillars": [
       {
@@ -158,7 +173,7 @@
   },
   "pricing": {
     "label": "Tarifs",
-    "title": "Des offres simples pour déployer Zelynto selon votre niveau de maturité M365.",
+    "title": "Des offres simples pour déployer Zelynto selon votre niveau de maturité M365",
     "description": "Commencez par l'audit et l'exploration, puis activez progressivement l'automatisation et les contrôles avancés.",
     "popularBadge": "Le plus demandé",
     "plans": {
@@ -205,7 +220,7 @@
   },
   "faq": {
     "label": "FAQ",
-    "title": "Les réponses aux questions qu'on nous pose le plus.",
+    "title": "Les réponses aux questions qu'on nous pose le plus",
     "items": [
       {
         "question": "Faut-il déployer un agent ou un connecteur dans notre tenant ?",
@@ -235,12 +250,12 @@
   },
   "cta": {
     "eyebrow": "Pour une V1 exploitable",
-    "title": "Faites de Zelynto votre cockpit Microsoft 365.",
+    "title": "Faites de Zelynto votre cockpit Microsoft 365",
     "description": "Un chat simple en surface, une couche Graph, sécurité, provisioning et audit en profondeur."
   },
   "footer": {
     "ctaEyebrow": "Prêt pour la V1 ?",
-    "ctaTitle": "Centralisez votre administration Microsoft 365 avec Zelynto.",
+    "ctaTitle": "Centralisez votre administration Microsoft 365 avec Zelynto",
     "brandTagline": "Le copilote d'administration conçu pour explorer, sécuriser, automatiser et auditer votre environnement Microsoft 365.",
     "columns": {
       "product": {
@@ -278,7 +293,7 @@
   },
   "contact": {
     "label": "Contact",
-    "title": "Parlons de votre tenant Microsoft 365.",
+    "title": "Parlons de votre tenant Microsoft 365",
     "description": "Demandez une démo et voyez comment Zelynto simplifie l'administration : exploration en langage naturel, alerting hiérarchisé, actions gouvernées et audit continu.",
     "trust": {
       "response": "Réponse sous 24h ouvrées",
@@ -288,7 +303,7 @@
     "form": {
       "intro": {
         "label": "Votre demande",
-        "title": "Quelques informations pour préparer notre échange."
+        "title": "Quelques informations pour préparer notre échange"
       },
       "fields": {
         "name": "Nom complet",
@@ -338,7 +353,7 @@
     }
   },
   "auth": {
-    "title": "Connectez-vous.",
+    "title": "Connectez-vous",
     "description": "Accédez à votre futur cockpit M365.",
     "login": {
       "title": "Connexion",
@@ -372,7 +387,7 @@
       "Stratégies CA actives"
     ],
     "welcome": {
-      "title": "Conçu pour ceux qui pilotent tout.",
+      "title": "Conçu pour ceux qui pilotent tout",
       "description": "Des réponses propulsées par l'IA pour Microsoft 365.",
       "placeholder": "Interrogez votre tenant",
       "chips": [

@@ -6,9 +6,9 @@ export function IntegrationBand() {
   const { t } = useTranslation();
   return (
     <section className="integrationBand container" aria-label={t("integrations.ariaLabel")}>
-      {integrations.map(({ icon: Icon, label }) => (
+      {integrations.map(({ icon, label, alt }) => (
         <div key={label}>
-          <Icon size={22} />
+          <img className="integrationLogo" src={icon} alt={alt} width={24} height={24} />
           <span>{label}</span>
         </div>
       ))}

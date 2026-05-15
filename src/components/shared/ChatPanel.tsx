@@ -3,6 +3,7 @@ import {
   ArrowUp,
   CheckCircle2,
   ClipboardList,
+  Mic,
   PanelLeft,
   Plus,
   Search,
@@ -233,6 +234,14 @@ export function ChatPanel({ variant }: ChatPanelProps) {
               {phase === "typing" && <span className="caret" aria-hidden="true" />}
               <button
                 type="button"
+                className="chatInputMic"
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                <Mic size={15} />
+              </button>
+              <button
+                type="button"
                 className={`chatInputSend${typedPrompt ? " active" : ""}`}
                 tabIndex={-1}
                 aria-hidden="true"
@@ -301,6 +310,14 @@ export function ChatPanel({ variant }: ChatPanelProps) {
                 placeholder={t("chat.welcome.placeholder")}
                 aria-label="Prompt"
               />
+              <button
+                type="button"
+                className="chatInputMic"
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                <Mic size={15} />
+              </button>
               <button
                 type="button"
                 className="chatInputSend"
