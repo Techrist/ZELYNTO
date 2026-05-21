@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { problems } from "../../../content/problems";
+import { RevealCard } from "../../../components/ui/RevealCard";
 
 interface ProblemItem {
   title: string;
@@ -24,13 +25,13 @@ export function ProblemSection() {
           const item = items[index];
           if (!item) return null;
           return (
-            <article className="problemCard" key={item.title}>
+            <RevealCard className="problemCard" key={item.title} delay={index * 90}>
               <div className="problemIcon">
                 <Icon size={22} />
               </div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-            </article>
+            </RevealCard>
           );
         })}
       </div>

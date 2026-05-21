@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { steps } from "../../../content/howItWorks";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
+import { RevealCard } from "../../../components/ui/RevealCard";
 
 interface StepText {
   title: string;
@@ -26,14 +27,14 @@ export function HowItWorks() {
           const step = stepTexts[i];
           if (!step) return null;
           return (
-            <article className="stepCard" key={index}>
+            <RevealCard className="stepCard" key={index} delay={i * 110}>
               <span className="stepIndex">{index}</span>
               <div className="stepIcon">
                 <Icon size={22} />
               </div>
               <h3>{step.title}</h3>
               <p>{step.description}</p>
-            </article>
+            </RevealCard>
           );
         })}
       </div>

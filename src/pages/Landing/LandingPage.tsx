@@ -3,6 +3,7 @@ import { capabilities } from "../../content/capabilities";
 import { CapabilityShowcase } from "./sections/CapabilityShowcase";
 import { FaqSection } from "./sections/FaqSection";
 import { FinalCta } from "./sections/FinalCta";
+import { BrandSection } from "./sections/BrandSection";
 import { Hero } from "./sections/Hero";
 import { HowItWorks } from "./sections/HowItWorks";
 import { IntegrationBand } from "./sections/IntegrationBand";
@@ -16,6 +17,7 @@ export function LandingPage() {
     <>
       <Hero />
       <IntegrationBand />
+      <BrandSection />
       <ProblemSection />
       {capabilities.map((capability) => (
         <CapabilityShowcase key={capability.id} capability={capability} />

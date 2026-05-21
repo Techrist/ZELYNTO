@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
 
@@ -11,6 +11,7 @@ export function FaqSection() {
   const { t } = useTranslation();
   const raw = t("faq.items", { returnObjects: true });
   const items: FaqEntry[] = Array.isArray(raw) ? (raw as FaqEntry[]) : [];
+  const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
     <section className="faqSection" id="faq">
@@ -21,8 +22,13 @@ export function FaqSection() {
 
       <div className="faqList">
         {items.map((item, index) => (
-          <details className="faqItem" key={item.question} open={index === 0}>
-            <summary>
+          <details className="faqItem" key={item.question} open={openIndex === index}>
+            <summary
+              onClick={(event) => {
+                event.preventDefault();
+                setOpenIndex((current) => (current === index ? -1 : index));
+              }}
+            >
               <span>{item.question}</span>
               <span className="faqChevron" aria-hidden="true" />
             </summary>

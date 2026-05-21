@@ -2,6 +2,7 @@ import React from "react";
 import { CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { pricingPlans } from "../../../content/pricing";
+import { RevealCard } from "../../../components/ui/RevealCard";
 
 export function PricingSection() {
   const { t } = useTranslation();
@@ -15,15 +16,16 @@ export function PricingSection() {
       </div>
 
       <div className="pricingGrid">
-        {pricingPlans.map((plan) => {
+        {pricingPlans.map((plan, index) => {
           const base = `pricing.plans.${plan.id}`;
           const rawBullets = t(`${base}.bullets`, { returnObjects: true });
           const bullets: string[] = Array.isArray(rawBullets) ? (rawBullets as string[]) : [];
           const displayedPrice = plan.price ?? t(`${base}.price`);
           return (
-            <article
+            <RevealCard
               key={plan.id}
               className={plan.featured ? "priceCard featured" : "priceCard"}
+              delay={index * 110}
             >
               {plan.featured && <div className="popularBadge">{t("pricing.popularBadge")}</div>}
               <div>
@@ -49,7 +51,7 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-            </article>
+            </RevealCard>
           );
         })}
       </div>

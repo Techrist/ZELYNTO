@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { securityPillars } from "../../../content/security";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
+import { RevealCard } from "../../../components/ui/RevealCard";
 
 interface PillarText {
   title: string;
@@ -26,7 +27,7 @@ export function SecuritySection() {
           const p = pillars[i];
           if (!p) return null;
           return (
-            <article className="securityPillar" key={p.title}>
+            <RevealCard className="securityPillar" key={p.title} delay={i * 90}>
               <div className="securityIcon">
                 <Icon size={22} />
               </div>
@@ -34,7 +35,7 @@ export function SecuritySection() {
                 <h3>{p.title}</h3>
                 <p>{p.description}</p>
               </div>
-            </article>
+            </RevealCard>
           );
         })}
       </div>

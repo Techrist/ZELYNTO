@@ -12,7 +12,9 @@ import {
   SquarePen
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Lottie from "lottie-react";
 import zelyntoMark from "../../assets/zelynto-mark.svg";
+import blobZelynto from "../../assets/blob-zelynto.json";
 import "./ChatPanel.css";
 
 interface ChatPanelProps {
@@ -215,7 +217,13 @@ export function ChatPanel({ variant }: ChatPanelProps) {
         {!showThread ? (
           <div className="chatWelcome">
             <div className="chatWelcomeBrand">
-              <img className="chatWelcomeMark" src={zelyntoMark} alt="" aria-hidden="true" />
+              <Lottie
+                animationData={blobZelynto}
+                loop
+                autoplay
+                className="chatWelcomeMark"
+                rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+              />
               <h3>{t("chat.welcome.title")}</h3>
             </div>
             <p>{t("chat.welcome.description")}</p>
@@ -267,7 +275,13 @@ export function ChatPanel({ variant }: ChatPanelProps) {
 
               {phase === "loading" && (
                 <div className="chatBubble chatAssistant" key={`load-${playId}`}>
-                  <img className="chatAssistantAvatar" src={zelyntoMark} alt="" aria-hidden="true" />
+                  <Lottie
+                    animationData={blobZelynto}
+                    loop
+                    autoplay
+                    className="chatAssistantAvatar"
+                    rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+                  />
                   <div className="loadingDots">
                     <span /><span /><span />
                   </div>
@@ -276,7 +290,13 @@ export function ChatPanel({ variant }: ChatPanelProps) {
 
               {showAssistant && (
                 <div className="chatBubble chatAssistant" key={`ans-${playId}`}>
-                  <img className="chatAssistantAvatar" src={zelyntoMark} alt="" aria-hidden="true" />
+                  <Lottie
+                    animationData={blobZelynto}
+                    loop
+                    autoplay
+                    className="chatAssistantAvatar"
+                    rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+                  />
                   <div className="chatAssistantBody">
                     <strong>{content.title}</strong>
                     <p>

@@ -64,6 +64,13 @@
   "integrations": {
     "ariaLabel": "Microsoft 365 integrations"
   },
+  "brand": {
+    "label": "Meet Zelynto",
+    "title": "One intelligence, many shapes",
+    "description": "Behind every answer, the same engine: a Microsoft 365 expert that listens, reasons and acts. Zelynto takes the shape of your question, never the other way around.",
+    "captionBlob": "Thinking…",
+    "captionZ": "Zelynto"
+  },
   "problem": {
     "label": "The problem",
     "title": "Microsoft 365 has become impossible to manage by hand",
@@ -236,7 +243,7 @@
       },
       {
         "question": "How do automated actions work?",
-        "answer": "Every action goes through a readable preview first — creating a group, changing a policy, archiving a site. Nothing runs without your explicit confirmation."
+        "answer": "Every action goes through a readable preview first: creating a group, changing a policy, archiving a site. Nothing runs without your explicit confirmation."
       },
       {
         "question": "Is Zelynto suited to MSPs managing multiple tenants?",
@@ -254,7 +261,7 @@
     "description": "A simple chat on the surface, a Graph, security, provisioning and audit layer in depth."
   },
   "footer": {
-    "ctaEyebrow": "Ready for V1?",
+    "ctaEyebrow": "Ready for Zelynto?",
     "ctaTitle": "Centralize your Microsoft 365 admin with Zelynto",
     "brandTagline": "The admin copilot designed to explore, secure, automate and audit your Microsoft 365 environment.",
     "columns": {
@@ -413,9 +420,9 @@
         "title": "3 active critical alerts",
         "answer": "3 critical alerts are open. Top priority is an admin account flagged for impossible travel.",
         "bullets": [
-          "Impossible travel — admin@",
-          "MFA fatigue — 4 users",
-          "Privilege escalation — service account"
+          "Impossible travel · admin@",
+          "MFA fatigue · 4 users",
+          "Privilege escalation · service account"
         ]
       },
       "automation": {

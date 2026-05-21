@@ -64,6 +64,13 @@
   "integrations": {
     "ariaLabel": "Intégrations Microsoft 365"
   },
+  "brand": {
+    "label": "Voici Zelynto",
+    "title": "Une intelligence, mille formes",
+    "description": "Derrière chaque réponse, le même moteur : un expert Microsoft 365 qui écoute, raisonne et agit. Zelynto épouse la forme de votre question, jamais l'inverse.",
+    "captionBlob": "Réflexion…",
+    "captionZ": "Zelynto"
+  },
   "problem": {
     "label": "Le problème",
     "title": "Microsoft 365 est devenu impossible à piloter à la main",
@@ -236,7 +243,7 @@
       },
       {
         "question": "Comment fonctionnent les actions automatisées ?",
-        "answer": "Toute action passe d'abord par une preview lisible — création de groupe, modification de policy, archivage de site. Rien n'est exécuté sans votre confirmation explicite."
+        "answer": "Toute action passe d'abord par une preview lisible : création de groupe, modification de policy, archivage de site. Rien n'est exécuté sans votre confirmation explicite."
       },
       {
         "question": "Zelynto est-il adapté aux MSP gérant plusieurs tenants ?",
@@ -254,7 +261,7 @@
     "description": "Un chat simple en surface, une couche Graph, sécurité, provisioning et audit en profondeur."
   },
   "footer": {
-    "ctaEyebrow": "Prêt pour la V1 ?",
+    "ctaEyebrow": "Prêt pour Zelynto ?",
     "ctaTitle": "Centralisez votre administration Microsoft 365 avec Zelynto",
     "brandTagline": "Le copilote d'administration conçu pour explorer, sécuriser, automatiser et auditer votre environnement Microsoft 365.",
     "columns": {
@@ -413,9 +420,9 @@
         "title": "3 alertes critiques en cours",
         "answer": "3 alertes critiques sont ouvertes. La priorité absolue est le compte admin signalé en impossible travel.",
         "bullets": [
-          "Impossible travel — admin@",
-          "MFA fatigue — 4 utilisateurs",
-          "Privilege escalation — service account"
+          "Impossible travel · admin@",
+          "MFA fatigue · 4 utilisateurs",
+          "Privilege escalation · service account"
         ]
       },
       "automation": {

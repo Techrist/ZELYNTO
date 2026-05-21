@@ -215,11 +215,10 @@
 
 .chatWelcomeMark {
   flex: 0 0 auto;
-  width: 32px;
-  height: 32px;
-  display: block;
-  object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(124, 91, 255, 0.45));
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .chatWelcome h3 {
@@ -423,9 +422,9 @@
 .chatAssistantAvatar {
   width: 26px;
   height: 26px;
-  display: block;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(124, 91, 255, 0.4));
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .chatAssistantBody {
