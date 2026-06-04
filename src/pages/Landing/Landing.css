@@ -1,6 +1,6 @@
 .landing {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: clip;
   background:
     radial-gradient(circle at 18% 18%, rgba(49, 183, 232, 0.16), transparent 28%),
     radial-gradient(circle at 86% 12%, rgba(164, 61, 160, 0.14), transparent 24%),
@@ -8,6 +8,8 @@
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(520px, 1.05fr);
   gap: clamp(28px, 5vw, 70px);
@@ -15,7 +17,128 @@
   padding: clamp(58px, 8vw, 108px) clamp(18px, 5vw, 76px) 60px;
 }
 
+/* --- Hero atmosphere: morphing blobs + parallax orbs --- */
+
+.heroAtmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: -12% 0 0 0;
+  background-image: radial-gradient(rgba(99, 91, 255, 0.07) 1px, transparent 1px);
+  background-size: 34px 34px;
+  -webkit-mask-image: linear-gradient(180deg, #000, transparent 78%);
+  mask-image: linear-gradient(180deg, #000, transparent 78%);
+  animation: heroRiseSlow linear;
+  animation-timeline: scroll(root);
+  animation-range: 0 720px;
+}
+
+.heroBlob {
+  position: absolute;
+  width: clamp(320px, 34vw, 480px);
+  height: clamp(320px, 34vw, 480px);
+  filter: blur(54px);
+  opacity: 0.5;
+  animation: blobMorph 18s ease-in-out infinite, heroRiseMid linear;
+  animation-timeline: auto, scroll(root);
+  animation-range: auto, 0 760px;
+}
+
+.heroBlob1 {
+  top: -130px;
+  left: -90px;
+  background: radial-gradient(circle at 42% 40%, rgba(49, 183, 232, 0.62), transparent 70%);
+}
+
+.heroBlob2 {
+  top: 90px;
+  right: -150px;
+  background: radial-gradient(circle at 52% 50%, rgba(164, 61, 160, 0.5), transparent 70%);
+  animation-delay: -7s, 0s;
+}
+
+.heroOrb {
+  position: absolute;
+  border-radius: 999px;
+  animation: heroRiseFast linear;
+  animation-timeline: scroll(root);
+  animation-range: 0 700px;
+}
+
+.heroOrb1 {
+  width: 16px;
+  height: 16px;
+  top: 24%;
+  left: 14%;
+  background: rgba(49, 183, 232, 0.55);
+  box-shadow: 0 0 18px rgba(49, 183, 232, 0.6);
+}
+
+.heroOrb2 {
+  width: 10px;
+  height: 10px;
+  top: 62%;
+  left: 30%;
+  background: rgba(99, 91, 255, 0.55);
+  box-shadow: 0 0 14px rgba(99, 91, 255, 0.6);
+  animation-name: heroRiseMid;
+}
+
+.heroOrb3 {
+  width: 12px;
+  height: 12px;
+  top: 38%;
+  right: 22%;
+  background: rgba(164, 61, 160, 0.5);
+  box-shadow: 0 0 16px rgba(164, 61, 160, 0.55);
+}
+
+@keyframes blobMorph {
+  0%, 100% {
+    border-radius: 60% 40% 55% 45% / 55% 50% 50% 45%;
+  }
+  33% {
+    border-radius: 45% 55% 40% 60% / 50% 62% 38% 50%;
+  }
+  66% {
+    border-radius: 56% 44% 60% 40% / 62% 44% 56% 38%;
+  }
+}
+
+@keyframes heroRiseSlow {
+  to { transform: translateY(-70px); }
+}
+
+@keyframes heroRiseMid {
+  to { transform: translateY(-150px); }
+}
+
+@keyframes heroRiseFast {
+  to { transform: translateY(-260px); }
+}
+
+@keyframes heroSink {
+  to { transform: translateY(46px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroGrid,
+  .heroBlob,
+  .heroOrb,
+  .heroVisual {
+    animation: none;
+  }
+}
+
 .heroText {
+  position: relative;
+  z-index: 1;
   max-width: 700px;
 }
 
@@ -76,7 +199,12 @@ h1 {
 }
 
 .heroVisual {
+  position: relative;
+  z-index: 1;
   min-width: 0;
+  animation: heroSink linear;
+  animation-timeline: scroll(root);
+  animation-range: 0 760px;
 }
 
 .workflowMockup {
@@ -96,8 +224,8 @@ h1 {
     0 0 28px -4px rgba(99, 91, 255, 0.45),
     0 0 70px -12px rgba(49, 183, 232, 0.32),
     0 0 120px -24px rgba(164, 61, 160, 0.28),
-    0 34px 90px rgba(17, 24, 39, 0.3);
-  animation: panelFloat 6s ease-in-out infinite, mockupGlow 6s ease-in-out infinite;
+    0 12px 32px -58px rgba(70, 56, 130, 0.14);
+  animation: panelFloat 6s ease-in-out infinite;
 }
 
 @keyframes mockupGlow {
@@ -108,7 +236,7 @@ h1 {
       0 0 28px -4px rgba(99, 91, 255, 0.45),
       0 0 70px -12px rgba(49, 183, 232, 0.32),
       0 0 120px -24px rgba(164, 61, 160, 0.28),
-      0 34px 90px rgba(17, 24, 39, 0.3);
+      0 12px 32px -58px rgba(70, 56, 130, 0.14);
   }
   50% {
     box-shadow:
@@ -117,7 +245,7 @@ h1 {
       0 0 36px -2px rgba(99, 91, 255, 0.6),
       0 0 90px -10px rgba(49, 183, 232, 0.4),
       0 0 150px -20px rgba(164, 61, 160, 0.35),
-      0 34px 90px rgba(17, 24, 39, 0.3);
+      0 60px 110px -40px rgba(70, 56, 130, 0.32);
   }
 }
 
@@ -599,6 +727,8 @@ h1 {
   position: relative;
   width: clamp(260px, 26vw, 340px);
   height: clamp(260px, 26vw, 340px);
+  overflow: hidden;
+  border-radius: 999px;
 }
 
 .brandMorphRing {
@@ -623,43 +753,19 @@ h1 {
   }
 }
 
-.brandMorphLayer {
+.brandLottie {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  overflow: hidden;
-  opacity: 0;
-  transform: scale(0.86) rotate(-6deg);
-  transition: opacity 820ms ease, transform 820ms cubic-bezier(0.34, 1.3, 0.64, 1);
-}
-
-.brandMorphLayer.isVisible {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-.brandMorphLayer > div {
   width: 100%;
   height: 100%;
+  display: block;
+  transform: scale(3.6);
+  transform-origin: center;
 }
 
-.brandMorphLayer img {
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 22px rgba(124, 91, 255, 0.4));
-}
-
-.brandCaption {
-  position: relative;
-  margin: 22px auto 0;
-  color: #5b63d9;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+.brandLottie > svg {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 @media (max-width: 880px) {
@@ -1124,87 +1230,633 @@ h2 {
    How it works
    ============================================================ */
 
+/* ============================================================
+   How it works — sticky scroll storytelling
+   ============================================================ */
+
+/* ============================================================
+   How it works — sticky scroll storytelling with live mockups
+   ============================================================ */
+
 .howItWorksSection {
   position: relative;
-  padding: 96px clamp(18px, 5vw, 76px);
+  height: 320vh;
   background:
     radial-gradient(circle at 50% 0%, rgba(99, 91, 255, 0.1), transparent 42%),
     linear-gradient(180deg, #f8f9fd, #ffffff);
 }
 
-.stepsGrid {
+.howItWorksSticky {
+  position: sticky;
+  top: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 44px;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 28px);
+  align-items: stretch;
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(20px, 3.2vw, 36px) clamp(18px, 5vw, 76px) clamp(20px, 3.2vw, 36px);
 }
 
-.stepCard {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #e2e7f0;
-  border-radius: 8px;
-  padding: 28px 24px;
+.howIntro {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.howIntro h2 {
+  margin-top: 8px;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.howIntro p {
+  max-width: 720px;
+  margin: 8px auto 0;
+  color: #5c6678;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.howBody {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: stretch;
+  min-height: 0;
+}
+
+.howStepsList {
+  align-self: center;
+}
+
+.howStepsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.howStepCompact {
+  display: grid;
+  grid-template-columns: 48px 36px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background 320ms ease,
+    border-color 320ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms ease;
+}
+
+.howStepCompact:hover {
+  background: rgba(99, 91, 255, 0.05);
+}
+
+.howStepCompact.isActive {
   background: #ffffff;
-  box-shadow: 0 18px 44px rgba(19, 25, 38, 0.07);
-  transition: transform 240ms ease, box-shadow 240ms ease;
+  border-color: rgba(99, 91, 255, 0.32);
+  box-shadow:
+    0 18px 44px rgba(99, 91, 255, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
 }
 
-.stepCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 26px 56px rgba(19, 25, 38, 0.1);
+.howStepCompactIndex {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #b6bccd;
+  transition: color 320ms ease, background 320ms ease, -webkit-background-clip 320ms ease;
 }
 
-.stepCard:hover::before {
-  height: 6px;
-}
-
-.stepCard::before {
-  transition: height 240ms ease;
-}
-
-.stepCard::before {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 4px;
-  content: "";
-  background: linear-gradient(90deg, #31b7e8, #5b63d9 50%, #a43da0);
-}
-
-.stepIndex {
-  display: inline-block;
+.howStepCompact.isActive .howStepCompactIndex {
   color: transparent;
   background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
   -webkit-background-clip: text;
   background-clip: text;
-  font-size: 36px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.02em;
 }
 
-.stepIcon {
+.howStepCompactIcon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 999px;
+  color: #8b93a4;
+  background: #eef0f6;
+  transition: color 320ms ease, background 320ms ease, transform 320ms ease;
+}
+
+.howStepCompact.isActive .howStepCompactIcon {
+  color: #ffffff;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  transform: scale(1.05);
+}
+
+.howStepCompactBody h3 {
+  margin: 0;
+  color: #141a29;
+  font-size: 16px;
+  line-height: 1.3;
+  transition: color 320ms ease;
+}
+
+.howStepCompactBody p {
+  margin: 6px 0 0;
+  color: #6f7689;
+  font-size: 13px;
+  line-height: 1.55;
+  opacity: 0.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 320ms ease, max-height 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.howStepCompact.isActive .howStepCompactBody p {
+  opacity: 1;
+  max-height: 80px;
+  margin-top: 6px;
+}
+
+/* --- Stage with cross-fading mockups --- */
+
+.howStage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+}
+
+.howMockup {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  transition:
+    opacity 540ms ease,
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.howMockup.isVisible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.mockupCard {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e7ecf4;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 28px 70px -30px rgba(99, 91, 255, 0.28),
+    0 40px 90px -50px rgba(70, 56, 130, 0.22);
+  overflow: hidden;
+}
+
+/* Mockup 1 — Entra ID */
+
+.mockupTopBar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eef1f6;
+  color: #8b93a4;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mockupEntra .mockupBody {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 24px;
+  height: 100%;
+}
+
+.mockupHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mockupHeaderIcon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 10px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2380e9, #0078d4);
+}
+
+.mockupHeader strong {
+  display: block;
+  color: #141a29;
+  font-size: 16px;
+}
+
+.mockupHeader span {
+  display: block;
+  color: #6f7689;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.mockupField label {
+  display: block;
+  color: #6f7689;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mockupInput {
+  display: block;
+  padding: 12px 14px;
+  border: 1px solid #e2e7f0;
+  border-radius: 10px;
+  background: #f8f9fd;
+  color: #1d2433;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mockupPermList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockupPerm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #dff0e3;
+  border-radius: 10px;
+  background: #f1faf3;
+  color: #146c4a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.mockupEntra.isActive .mockupPerm {
+  animation: permPop 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i) * 140ms + 200ms);
+}
+
+.mockupPerm code {
+  font-family: var(--font-body);
+  color: #146c4a;
+  font-weight: 700;
+}
+
+.mockupPerm svg {
+  color: #16a36f;
+}
+
+.mockupCta {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 12px 28px rgba(99, 91, 255, 0.32);
+}
+
+@keyframes permPop {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Mockup 2 — Ask (chat) */
+
+.mockupAsk {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  background: #0c0c10;
+  border-color: rgba(143, 154, 255, 0.32);
+}
+
+.mockupAskInput {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #1d1e25;
+  border: 1px solid #25272e;
+  color: #f3f4f8;
+}
+
+.mockupAskAdd {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  color: #c9ccd5;
+  background: #25272e;
+  cursor: default;
+}
+
+.mockupAskValue {
+  flex: 1;
+  color: #f3f4f8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mockupAskSend {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  color: #ffffff;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  box-shadow: 0 6px 16px rgba(91, 99, 217, 0.32);
+  cursor: default;
+}
+
+.mockupAskBubble {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.mockupAskUser {
+  align-self: flex-end;
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 16px 16px 4px 16px;
+  background: #25272e;
+  color: #f3f4f8;
+}
+
+.mockupAskAssistant {
+  align-items: flex-start;
+  color: #c9ccd5;
+}
+
+.mockupAskAvatar {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  filter: drop-shadow(0 0 10px rgba(124, 91, 255, 0.45));
+}
+
+.mockupAskAssistant strong {
+  display: block;
+  color: #f3f4f8;
+  font-size: 14px;
+}
+
+.mockupAskAssistant p {
+  margin: 6px 0 10px;
+  color: #c9ccd5;
+}
+
+.mockupAskRows {
+  display: grid;
+  gap: 6px;
+}
+
+.mockupAskRows > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid #1f2127;
+  border-radius: 8px;
+  background: #15161b;
+  color: #d0d3da;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mockupAskRows svg {
+  color: #4ecf8d;
+}
+
+.mockupAsk.isActive .mockupAskBubble {
+  animation: bubbleIn 460ms ease both;
+}
+
+.mockupAsk.isActive .mockupAskUser {
+  animation-delay: 150ms;
+}
+
+.mockupAsk.isActive .mockupAskAssistant {
+  animation-delay: 380ms;
+}
+
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mockup 3 — Validate (action plan) */
+
+.mockupValidate {
+  padding: 22px;
+  gap: 18px;
+}
+
+.mockupValidateHeader {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.mockupValidateIcon {
   display: grid;
   width: 44px;
   height: 44px;
   place-items: center;
-  margin-top: 14px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  box-shadow: 0 10px 24px rgba(91, 99, 217, 0.32);
+}
+
+.mockupValidateHeader strong {
+  display: block;
+  color: #141a29;
+  font-size: 16px;
+}
+
+.mockupValidateHeader span {
+  display: block;
+  color: #6f7689;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.mockupValidateBadge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(99, 91, 255, 0.12);
+  color: #5b63d9;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mockupValidateSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.mockupValidateStep {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid #e7ecf4;
+  border-radius: 12px;
+  background: #f8f9fd;
+}
+
+.mockupValidate.isActive .mockupValidateStep {
+  animation: bubbleIn 460ms ease both;
+}
+
+.mockupValidate.isActive .mockupValidateStep:nth-child(1) { animation-delay: 200ms; }
+.mockupValidate.isActive .mockupValidateStep:nth-child(2) { animation-delay: 340ms; }
+.mockupValidate.isActive .mockupValidateStep:nth-child(3) { animation-delay: 480ms; }
+
+.mockupValidateCheck {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
   border-radius: 8px;
   color: #5b63d9;
-  background: rgba(99, 91, 255, 0.12);
+  background: rgba(99, 91, 255, 0.14);
 }
 
-.stepCard h3 {
-  margin-top: 18px;
+.mockupValidateStep strong {
+  display: block;
   color: #141a29;
-  font-size: 20px;
-  line-height: 1.3;
+  font-size: 14px;
 }
 
-.stepCard p {
-  margin-top: 10px;
-  color: #5c6678;
-  line-height: 1.6;
+.mockupValidateStep code {
+  display: block;
+  margin-top: 2px;
+  color: #6f7689;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mockupValidateStep span {
+  display: block;
+  margin-top: 2px;
+  color: #6f7689;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mockupValidateFooter {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  margin-top: auto;
+  padding: 14px 16px;
+  border-top: 1px solid #eef1f6;
+}
+
+.mockupValidatePause {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #5b63d9;
+}
+
+.mockupValidateText {
+  color: #6f7689;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mockupValidateConfirm {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 999px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: default;
+  box-shadow: 0 12px 24px rgba(99, 91, 255, 0.3);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 980px) {
+  .howItWorksSection {
+    height: auto;
+  }
+
+  .howItWorksSticky {
+    position: static;
+    grid-template-rows: auto auto;
+    height: auto;
+    padding-top: clamp(64px, 12vw, 96px);
+    padding-bottom: clamp(64px, 12vw, 96px);
+  }
+
+  .howBody {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 6vw, 48px);
+  }
+
+  .howStage {
+    aspect-ratio: 4 / 3;
+    max-height: none;
+  }
 }
 
 /* ============================================================
@@ -1396,10 +2048,6 @@ h2 {
 
   .problemGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .stepsGrid {
-    grid-template-columns: 1fr;
   }
 
   .securityGrid {

@@ -131,6 +131,15 @@ export function Hero() {
 
   return (
     <section className="hero" id="top">
+      <div className="heroAtmosphere" aria-hidden="true">
+        <div className="heroBlob heroBlob1" />
+        <div className="heroBlob heroBlob2" />
+        <div className="heroOrb heroOrb1" />
+        <div className="heroOrb heroOrb2" />
+        <div className="heroOrb heroOrb3" />
+        <div className="heroGrid" />
+      </div>
+
       <div className="heroText">
         <div className="eyebrow">
           <Sparkles size={16} />
