@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
+import { MagneticButton } from "../utility/MagneticButton";
 import "./Footer.css";
 
 const productLinks: Array<{ key: string; href: string }> = [
@@ -33,10 +34,12 @@ export function Footer() {
           <span>{t("footer.ctaEyebrow")}</span>
           <h2>{t("footer.ctaTitle")}</h2>
         </div>
-        <a className="primaryLink large" href="https://cestfredy.github.io/zelynto-onboarding/">
-          {t("common.getStarted")}
-          <ArrowRight size={18} />
-        </a>
+        <MagneticButton strength={22}>
+          <a className="primaryLink large" href="https://cestfredy.github.io/zelynto-onboarding/">
+            {t("common.getStarted")}
+            <ArrowRight size={18} />
+          </a>
+        </MagneticButton>
       </div>
 
       <div className="footerGrid">

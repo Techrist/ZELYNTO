@@ -4,6 +4,8 @@ import { Footer } from "./components/layout/Footer";
 import { LandingPage } from "./pages/Landing/LandingPage";
 import { ContactPage } from "./pages/Contact/ContactPage";
 import { AuthPage } from "./pages/Auth/AuthPage";
+import { SmoothScroll } from "./components/utility/SmoothScroll";
+import { ScrollProgress } from "./components/utility/ScrollProgress";
 import "./styles/global.css";
 
 export default function App() {
@@ -45,8 +47,12 @@ export default function App() {
   };
 
   return (
-    <main className="landing">
-      {renderContent()}
-    </main>
+    <>
+      <SmoothScroll />
+      <ScrollProgress />
+      <main className="landing">
+        {renderContent()}
+      </main>
+    </>
   );
 }

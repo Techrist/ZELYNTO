@@ -138,20 +138,24 @@
   },
   "howItWorks": {
     "label": "Comment ça marche",
-    "title": "De l'application Entra ID à votre première action en moins d'une heure",
-    "description": "Trois étapes, pas de déploiement lourd, pas d'agent à installer.",
+    "title": "De la connexion à votre première action en moins d'une heure",
+    "description": "Quatre étapes, pas de déploiement lourd, pas d'agent à installer.",
     "steps": [
       {
-        "title": "Connectez votre tenant",
-        "description": "Une seule app Entra ID avec les permissions Graph minimales. Aucune donnée ne quitte votre environnement."
+        "title": "Connectez votre stack",
+        "description": "Choisissez les surfaces Microsoft 365 que Zelynto peut voir. Ajustez les connecteurs depuis Admin à tout moment."
       },
       {
-        "title": "Posez vos questions",
-        "description": "Zelynto traduit votre intention en requêtes Graph, recoupe les résultats et propose une réponse claire."
+        "title": "Autorisez Microsoft 365",
+        "description": "Connexion unique via Entra ID. Zelynto cartographie votre tenant et se branche au Graph en quelques secondes."
       },
       {
-        "title": "Validez chaque action",
-        "description": "Pour toute opération sensible, un plan d'exécution s'affiche. Rien ne se déclenche sans votre confirmation."
+        "title": "Définissez vos règles de gouvernance",
+        "description": "Décidez ce qui déclenche une validation, ce qui est bloqué, qui reste dans la boucle. Le journal d'audit est toujours actif."
+      },
+      {
+        "title": "Commencez à utiliser Zelynto",
+        "description": "Workspace provisionné. Ouvrez une conversation et Zelynto s'occupe du reste."
       }
     ]
   },

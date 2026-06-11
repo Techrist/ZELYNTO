@@ -3,6 +3,8 @@ import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
 import { LanguageToggle } from "../ui/LanguageToggle";
+import { LogoDelight } from "../utility/LogoDelight";
+import { MagneticButton } from "../utility/MagneticButton";
 import "./Header.css";
 
 interface HeaderProps {
@@ -35,7 +37,9 @@ export function Header({ variant = "full" }: HeaderProps) {
   return (
     <header className={menuOpen ? "siteHeader menuOpen" : "siteHeader"}>
       <a className="brand" href="#/" aria-label="Zelynto" onClick={close}>
-        <img src={logo} alt="Zelynto" />
+        <LogoDelight>
+          <img src={logo} alt="Zelynto" />
+        </LogoDelight>
       </a>
 
       <button
@@ -80,14 +84,16 @@ export function Header({ variant = "full" }: HeaderProps) {
           >
             {t("common.signIn")}
           </a>
-          <a
-            className="primaryLink"
-            href="https://cestfredy.github.io/zelynto-onboarding/"
-            onClick={close}
-          >
-            {t("common.getStarted")}
-            <ArrowRight size={17} />
-          </a>
+          <MagneticButton strength={14}>
+            <a
+              className="primaryLink"
+              href="https://cestfredy.github.io/zelynto-onboarding/"
+              onClick={close}
+            >
+              {t("common.getStarted")}
+              <ArrowRight size={17} />
+            </a>
+          </MagneticButton>
           <LanguageToggle />
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
+import { Reveal } from "../../../components/utility/Reveal";
 
 interface FaqEntry {
   question: string;
@@ -15,25 +16,27 @@ export function FaqSection() {
 
   return (
     <section className="faqSection" id="faq">
-      <div className="sectionIntro">
+      <Reveal className="sectionIntro" y={20} amount={0.3}>
         <SectionLabel>{t("faq.label")}</SectionLabel>
         <h2>{t("faq.title")}</h2>
-      </div>
+      </Reveal>
 
       <div className="faqList">
         {items.map((item, index) => (
-          <details className="faqItem" key={item.question} open={openIndex === index}>
-            <summary
-              onClick={(event) => {
-                event.preventDefault();
-                setOpenIndex((current) => (current === index ? -1 : index));
-              }}
-            >
-              <span>{item.question}</span>
-              <span className="faqChevron" aria-hidden="true" />
-            </summary>
-            <p>{item.answer}</p>
-          </details>
+          <Reveal key={item.question} delay={index * 70} y={18} amount={0.15}>
+            <details className="faqItem" open={openIndex === index}>
+              <summary
+                onClick={(event) => {
+                  event.preventDefault();
+                  setOpenIndex((current) => (current === index ? -1 : index));
+                }}
+              >
+                <span>{item.question}</span>
+                <span className="faqChevron" aria-hidden="true" />
+              </summary>
+              <p>{item.answer}</p>
+            </details>
+          </Reveal>
         ))}
       </div>
     </section>

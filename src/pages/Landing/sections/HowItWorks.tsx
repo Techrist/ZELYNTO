@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
+  Check,
   CheckCircle2,
-  ListChecks,
-  Pause,
-  Plus,
-  Shield,
-  Sparkles
+  ChevronRight,
+  FolderOpen,
+  Lock,
+  MessageSquare,
+  ShieldCheck,
+  Users,
+  XCircle
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { steps } from "../../../content/howItWorks";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
-import { ChatPanel } from "../../../components/shared/ChatPanel";
+import zelyntoMark from "../../../assets/zelynto-mark.svg";
 
 interface StepText {
   title: string;
@@ -68,6 +71,13 @@ export function HowItWorks() {
     window.scrollTo({ top: target, behavior: "smooth" });
   }
 
+  const mockups = [
+    <ConnectStackMockup key="0" active={activeStep === 0} />,
+    <AuthorizeMockup key="1" active={activeStep === 1} />,
+    <GovernanceMockup key="2" active={activeStep === 2} />,
+    <AllSetMockup key="3" active={activeStep === 3} />
+  ];
+
   return (
     <section className="howItWorksSection" id="how-it-works" ref={sectionRef}>
       <div className="howItWorksSticky">
@@ -104,15 +114,14 @@ export function HowItWorks() {
           </div>
 
           <div className="howStage" aria-hidden="true">
-            <div className={activeStep === 0 ? "howMockup isVisible" : "howMockup"}>
-              <ConnectMockup active={activeStep === 0} />
-            </div>
-            <div className={activeStep === 1 ? "howMockup isVisible" : "howMockup"}>
-              <ChatPanel variant="explore" />
-            </div>
-            <div className={activeStep === 2 ? "howMockup isVisible" : "howMockup"}>
-              <ValidateMockup active={activeStep === 2} />
-            </div>
+            {mockups.map((mockup, i) => (
+              <div
+                key={i}
+                className={activeStep === i ? "howMockup isVisible" : "howMockup"}
+              >
+                {mockup}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -121,53 +130,98 @@ export function HowItWorks() {
 }
 
 /* -----------------------------------------------------------
-   Mockup 1 — Connect: Entra ID app registration
+   Mockup 1 — Connect your stack
    ----------------------------------------------------------- */
 
-function ConnectMockup({ active }: { active: boolean }) {
+function ConnectStackMockup({ active }: { active: boolean }) {
   return (
-    <div className={active ? "mockupCard mockupEntra isActive" : "mockupCard mockupEntra"}>
-      <div className="mockupTopBar">
-        <div className="windowDots">
-          <span /><span /><span />
+    <div className={active ? "mockupCard mockupDark mockupStack isActive" : "mockupCard mockupDark mockupStack"}>
+      <div className="mockupDarkLabel">Connect your stack</div>
+      <h4 className="mockupDarkTitle">What systems do you work with?</h4>
+      <p className="mockupDarkSub">
+        Select one or more. You can always add, remove, or scope connectors later from Admin → Integrations.
+      </p>
+
+      <div className="mockupStackCard">
+        <div className="mockupStackHead">
+          <div className="mockupStackIcon">
+            <span /><span /><span /><span />
+          </div>
+          <div className="mockupStackTitle">
+            <strong>Microsoft 365</strong>
+            <span className="mockupStackBadge">12 services</span>
+          </div>
+          <div className="mockupStackCheck">
+            <Check size={14} />
+          </div>
         </div>
-        <span>portal.azure.com</span>
+        <p className="mockupStackDesc">
+          Users, groups, teams, sites, licenses, mailboxes, devices, security policies and more.
+        </p>
       </div>
-      <div className="mockupBody">
-        <div className="mockupHeader">
-          <div className="mockupHeaderIcon"><Shield size={18} /></div>
-          <div>
-            <strong>App registration</strong>
-            <span>Microsoft Entra ID</span>
+    </div>
+  );
+}
+
+/* -----------------------------------------------------------
+   Mockup 2 — Authorize Microsoft 365
+   ----------------------------------------------------------- */
+
+function AuthorizeMockup({ active }: { active: boolean }) {
+  const capabilities = [
+    { icon: Users, title: "Scan users, groups & licenses", sub: "Full inventory of your tenant" },
+    { icon: FolderOpen, title: "Analyze SharePoint & OneDrive", sub: "Sites, storage and activity" },
+    { icon: MessageSquare, title: "Review Teams & mailboxes", sub: "Activity, status and configuration" },
+    { icon: ShieldCheck, title: "Read security & access policies", sub: "Conditional access and Entra ID" }
+  ];
+
+  return (
+    <div className={active ? "mockupCard mockupDark mockupAuth isActive" : "mockupCard mockupDark mockupAuth"}>
+      <div className="mockupDarkLabel">Connector 1 of 1 · Microsoft 365</div>
+      <h4 className="mockupDarkTitle">Connect your Microsoft 365</h4>
+      <p className="mockupDarkSub">
+        Sign in with your Microsoft account. Zelynto will get to know your environment so it can answer your questions and take action, instantly.
+      </p>
+
+      <div className="mockupAuthGrid">
+        <div className="mockupAuthList">
+          <div className="mockupAuthItems">
+            {capabilities.map((cap, idx) => (
+              <div
+                className="mockupAuthItem"
+                key={cap.title}
+                style={{ "--i": idx } as React.CSSProperties}
+              >
+                <span className="mockupAuthItemIcon">
+                  <cap.icon size={14} />
+                </span>
+                <div>
+                  <strong>{cap.title}</strong>
+                  <span>{cap.sub}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mockupField">
-          <label>Display name</label>
-          <div className="mockupInput readonly">Zelynto · M365 Copilot</div>
-        </div>
-
-        <div className="mockupField">
-          <label>API permissions</label>
-          <div className="mockupPermList">
-            <span className="mockupPerm" style={{ "--i": "0" } as React.CSSProperties}>
-              <CheckCircle2 size={14} />
-              <code>Directory.Read.All</code>
-            </span>
-            <span className="mockupPerm" style={{ "--i": "1" } as React.CSSProperties}>
-              <CheckCircle2 size={14} />
-              <code>User.Read.All</code>
-            </span>
-            <span className="mockupPerm" style={{ "--i": "2" } as React.CSSProperties}>
-              <CheckCircle2 size={14} />
-              <code>AuditLog.Read.All</code>
+        <div className="mockupAuthPanel">
+          <div className="mockupAuthOrbit">
+            <img src={zelyntoMark} alt="" />
+            <span className="mockupAuthMsLogo">
+              <span /><span /><span /><span />
             </span>
           </div>
-        </div>
-
-        <div className="mockupCta">
-          <CheckCircle2 size={14} />
-          Grant admin consent
+          <span className="mockupAuthEyebrow">OAuth 2.0 · Entra ID</span>
+          <strong className="mockupAuthHeading">Ready to authorize</strong>
+          <p className="mockupAuthDesc">
+            A Microsoft consent window will open. Approve once, revoke anytime from your admin console.
+          </p>
+          <button type="button" className="mockupAuthButton" tabIndex={-1} aria-hidden="true">
+            <span className="mockupAuthMsBadge">
+              <span /><span /><span /><span />
+            </span>
+            Authorize with Microsoft
+          </button>
         </div>
       </div>
     </div>
@@ -175,52 +229,169 @@ function ConnectMockup({ active }: { active: boolean }) {
 }
 
 /* -----------------------------------------------------------
-   Mockup 3 — Validate: action plan with approval
+   Mockup 3 — Set governance rules
    ----------------------------------------------------------- */
 
-function ValidateMockup({ active }: { active: boolean }) {
+function GovernanceMockup({ active }: { active: boolean }) {
+  const rules = [
+    {
+      title: "Always require human approval",
+      sub: "Every agent action, even safe reads, asks for explicit confirmation before executing.",
+      on: true
+    },
+    {
+      title: "Block destructive actions",
+      sub: "Hard-stop delete, drop, overwrite, or mass-update operations.",
+      on: true,
+      badge: "Recommended"
+    },
+    {
+      title: "Require approval for write operations",
+      sub: "Sends, updates, creations, and status changes need a thumbs-up.",
+      on: true
+    }
+  ];
+
+  const previews = [
+    {
+      kind: "block" as const,
+      action: "delete 38 closed opportunities",
+      state: "Blocked: destructive"
+    },
+    {
+      kind: "approve" as const,
+      action: "send 6 follow-up emails",
+      state: "Approval required"
+    },
+    {
+      kind: "approve" as const,
+      action: "read 12 SharePoint documents",
+      state: "Approval required"
+    }
+  ];
+
   return (
-    <div className={active ? "mockupCard mockupValidate isActive" : "mockupCard mockupValidate"}>
-      <div className="mockupValidateHeader">
-        <div className="mockupValidateIcon"><Sparkles size={18} /></div>
-        <div>
-          <strong>Action plan</strong>
-          <span>Create 5 marketing groups</span>
-        </div>
-        <span className="mockupValidateBadge">Awaiting approval</span>
-      </div>
+    <div className={active ? "mockupCard mockupDark mockupGov isActive" : "mockupCard mockupDark mockupGov"}>
+      <div className="mockupDarkLabel">Governance</div>
+      <h4 className="mockupDarkTitle">Set your governance rules</h4>
+      <p className="mockupDarkSub">
+        Zelynto always asks before acting. Configure when, how loudly, and who's in the loop.
+      </p>
 
-      <div className="mockupValidateSteps">
-        <div className="mockupValidateStep">
-          <span className="mockupValidateCheck"><ListChecks size={14} /></span>
-          <div>
-            <strong>Naming convention</strong>
-            <code>MKT-Brand · MKT-Growth · MKT-Content · …</code>
-          </div>
-        </div>
-        <div className="mockupValidateStep">
-          <span className="mockupValidateCheck"><Plus size={14} /></span>
-          <div>
-            <strong>Create 5 Microsoft 365 groups</strong>
-            <span>Owners assigned · members provisioned</span>
-          </div>
-        </div>
-        <div className="mockupValidateStep">
-          <span className="mockupValidateCheck"><Shield size={14} /></span>
-          <div>
-            <strong>Log to audit registry</strong>
-            <span>Signed, append-only, exportable</span>
-          </div>
-        </div>
-      </div>
+      <div className="mockupGovGrid">
+        <div className="mockupGovRules">
+          {rules.map((rule, i) => (
+            <div
+              className="mockupGovRule"
+              key={rule.title}
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              <div className="mockupGovRuleBody">
+                <strong>{rule.title}</strong>
+                <span>{rule.sub}</span>
+              </div>
+              {rule.badge ? <span className="mockupGovBadge">{rule.badge}</span> : null}
+              <span className={rule.on ? "mockupToggle isOn" : "mockupToggle"}>
+                <span />
+              </span>
+            </div>
+          ))}
 
-      <div className="mockupValidateFooter">
-        <span className="mockupValidatePause"><Pause size={14} /></span>
-        <span className="mockupValidateText">Nothing runs until you click confirm.</span>
-        <button type="button" className="mockupValidateConfirm" tabIndex={-1} aria-hidden="true">
-          Confirm
-        </button>
+          <div
+            className="mockupGovRule mockupGovSlider"
+            style={{ "--i": rules.length } as React.CSSProperties}
+          >
+            <div className="mockupGovRuleBody">
+              <strong>Minimum risk level requiring validation</strong>
+              <span>Operations at or above this level trigger approval.</span>
+            </div>
+            <span className="mockupGovBadge mockupGovBadgeNeutral">Medium</span>
+            <div className="mockupGovTrack">
+              <div className="mockupGovTrackFill" />
+              <span className="mockupGovTrackThumb" />
+              <div className="mockupGovTrackLabels">
+                <span>Low</span>
+                <span className="isOn">Medium</span>
+                <span>High</span>
+                <span>Critical</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mockupGovPreview">
+          <div className="mockupGovPreviewLabel">Live preview</div>
+          {previews.map((p, i) => (
+            <div
+              className="mockupGovPreviewBlock"
+              key={p.action}
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              <span className="mockupGovPreviewAction">
+                Agent wants to <strong>{p.action}</strong>.
+              </span>
+              <div className={`mockupGovVerdict ${p.kind === "block" ? "isBlocked" : "isApprove"}`}>
+                {p.kind === "block" ? <XCircle size={14} /> : <ShieldCheck size={14} />}
+                <div>
+                  <strong>{p.state}</strong>
+                  <span>Decision will be logged to the audit trail.</span>
+                </div>
+              </div>
+            </div>
+          ))}
+          <p className="mockupGovAuditNote">
+            All decisions, approvals, and refusals are written to an immutable audit log. Tenant admins can replay any session.
+          </p>
+        </div>
       </div>
     </div>
   );
 }
+
+/* -----------------------------------------------------------
+   Mockup 4 — You're all set
+   ----------------------------------------------------------- */
+
+function AllSetMockup({ active }: { active: boolean }) {
+  return (
+    <div className={active ? "mockupCard mockupDark mockupAllSet isActive" : "mockupCard mockupDark mockupAllSet"}>
+      <div className="mockupAllSetCheck">
+        <CheckCircle2 size={28} />
+      </div>
+      <div className="mockupDarkLabel mockupAllSetLabel">Workspace provisioned</div>
+      <h4 className="mockupAllSetTitle">You're all set !</h4>
+      <p className="mockupAllSetSub">
+        Your connector are authorized. Start a conversation and Zelynto will handle the rest.
+      </p>
+
+      <div className="mockupAllSetCards">
+        <div className="mockupAllSetCard">
+          <span className="mockupAllSetCardIcon">
+            <span /><span /><span /><span />
+          </span>
+          <div>
+            <strong>Microsoft 365</strong>
+            <span>Connected · 4 scopes</span>
+          </div>
+          <span className="mockupAllSetLive"><span />Live</span>
+        </div>
+        <div className="mockupAllSetCard">
+          <span className="mockupAllSetCardIcon mockupAllSetCardIconGov">
+            <Lock size={16} />
+          </span>
+          <div>
+            <strong>Governance policy</strong>
+            <span>Strict · 3 rules · audit on</span>
+          </div>
+          <span className="mockupAllSetLive"><span />Live</span>
+        </div>
+      </div>
+
+      <button type="button" className="mockupAllSetCta" tabIndex={-1} aria-hidden="true">
+        Start using Zelynto
+        <ChevronRight size={16} />
+      </button>
+    </div>
+  );
+}
+
