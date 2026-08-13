@@ -2235,6 +2235,69 @@ h2 {
   }
 }
 
+/* NOUVEAU : breakpoint mobile dédié */
+@media (max-width: 600px) {
+  .howIntro h2 {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .howIntro p {
+    font-size: 14px;
+  }
+
+  .howStepCompact {
+    grid-template-columns: 34px 30px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .howStepCompactIndex {
+    font-size: 20px;
+  }
+
+  .howStepCompactBody h3 {
+    font-size: 14px;
+  }
+
+  .howStepCompactBody p {
+    font-size: 12px;
+  }
+
+  .mockupDark {
+    padding: 18px 16px 16px;
+  }
+
+  .mockupDarkTitle {
+    font-size: 18px;
+  }
+
+  .mockupDarkSub {
+    font-size: 12px;
+  }
+
+  .mockupAuthGrid,
+  .mockupGovGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mockupAuthPanel {
+    padding: 16px 12px;
+  }
+
+  .mockupAllSetCard {
+    padding: 10px 12px;
+  }
+
+  .mockupAllSetTitle {
+    font-size: 20px;
+  }
+
+  .howStage {
+    aspect-ratio: auto;
+    min-height: 560px;
+  }
+}
+
 /* ============================================================
    Security
    ============================================================ */
