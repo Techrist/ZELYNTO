@@ -264,6 +264,12 @@
   background: #f4f6fb;
 }
 
+.mobileBar {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
 @media (max-width: 1080px) {
   .siteHeader {
     display: flex;
@@ -272,6 +278,14 @@
 
   .burger {
     display: inline-flex;
+  }
+
+  .mobileBar {
+    display: flex;
+  }
+
+  .desktopLangToggle {
+    display: none;
   }
 
   .headerCollapsible {
@@ -360,5 +374,9 @@
     min-height: 48px;
     justify-content: center;
     font-size: 14px;
+  }
+
+  .headerActions .primaryLink {
+    display: none;
   }
 }

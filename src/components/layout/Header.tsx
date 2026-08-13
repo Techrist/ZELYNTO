@@ -65,15 +65,18 @@ export function Header({ variant = "full" }: HeaderProps) {
         </LogoDelight>
       </a>
 
-      <button
-        className="burger"
-        type="button"
-        aria-label={menuOpen ? t("header.mobileMenu.close") : t("header.mobileMenu.open")}
-        aria-expanded={menuOpen}
-        onClick={() => setMenuOpen((value) => !value)}
-      >
-        {menuOpen ? <X size={22} /> : <Menu size={22} />}
-      </button>
+      <div className="mobileBar">
+        <LanguageToggle />
+        <button
+          className="burger"
+          type="button"
+          aria-label={menuOpen ? t("header.mobileMenu.close") : t("header.mobileMenu.open")}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((value) => !value)}
+        >
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
 
       <div className="headerCollapsible">
         <nav>
@@ -102,7 +105,7 @@ export function Header({ variant = "full" }: HeaderProps) {
         <div className="headerActions">
           <a
             className="ghostLink"
-            href="https://cestfredy.github.io/zelynto-onboarding/login"
+            href="https://app-src-zelynto-front-dev-fr-hcfhemc2fngtcze0.francecentral-01.azurewebsites.net/signin"
             onClick={close}
           >
             {t("common.signIn")}
@@ -110,14 +113,14 @@ export function Header({ variant = "full" }: HeaderProps) {
           <MagneticButton strength={14}>
             <a
               className="primaryLink"
-              href="https://cestfredy.github.io/zelynto-onboarding/"
+              href="https://app-src-zelynto-front-dev-fr-hcfhemc2fngtcze0.francecentral-01.azurewebsites.net/"
               onClick={close}
             >
               {t("common.getStarted")}
               <ArrowRight size={17} />
             </a>
           </MagneticButton>
-          <LanguageToggle />
+          <LanguageToggle className="desktopLangToggle" />
         </div>
       </div>
     </header>
