@@ -3,17 +3,18 @@ import { CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { pricingPlans } from "../../../content/pricing";
 import { RevealCard } from "../../../components/ui/RevealCard";
+import { SectionFade } from "../../../components/utility/SectionFade";
 
 export function PricingSection() {
   const { t } = useTranslation();
 
   return (
     <section className="section pricingSection" id="pricing">
-      <div className="sectionIntro">
+      <SectionFade className="sectionIntro">
         <span>{t("pricing.label")}</span>
         <h2>{t("pricing.title")}</h2>
         <p>{t("pricing.description")}</p>
-      </div>
+      </SectionFade>
 
       <div className="pricingGrid">
         {pricingPlans.map((plan, index) => {

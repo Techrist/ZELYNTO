@@ -448,7 +448,11 @@
           "Comptes dormants : 14 licenciés",
           "SharePoint externe : 8 sites publics"
         ]
-      }
+      },
+      "whatsapp": {
+    "defaultMessage": "Bonjour, je vous contacte depuis votre site !",
+    "ariaLabel": "Contactez-nous sur WhatsApp"
+  }
     }
   },
   "language": {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
+import { FloatingWhatsAppButton } from "./components/layout/FloatingWhatsAppButton";
 import { LandingPage } from "./pages/Landing/LandingPage";
 import { ContactPage } from "./pages/Contact/ContactPage";
 import { AuthPage } from "./pages/Auth/AuthPage";
@@ -53,6 +54,7 @@ export default function App() {
       <main className="landing">
         {renderContent()}
       </main>
+      <FloatingWhatsAppButton phoneNumber="+237692979345" />
     </>
   );
 }

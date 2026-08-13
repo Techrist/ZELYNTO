@@ -66,9 +66,47 @@
   font-size: 14px;
 }
 
+.footerGrid a,
+.footerBottom a {
+  position: relative;
+  display: inline-block;
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footerGrid a::after,
+.footerBottom a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
 .footerGrid a:hover,
 .footerBottom a:hover {
   color: #121827;
+}
+
+.footerGrid a:hover::after,
+.footerBottom a:hover::after {
+  transform: scaleX(1);
+}
+
+.footerGrid a:focus-visible,
+.footerBottom a:focus-visible {
+  outline: 0;
+  color: #121827;
+}
+
+.footerGrid a:focus-visible::after,
+.footerBottom a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .footerBottom {

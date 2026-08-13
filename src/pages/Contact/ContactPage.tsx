@@ -22,6 +22,8 @@ interface ContactFormState {
   message: string;
 }
 
+const WHATSAPP_NUMBER = "237682448965"; 
+
 export function ContactPage() {
   const { t } = useTranslation();
   const rawSubjects = t("contact.form.fields.subjectOptions", { returnObjects: true });
@@ -44,9 +46,47 @@ export function ContactPage() {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
+  function buildWhatsAppMessage(data: ContactFormState): string {
+    const lines = [
+      "Bonjour l'équipe Zelynto ! ",
+      "",
+      "Je m'appelle " + data.name + " et j'aimerais échanger avec vous.",
+      ""
+    ];
+
+    if (data.company) lines.push("Entreprise : " + data.company);
+    if (data.role) lines.push("Rôle : " + data.role);
+    if (data.email) lines.push("Email : " + data.email);
+    if (data.tenantSize) lines.push("Taille du tenant : " + data.tenantSize);
+    if (data.subject) lines.push("Sujet : " + data.subject);
+
+    lines.push("");
+    lines.push(data.message || "(non renseigné)");
+    lines.push("");
+    lines.push("Merci d'avance pour votre retour !");
+
+    return lines.join("\n");
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    const text = buildWhatsAppMessage(form);
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodedText;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setSubmitted(true);
+
+    setForm({
+      name: "",
+      email: "",
+      company: "",
+      role: "",
+      tenantSize: "",
+      subject: subjects[0] ?? "",
+      message: ""
+    });
   }
 
   return (

@@ -22,6 +22,7 @@ export function Header({ variant = "full" }: HeaderProps) {
   const { t } = useTranslation();
   const compact = variant === "simple";
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -30,12 +31,34 @@ export function Header({ variant = "full" }: HeaderProps) {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      setScrolled(window.scrollY > 12);
+    };
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
+  }, []);
+
   function close() {
     setMenuOpen(false);
   }
 
+  const classes = ["siteHeader"];
+  if (menuOpen) classes.push("menuOpen");
+  if (scrolled) classes.push("isScrolled");
+
   return (
-    <header className={menuOpen ? "siteHeader menuOpen" : "siteHeader"}>
+    <header className={classes.join(" ")}>
       <a className="brand" href="#/" aria-label="Zelynto" onClick={close}>
         <LogoDelight>
           <img src={logo} alt="Zelynto" />

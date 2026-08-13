@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { problems } from "../../../content/problems";
 import { RevealCard } from "../../../components/ui/RevealCard";
+import { SectionFade } from "../../../components/utility/SectionFade";
 
 interface ProblemItem {
   title: string;
@@ -15,10 +16,10 @@ export function ProblemSection() {
 
   return (
     <section className="problemSection" id="problem">
-      <div className="sectionIntro">
+      <SectionFade className="sectionIntro">
         <h2>{t("problem.title")}</h2>
         <p>{t("problem.description")}</p>
-      </div>
+      </SectionFade>
 
       <div className="problemGrid">
         {problems.map(({ icon: Icon }, index) => {

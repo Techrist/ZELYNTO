@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { securityPillars } from "../../../content/security";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
 import { RevealCard } from "../../../components/ui/RevealCard";
+import { SectionFade } from "../../../components/utility/SectionFade";
 
 interface PillarText {
   title: string;
@@ -16,11 +17,11 @@ export function SecuritySection() {
 
   return (
     <section className="securitySection" id="security">
-      <div className="sectionIntro">
+      <SectionFade className="sectionIntro">
         <SectionLabel>{t("security.label")}</SectionLabel>
         <h2>{t("security.title")}</h2>
         <p>{t("security.description")}</p>
-      </div>
+      </SectionFade>
 
       <div className="securityGrid">
         {securityPillars.map(({ icon: Icon }, i) => {

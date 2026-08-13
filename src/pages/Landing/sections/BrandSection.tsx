@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Lottie from "lottie-react";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
+import { SectionFade } from "../../../components/utility/SectionFade";
 import zelyntoAnimation from "../../../assets/zelynto-animation.json";
 
 export function BrandSection() {
@@ -11,7 +12,7 @@ export function BrandSection() {
     <section className="brandSection" id="brand">
       <div className="brandGlow" aria-hidden="true" />
 
-      <div className="brandLayout">
+      <SectionFade className="brandLayout">
         <div className="brandCopy">
           <SectionLabel>{t("brand.label")}</SectionLabel>
           <h2>{t("brand.title")}</h2>
@@ -30,7 +31,7 @@ export function BrandSection() {
             />
           </div>
         </div>
-      </div>
+      </SectionFade>
     </section>
   );
 }
