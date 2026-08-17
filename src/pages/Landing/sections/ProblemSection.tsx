@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { problems } from "../../../content/problems";
 import { RevealCard } from "../../../components/ui/RevealCard";
 import { SectionFade } from "../../../components/utility/SectionFade";
+import problemShowcase from "../../../assets/problem-showcase.png";
 
 interface ProblemItem {
   title: string;
@@ -27,14 +28,20 @@ export function ProblemSection() {
           if (!item) return null;
           return (
             <RevealCard className="problemCard" key={item.title} delay={index * 90}>
+              <div className="problemCardBody">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
               <div className="problemIcon">
                 <Icon size={22} />
               </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
             </RevealCard>
           );
         })}
+
+        <RevealCard className="problemCard problemCardShowcase" delay={problems.length * 90}>
+          <img src={problemShowcase} alt="" />
+        </RevealCard>
       </div>
     </section>
   );

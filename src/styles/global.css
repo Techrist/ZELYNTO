@@ -32,8 +32,8 @@
   --radius-pill: 999px;
 
   /* Typography */
-  --font-display: "Space Grotesk", "Google Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Space Grotesk", "Google Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Google Sans", ui-sans-serif, system-ui, sans-serif;
 
   color: var(--color-text-primary);
   background: var(--color-surface);

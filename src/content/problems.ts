@@ -1,4 +1,4 @@
-import { AlertTriangle, Clock, FileWarning, Layers } from "lucide-react";
+import { LayoutGrid, Hourglass, EyeOff, History } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface ProblemDefinition {
@@ -7,8 +7,8 @@ export interface ProblemDefinition {
 
 // Order must match the i18n array problem.items
 export const problems: ProblemDefinition[] = [
-  { icon: Layers },
-  { icon: Clock },
-  { icon: AlertTriangle },
-  { icon: FileWarning }
+  { icon: LayoutGrid },
+  { icon: Hourglass },
+  { icon: EyeOff },
+  { icon: History }
 ];

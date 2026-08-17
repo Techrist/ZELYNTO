@@ -58,65 +58,73 @@ export function Hero() {
   const [geometry, setGeometry] = useState<CanvasGeometry>(EMPTY_GEOMETRY);
 
   useLayoutEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  const canvas = canvasRef.current;
+  if (!canvas) return;
 
-    const measure = () => {
-      const canvasRect = canvas.getBoundingClientRect();
+  let raf = 0;
 
-      const box = (ref: React.RefObject<HTMLDivElement | null>): Box | null => {
-        const el = ref.current;
-        if (!el) return null;
-        const r = el.getBoundingClientRect();
-        const left = r.left - canvasRect.left;
-        const top = r.top - canvasRect.top;
-        const right = r.right - canvasRect.left;
-        const bottom = r.bottom - canvasRect.top;
-        return {
-          left,
-          right,
-          top,
-          bottom,
-          cx: (left + right) / 2,
-          cy: (top + bottom) / 2
-        };
+  const measure = () => {
+    const canvasRect = canvas.getBoundingClientRect();
+
+    const box = (ref: React.RefObject<HTMLDivElement | null>): Box | null => {
+      const el = ref.current;
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      const left = r.left - canvasRect.left;
+      const top = r.top - canvasRect.top;
+      const right = r.right - canvasRect.left;
+      const bottom = r.bottom - canvasRect.top;
+      return {
+        left,
+        right,
+        top,
+        bottom,
+        cx: (left + right) / 2,
+        cy: (top + bottom) / 2
       };
-
-      const plan = box(planRef);
-      const sp = box(spRef);
-      const lic = box(licRef);
-      const cor = box(corRef);
-      const act = box(actRef);
-
-      if (!plan || !sp || !lic || !cor || !act) return;
-
-      const newPaths = {
-        planSp: `M ${plan.cx} ${plan.bottom} L ${sp.cx} ${sp.top}`,
-        planLic: `M ${plan.right} ${plan.cy} C ${plan.right + 70} ${plan.cy} ${lic.left - 70} ${lic.cy - 40} ${lic.left} ${lic.cy}`,
-        spLic: `M ${sp.right} ${sp.cy} C ${sp.right + 60} ${sp.cy} ${lic.left - 60} ${lic.cy} ${lic.left} ${lic.cy}`,
-        licCor: `M ${lic.cx} ${lic.bottom} C ${lic.cx} ${lic.bottom + 30} ${cor.cx + 60} ${cor.top} ${cor.cx} ${cor.top}`,
-        corAct: `M ${cor.cx} ${cor.bottom} L ${act.cx} ${act.top}`
-      };
-
-      setGeometry({
-        w: canvasRect.width,
-        h: canvasRect.height,
-        paths: newPaths
-      });
     };
 
-    measure();
+    const plan = box(planRef);
+    const sp = box(spRef);
+    const lic = box(licRef);
+    const cor = box(corRef);
+    const act = box(actRef);
 
-    const observer = new ResizeObserver(measure);
-    observer.observe(canvas);
-    [planRef, spRef, licRef, corRef, actRef].forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
+    if (!plan || !sp || !lic || !cor || !act) return;
+
+    const newPaths = {
+      planSp: `M ${plan.cx} ${plan.bottom} L ${sp.cx} ${sp.top}`,
+      planLic: `M ${plan.right} ${plan.cy} C ${plan.right + 70} ${plan.cy} ${lic.left - 70} ${lic.cy - 40} ${lic.left} ${lic.cy}`,
+      spLic: `M ${sp.right} ${sp.cy} C ${sp.right + 60} ${sp.cy} ${lic.left - 60} ${lic.cy} ${lic.left} ${lic.cy}`,
+      licCor: `M ${lic.cx} ${lic.bottom} C ${lic.cx} ${lic.bottom + 30} ${cor.cx + 60} ${cor.top} ${cor.cx} ${cor.top}`,
+      corAct: `M ${cor.cx} ${cor.bottom} L ${act.cx} ${act.top}`
+    };
+
+    setGeometry({
+      w: canvasRect.width,
+      h: canvasRect.height,
+      paths: newPaths
     });
+  };
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const scheduleMeasure = () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(measure);
+  };
+
+  scheduleMeasure();
+
+  const observer = new ResizeObserver(scheduleMeasure);
+  observer.observe(canvas);
+  [planRef, spRef, licRef, corRef, actRef].forEach((ref) => {
+    if (ref.current) observer.observe(ref.current);
+  });
+
+  return () => {
+    observer.disconnect();
+    if (raf) cancelAnimationFrame(raf);
+  };
+}, []);
 
   // Recompute also when fonts are loaded (text metrics can shift node widths)
   useEffect(() => {
