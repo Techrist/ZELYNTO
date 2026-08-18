@@ -403,9 +403,9 @@
       "placeholder": "Interrogez votre tenant",
       "chips": [
         "Admins sans MFA",
-        "Liens de partage anonymes",
-        "Utilisateurs inactifs licenciés",
-        "Accès invités à risque"
+        "Licences surdimensionnées",
+        "Authentification obsolète",
+        "Teams inutilisés"
       ]
     },
     "variants": {

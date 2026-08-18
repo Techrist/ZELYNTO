@@ -3,7 +3,9 @@ import {
   ArrowUp,
   CheckCircle2,
   ClipboardList,
+  CreditCard,
   Mic,
+  MessagesSquare,
   PanelLeft,
   Plus,
   Search,
@@ -15,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import Lottie from "lottie-react";
 import zelyntoMark from "../../assets/zelynto-mark.svg";
 import blobZelynto from "../../assets/blob-zelynto.json";
+import microsoft365Logo from "../../assets/microsoft-365-logo.png";
 import "./ChatPanel.css";
 
 interface ChatPanelProps {
@@ -36,6 +39,7 @@ const SUBMIT_PAUSE_MS = 320;
 const LOADING_MS = 720;
 const ANSWER_PAUSE_MS = 220;
 const ROW_DELAY_MS = 260;
+const welcomeChipIcons = [ShieldCheck, CreditCard, Shield, MessagesSquare];
 
 function wait(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -177,12 +181,10 @@ export function ChatPanel({ variant }: ChatPanelProps) {
         </button>
 
         <div className="chatSidebarSection">
-          <span className="chatSidebarLabel">{t("chat.sidebar.administration")}</span>
-          <button type="button" className="chatSidebarItem" tabIndex={-1}>
-            <ClipboardList size={15} /> {t("chat.sidebar.audit")}
-          </button>
-          <button type="button" className="chatSidebarItem" tabIndex={-1}>
-            <Shield size={15} /> {t("chat.sidebar.security")}
+          <span className="chatSidebarLabel">{t("chat.sidebar.reporting")}</span>
+          <button type="button" className="chatSidebarItem isActive" tabIndex={-1}>
+            <img src={microsoft365Logo} alt="" className="chatSidebarMsIcon" />
+            {t("chat.sidebar.microsoft365")}
           </button>
         </div>
 
@@ -259,11 +261,14 @@ export function ChatPanel({ variant }: ChatPanelProps) {
             </div>
 
             <div className="chatChips">
-              {chips.map((chip) => (
-                <span key={chip} className="chatChip">
-                  <Shield size={12} /> {chip}
-                </span>
-              ))}
+              {chips.map((chip, index) => {
+                const Icon = welcomeChipIcons[index] ?? Shield;
+                return (
+                  <span key={chip} className="chatChip">
+                    <Icon size={12} /> {chip}
+                  </span>
+                );
+              })}
             </div>
           </div>
         ) : (

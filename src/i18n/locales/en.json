@@ -381,6 +381,8 @@
   },
   "chat": {
     "sidebar": {
+      "reporting": "Reporting",
+      "microsoft365": "Microsoft 365",
       "newChat": "New Chat",
       "searchChats": "Search Chats",
       "administration": "Administration",
@@ -389,6 +391,7 @@
       "recents": "Recents",
       "user": "Zelynto Developer"
     },
+    
     "recents": [
       "Audit MFA admins",
       "Inactive SharePoint sites",
@@ -403,9 +406,9 @@
       "placeholder": "Ask your tenant",
       "chips": [
         "Admins without MFA",
-        "Anonymous sharing links",
-        "Inactive licensed users",
-        "Risky guest access"
+        "Oversized licenses",
+        "Legacy authentication",
+        "Unused Teams"
       ]
     },
     "variants": {
