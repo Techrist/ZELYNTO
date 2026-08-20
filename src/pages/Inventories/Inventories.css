@@ -526,3 +526,200 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* ----- Multiple stacked service sections ----- */
+
+.inventoriesStage + .inventoriesStage {
+  margin-top: 0;
+}
+
+/* ----- Progress-style banner (e.g. Exchange data completion) ----- */
+
+.ghostBannerProgress {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(49, 183, 232, 0.12);
+  color: #1470a3;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ghostProgressTrack {
+  margin-top: 8px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(49, 183, 232, 0.22);
+  overflow: hidden;
+}
+
+.ghostProgressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #31b7e8, #5b63d9);
+}
+
+/* ----- Stat group header row (title + optional threshold selector) ----- */
+
+.ghostSectionLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.ghostSectionLabelRow .ghostSectionLabel {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ghostSectionNote {
+  color: #9aa0ac;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.ghostThresholds {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ghostThresholdCaption {
+  margin-right: 2px;
+  color: #9aa0ac;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.ghostThreshold {
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: #8b93a4;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.ghostThreshold.isActive {
+  color: #464daf;
+  background: rgba(99, 91, 255, 0.12);
+}
+
+/* ----- Corner tag on a stat card (e.g. "+90d") ----- */
+
+.ghostStat {
+  position: relative;
+}
+
+.ghostStatCorner {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(217, 83, 79, 0.12);
+  color: #d9534f;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+/* ----- Checkbox indicator on a filter badge (e.g. Exchange Attributes & risk) ----- */
+
+.ghostFilterBadge {
+  position: relative;
+  padding-right: 22px;
+}
+
+.ghostBadgeCheckbox {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  border-radius: 3px;
+  border: 1.5px solid #c6ccd9;
+  background: #ffffff;
+}
+
+/* ----- Selection note (e.g. "No active filter") ----- */
+
+.ghostSelectionHeader {
+  align-items: flex-start;
+}
+
+.ghostSelectionNote {
+  display: block;
+  margin-top: 2px;
+  color: #9aa0ac;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ----- Visible section heading above each stacked stage ----- */
+
+.inventoriesSectionHeader {
+  max-width: 620px;
+  margin-top: 64px;
+}
+
+.inventoriesSectionHeader h2 {
+  color: #101422;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.15;
+}
+
+.inventoriesSectionHeader p {
+  margin-top: 8px;
+  color: #5c6678;
+  font-size: 14px;
+  line-height: 1.55;
+  max-width: 520px;
+}
+
+/* ----- Warning banner, two lines (e.g. SharePoint hidden usernames) ----- */
+
+.ghostBannerWarning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(245, 166, 35, 0.14);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+}
+
+.ghostBannerWarningIcon {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #b9770e;
+}
+
+.ghostBannerWarning strong {
+  display: block;
+  color: #8a5a0a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ghostBannerWarning span {
+  display: block;
+  margin-top: 2px;
+  color: #8a6a2f;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
+/* ----- Threshold selector shown in the panel header (single-tab services) ----- */
+
+.ghostThresholdsHeader {
+  gap: 6px;
+}
+
+.ghostThresholdsHeader .ghostThresholdCaption {
+  color: #8b93a4;
+  font-size: 11px;
+  font-weight: 700;
+}
