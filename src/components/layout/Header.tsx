@@ -98,7 +98,7 @@ export function Header({ variant = "full" }: HeaderProps) {
           </div>
           <a href="#how-it-works" onClick={close}>{t("header.howItWorks")}</a>
           <a href="#pricing" onClick={close}>{t("common.pricing")}</a>
-          <a href="#faq" onClick={close}>{t("common.faq")}</a>
+          <a href="#/inventories" onClick={close}>{t("common.inventories")}</a>
           <a href="#/contact" onClick={close}>{t("common.contact")}</a>
         </nav>
 

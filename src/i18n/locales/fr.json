@@ -1,5 +1,6 @@
 {
   "common": {
+    "inventories": "Inventaires",
     "getStarted": "Commencer",
     "signIn": "Se connecter",
     "contact": "Contact",
@@ -408,6 +409,81 @@
         "Teams inutilisés"
       ]
     },
+    "inventories": {
+      "label": "Reporting",
+      "title": "Votre Microsoft 365, entièrement inventorié",
+      "description": "Chaque utilisateur, licence, site et appareil de votre tenant collectés, scorés et prêts à être exportés en un seul endroit.",
+      "tabs": {
+        "inventories": "Inventaires",
+        "savings": "Économies",
+        "audit": "Audit"
+      },
+      "updated": "Mis à jour il y a 7h",
+      "refresh": "Actualiser",
+      "thresholds": {
+        "30d": "30j",
+        "90d": "90j",
+        "180d": "180j"
+      },
+      "items": {
+        "entraId": {
+          "name": "Entra ID",
+          "subtitle": "220 utilisateurs · 195 groupes · 7 appareils",
+          "stats": [
+            "12 admins",
+            "209 sans MFA"
+          ]
+        },
+        "exchange": {
+          "name": "Exchange",
+          "subtitle": "202 boîtes mail",
+          "stats": [
+            "202 actives",
+            "0 inactive"
+          ]
+        },
+        "sharepoint": {
+          "name": "SharePoint",
+          "subtitle": "97 sites",
+          "stats": [
+            "0 actif",
+            "97 inactifs"
+          ]
+        },
+        "onedrive": {
+          "name": "OneDrive",
+          "subtitle": "21 onedrives",
+          "stats": [
+            "1 actif",
+            "20 inactifs"
+          ]
+        },
+        "teams": {
+          "name": "Teams",
+          "subtitle": "24 équipes",
+          "stats": [
+            "5 actives",
+            "19 inactives"
+          ]
+        },
+        "powerPlatform": {
+          "name": "Power Platform",
+          "subtitle": "4 environnements",
+          "stats": [
+            "0 désactivé",
+            "3 inactifs"
+          ]
+        },
+        "intune": {
+          "name": "Intune",
+          "subtitle": "3 inscrits",
+          "stats": [
+            "1 conforme",
+            "2 non conformes"
+          ]
+        }
+      }
+    },
     "variants": {
       "explore": {
         "prompt": "Liste les utilisateurs inactifs depuis 30 jours",
@@ -450,9 +526,84 @@
         ]
       },
       "whatsapp": {
-    "defaultMessage": "Bonjour, je vous contacte depuis votre site !",
-    "ariaLabel": "Contactez-nous sur WhatsApp"
-  }
+        "defaultMessage": "Bonjour, je vous contacte depuis votre site !",
+        "ariaLabel": "Contactez-nous sur WhatsApp"
+      }
+    }
+  },
+  "inventories": {
+    "label": "Reporting",
+    "title": "Votre Microsoft 365, entièrement inventorié",
+    "description": "Chaque utilisateur, licence, site et appareil de votre tenant collectés, scorés et prêts à être exportés en un seul endroit.",
+    "tabs": {
+      "inventories": "Inventaires",
+      "savings": "Économies",
+      "audit": "Audit"
+    },
+    "updated": "Mis à jour il y a 7h",
+    "refresh": "Actualiser",
+    "thresholds": {
+      "30d": "30j",
+      "90d": "90j",
+      "180d": "180j"
+    },
+    "items": {
+      "entraId": {
+        "name": "Entra ID",
+        "subtitle": "220 utilisateurs · 195 groupes · 7 appareils",
+        "stats": [
+          "12 admins",
+          "209 sans MFA"
+        ]
+      },
+      "exchange": {
+        "name": "Exchange",
+        "subtitle": "202 boîtes mail",
+        "stats": [
+          "202 actives",
+          "0 inactive"
+        ]
+      },
+      "sharepoint": {
+        "name": "SharePoint",
+        "subtitle": "97 sites",
+        "stats": [
+          "0 actif",
+          "97 inactifs"
+        ]
+      },
+      "onedrive": {
+        "name": "OneDrive",
+        "subtitle": "21 onedrives",
+        "stats": [
+          "1 actif",
+          "20 inactifs"
+        ]
+      },
+      "teams": {
+        "name": "Teams",
+        "subtitle": "24 équipes",
+        "stats": [
+          "5 actives",
+          "19 inactives"
+        ]
+      },
+      "powerPlatform": {
+        "name": "Power Platform",
+        "subtitle": "4 environnements",
+        "stats": [
+          "0 désactivé",
+          "3 inactifs"
+        ]
+      },
+      "intune": {
+        "name": "Intune",
+        "subtitle": "3 inscrits",
+        "stats": [
+          "1 conforme",
+          "2 non conformes"
+        ]
+      }
     }
   },
   "language": {

@@ -7,6 +7,7 @@ import { ContactPage } from "./pages/Contact/ContactPage";
 import { AuthPage } from "./pages/Auth/AuthPage";
 import { SmoothScroll } from "./components/utility/SmoothScroll";
 import { ScrollProgress } from "./components/utility/ScrollProgress";
+import { InventoriesPage } from "./pages/Inventories/InventoriesPage";
 import "./styles/global.css";
 
 export default function App() {
@@ -24,6 +25,16 @@ export default function App() {
         <>
           <Header variant="simple" />
           <ContactPage />
+          <Footer />
+        </>
+      );
+    }
+
+    if (hash === "#/inventories") {
+      return (
+        <>
+          <Header variant="simple" />
+          <InventoriesPage />
           <Footer />
         </>
       );

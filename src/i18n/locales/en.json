@@ -1,5 +1,6 @@
 {
   "common": {
+    "inventories": "Inventories",
     "getStarted": "Get started",
     "signIn": "Sign in",
     "contact": "Contact",
@@ -391,7 +392,6 @@
       "recents": "Recents",
       "user": "Zelynto Developer"
     },
-    
     "recents": [
       "Audit MFA admins",
       "Inactive SharePoint sites",
@@ -410,6 +410,81 @@
         "Legacy authentication",
         "Unused Teams"
       ]
+    },
+    "inventories": {
+      "label": "Reporting",
+      "title": "Your Microsoft 365, fully inventoried",
+      "description": "Every user, license, site, and device across your tenant collected, scored, and ready to export in one place.",
+      "tabs": {
+        "inventories": "Inventories",
+        "savings": "Savings",
+        "audit": "Audit"
+      },
+      "updated": "Updated 7h ago",
+      "refresh": "Refresh",
+      "thresholds": {
+        "30d": "30d",
+        "90d": "90d",
+        "180d": "180d"
+      },
+      "items": {
+        "entraId": {
+          "name": "Entra ID",
+          "subtitle": "220 users · 195 groups · 7 devices",
+          "stats": [
+            "12 admins",
+            "209 no MFA"
+          ]
+        },
+        "exchange": {
+          "name": "Exchange",
+          "subtitle": "202 mailboxes",
+          "stats": [
+            "202 active",
+            "0 inactive"
+          ]
+        },
+        "sharepoint": {
+          "name": "SharePoint",
+          "subtitle": "97 sites",
+          "stats": [
+            "0 active",
+            "97 inactive"
+          ]
+        },
+        "onedrive": {
+          "name": "OneDrive",
+          "subtitle": "21 onedrives",
+          "stats": [
+            "1 active",
+            "20 inactive"
+          ]
+        },
+        "teams": {
+          "name": "Teams",
+          "subtitle": "24 teams",
+          "stats": [
+            "5 active",
+            "19 inactive"
+          ]
+        },
+        "powerPlatform": {
+          "name": "Power Platform",
+          "subtitle": "4 environments",
+          "stats": [
+            "0 disabled",
+            "3 inactive"
+          ]
+        },
+        "intune": {
+          "name": "Intune",
+          "subtitle": "3 enrolled",
+          "stats": [
+            "1 compliant",
+            "2 non-compliant"
+          ]
+        }
+      }
     },
     "variants": {
       "explore": {
@@ -450,6 +525,81 @@
           "Admin MFA: 4 / 12 without MFA",
           "Dormant accounts: 14 licensed",
           "External SharePoint: 8 public sites"
+        ]
+      }
+    }
+  },
+  "inventories": {
+    "label": "Reporting",
+    "title": "Your Microsoft 365, fully inventoried",
+    "description": "Every user, license, site, and device across your tenant collected, scored, and ready to export in one place.",
+    "tabs": {
+      "inventories": "Inventories",
+      "savings": "Savings",
+      "audit": "Audit"
+    },
+    "updated": "Updated 7h ago",
+    "refresh": "Refresh",
+    "thresholds": {
+      "30d": "30d",
+      "90d": "90d",
+      "180d": "180d"
+    },
+    "items": {
+      "entraId": {
+        "name": "Entra ID",
+        "subtitle": "220 users · 195 groups · 7 devices",
+        "stats": [
+          "12 admins",
+          "209 no MFA"
+        ]
+      },
+      "exchange": {
+        "name": "Exchange",
+        "subtitle": "202 mailboxes",
+        "stats": [
+          "202 active",
+          "0 inactive"
+        ]
+      },
+      "sharepoint": {
+        "name": "SharePoint",
+        "subtitle": "97 sites",
+        "stats": [
+          "0 active",
+          "97 inactive"
+        ]
+      },
+      "onedrive": {
+        "name": "OneDrive",
+        "subtitle": "21 onedrives",
+        "stats": [
+          "1 active",
+          "20 inactive"
+        ]
+      },
+      "teams": {
+        "name": "Teams",
+        "subtitle": "24 teams",
+        "stats": [
+          "5 active",
+          "19 inactive"
+        ]
+      },
+      "powerPlatform": {
+        "name": "Power Platform",
+        "subtitle": "4 environments",
+        "stats": [
+          "0 disabled",
+          "3 inactive"
+        ]
+      },
+      "intune": {
+        "name": "Intune",
+        "subtitle": "3 enrolled",
+        "stats": [
+          "1 compliant",
+          "2 non-compliant"
         ]
       }
     }
