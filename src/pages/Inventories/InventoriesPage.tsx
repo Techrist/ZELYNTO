@@ -5,6 +5,8 @@ import {
   Archive,
   ArrowRightCircle,
   AppWindow,
+  Ban,
+  Bot,
   Building2,
   CheckCircle2,
   Cloud,
@@ -30,6 +32,7 @@ import {
   Rocket,
   Scale,
   Search,
+  Server,
   Shield,
   ShieldAlert,
   ShieldCheck,
@@ -46,6 +49,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { inventoryDefinitions } from "../../content/inventories";
+import inventoriesHeroImage from "../../assets/inventories-hero.png";
 import "./Inventories.css";
 
 interface InventoryItemText {
@@ -114,7 +118,8 @@ interface GhostTabContent {
   /** small note under "Selection (X)", e.g. "No active filter" */
   selectionNote?: string;
   tableColumns: string[];
-  rows: string[][];
+  /** a cell is either plain text, or a list of tags rendered as separate pills (e.g. ["Inactive", "Guests"]) */
+  rows: (string | string[])[][];
 }
 
 interface GhostTabDefinition {
@@ -140,11 +145,37 @@ interface GhostServiceSection {
 
 const POSITIVE_CELLS = ["Active", "Enabled", "Compliant", "Used"];
 const NEGATIVE_CELLS = ["Inactive", "Non-compliant", "Disabled", "Stale", "Unused"];
+const WARNING_TAGS = ["Archived"];
+const INFO_TAGS = ["Guests"];
 
 function cellTone(value: string): "success" | "danger" | "neutral" {
   if (POSITIVE_CELLS.some((word) => value.includes(word))) return "success";
   if (NEGATIVE_CELLS.some((word) => value.includes(word))) return "danger";
   return "neutral";
+}
+
+/** tone for a standalone tag pill within a multi-tag cell (e.g. "Archived", "Guests") */
+function tagTone(value: string): "success" | "danger" | "warning" | "info" | "neutral" {
+  if (WARNING_TAGS.some((word) => value.includes(word))) return "warning";
+  if (INFO_TAGS.some((word) => value.includes(word))) return "info";
+  return cellTone(value);
+}
+
+/**
+ * The ghost detail panel content below is written once in English as the
+ * source of truth (icons, layout and copy live together for readability).
+ * Each string rendered from it is looked up in inventories.detail.labels
+ * via a slug of its own text, falling back to the English text itself when
+ * no translation exists (numbers, dashes and proper nouns like people or
+ * team names are intentionally left untranslated this way).
+ */
+function slugifyGhostLabel(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-+|-+$)/g, "");
 }
 
 const ghostSections: GhostServiceSection[] = [
@@ -532,11 +563,153 @@ const ghostSections: GhostServiceSection[] = [
         ]
       }
     }
+  },
+  {
+    id: "teams",
+    heading: "Teams",
+    subheading: "Teams and their visibility across the tenant, with archived and guest-owned teams flagged.",
+    title: "Teams — overview",
+    description: "Counters follow your selection",
+    tabs: [{ key: "teams", label: "Teams" }],
+    content: {
+      teams: {
+        headerThreshold: { label: "Inactivity:", options: ["30d", "90d", "180d"], active: "90d" },
+        statGroups: [
+          {
+            title: "Status",
+            cards: [
+              { value: 24, label: "All", icon: Grid2x2, active: true },
+              { value: 5, label: "Active", icon: Activity },
+              { value: 19, label: "Inactive", icon: Moon, cornerTag: "+90d" }
+            ]
+          },
+          {
+            title: "Visibility",
+            cards: [
+              { value: 24, label: "All", icon: Grid2x2, active: true },
+              { value: 15, label: "Private", icon: Lock },
+              { value: 9, label: "Public", icon: Globe }
+            ]
+          }
+        ],
+        badgeGroups: [
+          {
+            title: "Refine",
+            badges: [
+              { label: "Archived", value: 3, icon: Archive, checkbox: true },
+              { label: "With guests", value: 3, icon: UserPlus, checkbox: true },
+              { label: "Orphaned", value: 0, icon: User, checkbox: true }
+            ]
+          }
+        ],
+        selectionCount: 24,
+        selectionNote: "No active filter",
+        tableColumns: ["Team", "Visibility", "Last activity", "Status"],
+        rows: [
+          ["MSFT", "Public", "—", ["Inactive"]],
+          ["U.S. Sales", "Public", "—", ["Inactive"]],
+          ["Equipe Zelynto", "Public", "176d ago", ["Inactive", "Guests"]],
+          ["Projet Test_MCP", "Private", "134d ago", ["Inactive", "Archived"]]
+        ]
+      }
+    }
+  },
+  {
+    id: "power-platform",
+    heading: "Power Platform",
+    subheading: "Environments, apps and flows across the tenant, with inactive and disabled items surfaced.",
+    title: "Power Platform — overview",
+    description: "Counters follow your selection",
+    tabs: [{ key: "overview", label: "Overview" }],
+    content: {
+      overview: {
+        headerThreshold: { label: "Inactivity:", options: ["30d", "90d", "180d"], active: "90d" },
+        statGroups: [
+          {
+            title: "Object type",
+            cards: [
+              { value: 7, label: "All", icon: Grid2x2, active: true },
+              { value: 4, label: "Environment", icon: Server },
+              { value: 3, label: "Canvas Apps", icon: AppWindow },
+              { value: 0, label: "Model-Driven Apps", icon: Database },
+              { value: 0, label: "Cloud Flows", icon: Zap },
+              { value: 0, label: "Desktop Flows", icon: Bot }
+            ]
+          },
+          {
+            title: "Activity",
+            cards: [
+              { value: 7, label: "All", icon: Grid2x2, active: true },
+              { value: 3, label: "Active", icon: Activity },
+              { value: 4, label: "Inactive", icon: Moon, cornerTag: "+90d" }
+            ]
+          }
+        ],
+        badgeGroups: [
+          {
+            title: "State — Apps and Flows only",
+            badges: [{ label: "Disabled", value: 0, icon: Ban, checkbox: true }]
+          }
+        ],
+        selectionCount: 7,
+        selectionNote: "No active filter",
+        tableColumns: ["Name", "Type", "Environment", "Last activity", "Status"],
+        rows: [
+          ["dev-test-zelynto", "Environment", "—", "30d ago", "—"],
+          ["MSFT", "Environment", "—", "132d ago", "—"],
+          ["DemandesInternes", "Canvas Apps", "MSFT (default)", "141d ago", "Enabled"],
+          ["Cas d'usage APP Gouvernance V2", "Canvas Apps", "[DEV] - Vinci Solutions", "51d ago", "Enabled"]
+        ]
+      }
+    }
+  },
+  {
+    id: "intune",
+    heading: "Intune",
+    subheading: "Managed devices and their compliance status across platforms.",
+    title: "Intune — overview",
+    description: "Counters follow your selection",
+    tabs: [{ key: "devices", label: "Devices" }],
+    content: {
+      devices: {
+        statGroups: [
+          {
+            title: "Status",
+            cards: [
+              { value: 3, label: "Total", icon: Grid2x2, active: true },
+              { value: 1, label: "Compliant", icon: ShieldCheck },
+              { value: 2, label: "Non-compliant", icon: ShieldOff }
+            ]
+          }
+        ],
+        badgeGroups: [
+          {
+            title: "Platform",
+            badges: [
+              { label: "Windows", value: 2, icon: Monitor, checkbox: true },
+              { label: "Android", value: 0, icon: Smartphone, checkbox: true },
+              { label: "iOS", value: 0, icon: Smartphone, checkbox: true },
+              { label: "macOS", value: 0, icon: Laptop, checkbox: true }
+            ]
+          }
+        ],
+        selectionCount: 3,
+        selectionNote: "No active filter",
+        tableColumns: ["Device", "Platform", "User", "Status"],
+        rows: [
+          ["IAMSURFACE", "Windows", "Fredy TABOUTSA", "Compliant"],
+          ["fredy.taboutsa_Windows_7/7/2026_2:40 PM", "other", "Fredy TABOUTSA", "Non-compliant"],
+          ["DESKTOP-EGE856T", "Windows", "valione test", "Non-compliant"]
+        ]
+      }
+    }
   }
 ];
 
 export function InventoriesPage() {
   const { t } = useTranslation();
+  const tt = (value: string) =>
+    t(`inventories.detail.labels.${slugifyGhostLabel(value)}`, { defaultValue: value });
   const [activeTabs, setActiveTabs] = useState<Record<string, string>>(() =>
     Object.fromEntries(ghostSections.map((section) => [section.id, section.tabs[0]?.key ?? ""]))
   );
@@ -545,10 +718,17 @@ export function InventoriesPage() {
     <section className="inventoriesHero">
       <div className="inventoriesHeroInner">
         <div className="inventoriesIntro">
+        <div className="inventoriesIntroText">
           <span className="sectionLabel">{t("inventories.label")}</span>
           <h1>{t("inventories.title")}</h1>
           <p>{t("inventories.description")}</p>
         </div>
+        <img
+          src={inventoriesHeroImage}
+          alt=""
+          className="inventoriesIntroImage"
+        />
+      </div>
 
         {ghostSections.map((section) => {
           // activeTabKey is always defined: the initial state sets one entry per
@@ -569,8 +749,8 @@ export function InventoriesPage() {
                     : "inventoriesSectionHeader"
                 }
               >
-                <h2>{section.heading}</h2>
-                <p>{section.subheading}</p>
+                <h2>{tt(section.heading)}</h2>
+                <p>{tt(section.subheading)}</p>
               </div>
 
               <div className="inventoriesStage">
@@ -578,8 +758,8 @@ export function InventoriesPage() {
               <div className="inventoriesDetailGhost">
                 <div className="ghostHeader">
                   <div>
-                    <strong>{section.title}</strong>
-                    <span>{section.description}</span>
+                    <strong>{tt(section.title)}</strong>
+                    <span>{tt(section.description)}</span>
                   </div>
                   {section.tabs.length > 1 ? (
                     <div className="ghostTabs">
@@ -594,7 +774,7 @@ export function InventoriesPage() {
                             setActiveTabs((prev) => ({ ...prev, [section.id]: tab.key }))
                           }
                         >
-                          {tab.label}
+                          {tt(tab.label)}
                         </button>
                       ))}
                     </div>
@@ -602,7 +782,7 @@ export function InventoriesPage() {
                     currentGhost.headerThreshold && (
                       <div className="ghostThresholds ghostThresholdsHeader">
                         <span className="ghostThresholdCaption">
-                          {currentGhost.headerThreshold.label}
+                          {tt(currentGhost.headerThreshold.label)}
                         </span>
                         {currentGhost.headerThreshold.options.map((option) => (
                           <span
@@ -613,7 +793,7 @@ export function InventoriesPage() {
                                 : "ghostThreshold"
                             }
                           >
-                            {option}
+                            {t(`inventories.thresholds.${option}`, { defaultValue: option })}
                           </span>
                         ))}
                       </div>
@@ -623,13 +803,13 @@ export function InventoriesPage() {
 
                 {currentGhost.banner?.tone === "success" && (
                   <div className="ghostBanner">
-                    <span>{currentGhost.banner.text}</span>
+                    <span>{tt(currentGhost.banner.text)}</span>
                   </div>
                 )}
 
                 {currentGhost.banner?.tone === "progress" && (
                   <div className="ghostBannerProgress">
-                    <span>{currentGhost.banner.text}</span>
+                    <span>{tt(currentGhost.banner.text)}</span>
                     <div className="ghostProgressTrack">
                       <div
                         className="ghostProgressFill"
@@ -643,8 +823,8 @@ export function InventoriesPage() {
                   <div className="ghostBannerWarning">
                     <AlertTriangle size={15} className="ghostBannerWarningIcon" />
                     <div>
-                      {currentGhost.banner.title && <strong>{currentGhost.banner.title}</strong>}
-                      <span>{currentGhost.banner.text}</span>
+                      {currentGhost.banner.title && <strong>{tt(currentGhost.banner.title)}</strong>}
+                      <span>{tt(currentGhost.banner.text)}</span>
                     </div>
                   </div>
                 )}
@@ -652,10 +832,10 @@ export function InventoriesPage() {
                 {currentGhost.statGroups.map((group) => (
                   <React.Fragment key={group.title}>
                     <div className="ghostSectionLabelRow">
-                      <span className="ghostSectionLabel">{group.title}</span>
+                      <span className="ghostSectionLabel">{tt(group.title)}</span>
                       {group.thresholds && (
                         <div className="ghostThresholds">
-                          <span className="ghostThresholdCaption">Threshold:</span>
+                          <span className="ghostThresholdCaption">{tt("Threshold:")}</span>
                           {group.thresholds.options.map((option) => (
                             <span
                               key={option}
@@ -665,7 +845,7 @@ export function InventoriesPage() {
                                   : "ghostThreshold"
                               }
                             >
-                              {option}
+                              {t(`inventories.thresholds.${option}`, { defaultValue: option })}
                             </span>
                           ))}
                         </div>
@@ -678,11 +858,11 @@ export function InventoriesPage() {
                           key={card.label}
                         >
                           {card.cornerTag && (
-                            <span className="ghostStatCorner">{card.cornerTag}</span>
+                            <span className="ghostStatCorner">{tt(card.cornerTag)}</span>
                           )}
                           <card.icon size={13} className="ghostStatIcon" />
                           <strong>{card.value}</strong>
-                          <span>{card.label}</span>
+                          <span>{tt(card.label)}</span>
                         </div>
                       ))}
                     </div>
@@ -692,13 +872,13 @@ export function InventoriesPage() {
                 {currentGhost.badgeGroups.map((group) => (
                   <React.Fragment key={group.title}>
                     <span className="ghostSectionLabel">
-                      {group.title}
-                      {group.note && <span className="ghostSectionNote"> {group.note}</span>}
+                      {tt(group.title)}
+                      {group.note && <span className="ghostSectionNote"> {tt(group.note)}</span>}
                     </span>
                     <div className="ghostBadgeRow">
                       {group.badges.map((badge) => (
                         <span className="ghostFilterBadge" key={badge.label}>
-                          <badge.icon size={11} /> {badge.label} <strong>{badge.value}</strong>
+                          <badge.icon size={11} /> {tt(badge.label)} <strong>{badge.value}</strong>
                           {badge.checkbox && <span className="ghostBadgeCheckbox" />}
                         </span>
                       ))}
@@ -708,23 +888,42 @@ export function InventoriesPage() {
 
                 <div className="ghostSelectionHeader">
                   <div>
-                    <span>Selection ({currentGhost.selectionCount})</span>
+                    <span>
+                      {tt("Selection")} ({currentGhost.selectionCount})
+                    </span>
                     {currentGhost.selectionNote && (
-                      <span className="ghostSelectionNote">{currentGhost.selectionNote}</span>
+                      <span className="ghostSelectionNote">{tt(currentGhost.selectionNote)}</span>
                     )}
                   </div>
-                  <span className="ghostDownload">Download ({currentGhost.selectionCount})</span>
+                  <span className="ghostDownload">
+                    {tt("Download")} ({currentGhost.selectionCount})
+                  </span>
                 </div>
 
                 <div className="ghostTable">
                   <div className="ghostTableHeadRow" style={tableGridStyle}>
                     {currentGhost.tableColumns.map((col) => (
-                      <span key={col}>{col}</span>
+                      <span key={col}>{tt(col)}</span>
                     ))}
                   </div>
                   {currentGhost.rows.map((row, rowIndex) => (
                     <div className="ghostRow" style={tableGridStyle} key={rowIndex}>
                       {row.map((cell, cellIndex) => {
+                        if (Array.isArray(cell)) {
+                          return (
+                            <span className="ghostRowTags" key={cellIndex}>
+                              {cell.map((tag, tagIndex) => (
+                                <span
+                                  className={`ghostRowTag tone-${tagTone(tag)}`}
+                                  key={tagIndex}
+                                >
+                                  {tt(tag)}
+                                </span>
+                              ))}
+                            </span>
+                          );
+                        }
+
                         const tone = cellTone(cell);
                         const className =
                           cellIndex === 0
@@ -736,7 +935,7 @@ export function InventoriesPage() {
                             : "ghostRowSignals";
                         return (
                           <span className={className} key={cellIndex}>
-                            {cell}
+                            {tt(cell)}
                           </span>
                         );
                       })}
