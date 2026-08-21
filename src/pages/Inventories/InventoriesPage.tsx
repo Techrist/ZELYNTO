@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import {
   Activity,
   AlertTriangle,
@@ -110,7 +110,6 @@ interface GhostBadgeGroup {
 
 interface GhostTabContent {
   banner?: GhostBanner;
-  /** threshold selector shown in the panel header instead of inline in a stat group (e.g. SharePoint) */
   headerThreshold?: GhostHeaderThreshold;
   statGroups: GhostStatGroup[];
   badgeGroups: GhostBadgeGroup[];
@@ -128,15 +127,11 @@ interface GhostTabDefinition {
 }
 
 interface GhostServiceSection {
-  /** must match an id in inventoryDefinitions, used to highlight the row in the list card */
+  
   id: string;
-  /** visible page heading shown above the section, e.g. "Exchange" */
   heading: string;
-  /** short descriptive line under the heading, specific to this service */
   subheading: string;
-  /** where the visible heading sits above the stage; defaults to left */
   headingAlign?: "left" | "right";
-  /** title shown inside the small blurred detail panel, e.g. "Exchange — overview" */
   title: string;
   description: string;
   tabs: GhostTabDefinition[];
@@ -161,14 +156,7 @@ function tagTone(value: string): "success" | "danger" | "warning" | "info" | "ne
   return cellTone(value);
 }
 
-/**
- * The ghost detail panel content below is written once in English as the
- * source of truth (icons, layout and copy live together for readability).
- * Each string rendered from it is looked up in inventories.detail.labels
- * via a slug of its own text, falling back to the English text itself when
- * no translation exists (numbers, dashes and proper nouns like people or
- * team names are intentionally left untranslated this way).
- */
+
 function slugifyGhostLabel(value: string): string {
   return value
     .toLowerCase()
@@ -714,6 +702,53 @@ export function InventoriesPage() {
     Object.fromEntries(ghostSections.map((section) => [section.id, section.tabs[0]?.key ?? ""]))
   );
 
+  // .inventoriesDetailGhost is position:absolute, so its real height never
+  // pushes .inventoriesStage taller. Each service's panel content has a very
+  // different height (Exchange's table is much longer than Intune's), so a
+  // single fixed min-height either clips tall panels or leaves huge empty
+  // gaps under short ones. Instead we measure each panel's actual rendered
+  // height (including its scale(0.94) transform, top offset and a small
+  // safety margin) and apply it as the stage's own min-height.
+  const ghostPanelRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [stageHeights, setStageHeights] = useState<Record<string, number>>({});
+  const GHOST_TOP_OFFSET = 56;
+  const STAGE_BOTTOM_MARGIN = 60;
+
+  useLayoutEffect(() => {
+    const nodes = Object.entries(ghostPanelRefs.current).filter(
+      (entry): entry is [string, HTMLDivElement] => entry[1] !== null
+    );
+    if (nodes.length === 0) return;
+
+    const measure = () => {
+      setStageHeights((prev) => {
+        const next = { ...prev };
+        let changed = false;
+        for (const [id, node] of nodes) {
+          const height = Math.ceil(
+            GHOST_TOP_OFFSET + node.getBoundingClientRect().height + STAGE_BOTTOM_MARGIN
+          );
+          if (next[id] !== height) {
+            next[id] = height;
+            changed = true;
+          }
+        }
+        return changed ? next : prev;
+      });
+    };
+
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    nodes.forEach(([, node]) => observer.observe(node));
+    window.addEventListener("resize", measure);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [activeTabs]);
+
   return (
     <section className="inventoriesHero">
       <div className="inventoriesHeroInner">
@@ -730,6 +765,7 @@ export function InventoriesPage() {
         />
       </div>
 
+        <div className="inventoriesDesktopOnly">
         {ghostSections.map((section) => {
           // activeTabKey is always defined: the initial state sets one entry per
           // section, and setActiveTabs only ever writes a key taken from
@@ -753,9 +789,17 @@ export function InventoriesPage() {
                 <p>{tt(section.subheading)}</p>
               </div>
 
-              <div className="inventoriesStage">
+              <div
+                className="inventoriesStage"
+                style={{ minHeight: stageHeights[section.id] ?? 640 }}
+              >
               {/* Background ghost — blurred detail preview, interactive tabs */}
-              <div className="inventoriesDetailGhost">
+              <div
+                className="inventoriesDetailGhost"
+                ref={(node) => {
+                  ghostPanelRefs.current[section.id] = node;
+                }}
+              >
                 <div className="ghostHeader">
                   <div>
                     <strong>{tt(section.title)}</strong>
@@ -959,9 +1003,14 @@ export function InventoriesPage() {
                     </button>
                   </nav>
                   <div className="inventoriesRefresh">
-                    <span>{t("inventories.updated")}</span>
+                    <span className="inventoriesUpdatedLabel">
+                      {t("inventories.updated")}
+                    </span>
                     <button type="button" tabIndex={-1}>
-                      <RefreshCw size={14} /> {t("inventories.refresh")}
+                      <RefreshCw size={14} />
+                      <span className="inventoriesRefreshLabel">
+                        {t("inventories.refresh")}
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -1017,6 +1066,295 @@ export function InventoriesPage() {
             </React.Fragment>
           );
         })}
+        </div>
+
+        {/* ----- Mobile-only: list card once, then title+description+detail per section ----- */}
+        <div className="inventoriesMobileOnly">
+          <div className="inventoriesMobileListCard">
+            <div className="inventoriesListHeader">
+              <nav className="inventoriesTabs">
+                <button type="button" className="isActive" tabIndex={-1}>
+                  {t("inventories.tabs.inventories")}
+                </button>
+                <button type="button" tabIndex={-1}>
+                  {t("inventories.tabs.savings")}
+                </button>
+                <button type="button" tabIndex={-1}>
+                  {t("inventories.tabs.audit")}
+                </button>
+              </nav>
+              <div className="inventoriesRefresh">
+                <span className="inventoriesUpdatedLabel">
+                  {t("inventories.updated")}
+                </span>
+                <button type="button" tabIndex={-1}>
+                  <RefreshCw size={14} />
+                  <span className="inventoriesRefreshLabel">
+                    {t("inventories.refresh")}
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div className="inventoriesList">
+              {inventoryDefinitions.map((item) => {
+                const text = t(`inventories.items.${item.i18nKey}`, {
+                  returnObjects: true
+                }) as InventoryItemText;
+
+                return (
+                  <div
+                    className={
+                      item.id === ghostSections[0]?.id
+                        ? "inventoryRow isHighlighted"
+                        : "inventoryRow"
+                    }
+                    key={item.id}
+                  >
+                    <span className="inventoryRowIcon">
+                      <img src={item.logo} alt="" />
+                    </span>
+
+                    <div className="inventoryRowTitle">
+                      <strong>{text.name}</strong>
+                      <span>{text.subtitle}</span>
+                    </div>
+
+                    <div className="inventoryRowStats">
+                      {item.stats.map((stat, statIndex) => (
+                        <span className={`inventoryBadge tone-${stat.tone}`} key={statIndex}>
+                          <stat.icon size={12} /> {text.stats[statIndex] ?? ""}
+                        </span>
+                      ))}
+                    </div>
+
+                    {item.hasThresholds && (
+                      <div className="inventoryThresholds">
+                        <span>{t("inventories.thresholds.30d")}</span>
+                        <span className="isActive">{t("inventories.thresholds.90d")}</span>
+                        <span>{t("inventories.thresholds.180d")}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {ghostSections.map((section) => {
+            const activeTabKey = activeTabs[section.id] ?? section.tabs[0]?.key ?? "";
+            const currentGhost = section.content[activeTabKey]!;
+            const tableGridStyle = {
+              gridTemplateColumns: `repeat(${currentGhost.tableColumns.length}, minmax(0, 1fr))`
+            };
+
+            return (
+              <React.Fragment key={`mobile-${section.id}`}>
+                <div
+                  className={
+                    section.headingAlign === "right"
+                      ? "inventoriesSectionHeader alignRight"
+                      : "inventoriesSectionHeader"
+                  }
+                >
+                  <h2>{tt(section.heading)}</h2>
+                  <p>{tt(section.subheading)}</p>
+                </div>
+
+                <div className="inventoriesMobileDetailCard">
+                  <div className="ghostHeader">
+                    <div>
+                      <strong>{tt(section.title)}</strong>
+                      <span>{tt(section.description)}</span>
+                    </div>
+                    {section.tabs.length > 1 ? (
+                      <div className="ghostTabs">
+                        {section.tabs.map((tab) => (
+                          <button
+                            key={tab.key}
+                            type="button"
+                            className={
+                              activeTabKey === tab.key ? "ghostTab isActive" : "ghostTab"
+                            }
+                            onClick={() =>
+                              setActiveTabs((prev) => ({ ...prev, [section.id]: tab.key }))
+                            }
+                          >
+                            {tt(tab.label)}
+                          </button>
+                        ))}
+                      </div>
+                    ) : (
+                      currentGhost.headerThreshold && (
+                        <div className="ghostThresholds ghostThresholdsHeader">
+                          <span className="ghostThresholdCaption">
+                            {tt(currentGhost.headerThreshold.label)}
+                          </span>
+                          {currentGhost.headerThreshold.options.map((option) => (
+                            <span
+                              key={option}
+                              className={
+                                option === currentGhost.headerThreshold!.active
+                                  ? "ghostThreshold isActive"
+                                  : "ghostThreshold"
+                              }
+                            >
+                              {t(`inventories.thresholds.${option}`, { defaultValue: option })}
+                            </span>
+                          ))}
+                        </div>
+                      )
+                    )}
+                  </div>
+
+                  {currentGhost.banner?.tone === "success" && (
+                    <div className="ghostBanner">
+                      <span>{tt(currentGhost.banner.text)}</span>
+                    </div>
+                  )}
+
+                  {currentGhost.banner?.tone === "progress" && (
+                    <div className="ghostBannerProgress">
+                      <span>{tt(currentGhost.banner.text)}</span>
+                      <div className="ghostProgressTrack">
+                        <div
+                          className="ghostProgressFill"
+                          style={{ width: `${currentGhost.banner.percent ?? 0}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {currentGhost.banner?.tone === "warning" && (
+                    <div className="ghostBannerWarning">
+                      <AlertTriangle size={15} className="ghostBannerWarningIcon" />
+                      <div>
+                        {currentGhost.banner.title && (
+                          <strong>{tt(currentGhost.banner.title)}</strong>
+                        )}
+                        <span>{tt(currentGhost.banner.text)}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {currentGhost.statGroups.map((group) => (
+                    <React.Fragment key={group.title}>
+                      <div className="ghostSectionLabelRow">
+                        <span className="ghostSectionLabel">{tt(group.title)}</span>
+                        {group.thresholds && (
+                          <div className="ghostThresholds">
+                            <span className="ghostThresholdCaption">{tt("Threshold:")}</span>
+                            {group.thresholds.options.map((option) => (
+                              <span
+                                key={option}
+                                className={
+                                  option === group.thresholds!.active
+                                    ? "ghostThreshold isActive"
+                                    : "ghostThreshold"
+                                }
+                              >
+                                {t(`inventories.thresholds.${option}`, { defaultValue: option })}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <div className="ghostStatGrid">
+                        {group.cards.map((card) => (
+                          <div
+                            className={card.active ? "ghostStat isActive" : "ghostStat"}
+                            key={card.label}
+                          >
+                            {card.cornerTag && (
+                              <span className="ghostStatCorner">{tt(card.cornerTag)}</span>
+                            )}
+                            <card.icon size={13} className="ghostStatIcon" />
+                            <strong>{card.value}</strong>
+                            <span>{tt(card.label)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </React.Fragment>
+                  ))}
+
+                  {currentGhost.badgeGroups.map((group) => (
+                    <React.Fragment key={group.title}>
+                      <span className="ghostSectionLabel">
+                        {tt(group.title)}
+                        {group.note && <span className="ghostSectionNote"> {tt(group.note)}</span>}
+                      </span>
+                      <div className="ghostBadgeRow">
+                        {group.badges.map((badge) => (
+                          <span className="ghostFilterBadge" key={badge.label}>
+                            <badge.icon size={11} /> {tt(badge.label)} <strong>{badge.value}</strong>
+                            {badge.checkbox && <span className="ghostBadgeCheckbox" />}
+                          </span>
+                        ))}
+                      </div>
+                    </React.Fragment>
+                  ))}
+
+                  <div className="ghostSelectionHeader">
+                    <div>
+                      <span>
+                        {tt("Selection")} ({currentGhost.selectionCount})
+                      </span>
+                      {currentGhost.selectionNote && (
+                        <span className="ghostSelectionNote">{tt(currentGhost.selectionNote)}</span>
+                      )}
+                    </div>
+                    <span className="ghostDownload">
+                      {tt("Download")} ({currentGhost.selectionCount})
+                    </span>
+                  </div>
+
+                  <div className="ghostTable">
+                    <div className="ghostTableHeadRow" style={tableGridStyle}>
+                      {currentGhost.tableColumns.map((col) => (
+                        <span key={col}>{tt(col)}</span>
+                      ))}
+                    </div>
+                    {currentGhost.rows.map((row, rowIndex) => (
+                      <div className="ghostRow" style={tableGridStyle} key={rowIndex}>
+                        {row.map((cell, cellIndex) => {
+                          if (Array.isArray(cell)) {
+                            return (
+                              <span className="ghostRowTags" key={cellIndex}>
+                                {cell.map((tag, tagIndex) => (
+                                  <span
+                                    className={`ghostRowTag tone-${tagTone(tag)}`}
+                                    key={tagIndex}
+                                  >
+                                    {tt(tag)}
+                                  </span>
+                                ))}
+                              </span>
+                            );
+                          }
+
+                          const tone = cellTone(cell);
+                          const className =
+                            cellIndex === 0
+                              ? "ghostRowName"
+                              : tone === "success"
+                              ? "ghostRowStatus"
+                              : tone === "danger"
+                              ? "ghostRowDanger"
+                              : "ghostRowSignals";
+                          return (
+                            <span className={className} key={cellIndex}>
+                              {tt(cell)}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

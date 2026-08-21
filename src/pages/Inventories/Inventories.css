@@ -16,7 +16,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  max-width: 100%;
+  --intro-inset: max(clamp(18px, 5vw, 76px), calc((100vw - 1400px) / 2));
+  width: calc(100vw - 2 * var(--intro-inset));
+  margin-left: calc(50% - 50vw + var(--intro-inset));
 }
 
 .inventoriesIntroText {
@@ -25,7 +27,7 @@
 
 .inventoriesIntroImage {
   flex: 0 0 auto;
-  max-width: 430px;
+  max-width: 500px;
   height: auto;
   display: block;
 }
@@ -45,7 +47,7 @@
 
 .inventoriesStage {
   position: relative;
-  margin-top: 56px;
+  margin-top: 20px;
   padding-bottom: 60px;
   min-height: 640px;
 }
@@ -267,6 +269,11 @@
   gap: 10px;
   color: #8b93a4;
   font-size: 12px;
+  flex-shrink: 0;
+}
+
+.inventoriesUpdatedLabel {
+  white-space: nowrap;
 }
 
 .inventoriesRefresh button {
@@ -282,6 +289,8 @@
   font-weight: 700;
   font-size: 12px;
   cursor: default;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .inventoriesList {
@@ -776,3 +785,176 @@
   color: #5c6678;
   background: #f4f6fb;
 }
+
+/* ----- Desktop / mobile split rendering -----
+   The page now renders two parallel structures: the existing desktop
+   mechanic (untouched, list duplicated per section, blurred absolute ghost)
+   and a separate mobile-only structure (list once, then title+description+
+   detail card per section). Only one is visible at a time per breakpoint. */
+
+.inventoriesMobileOnly {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .inventoriesDesktopOnly {
+    display: none;
+  }
+
+  .inventoriesMobileOnly {
+    display: block;
+  }
+
+  /* The hero illustration only makes sense next to the intro text at
+     desktop width — it just eats vertical space above the fold on mobile. */
+  .inventoriesIntroImage {
+    display: none;
+  }
+}
+
+/* ----- Mobile list card (shown once, normal flow — no absolute offsets) ----- */
+
+.inventoriesMobileListCard {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
+  border-radius: 16px;
+  padding: 18px 18px 10px;
+  background: #ffffff;
+  border: 1px solid #e2e7f0;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 30px 70px -22px rgba(19, 25, 38, 0.18);
+}
+
+/* ----- Mobile detail card: estompé, à l'image de la ligne "Cursor" grisée
+   sur la capture de référence — opacité réduite sur toute la carte, plus
+   un fondu (mask-image) qui accentue le flou aux extrémités inférieures,
+   comme si le contenu se prolongeait au-delà de ce qui est visible. ----- */
+
+.inventoriesMobileDetailCard {
+  position: relative;
+  width: 100%;
+  margin-top: 22px;
+  padding: 16px 16px 8px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #dde2ee;
+  box-shadow: 0 34px 80px -10px rgba(91, 99, 217, 0.22);
+  opacity: 0.6;
+  filter: saturate(0.75);
+  font-size: 11px;
+  mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+}
+
+@media (max-width: 600px) {
+  .inventoriesMobileListCard {
+    padding: 14px 14px 8px;
+    border-radius: 12px;
+  }
+
+  /* En-tête (onglets + actualisation) : on passe sur deux lignes plutôt
+     que de laisser le bouton "Actualiser" déborder ou se faire écraser. */
+  .inventoriesMobileListCard .inventoriesListHeader {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .inventoriesMobileListCard .inventoriesTabs {
+    order: 1;
+  }
+
+  .inventoriesMobileListCard .inventoriesRefresh {
+    order: 2;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Carte liste : resserrement supplémentaire pour les très petits écrans. */
+  .inventoriesMobileListCard .inventoryRow {
+    grid-template-columns: 26px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px 2px;
+  }
+
+  .inventoriesMobileListCard .inventoryRowIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .inventoriesMobileListCard .inventoryRowIcon img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .inventoriesMobileListCard .inventoryRowTitle strong {
+    font-size: 13px;
+  }
+
+  .inventoriesMobileListCard .inventoryRowTitle span {
+    font-size: 11px;
+  }
+
+  .inventoriesMobileListCard .inventoryBadge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .inventoriesMobileListCard .inventoryThresholds span {
+    font-size: 10px;
+    padding: 4px 7px;
+  }
+
+  .inventoriesMobileDetailCard .ghostHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .inventoriesMobileDetailCard .ghostTabs,
+  .inventoriesMobileDetailCard .ghostThresholds {
+    flex-wrap: wrap;
+  }
+
+  .inventoriesMobileDetailCard .ghostStatGrid {
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  }
+
+  /* Le tableau garde beaucoup de colonnes étroites — on préfère le scroll
+     horizontal plutôt que de les écraser en colonnes illisibles. */
+  .inventoriesMobileDetailCard .ghostTable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .inventoriesMobileDetailCard .ghostTableHeadRow,
+  .inventoriesMobileDetailCard .ghostRow {
+    min-width: 460px;
+  }
+
+  .inventoriesMobileOnly .inventoriesSectionHeader {
+    margin-top: 44px;
+  }
+}
+
+/* Très petits écrans : on garde l'icône seule sur le bouton "Actualiser"
+   pour éviter tout débordement (ex. capture 360px). */
+@media (max-width: 380px) {
+  .inventoriesRefreshLabel {
+    display: none;
+  }
+
+  .inventoriesRefresh button {
+    padding: 8px;
+  }
+
+  .inventoriesUpdatedLabel {
+    font-size: 11px;
+  }
+}
+
+/* Mobile list rows reuse .inventoryRow — same simplified layout already
+   defined for it under 900px above (icon + title stacked, stats wrap),
+   further tightened above for very small screens. */
