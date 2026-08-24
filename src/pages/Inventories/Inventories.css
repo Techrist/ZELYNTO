@@ -955,6 +955,3 @@
   }
 }
 
-/* Mobile list rows reuse .inventoryRow — same simplified layout already
-   defined for it under 900px above (icon + title stacked, stats wrap),
-   further tightened above for very small screens. */
