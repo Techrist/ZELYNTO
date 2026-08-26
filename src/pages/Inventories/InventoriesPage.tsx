@@ -566,8 +566,8 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Status",
             cards: [
-              { value: 24, label: "All", icon: Grid2x2, active: true },
-              { value: 5, label: "Active", icon: Activity },
+              { value: 44, label: "All", icon: Grid2x2, active: true },
+              { value: 25, label: "Active", icon: Activity },
               { value: 19, label: "Inactive", icon: Moon, cornerTag: "+90d" }
             ]
           },
@@ -616,20 +616,20 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Object type",
             cards: [
-              { value: 9, label: "All", icon: Grid2x2, active: true },
-              { value: 3, label: "Environment", icon: Server },
-              { value: 3, label: "Canvas Apps", icon: AppWindow },
-              { value: 1, label: "Model-Driven Apps", icon: Database },
-              { value: 1, label: "Cloud Flows", icon: Zap },
-              { value: 1, label: "Desktop Flows", icon: Bot }
+              { value: 81, label: "All", icon: Grid2x2, active: true },
+              { value: 23, label: "Environment", icon: Server },
+              { value: 13, label: "Canvas Apps", icon: AppWindow },
+              { value: 11, label: "Model-Driven Apps", icon: Database },
+              { value: 21, label: "Cloud Flows", icon: Zap },
+              { value: 13, label: "Desktop Flows", icon: Bot }
             ]
           },
           {
             title: "Activity",
             cards: [
-              { value: 9, label: "All", icon: Grid2x2, active: true },
-              { value: 4, label: "Active", icon: Activity },
-              { value: 5, label: "Inactive", icon: Moon, cornerTag: "+90d" }
+              { value: 49, label: "All", icon: Grid2x2, active: true },
+              { value: 14, label: "Active", icon: Activity },
+              { value: 35, label: "Inactive", icon: Moon, cornerTag: "+90d" }
             ]
           }
         ],
@@ -665,9 +665,9 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Status",
             cards: [
-              { value: 5, label: "Total", icon: Grid2x2, active: true },
-              { value: 3, label: "Compliant", icon: ShieldCheck },
-              { value: 2, label: "Non-compliant", icon: ShieldOff }
+              { value: 35, label: "Total", icon: Grid2x2, active: true },
+              { value: 23, label: "Compliant", icon: ShieldCheck },
+              { value: 12, label: "Non-compliant", icon: ShieldOff }
             ]
           }
         ],
@@ -686,11 +686,11 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Device", "Platform", "User", "Status"],
         rows: [
-          ["IAMSURFACE", "Windows", "Fredy TABOUTSA", "Compliant"],
-          ["fredy.taboutsa_Windows_7/7/2026_2:40 PM", "other", "Fredy TABOUTSA", "Non-compliant"],
-          ["DESKTOP-EGE856T", "Windows", "valione test", "Non-compliant"],
-          ["iPhone de Grace", "iOS", "Grace NGUESSI", "Compliant"],
-          ["MacBook Pro - Diego", "macOS", "Diego Siciliani", "Compliant"]
+          ["IAMSURFACE", "Windows", "User1", "Compliant"],
+          ["fredy.taboutsa_Windows_7/7/2026_2:40 PM", "other", "User2", "Non-compliant"],
+          ["DESKTOP-EGE856T", "Windows", "valione ", "Non-compliant"],
+          ["iPhone de Grace", "iOS", "User3", "Compliant"],
+          ["MacBook Pro - Diego", "macOS", "User4", "Compliant"]
         ]
       }
     }
