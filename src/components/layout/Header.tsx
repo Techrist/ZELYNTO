@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
 import { LanguageToggle } from "../ui/LanguageToggle";
 import { LogoDelight } from "../utility/LogoDelight";
-import { MagneticButton } from "../utility/MagneticButton";
 import "./Header.css";
 
 interface HeaderProps {
@@ -18,11 +17,28 @@ const productLinks = [
   { href: "#compliance", key: "compliance" }
 ] as const;
 
+const reportingLinks = [
+  { href: "#/inventories", key: "inventories" },
+  { href: "#/savings", key: "savings" },
+  { href: "#/audit", key: "audit" }
+] as const;
+
 export function Header({ variant = "full" }: HeaderProps) {
   const { t } = useTranslation();
   const compact = variant === "simple";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentHash, setCurrentHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash || "#/" : "#/"
+  );
+
+  useEffect(() => {
+    const onHashChange = () => setCurrentHash(window.location.hash || "#/");
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -81,7 +97,12 @@ export function Header({ variant = "full" }: HeaderProps) {
       <div className="headerCollapsible">
         <nav>
           <div className="navDropdown">
-            <button type="button">
+            <button
+              type="button"
+              className={
+                productLinks.some((link) => link.href === currentHash) ? "isActive" : undefined
+              }
+            >
               {t("header.product")}
               <ChevronDown size={14} />
             </button>
@@ -89,17 +110,68 @@ export function Header({ variant = "full" }: HeaderProps) {
               {productLinks.map((link) => {
                 const label = t(`header.productLinks.${link.key}`);
                 return (
-                  <a key={link.href} href={link.href} onClick={close}>
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={close}
+                    className={currentHash === link.href ? "isActive" : undefined}
+                  >
                     {compact ? label.split(" ").slice(0, 2).join(" ") : label}
                   </a>
                 );
               })}
             </div>
           </div>
-          <a href="#how-it-works" onClick={close}>{t("header.howItWorks")}</a>
-          <a href="#pricing" onClick={close}>{t("common.pricing")}</a>
-          <a href="#/inventories" onClick={close}>{t("common.inventories")}</a>
-          <a href="#/contact" onClick={close}>{t("common.contact")}</a>
+          <a
+            href="#how-it-works"
+            onClick={close}
+            className={currentHash === "#how-it-works" ? "isActive" : undefined}
+          >
+            {t("header.howItWorks")}
+          </a>
+          <a
+            href="#pricing"
+            onClick={close}
+            className={currentHash === "#pricing" ? "isActive" : undefined}
+          >
+            {t("common.pricing")}
+          </a>
+          <div className="navDropdown">
+            <button
+              type="button"
+              className={
+                reportingLinks.some((link) => link.href === currentHash) ? "isActive" : undefined
+              }
+            >
+              {t("header.reporting")}
+              <ChevronDown size={14} />
+            </button>
+            <div className="dropdownMenu">
+              {reportingLinks.map((link) => {
+                const label =
+                  link.key === "inventories"
+                    ? t("common.inventories")
+                    : t(`header.reportingLinks.${link.key}`);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={close}
+                    className={currentHash === link.href ? "isActive" : undefined}
+                  >
+                    {compact ? label.split(" ").slice(0, 2).join(" ") : label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+          <a
+            href="#/contact"
+            onClick={close}
+            className={currentHash === "#/contact" ? "isActive" : undefined}
+          >
+            {t("common.contact")}
+          </a>
         </nav>
 
         <div className="headerActions">
@@ -110,16 +182,14 @@ export function Header({ variant = "full" }: HeaderProps) {
           >
             {t("common.signIn")}
           </a>
-          <MagneticButton strength={14}>
-            <a
-              className="primaryLink"
-              href="https://app-src-zelynto-front-dev-fr-hcfhemc2fngtcze0.francecentral-01.azurewebsites.net/"
-              onClick={close}
-            >
-              {t("common.getStarted")}
-              <ArrowRight size={17} />
-            </a>
-          </MagneticButton>
+          <a
+            className="primaryLink"
+            href="https://app-src-zelynto-front-dev-fr-hcfhemc2fngtcze0.francecentral-01.azurewebsites.net/"
+            onClick={close}
+          >
+            {t("common.getStarted")}
+            <ArrowRight size={17} />
+          </a>
           <LanguageToggle className="desktopLangToggle" />
         </div>
       </div>

@@ -217,7 +217,7 @@ const ghostSections: GhostServiceSection[] = [
             badges: [
               { label: "No MFA", value: 207, icon: ShieldAlert },
               { label: "Never expires", value: 3, icon: InfinityIcon },
-              { label: "Legacy auth", value: 0, icon: History },
+              { label: "Legacy auth", value: 4, icon: History },
               { label: "No manager", value: 201, icon: UserMinus }
             ]
           }
@@ -246,8 +246,8 @@ const ghostSections: GhostServiceSection[] = [
             title: "Synchronization",
             cards: [
               { value: 195, label: "All", icon: Grid2x2, active: true },
-              { value: 0, label: "Synced", icon: RefreshCw },
-              { value: 195, label: "Cloud-only", icon: Cloud }
+              { value: 34, label: "Synced", icon: RefreshCw },
+              { value: 161, label: "Cloud-only", icon: Cloud }
             ]
           }
         ],
@@ -302,11 +302,11 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Operating system",
             badges: [
-              { label: "Windows", value: 5, icon: AppWindow },
-              { label: "Android", value: 2, icon: Smartphone },
-              { label: "iOS", value: 0, icon: Smartphone },
-              { label: "macOS", value: 0, icon: Laptop },
-              { label: "Others", value: 0, icon: HelpCircle }
+              { label: "Windows", value: 3, icon: AppWindow },
+              { label: "Android", value: 1, icon: Smartphone },
+              { label: "iOS", value: 1, icon: Smartphone },
+              { label: "macOS", value: 1, icon: Laptop },
+              { label: "Others", value: 1, icon: HelpCircle }
             ]
           },
           {
@@ -314,7 +314,7 @@ const ghostSections: GhostServiceSection[] = [
             badges: [
               { label: "Corporate", value: 6, icon: Building2 },
               { label: "Personal", value: 1, icon: User },
-              { label: "Autopilot", value: 0, icon: Rocket }
+              { label: "Autopilot", value: 2, icon: Rocket }
             ]
           }
         ],
@@ -386,11 +386,11 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Mailbox", "Type", "Size (GB)", "Last activity", "Signals"],
         rows: [
-          ["Joseph MBA", "User", "0", "—", "—"],
-          ["Megan Bowen", "User", "0", "—", "Archive · Litigation hold · Ext. forwarding"],
-          ["Isaiah Langer", "User", "0", "—", "—"],
-          ["Grace NGUESSI", "User", "0", "—", "—"],
-          ["Grady Archie", "User", "0", "—", "—"]
+          ["Joseph MBA", "User", "2.4", "—", "—"],
+          ["Megan Bowen", "User", "0.8", "—", "Archive · Litigation hold · Ext. forwarding"],
+          ["Isaiah Langer", "User", "1.1", "—", "—"],
+          ["Grace NGUESSI", "User", "3.6", "—", "—"],
+          ["Grady Archie", "User", "0.3", "—", "—"]
         ]
       },
       listsContacts: {
@@ -416,8 +416,8 @@ const ghostSections: GhostServiceSection[] = [
             title: "Usage (based on Message Trace — window shown per row)",
             cards: [
               { value: 106, label: "All", icon: Grid2x2, active: true },
-              { value: 0, label: "Used", icon: CheckCircle2 },
-              { value: 0, label: "Unused", icon: Moon }
+              { value: 64, label: "Used", icon: CheckCircle2 },
+              { value: 42, label: "Unused", icon: Moon }
             ]
           }
         ],
@@ -454,27 +454,27 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Summary — informative",
             cards: [
-              { value: 0, label: "Files", icon: FileText },
-              { value: "0 B", label: "Storage used", icon: Database },
-              { value: 0, label: "External sharing enabled", icon: Globe }
+              { value: "15,842", label: "Files", icon: FileText },
+              { value: "184 GB", label: "Storage used", icon: Database },
+              { value: 6, label: "External sharing enabled", icon: Globe }
             ]
           },
           {
             title: "Site type",
             cards: [
               { value: 97, label: "All", icon: Grid2x2, active: true },
-              { value: 0, label: "Team-connected", icon: User },
-              { value: 0, label: "Private channel", icon: Lock },
-              { value: 0, label: "Communication", icon: Megaphone },
-              { value: 97, label: "Other", icon: Folder }
+              { value: 52, label: "Team-connected", icon: User },
+              { value: 18, label: "Private channel", icon: Lock },
+              { value: 9, label: "Communication", icon: Megaphone },
+              { value: 18, label: "Other", icon: Folder }
             ]
           },
           {
             title: "Activity",
             cards: [
               { value: 97, label: "All", icon: Grid2x2, active: true },
-              { value: 0, label: "Active", icon: Activity },
-              { value: 97, label: "Inactive", icon: Moon, cornerTag: "+90d" }
+              { value: 6, label: "Active", icon: Activity },
+              { value: 91, label: "Inactive", icon: Moon, cornerTag: "+90d" }
             ]
           }
         ],
@@ -483,10 +483,10 @@ const ghostSections: GhostServiceSection[] = [
             title: "Governance & risk",
             note: "(all selected must match)",
             badges: [
-              { label: "External sharing", value: 0, icon: Globe, checkbox: true },
-              { label: "Anonymous links", value: 0, icon: Link, checkbox: true },
+              { label: "External sharing", value: 6, icon: Globe, checkbox: true },
+              { label: "Anonymous links", value: 2, icon: Link, checkbox: true },
               { label: "Orphans", value: 76, icon: UserX, checkbox: true },
-              { label: "Oversized (>100GB)", value: 0, icon: HardDrive, checkbox: true }
+              { label: "Oversized (>100GB)", value: 1, icon: HardDrive, checkbox: true }
             ]
           }
         ],
@@ -494,10 +494,10 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Site", "Template", "Storage (GB)", "Owners", "Last activity", "Signals"],
         rows: [
-          ["Joseph MBA", "Other", "0", "1", "—", "—"],
-          ["Grace NGUESSI", "Other", "0", "1", "—", "—"],
-          ["Test Teams 6", "Other", "0", "0", "—", "Orphan"],
-          ["Test orphan 4", "Other", "0", "0", "—", "Orphan"]
+          ["Joseph MBA", "Other", "2.4", "1", "—", "—"],
+          ["Grace NGUESSI", "Other", "1.1", "1", "—", "—"],
+          ["Test Teams 6", "Other", "0.4", "0", "—", "Orphan"],
+          ["Test orphan 4", "Other", "0.2", "0", "—", "Orphan"]
         ]
       }
     }
@@ -538,15 +538,15 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Governance & risk",
             note: "(External sharing / Anonymous links unavailable on OneDrive)",
-            badges: [{ label: "Orphaned", value: 0, icon: UserX, checkbox: true }]
+            badges: [{ label: "Orphaned", value: 2, icon: UserX, checkbox: true }]
           }
         ],
         selectionCount: 21,
         selectionNote: "No active filter",
         tableColumns: ["Owner", "UPN", "Storage (GB)", "Last activity", "Signals"],
         rows: [
-          ["2352592493D36BA883FCB25A3789684F", "635A15A9C5BE6817F41175F26C39B7E8", "0", "—", "—"],
-          ["EC0FCCDD7C1CAAE3463EF4020E325E41", "75E15CC2A31AD93A77385DC4FE4BB1CB", "0", "—", "—"],
+          ["2352592493D36BA883FCB25A3789684F", "635A15A9C5BE6817F41175F26C39B7E8", "0.04", "—", "—"],
+          ["EC0FCCDD7C1CAAE3463EF4020E325E41", "75E15CC2A31AD93A77385DC4FE4BB1CB", "2.10", "—", "—"],
           ["A46EC9FBA75C50F15B1728A154FA7768", "18F09C2397B9940454AB5264A885CB43", "0.01", "21d ago", "—"]
         ]
       }
@@ -586,7 +586,7 @@ const ghostSections: GhostServiceSection[] = [
             badges: [
               { label: "Archived", value: 3, icon: Archive, checkbox: true },
               { label: "With guests", value: 3, icon: UserPlus, checkbox: true },
-              { label: "Orphaned", value: 0, icon: User, checkbox: true }
+              { label: "Orphaned", value: 1, icon: User, checkbox: true }
             ]
           }
         ],
@@ -616,37 +616,38 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Object type",
             cards: [
-              { value: 7, label: "All", icon: Grid2x2, active: true },
-              { value: 4, label: "Environment", icon: Server },
+              { value: 9, label: "All", icon: Grid2x2, active: true },
+              { value: 3, label: "Environment", icon: Server },
               { value: 3, label: "Canvas Apps", icon: AppWindow },
-              { value: 0, label: "Model-Driven Apps", icon: Database },
-              { value: 0, label: "Cloud Flows", icon: Zap },
-              { value: 0, label: "Desktop Flows", icon: Bot }
+              { value: 1, label: "Model-Driven Apps", icon: Database },
+              { value: 1, label: "Cloud Flows", icon: Zap },
+              { value: 1, label: "Desktop Flows", icon: Bot }
             ]
           },
           {
             title: "Activity",
             cards: [
-              { value: 7, label: "All", icon: Grid2x2, active: true },
-              { value: 3, label: "Active", icon: Activity },
-              { value: 4, label: "Inactive", icon: Moon, cornerTag: "+90d" }
+              { value: 9, label: "All", icon: Grid2x2, active: true },
+              { value: 4, label: "Active", icon: Activity },
+              { value: 5, label: "Inactive", icon: Moon, cornerTag: "+90d" }
             ]
           }
         ],
         badgeGroups: [
           {
             title: "State — Apps and Flows only",
-            badges: [{ label: "Disabled", value: 0, icon: Ban, checkbox: true }]
+            badges: [{ label: "Disabled", value: 1, icon: Ban, checkbox: true }]
           }
         ],
-        selectionCount: 7,
+        selectionCount: 9,
         selectionNote: "No active filter",
         tableColumns: ["Name", "Type", "Environment", "Last activity", "Status"],
         rows: [
           ["dev-test-zelynto", "Environment", "—", "30d ago", "—"],
           ["MSFT", "Environment", "—", "132d ago", "—"],
           ["DemandesInternes", "Canvas Apps", "MSFT (default)", "141d ago", "Enabled"],
-          ["Cas d'usage APP Gouvernance V2", "Canvas Apps", "[DEV] - Vinci Solutions", "51d ago", "Enabled"]
+          ["Cas d'usage APP Gouvernance V2", "Canvas Apps", "[DEV] - Vinci Solutions", "51d ago", "Enabled"],
+          ["Approval - Expense Report", "Cloud Flows", "MSFT (default)", "12d ago", "Enabled"]
         ]
       }
     }
@@ -664,8 +665,8 @@ const ghostSections: GhostServiceSection[] = [
           {
             title: "Status",
             cards: [
-              { value: 3, label: "Total", icon: Grid2x2, active: true },
-              { value: 1, label: "Compliant", icon: ShieldCheck },
+              { value: 5, label: "Total", icon: Grid2x2, active: true },
+              { value: 3, label: "Compliant", icon: ShieldCheck },
               { value: 2, label: "Non-compliant", icon: ShieldOff }
             ]
           }
@@ -675,19 +676,21 @@ const ghostSections: GhostServiceSection[] = [
             title: "Platform",
             badges: [
               { label: "Windows", value: 2, icon: Monitor, checkbox: true },
-              { label: "Android", value: 0, icon: Smartphone, checkbox: true },
-              { label: "iOS", value: 0, icon: Smartphone, checkbox: true },
-              { label: "macOS", value: 0, icon: Laptop, checkbox: true }
+              { label: "Android", value: 1, icon: Smartphone, checkbox: true },
+              { label: "iOS", value: 1, icon: Smartphone, checkbox: true },
+              { label: "macOS", value: 1, icon: Laptop, checkbox: true }
             ]
           }
         ],
-        selectionCount: 3,
+        selectionCount: 5,
         selectionNote: "No active filter",
         tableColumns: ["Device", "Platform", "User", "Status"],
         rows: [
           ["IAMSURFACE", "Windows", "Fredy TABOUTSA", "Compliant"],
           ["fredy.taboutsa_Windows_7/7/2026_2:40 PM", "other", "Fredy TABOUTSA", "Non-compliant"],
-          ["DESKTOP-EGE856T", "Windows", "valione test", "Non-compliant"]
+          ["DESKTOP-EGE856T", "Windows", "valione test", "Non-compliant"],
+          ["iPhone de Grace", "iOS", "Grace NGUESSI", "Compliant"],
+          ["MacBook Pro - Diego", "macOS", "Diego Siciliani", "Compliant"]
         ]
       }
     }

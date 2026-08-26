@@ -1,15 +1,20 @@
 .floatingWhatsapp {
   position: fixed;
   bottom: 24px;
-  right: 24px;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
+  right: 45px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 999px;
   background-color: #25D366;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   z-index: 1000;
   transition: transform 0.2s ease, background-color 0.2s ease;
@@ -17,14 +22,32 @@
 
 .floatingWhatsapp:hover {
   background-color: #1ebe5b;
-  transform: scale(1.08);
+  transform: scale(1.04);
+}
+
+.floatingWhatsapp svg {
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {
   .floatingWhatsapp {
     bottom: 16px;
     right: 16px;
-    width: 52px;
-    height: 52px;
+    padding: 12px 18px;
+    font-size: 14px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .floatingWhatsapp {
+    padding: 10px 14px;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .floatingWhatsapp svg {
+    width: 20px;
+    height: 20px;
   }
 }

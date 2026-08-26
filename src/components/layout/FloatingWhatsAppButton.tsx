@@ -12,9 +12,7 @@ export function FloatingWhatsAppButton({
   message
 }: FloatingWhatsAppButtonProps) {
   const { t } = useTranslation();
-  const defaultMessage = message ?? t("whatsapp.defaultMessage");
-  const encodedMessage = encodeURIComponent(defaultMessage);
-  const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+  const whatsappUrl = "https://wa.me/" + phoneNumber ;
 
   return (
     <a
@@ -24,7 +22,10 @@ export function FloatingWhatsAppButton({
       rel="noopener noreferrer"
       aria-label={t("whatsapp.ariaLabel")}
     >
-      <FaWhatsapp size={30} />
+      <FaWhatsapp size={26} />
+      <span className="floatingWhatsapp__label">
+        {t("whatsapp.buttonLabel", "Contact via WhatsApp")}
+      </span>
     </a>
   );
 }

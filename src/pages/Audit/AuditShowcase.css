@@ -1,0 +1,276 @@
+/* ────────── Card mock : en-tête run/tabs ────────── */
+.auditCardMock .savingsMockTabs {
+  margin-bottom: 14px;
+}
+
+.auditRunRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 11px;
+}
+
+.auditUpdatedAt {
+  color: #9aa0ac;
+  font-weight: 600;
+}
+
+.auditRunAudit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e7f0;
+  color: #3d4659;
+  font-weight: 700;
+}
+
+/* ────────── Filtre catégorie + pills statut ────────── */
+.auditCategoryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.auditCategoryLabel {
+  color: #6f7689;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.auditFilterPills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 6px;
+  gap: 6px;
+  max-width: 100%;
+}
+
+.auditFilterPill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #8b93a4;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.auditFilterPill.isActive {
+  color: #464daf;
+  background: rgba(99, 91, 255, 0.12);
+}
+
+.auditSettingsBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: #6b6ee0;
+}
+
+/* ────────── Bannière score de conformité ────────── */
+.auditComplianceBanner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 22px 16px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: rgba(217, 83, 79, 0.1);
+  border: 1px solid rgba(217, 83, 79, 0.25);
+  text-align: center;
+}
+
+.auditComplianceLabel {
+  color: #b0413d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.auditComplianceBanner strong {
+  color: #b0413d;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.auditComplianceCaption {
+  color: #b5726f;
+  font-size: 11px;
+}
+
+.auditComplianceIcon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 22px;
+  height: 22px;
+  color: rgba(217, 83, 79, 0.45);
+}
+
+/* ────────── Liste de contrôles ────────── */
+.auditControlsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+.auditControlRow {
+  height: auto;
+  padding: 12px 14px;
+  border-color: rgba(217, 83, 79, 0.3);
+  grid-template-columns: 1fr auto;
+}
+
+.auditControlRow strong {
+  display: block;
+  color: #1e2638;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.auditControlRow > div:first-child > span {
+  color: #8891a4;
+  font-size: 11px;
+}
+
+.auditControlBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.auditStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(217, 83, 79, 0.12);
+  color: #d9534f;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.auditIconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid #e2e7f0;
+  color: #6b7280;
+}
+
+/* ────────── Pagination + export ────────── */
+.auditFooterRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.auditPagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.auditPageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 7px;
+  border: 1px solid #e2e7f0;
+  color: #5c6678;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.auditPageBtn.isActive {
+  border-color: transparent;
+  background: #5b63d9;
+  color: #ffffff;
+}
+
+.auditPageEllipsis {
+  padding: 0 2px;
+  color: #9aa0ac;
+  font-size: 11px;
+}
+
+.auditExportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e7f0;
+  color: #3d4659;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ────────── Responsive ────────── */
+
+/* Sécurité : empêche tout élément interne de faire déborder la card et
+   provoquer un scroll horizontal de toute la page. */
+.auditCardMock {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 560px) {
+  .auditCategoryRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .auditControlRow {
+    grid-template-columns: 1fr;
+  }
+
+  .auditControlBadges {
+    flex-wrap: wrap;
+  }
+
+  .auditFooterRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .auditFilterPill {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .auditRunAudit span,
+  .auditExportBtn {
+    font-size: 10.5px;
+  }
+
+  .auditComplianceBanner strong {
+    font-size: 26px;
+  }
+}

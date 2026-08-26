@@ -19,6 +19,11 @@
     "mobileMenu": {
       "open": "Open menu",
       "close": "Close menu"
+    },
+    "reporting": "Reporting",
+    "reportingLinks": {
+      "savings": "Savings",
+      "audit": "Audit"
     }
   },
   "hero": {
@@ -364,6 +369,11 @@
       ]
     }
   },
+  "whatsapp": {
+    "defaultMessage": "Hello, I am contacting you from your website!",
+    "ariaLabel": "Contact us on WhatsApp",
+    "buttonLabel": "Contact via WhatsApp"
+  },
   "auth": {
     "title": "Sign in",
     "description": "Access your future M365 cockpit.",
@@ -526,10 +536,6 @@
           "Dormant accounts: 14 licensed",
           "External SharePoint: 8 public sites"
         ]
-      },
-      "whatsapp": {
-        "defaultMessage": "Hello, I am contacting you from your website!",
-        "ariaLabel": "Contact us on WhatsApp"
       }
     }
   },
@@ -642,7 +648,7 @@
         "compliant-active": "Compliant · Active",
         "corporate": "Corporate",
         "counters-follow-your-selection": "Counters follow your selection",
-        "data-completion-in-progress-the-list-below-updates-automatically-99": "Data completion in progress — the list below updates automatically (99%).",
+        "data-completion-in-progress-the-list-below-updates-automatically-99": "Data completion in progress the list below updates automatically (99%).",
         "device": "Device",
         "devices": "Devices",
         "disabled": "Disabled",
@@ -654,11 +660,11 @@
         "empty": "Empty",
         "enabled": "Enabled",
         "entra-id-joined": "Entra ID joined",
-        "entra-id-overview": "Entra ID — overview",
+        "entra-id-overview": "Entra ID  overview",
         "environment": "Environment",
         "environments-apps-and-flows-across-the-tenant-with-inactive-and-disabled-items-surfaced": "Environments, apps and flows across the tenant, with inactive and disabled items surfaced.",
         "equipment": "Equipment",
-        "exchange-overview": "Exchange — overview",
+        "exchange-overview": "Exchange overview",
         "external-forwarding": "External forwarding",
         "external-members": "External members",
         "external-sharing": "External sharing",
@@ -675,7 +681,7 @@
         "identities-groups-and-devices-across-your-tenant-with-risk-signals-surfaced-up-front": "Identities, groups and devices across your tenant, with risk signals surfaced up front.",
         "inactive": "Inactive",
         "inactivity": "Inactivity:",
-        "intune-overview": "Intune — overview",
+        "intune-overview": "Intune overview",
         "join-type": "Join type",
         "last-activity": "Last activity",
         "legacy-auth": "Legacy auth",
@@ -704,7 +710,7 @@
         "non-compliant": "Non-compliant",
         "non-compliant-inactive": "Non-compliant · Inactive",
         "object-type": "Object type",
-        "onedrive-overview": "OneDrive — overview",
+        "onedrive-overview": "OneDrive overview",
         "operating-system": "Operating system",
         "orphan": "Orphan",
         "orphaned": "Orphaned",
@@ -719,7 +725,7 @@
         "personal": "Personal",
         "personal-drives-and-their-storage-footprint-with-orphaned-accounts-flagged": "Personal drives and their storage footprint, with orphaned accounts flagged.",
         "platform": "Platform",
-        "power-platform-overview": "Power Platform — overview",
+        "power-platform-overview": "Power Platform overview",
         "private": "Private",
         "private-channel": "Private channel",
         "public": "Public",
@@ -730,31 +736,31 @@
         "security": "Security",
         "selection": "Selection",
         "shared": "Shared",
-        "sharepoint-overview": "SharePoint — overview",
+        "sharepoint-overview": "SharePoint overview",
         "signals": "Signals",
         "site-type": "Site type",
         "sites-storage-and-sharing-across-the-tenant-with-governance-risks-called-out": "Sites, storage and sharing across the tenant, with governance risks called out.",
         "size-gb": "Size (GB)",
         "soft-deleted": "Soft deleted",
         "stale": "Stale",
-        "state-apps-and-flows-only": "State — Apps and Flows only",
+        "state-apps-and-flows-only": "State Apps and Flows only",
         "status": "Status",
         "storage-gb": "Storage (GB)",
         "storage-used": "Storage used",
-        "summary-informative": "Summary — informative",
+        "summary-informative": "Summary informative",
         "sync": "Sync",
         "synced": "Synced",
         "synchronization": "Synchronization",
         "team": "Team",
         "team-connected": "Team-connected",
         "teams-and-their-visibility-across-the-tenant-with-archived-and-guest-owned-teams-flagged": "Teams and their visibility across the tenant, with archived and guest-owned teams flagged.",
-        "teams-overview": "Teams — overview",
+        "teams-overview": "Teams overview",
         "template": "Template",
         "threshold": "Threshold:",
         "type-source": "Type & source",
         "unmanaged": "Unmanaged",
         "unused": "Unused",
-        "usage-based-on-message-trace-window-shown-per-row": "Usage (based on Message Trace — window shown per row)",
+        "usage-based-on-message-trace-window-shown-per-row": "Usage (based on Message Trace window shown per row)",
         "used": "Used",
         "user": "User",
         "user-names-are-hidden-in-this-tenant-s-reports": "User names are hidden in this tenant's reports",
@@ -763,6 +769,112 @@
         "with-guests": "With guests",
         "without-delegates": "Without delegates"
       }
+    }
+  },
+  "savings": {
+    "label": "Reporting",
+    "title": "Find the money hiding in your Microsoft 365 tenant",
+    "description": "Unused licenses, inactive accounts, abandoned SharePoint sites Zelynto calculates your potential savings, quantified and ready to export.",
+    "highlights": {
+      "licenses": {
+        "title": "License optimization",
+        "description": "Zelynto automatically detects paid licenses assigned to accounts that no longer use them, so you only pay for what's actually used."
+      },
+      "users": {
+        "title": "Inactive accounts identified",
+        "description": "No Teams, Exchange, or OneDrive activity in 30, 60, or 90 days? Zelynto flags them and lets you choose the analysis period."
+      },
+      "storage": {
+        "title": "Underused storage",
+        "description": "Abandoned SharePoint sites, wasted storage volumes see what's weighing on your bill without adding value."
+      }
+    },
+    "mock": {
+      "productName": "Reporting – Microsoft 365",
+      "productSubtitle": "Monitor and analyze your Microsoft 365 environment",
+      "metaSummary": "{{unused}} unused licenses · {{inactive}} inactive users",
+      "periods": {
+        "30d": "30d",
+        "60d": "60d",
+        "90d": "90d"
+      },
+      "heroLabel": "Potential annual savings",
+      "heroValue": "{{amount}} €/year",
+      "heroCaption": "Calculated automatically · {{days}}-day period",
+      "sections": {
+        "licenses": {
+          "label": "License optimization",
+          "emptyBanner": "No paid license SKUs found on this tenant."
+        },
+        "usage": {
+          "label": "User & storage optimization"
+        }
+      },
+      "rows": {
+        "inactiveUsers": {
+          "title": "Inactive users",
+          "subtitle": "{{count}} users · no Teams, Exchange, OneDrive activity",
+          "value": "{{amount}} €"
+        },
+        "inactiveSites": {
+          "title": "Inactive SharePoint sites",
+          "subtitle": "{{count}} sites · {{size}} TB",
+          "value": "{{amount}} €"
+        }
+      }
+    }
+  },
+  "audit": {
+    "label": "Reporting",
+    "title": "Focus on what actually matters for your Microsoft 365 compliance",
+    "description": "Zelynto continuously evaluates your tenant's security posture and turns dozens of technical controls into clear, prioritized actions.",
+    "highlights": {
+      "scoring": {
+        "title": "Continuous compliance scoring",
+        "description": "A global score recalculated automatically, based on the controls that actually matter for your tenant."
+      },
+      "prioritized": {
+        "title": "Prioritized, explained controls",
+        "description": "Every gap is ranked by severity and comes with a clear explanation, no unnecessary jargon."
+      },
+      "exportReady": {
+        "title": "Export-ready reporting",
+        "description": "Export a complete report in one click for your internal security reviews or external audits."
+      }
+    },
+    "mock": {
+      "updatedAt": "Audited {{hours}}h ago",
+      "runAudit": "Run new audit",
+      "category": "Governance & Security",
+      "controlsCount": "{{count}} controls",
+      "filters": {
+        "all": "All",
+        "toFix": "To fix",
+        "compliant": "Compliant",
+        "overridden": "Overridden",
+        "unknown": "Unknown"
+      },
+      "complianceLabel": "Compliance score",
+      "complianceScore": "{{score}} %",
+      "complianceCaption": "{{passed}} of {{total}} controls passed or need no action",
+      "controlsSectionLabel": "Security controls",
+      "severity": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "sources": {
+        "outlook": "Outlook",
+        "entraId": "Entra ID"
+      },
+      "controls": {
+        "external-tags": "External Tags",
+        "global-admins-range": "Between 2 and 4 Global Administrators",
+        "security-defaults-disabled": "Security Defaults disabled in favor of Conditional Access",
+        "guest-access-restricted": "Guest access restricted",
+        "app-creation-restricted": "App creation restricted to administrators"
+      },
+      "exportReport": "Export audit report"
     }
   },
   "language": {

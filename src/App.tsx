@@ -8,6 +8,8 @@ import { AuthPage } from "./pages/Auth/AuthPage";
 import { SmoothScroll } from "./components/utility/SmoothScroll";
 import { ScrollProgress } from "./components/utility/ScrollProgress";
 import { InventoriesPage } from "./pages/Inventories/InventoriesPage";
+import { SavingsShowcase } from "./pages/SavingsShowcase/SavingsShowcase";
+import { AuditShowcase } from "./pages/Audit/AuditShowcase";
 import "./styles/global.css";
 
 export default function App() {
@@ -35,6 +37,26 @@ export default function App() {
         <>
           <Header variant="simple" />
           <InventoriesPage />
+          <Footer />
+        </>
+      );
+    }
+
+    if (hash === "#/savings") {
+      return (
+        <>
+          <Header variant="simple" />
+          <SavingsShowcase />
+          <Footer />
+        </>
+      );
+    }
+
+    if (hash === "#/audit") {
+      return (
+        <>
+          <Header variant="simple" />
+          <AuditShowcase />
           <Footer />
         </>
       );
