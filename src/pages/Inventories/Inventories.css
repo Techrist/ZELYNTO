@@ -1,9 +1,6 @@
 .inventoriesHero {
   padding: clamp(58px, 8vw, 108px) clamp(18px, 5vw, 76px) clamp(80px, 10vw, 130px);
-  background:
-    radial-gradient(circle at 18% 10%, rgba(49, 183, 232, 0.08), transparent 32%),
-    radial-gradient(circle at 88% 6%, rgba(164, 61, 160, 0.07), transparent 28%),
-    #ffffff;
+  background: transparent;
 }
 
 .inventoriesHeroInner {
@@ -60,8 +57,8 @@
   min-width: 420px;
   padding: 20px 22px;
   border-radius: 16px;
-  background: #ffffff;
-  border: 1px solid #dde2ee;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
   box-shadow: 0 34px 80px -10px rgba(91, 99, 217, 0.22);
   filter: blur(0.5px) saturate(1);
   opacity: 0.92;
@@ -80,14 +77,14 @@
 
 .ghostHeader strong {
   display: block;
-  color: #1e2638;
+  color: var(--text-strong);
   font-size: 15px;
 }
 
 .ghostHeader span {
   display: block;
   margin-top: 2px;
-  color: #8b93a4;
+  color: var(--text-muted);
   font-size: 11px;
 }
 
@@ -99,9 +96,9 @@
 .ghostTab {
   padding: 6px 12px;
   border-radius: 999px;
-  background: #ffffff;
-  border: 1px solid #e2e7f0;
-  color: #7b7d83;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
   font: inherit;
   font-size: 11px;
   font-weight: 800;
@@ -115,7 +112,7 @@
 
 .ghostTab.isActive {
   color: #ffffff;
-  background: linear-gradient(135deg, #31b7e8, #5b63d9 48%, #a43da0);
+  background: var(--gradient-brand);
   border-color: transparent;
 }
 
@@ -139,7 +136,7 @@
 }
 
 .ghostStatIcon {
-  color: #9aa0ac;
+  color: var(--text-muted);
   margin-bottom: 4px;
 }
 
@@ -151,8 +148,8 @@
 .ghostStat {
   padding: 10px 12px;
   border-radius: 10px;
-  background: #ffffff;
-  border: 1px solid #e7ecf4;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
 }
 
 .ghostStat.isActive {
@@ -162,14 +159,14 @@
 
 .ghostStat strong {
   display: block;
-  color: #141a29;
+  color: var(--text-strong);
   font-size: 16px;
 }
 
 .ghostStat span {
   display: block;
   margin-top: 2px;
-  color: #8b93a4;
+  color: var(--text-muted);
   font-size: 10px;
   font-weight: 700;
 }
@@ -187,9 +184,9 @@
   height: 26px;
   padding: 0 10px;
   border-radius: 6px;
-  background: #ffffff;
-  border: 1px solid #eef0f5;
-  color: #3d4659;
+  background: var(--surface-1);
+  border: 1px solid var(--border-soft);
+  color: var(--text);
   font-size: 11px;
   font-weight: 600;
 }
@@ -201,7 +198,7 @@
 
 .ghostRowEmpty {
   justify-content: center;
-  color: #b0b5c0;
+  color: var(--text-muted);
   font-weight: 600;
 }
 
@@ -215,8 +212,8 @@
   right:80px;
   border-radius: 16px;
   padding: 18px 18px 10px;
-  background: #ffffff;
-  border: 1px solid #e2e7f0;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.7) inset,
     0 30px 70px -22px rgba(19, 25, 38, 0.18);
@@ -228,7 +225,7 @@
   justify-content: space-between;
   gap: 14px;
   padding: 0 4px 14px;
-  border-bottom: 1px solid #eef0f5;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .inventoriesTabs {
@@ -241,7 +238,7 @@
   border: 0;
   background: transparent;
   padding: 4px 0;
-  color: #8b93a4;
+  color: var(--text-muted);
   font: inherit;
   font-weight: 800;
   font-size: 14px;
@@ -249,7 +246,7 @@
 }
 
 .inventoriesTabs button.isActive {
-  color: #141a29;
+  color: var(--text-strong);
 }
 
 .inventoriesTabs button.isActive::after {
@@ -267,7 +264,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #8b93a4;
+  color: var(--text-muted);
   font-size: 12px;
   flex-shrink: 0;
 }
@@ -280,11 +277,11 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid #e2e7f0;
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 6px 12px;
-  color: #3d4659;
-  background: #ffffff;
+  color: var(--text);
+  background: var(--surface-1);
   font: inherit;
   font-weight: 700;
   font-size: 12px;
@@ -304,7 +301,7 @@
   gap: 14px;
   align-items: center;
   padding: 14px 4px;
-  border-bottom: 1px solid #f2f4f8;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .inventoryRow:last-child {
@@ -328,14 +325,14 @@
 
 .inventoryRowTitle strong {
   display: block;
-  color: #141a29;
+  color: var(--text-strong);
   font-size: 14px;
 }
 
 .inventoryRowTitle span {
   display: block;
   margin-top: 2px;
-  color: #8b93a4;
+  color: var(--text-muted);
   font-size: 12px;
 }
 
@@ -365,7 +362,7 @@
 }
 
 .inventoryRow.isHighlighted .inventoryRowTitle strong {
-  color: #464daf;
+  color: var(--accent-text);
 }
 
 .inventoryBadge {
@@ -374,8 +371,8 @@
   gap: 5px;
   padding: 5px 9px;
   border-radius: 999px;
-  background: #f4f6fb;
-  color: #5c6678;
+  background: var(--surface-3);
+  color: var(--text-body);
   font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
@@ -387,8 +384,8 @@
 }
 
 .inventoryBadge.tone-danger {
-  color: #d9534f;
-  background: rgba(217, 83, 79, 0.1);
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
 }
 
 .inventoryThresholds {
@@ -399,13 +396,13 @@
 .inventoryThresholds span {
   padding: 5px 9px;
   border-radius: 999px;
-  color: #8b93a4;
+  color: var(--text-muted);
   font-size: 11px;
   font-weight: 700;
 }
 
 .inventoryThresholds span.isActive {
-  color: #464daf;
+  color: var(--accent-text);
   background: rgba(99, 91, 255, 0.12);
 }
 
@@ -436,7 +433,7 @@
   display: block;
   margin-top: 14px;
   margin-bottom: 6px;
-  color: #6f7689;
+  color: var(--text-body);
   font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
@@ -455,20 +452,20 @@
   gap: 5px;
   padding: 6px 10px;
   border-radius: 8px;
-  background: #ffffff;
-  border: 1px solid #e7ecf4;
-  color: #5c6678;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  color: var(--text-body);
   font-size: 10px;
   font-weight: 700;
 }
 
 .ghostFilterBadge svg {
   flex: 0 0 auto;
-  color: #9aa0ac;
+  color: var(--text-muted);
 
 }
 .ghostFilterBadge strong {
-  color: #141a29;
+  color: var(--text-strong);
 }
  
 
@@ -479,8 +476,8 @@
   justify-content: space-between;
   margin-top: 16px;
   padding-top: 10px;
-  border-top: 1px solid #eef0f5;
-  color: #3d4659;
+  border-top: 1px solid var(--border-soft);
+  color: var(--text);
   font-size: 11px;
   font-weight: 800;
 }
@@ -488,8 +485,8 @@
 .ghostDownload {
   padding: 5px 10px;
   border-radius: 999px;
-  border: 1px solid #e2e7f0;
-  color: #3d4659;
+  border: 1px solid var(--border);
+  color: var(--text);
   font-size: 10px;
   font-weight: 700;
 }
@@ -498,7 +495,7 @@
   display: grid;
   gap: 8px;
   padding: 0 10px 4px;
-  color: #9aa0ac;
+  color: var(--text-muted);
   font-size: 9px;
   font-weight: 800;
   text-transform: uppercase;
@@ -511,9 +508,9 @@
   height: 28px;
   padding: 0 10px;
   border-radius: 6px;
-  background: #ffffff;
-  border: 1px solid #eef0f5;
-  color: #3d4659;
+  background: var(--surface-1);
+  border: 1px solid var(--border-soft);
+  color: var(--text);
   font-size: 10px;
   font-weight: 600;
 }
@@ -525,13 +522,13 @@
 }
 
 .ghostRowDanger {
-  color: #d9534f;
+  color: var(--danger);
   font-weight: 800;
 }
 
 
 .ghostRowName {
-  color: #1e2638;
+  color: var(--text-strong);
   font-weight: 700;
 }
 
@@ -541,7 +538,7 @@
 }
 
 .ghostRowSignals {
-  color: #9aa0ac;
+  color: var(--text-muted);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -593,7 +590,7 @@
 }
 
 .ghostSectionNote {
-  color: #9aa0ac;
+  color: var(--text-muted);
   font-weight: 600;
   text-transform: none;
   letter-spacing: normal;
@@ -607,7 +604,7 @@
 
 .ghostThresholdCaption {
   margin-right: 2px;
-  color: #9aa0ac;
+  color: var(--text-muted);
   font-size: 10px;
   font-weight: 700;
   text-transform: none;
@@ -616,13 +613,13 @@
 .ghostThreshold {
   padding: 3px 8px;
   border-radius: 999px;
-  color: #8b93a4;
+  color: var(--text-muted);
   font-size: 10px;
   font-weight: 700;
 }
 
 .ghostThreshold.isActive {
-  color: #464daf;
+  color: var(--accent-text);
   background: rgba(99, 91, 255, 0.12);
 }
 
@@ -638,8 +635,8 @@
   right: 6px;
   padding: 1px 6px;
   border-radius: 999px;
-  background: rgba(217, 83, 79, 0.12);
-  color: #d9534f;
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  color: var(--danger);
   font-size: 9px;
   font-weight: 800;
 }
@@ -660,7 +657,7 @@
   transform: translateY(-50%);
   border-radius: 3px;
   border: 1.5px solid #c6ccd9;
-  background: #ffffff;
+  background: var(--surface-1);
 }
 
 /* ----- Selection note (e.g. "No active filter") ----- */
@@ -672,7 +669,7 @@
 .ghostSelectionNote {
   display: block;
   margin-top: 2px;
-  color: #9aa0ac;
+  color: var(--text-muted);
   font-size: 10px;
   font-weight: 600;
 }
@@ -685,14 +682,14 @@
 }
 
 .inventoriesSectionHeader h2 {
-  color: #101422;
+  color: var(--text-strong);
   font-size: clamp(22px, 2.6vw, 28px);
   line-height: 1.15;
 }
 
 .inventoriesSectionHeader p {
   margin-top: 8px;
-  color: #5c6678;
+  color: var(--text-body);
   font-size: 14px;
   line-height: 1.55;
   max-width: 520px;
@@ -739,7 +736,7 @@
 }
 
 .ghostThresholdsHeader .ghostThresholdCaption {
-  color: #8b93a4;
+  color: var(--text-muted);
   font-size: 11px;
   font-weight: 700;
 }
@@ -767,8 +764,8 @@
 }
 
 .ghostRowTag.tone-danger {
-  color: #d9534f;
-  background: rgba(217, 83, 79, 0.12);
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
 }
 
 .ghostRowTag.tone-warning {
@@ -782,8 +779,8 @@
 }
 
 .ghostRowTag.tone-neutral {
-  color: #5c6678;
-  background: #f4f6fb;
+  color: var(--text-body);
+  background: var(--surface-3);
 }
 
 /* ----- Desktop / mobile split rendering -----
@@ -821,8 +818,8 @@
   margin-top: 20px;
   border-radius: 16px;
   padding: 18px 18px 10px;
-  background: #ffffff;
-  border: 1px solid #e2e7f0;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.7) inset,
     0 30px 70px -22px rgba(19, 25, 38, 0.18);
@@ -839,8 +836,8 @@
   margin-top: 22px;
   padding: 16px 16px 8px;
   border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #dde2ee;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
   box-shadow: 0 34px 80px -10px rgba(91, 99, 217, 0.22);
   opacity: 0.6;
   filter: saturate(0.75);
@@ -931,7 +928,7 @@
 
   .inventoriesMobileDetailCard .ghostTableHeadRow,
   .inventoriesMobileDetailCard .ghostRow {
-    min-width: 460px;
+    min-width: 160px;
   }
 
   .inventoriesMobileOnly .inventoriesSectionHeader {
@@ -955,3 +952,288 @@
   }
 }
 
+/* ────────── Card mock : en-tête run/tabs ────────── */
+.auditCardMock .savingsMockTabs {
+  margin-bottom: 14px;
+}
+
+.auditRunRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 11px;
+}
+
+.auditUpdatedAt {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.auditRunAudit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ────────── Filtre catégorie + pills statut ────────── */
+.auditCategoryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.auditCategoryLabel {
+  color: var(--text-body);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.auditFilterPills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 6px;
+  gap: 6px;
+  max-width: 100%;
+}
+
+.auditFilterPill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.auditFilterPill.isActive {
+  color: var(--accent-text);
+  background: rgba(99, 91, 255, 0.12);
+}
+
+.auditSettingsBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: #6b6ee0;
+}
+
+/* ────────── Bannière score de conformité ────────── */
+.auditComplianceBanner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 22px 16px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 25%, transparent);
+  text-align: center;
+}
+
+.auditComplianceLabel {
+  color: var(--danger-strong);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.auditComplianceBanner strong {
+  color: var(--danger-strong);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.auditComplianceCaption {
+  color: #b5726f;
+  font-size: 11px;
+}
+
+.auditComplianceIcon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 22px;
+  height: 22px;
+  color: color-mix(in srgb, var(--danger) 45%, transparent);
+}
+
+/* ────────── Liste de contrôles ────────── */
+.auditControlsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+.auditControlRow {
+  height: auto;
+  padding: 12px 14px;
+  border-color: color-mix(in srgb, var(--danger) 30%, transparent);
+  grid-template-columns: 1fr auto;
+}
+
+.auditControlRow strong {
+  display: block;
+  color: var(--text-strong);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.auditControlRow > div:first-child > span {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.auditControlBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.auditStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  color: var(--danger);
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.auditIconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* ────────── Pagination + export ────────── */
+.auditFooterRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.auditPagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.auditPageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  color: var(--text-body);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.auditPageBtn.isActive {
+  border-color: transparent;
+  background: #5b63d9;
+  color: #ffffff;
+}
+
+.auditPageEllipsis {
+  padding: 0 2px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.auditExportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Sécurité : empêche tout élément interne de faire déborder la card et
+   provoquer un scroll horizontal de toute la page (toutes tailles). */
+.auditCardMock {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ────────── Card mock : troncature mobile propre à Audit — contenu plus
+   long que Savings (5 contrôles + pagination), donc point de coupe plus
+   bas pour laisser passer la bannière de score en entier. Hérite de
+   overflow/mask-image via .savingsCardMock (SavingsShowcase.css) ; la
+   version desktop n'est pas concernée. ────────── */
+@media (max-width: 600px) {
+  .auditCardMock {
+    max-height: 460px;
+  }
+}
+
+@media (max-width: 560px) {
+  .auditCategoryRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .auditControlRow {
+    grid-template-columns: 1fr;
+  }
+
+  .auditControlBadges {
+    flex-wrap: wrap;
+  }
+
+  .auditFooterRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .auditFilterPill {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .auditRunAudit span,
+  .auditExportBtn {
+    font-size: 10.5px;
+  }
+
+  .auditComplianceBanner strong {
+    font-size: 26px;
+  }
+}

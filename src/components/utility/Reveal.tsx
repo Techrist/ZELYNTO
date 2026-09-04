@@ -30,9 +30,9 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  y = 20,
+  y = 14,
   x = 0,
-  duration = 0.95,
+  duration = 1,
   once = true,
   amount = 0.15,
   as = "div"
@@ -52,7 +52,7 @@ export function Reveal({
     <Component
       ref={ref as React.Ref<HTMLDivElement & HTMLSpanElement>}
       className={className}
-      initial={{ opacity: 0, x, y, filter: "blur(8px)" }}
+      initial={{ opacity: 0, x, y, filter: "blur(12px)" }}
       animate={inView ? { opacity: 1, x: 0, y: 0, filter: "blur(0px)" } : undefined}
       transition={{
         duration,

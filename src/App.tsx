@@ -8,6 +8,7 @@ import { AuthPage } from "./pages/Auth/AuthPage";
 import { SmoothScroll } from "./components/utility/SmoothScroll";
 import { ScrollProgress } from "./components/utility/ScrollProgress";
 import { InventoriesPage } from "./pages/Inventories/InventoriesPage";
+import { PricingPage } from "./pages/Pricing/PricingPage";
 import { SavingsShowcase } from "./pages/SavingsShowcase/SavingsShowcase";
 import { AuditShowcase } from "./pages/Audit/AuditShowcase";
 import "./styles/global.css";
@@ -37,6 +38,16 @@ export default function App() {
         <>
           <Header variant="simple" />
           <InventoriesPage />
+          <Footer />
+        </>
+      );
+    }
+
+    if (hash === "#/pricing") {
+      return (
+        <>
+          <Header variant="simple" />
+          <PricingPage />
           <Footer />
         </>
       );

@@ -145,7 +145,6 @@ export function Hero() {
         <div className="heroOrb heroOrb1" />
         <div className="heroOrb heroOrb2" />
         <div className="heroOrb heroOrb3" />
-        <div className="heroGrid" />
       </div>
 
       <div className="heroText">

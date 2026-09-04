@@ -17,8 +17,8 @@ export function CapabilityShowcase({ capability }: CapabilityShowcaseProps) {
   const rawBullets = t(`${base}.bullets`, { returnObjects: true });
   const bullets = Array.isArray(rawBullets) ? (rawBullets as string[]) : [];
 
-  // Copy slides in from the opposite side of the panel for a balanced layout.
-  const copyX = capability.reverse ? 32 : -32;
+  // Copy drifts in gently from the opposite side of the panel.
+  const copyX = capability.reverse ? 18 : -18;
 
   return (
     <section className={className} id={capability.id}>

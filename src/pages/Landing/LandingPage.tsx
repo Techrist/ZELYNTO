@@ -7,7 +7,7 @@ import { BrandSection } from "./sections/BrandSection";
 import { Hero } from "./sections/Hero";
 import { HowItWorks } from "./sections/HowItWorks";
 import { IntegrationBand } from "./sections/IntegrationBand";
-import { PricingSection } from "./sections/PricingSection";
+import { PricingCta } from "./sections/PricingCta";
 import { ProblemSection } from "./sections/ProblemSection";
 import { SecuritySection } from "./sections/SecuritySection";
 import "./Landing.css";
@@ -24,7 +24,7 @@ export function LandingPage() {
       ))}
       <HowItWorks />
       <SecuritySection />
-      <PricingSection />
+      <PricingCta />
       <FaqSection />
       <FinalCta />
     </>

@@ -30,7 +30,7 @@ export function SecuritySection() {
           return (
             <RevealCard className="securityPillar" key={p.title} delay={i * 90}>
               <div className="securityIcon">
-                <Icon size={22} />
+                <Icon size={26} strokeWidth={1.75} />
               </div>
               <div className="securityBody">
                 <h3>{p.title}</h3>

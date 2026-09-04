@@ -1,9 +1,6 @@
 .contactPage {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 12% 8%, rgba(49, 183, 232, 0.14), transparent 32%),
-    radial-gradient(circle at 88% 4%, rgba(164, 61, 160, 0.12), transparent 30%),
-    #ffffff;
+  background: transparent;
 }
 
 .contactHero {
@@ -18,7 +15,7 @@
 
 .contactHeroInner h1 {
   margin-top: 18px;
-  color: #101422;
+  color: var(--text-strong);
   font-size: clamp(40px, 5.4vw, 60px);
   line-height: 1.05;
 }
@@ -26,7 +23,7 @@
 .contactHeroInner p {
   max-width: 620px;
   margin: 18px auto 0;
-  color: #5c6678;
+  color: var(--text-body);
   font-size: 18px;
   line-height: 1.6;
 }
@@ -37,7 +34,7 @@
   justify-content: center;
   gap: 16px;
   margin-top: 26px;
-  color: #4d5668;
+  color: var(--text-body);
   font-size: 14px;
   font-weight: 800;
 }
@@ -67,7 +64,7 @@
 
 .formIntro h2 {
   margin-top: 8px;
-  color: #121827;
+  color: var(--text-strong);
   font-size: clamp(22px, 2.4vw, 28px);
   line-height: 1.25;
 }
@@ -82,7 +79,7 @@
 .contactForm .formField {
   display: grid;
   gap: 8px;
-  color: #2f394d;
+  color: var(--text);
   font-size: 14px;
   font-weight: 800;
 }
@@ -95,11 +92,11 @@
 .contactForm select,
 .contactForm textarea {
   width: 100%;
-  border: 1px solid #dce2ee;
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px 14px;
-  color: #192033;
-  background: #ffffff;
+  color: var(--text-strong);
+  background: var(--surface-1);
   font: inherit;
   font-weight: 500;
   outline: none;
@@ -108,13 +105,13 @@
 
 .contactForm input::placeholder,
 .contactForm textarea::placeholder {
-  color: #97a0b4;
+  color: var(--text-muted);
 }
 
 .contactForm input:focus,
 .contactForm select:focus,
 .contactForm textarea:focus {
-  border-color: #635bff;
+  border-color: var(--accent-text);
   box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.13);
 }
 
@@ -142,7 +139,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #6a7488;
+  color: var(--text-body);
   font-size: 13px;
   font-weight: 700;
 }
@@ -159,7 +156,7 @@
   border: 1px solid rgba(22, 163, 111, 0.32);
   border-radius: 8px;
   padding: 14px 16px;
-  color: #146c4a;
+  color: var(--success);
   background: rgba(22, 163, 111, 0.08);
   font-weight: 700;
 }
@@ -179,10 +176,10 @@
   grid-template-columns: 44px minmax(0, 1fr);
   gap: 16px;
   align-items: center;
-  border: 1px solid #e2e7f0;
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 18px;
-  background: #ffffff;
+  background: var(--surface-1);
   box-shadow: 0 12px 32px rgba(19, 25, 38, 0.06);
 }
 
@@ -199,7 +196,7 @@
 
 .asideCard strong {
   display: block;
-  color: #131a29;
+  color: var(--text-strong);
   font-size: 15px;
   font-weight: 800;
 }
@@ -208,13 +205,13 @@
 .asideCard a {
   display: block;
   margin-top: 4px;
-  color: #5d6779;
+  color: var(--text-body);
   font-size: 14px;
   line-height: 1.5;
 }
 
 .asideCard a {
-  color: #5b63d9;
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -228,7 +225,7 @@
   padding: 22px;
   background:
     linear-gradient(135deg, rgba(49, 183, 232, 0.1), rgba(164, 61, 160, 0.08)),
-    #ffffff;
+    var(--surface-1);
   box-shadow: 0 18px 40px rgba(99, 91, 255, 0.1);
 }
 
@@ -236,7 +233,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #2f394d;
+  color: var(--text);
   font-size: 15px;
   font-weight: 900;
   text-transform: uppercase;
@@ -244,7 +241,7 @@
 }
 
 .asideHighlightHeader svg {
-  color: #5b63d9;
+  color: var(--accent-text);
 }
 
 .asideHighlight ul {
@@ -259,7 +256,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  color: #2f394d;
+  color: var(--text);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.45;

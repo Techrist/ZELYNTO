@@ -1,18 +1,19 @@
 import React from "react";
 import { CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { pricingPlans } from "../../../content/pricing";
-import { RevealCard } from "../../../components/ui/RevealCard";
-import { SectionFade } from "../../../components/utility/SectionFade";
+import { pricingPlans } from "../../content/pricing";
+import { RevealCard } from "../../components/ui/RevealCard";
+import { SectionFade } from "../../components/utility/SectionFade";
+import "./Pricing.css";
 
-export function PricingSection() {
+export function PricingPage() {
   const { t } = useTranslation();
 
   return (
-    <section className="section pricingSection" id="pricing">
-      <SectionFade className="sectionIntro">
+    <section className="pricingPage">
+      <SectionFade className="pricingPageIntro">
         <span>{t("pricing.label")}</span>
-        <h2>{t("pricing.title")}</h2>
+        <h1>{t("pricing.title")}</h1>
         <p>{t("pricing.description")}</p>
       </SectionFade>
 

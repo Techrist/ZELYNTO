@@ -145,7 +145,7 @@
   "howItWorks": {
     "label": "Comment ça marche",
     "title": "De la connexion à votre première action en moins d'une heure",
-    "description": "Quatre étapes, pas de déploiement lourd, pas d'agent à installer.",
+    "description": "Trois étapes, pas de déploiement lourd, pas d'agent à installer.",
     "steps": [
       {
         "title": "Connectez votre stack",
@@ -158,10 +158,6 @@
       {
         "title": "Définissez vos règles de gouvernance",
         "description": "Décidez ce qui déclenche une validation, ce qui est bloqué, qui reste dans la boucle. Le journal d'audit est toujours actif."
-      },
-      {
-        "title": "Commencez à utiliser Zelynto",
-        "description": "Workspace provisionné. Ouvrez une conversation et Zelynto s'occupe du reste."
       }
     ]
   },
@@ -193,6 +189,12 @@
     "title": "Des offres simples pour déployer Zelynto selon votre niveau de maturité M365",
     "description": "Commencez par l'audit et l'exploration, puis activez progressivement l'automatisation et les contrôles avancés.",
     "popularBadge": "Le plus demandé",
+    "cta": {
+      "eyebrow": "Tarifs",
+      "title": "Une offre pour chaque niveau de maturité Microsoft 365",
+      "description": "De l'audit initial à la gouvernance avancée : comparez les plans et trouvez celui qui correspond à votre tenant.",
+      "button": "Voir les tarifs"
+    },
     "plans": {
       "starter": {
         "label": "Starter",
@@ -881,5 +883,12 @@
     "label": "Langue",
     "en": "EN",
     "fr": "FR"
+  },
+  "theme": {
+    "label": "Thème",
+    "switchTo": {
+      "light": "Passer en thème clair",
+      "dark": "Passer en thème sombre"
+    }
   }
 }

@@ -2,20 +2,12 @@ import React, { useEffect, useState } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
-import { LanguageToggle } from "../ui/LanguageToggle";
-import { LogoDelight } from "../utility/LogoDelight";
+import { ThemeToggle } from "../ui/ThemeToggle";
 import "./Header.css";
 
 interface HeaderProps {
   variant?: "full" | "simple";
 }
-
-const productLinks = [
-  { href: "#exploration", key: "exploration" },
-  { href: "#security-copilot", key: "security" },
-  { href: "#automation", key: "automation" },
-  { href: "#compliance", key: "compliance" }
-] as const;
 
 const reportingLinks = [
   { href: "#/inventories", key: "inventories" },
@@ -76,13 +68,11 @@ export function Header({ variant = "full" }: HeaderProps) {
   return (
     <header className={classes.join(" ")}>
       <a className="brand" href="#/" aria-label="Zelynto" onClick={close}>
-        <LogoDelight>
-          <img src={logo} alt="Zelynto" />
-        </LogoDelight>
+        <img src={logo} alt="Zelynto" />
       </a>
 
       <div className="mobileBar">
-        <LanguageToggle />
+        <ThemeToggle />
         <button
           className="burger"
           type="button"
@@ -96,43 +86,10 @@ export function Header({ variant = "full" }: HeaderProps) {
 
       <div className="headerCollapsible">
         <nav>
-          <div className="navDropdown">
-            <button
-              type="button"
-              className={
-                productLinks.some((link) => link.href === currentHash) ? "isActive" : undefined
-              }
-            >
-              {t("header.product")}
-              <ChevronDown size={14} />
-            </button>
-            <div className="dropdownMenu">
-              {productLinks.map((link) => {
-                const label = t(`header.productLinks.${link.key}`);
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={close}
-                    className={currentHash === link.href ? "isActive" : undefined}
-                  >
-                    {compact ? label.split(" ").slice(0, 2).join(" ") : label}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
           <a
-            href="#how-it-works"
+            href="#/pricing"
             onClick={close}
-            className={currentHash === "#how-it-works" ? "isActive" : undefined}
-          >
-            {t("header.howItWorks")}
-          </a>
-          <a
-            href="#pricing"
-            onClick={close}
-            className={currentHash === "#pricing" ? "isActive" : undefined}
+            className={currentHash === "#/pricing" ? "isActive" : undefined}
           >
             {t("common.pricing")}
           </a>
@@ -190,7 +147,7 @@ export function Header({ variant = "full" }: HeaderProps) {
             {t("common.getStarted")}
             <ArrowRight size={17} />
           </a>
-          <LanguageToggle className="desktopLangToggle" />
+          <ThemeToggle className="desktopThemeToggle" />
         </div>
       </div>
     </header>

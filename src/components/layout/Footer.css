@@ -1,7 +1,7 @@
 .siteFooter {
   padding: 54px clamp(18px, 5vw, 76px) 26px;
-  color: #1d2433;
-  background: #ffffff;
+  color: var(--text-strong);
+  background: transparent;
 }
 
 .footerCta {
@@ -9,16 +9,16 @@
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-  border: 1px solid #e2e7f0;
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 28px;
   background:
     linear-gradient(135deg, rgba(49, 183, 232, 0.12), rgba(164, 61, 160, 0.1)),
-    #f8f9fd;
+    var(--surface-2);
 }
 
 .footerCta span {
-  color: #635bff;
+  color: var(--accent-text);
   font-size: 13px;
   font-weight: 900;
   text-transform: uppercase;
@@ -27,7 +27,7 @@
 .footerCta h2 {
   max-width: 720px;
   margin-top: 8px;
-  color: #121827;
+  color: var(--text-strong);
   font-size: clamp(28px, 4vw, 44px);
 }
 
@@ -46,7 +46,7 @@
 .footerBrand p {
   max-width: 420px;
   margin-top: 16px;
-  color: #5d6779;
+  color: var(--text-body);
   line-height: 1.65;
 }
 
@@ -57,12 +57,12 @@
 }
 
 .footerGrid strong {
-  color: #151b29;
+  color: var(--text-strong);
 }
 
 .footerGrid a,
 .footerBottom a {
-  color: #5f6a7d;
+  color: var(--text-body);
   font-size: 14px;
 }
 
@@ -90,7 +90,7 @@
 
 .footerGrid a:hover,
 .footerBottom a:hover {
-  color: #121827;
+  color: var(--text-strong);
 }
 
 .footerGrid a:hover::after,
@@ -101,7 +101,7 @@
 .footerGrid a:focus-visible,
 .footerBottom a:focus-visible {
   outline: 0;
-  color: #121827;
+  color: var(--text-strong);
 }
 
 .footerGrid a:focus-visible::after,
@@ -114,9 +114,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  border-top: 1px solid #e2e7f0;
+  border-top: 1px solid var(--border);
   padding-top: 22px;
-  color: #687386;
+  color: var(--text-body);
   font-size: 14px;
 }
 

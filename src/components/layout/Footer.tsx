@@ -9,7 +9,7 @@ const productLinks: Array<{ key: string; href: string }> = [
   { key: "chat", href: "#exploration" },
   { key: "graph", href: "#exploration" },
   { key: "provisioning", href: "#automation" },
-  { key: "pricing", href: "#pricing" }
+  { key: "pricing", href: "#/pricing" }
 ];
 
 const securityLinks: Array<{ key: string; href: string }> = [

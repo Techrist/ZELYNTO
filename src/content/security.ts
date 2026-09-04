@@ -1,4 +1,4 @@
-import { Eye, FileCheck2, ShieldCheck, Lock } from "lucide-react";
+import { FileLock2, KeyRound, MessageSquareLock, ShieldHalf } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface SecurityPillarDefinition {
@@ -7,8 +7,8 @@ export interface SecurityPillarDefinition {
 
 // Order must match the i18n array security.pillars
 export const securityPillars: SecurityPillarDefinition[] = [
-  { icon: ShieldCheck },
-  { icon: Lock },
-  { icon: Eye },
-  { icon: FileCheck2 }
+  { icon: ShieldHalf }, // Données isolées — périmètre
+  { icon: KeyRound }, // Permissions minimales — moindre privilège
+  { icon: MessageSquareLock }, // Aucun stockage prompt — conversations éphémères
+  { icon: FileLock2 } // Audit immuable — journal signé
 ];

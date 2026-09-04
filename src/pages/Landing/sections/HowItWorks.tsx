@@ -1,397 +1,213 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  Check,
-  CheckCircle2,
-  ChevronRight,
-  FolderOpen,
-  Lock,
-  MessageSquare,
-  ShieldCheck,
-  Users,
-  XCircle
-} from "lucide-react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { steps } from "../../../content/howItWorks";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
-import zelyntoMark from "../../../assets/zelynto-mark.svg";
+import entraIcon from "../../../assets/ms365-icons/entra-id.webp";
+import teamsIcon from "../../../assets/ms365-icons/teams.png";
+import sharepointIcon from "../../../assets/ms365-icons/sharepoint.webp";
+import exchangeIcon from "../../../assets/ms365-icons/exchange.webp";
+import onedriveIcon from "../../../assets/ms365-icons/onedrive.png";
+import intuneIcon from "../../../assets/ms365-icons/intune.webp";
 
 interface StepText {
   title: string;
   description: string;
 }
 
+const msApps = [
+  { key: "entra", label: "Entra ID", icon: entraIcon },
+  { key: "teams", label: "Teams", icon: teamsIcon },
+  { key: "sharepoint", label: "SharePoint", icon: sharepointIcon },
+  { key: "exchange", label: "Exchange", icon: exchangeIcon },
+  { key: "onedrive", label: "OneDrive", icon: onedriveIcon },
+  { key: "intune", label: "Intune", icon: intuneIcon }
+] as const;
+
+interface FlowDot {
+  x: number;
+  y: number;
+  kind: "start" | "end";
+}
+
+interface FlowGeometry {
+  w: number;
+  h: number;
+  oneTwo: string;
+  twoThree: string;
+  dots: FlowDot[];
+}
+
+const EMPTY_FLOW: FlowGeometry = { w: 1200, h: 640, oneTwo: "", twoThree: "", dots: [] };
+
+/**
+ * Connectors are drawn from the cards' real measured rectangles (relative to
+ * .howBento), the same measure-then-draw pattern used in Hero.tsx — no guessed
+ * SVG coordinates, so the dashed paths always land on the right corners
+ * whatever the viewport width or font metrics.
+ */
 export function HowItWorks() {
   const { t } = useTranslation();
   const raw = t("howItWorks.steps", { returnObjects: true });
   const stepTexts: StepText[] = Array.isArray(raw) ? (raw as StepText[]) : [];
 
-  const sectionRef = useRef<HTMLElement>(null);
-  const [activeStep, setActiveStep] = useState(0);
-  const manualOverrideUntil = useRef(0);
+  const bentoRef = useRef<HTMLDivElement>(null);
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+  const card3Ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+  const [flow, setFlow] = useState<FlowGeometry>(EMPTY_FLOW);
+
+  useLayoutEffect(() => {
+    const bento = bentoRef.current;
+    const c1 = card1Ref.current;
+    const c2 = card2Ref.current;
+    const c3 = card3Ref.current;
+    if (!bento || !c1 || !c2 || !c3) return;
 
     let raf = 0;
-    const update = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        if (performance.now() < manualOverrideUntil.current) return;
-        const rect = section.getBoundingClientRect();
-        const total = rect.height - window.innerHeight;
-        const scrolled = Math.min(Math.max(-rect.top, 0), total);
-        const progress = total > 0 ? scrolled / total : 0;
-        const count = steps.length;
-        const next = Math.min(Math.floor(progress * count), count - 1);
-        setActiveStep(next < 0 ? 0 : next);
+
+    const measure = () => {
+      const b = bento.getBoundingClientRect();
+      const rel = (el: HTMLElement) => {
+        const r = el.getBoundingClientRect();
+        return {
+          left: r.left - b.left,
+          right: r.right - b.left,
+          top: r.top - b.top,
+          bottom: r.bottom - b.top
+        };
+      };
+
+      const a1 = rel(c1);
+      const a2 = rel(c2);
+      const a3 = rel(c3);
+
+      // Card 1 -> Card 2 : short link down the left spine, only a hint of a
+      // left bow. Offsets scale with the real gap so the curve never balloons
+      // when the cards sit close together.
+      const s1x = a1.left + 52;
+      const s1y = a1.bottom;
+      const e1x = a2.left + 44;
+      const e1y = a2.top + 12;
+      const dy1 = Math.max(e1y - s1y, 24);
+      const bow = Math.min(dy1 * 0.35, 14);
+      const oneTwo = `M ${s1x} ${s1y} C ${s1x - bow} ${s1y + dy1 * 0.45}, ${e1x - bow} ${e1y - dy1 * 0.45}, ${e1x} ${e1y}`;
+
+      // Card 2 -> Card 3 : leaves card 2 near its top-right corner (clear of the
+      // heading text), humps gently across the gutter into card 3's top-left.
+      const s2x = a2.right - 28;
+      const s2y = a2.top + 6;
+      const e2x = a3.left + 46;
+      const e2y = a3.top + 10;
+      const humpY = Math.min(s2y, e2y) - 26;
+      const twoThree = `M ${s2x} ${s2y} C ${s2x + 28} ${humpY}, ${e2x - 28} ${humpY}, ${e2x} ${e2y}`;
+
+      setFlow({
+        w: Math.round(b.width),
+        h: Math.round(b.height),
+        oneTwo,
+        twoThree,
+        dots: [
+          { x: s1x, y: s1y, kind: "start" },
+          { x: e1x, y: e1y, kind: "end" },
+          { x: s2x, y: s2y, kind: "start" },
+          { x: e2x, y: e2y, kind: "end" }
+        ]
       });
     };
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-      cancelAnimationFrame(raf);
+    const schedule = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(measure);
     };
+
+    schedule();
+
+    const observer = new ResizeObserver(schedule);
+    observer.observe(bento);
+    [c1, c2, c3].forEach((el) => observer.observe(el));
+    window.addEventListener("resize", schedule);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", schedule);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [stepTexts.length]);
+
+  // Fonts can shift text metrics (and therefore card heights) after first paint.
+  useEffect(() => {
+    if (typeof document === "undefined" || !document.fonts) return;
+    document.fonts.ready.then(() => window.dispatchEvent(new Event("resize")));
   }, []);
 
-  function jumpTo(index: number) {
-    const section = sectionRef.current;
-    if (!section) return;
-    const rect = section.getBoundingClientRect();
-    const sectionTop = rect.top + window.scrollY;
-    const total = rect.height - window.innerHeight;
-    const fraction = (index + 0.5) / steps.length;
-    const target = sectionTop + fraction * total;
-    setActiveStep(index);
-    manualOverrideUntil.current = performance.now() + 900;
-    window.scrollTo({ top: target, behavior: "smooth" });
-  }
-
-  const mockups = [
-    <ConnectStackMockup key="0" active={activeStep === 0} />,
-    <AuthorizeMockup key="1" active={activeStep === 1} />,
-    <GovernanceMockup key="2" active={activeStep === 2} />,
-    <AllSetMockup key="3" active={activeStep === 3} />
-  ];
-
   return (
-    <section className="howItWorksSection" id="how-it-works" ref={sectionRef}>
-      <div className="howItWorksSticky">
-        <header className="howIntro">
+    <section className="howItWorksSection" id="how-it-works">
+      <div className="howBento" ref={bentoRef}>
+        <div className="howBentoAtmosphere" aria-hidden="true">
+          <span className="howDecor howDecor1" />
+          <span className="howDecor howDecor2" />
+          <span className="howDecor howDecor3" />
+        </div>
+
+        <header className="howBentoHeading">
           <SectionLabel>{t("howItWorks.label")}</SectionLabel>
           <h2>{t("howItWorks.title")}</h2>
           <p>{t("howItWorks.description")}</p>
         </header>
 
-        <div className="howBody">
-          <div className="howStepsList">
-            {steps.map(({ index, icon: Icon }, i) => {
-              const step = stepTexts[i];
-              if (!step) return null;
-              return (
-                <button
-                  type="button"
-                  key={index}
-                  className={i === activeStep ? "howStepCompact isActive" : "howStepCompact"}
-                  onClick={() => jumpTo(i)}
-                  aria-current={i === activeStep ? "step" : undefined}
-                >
-                  <span className="howStepCompactIndex">{index}</span>
-                  <div className="howStepCompactIcon">
-                    <Icon size={18} />
-                  </div>
-                  <div className="howStepCompactBody">
-                    <h3>{step.title}</h3>
-                    <p>{step.description}</p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+        <svg
+          className="howFlow"
+          viewBox={`0 0 ${flow.w} ${flow.h}`}
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path className="howFlowPath" d={flow.oneTwo} />
+          <path className="howFlowPath" d={flow.twoThree} />
+          {flow.dots.map((dot, index) => (
+            <circle
+              key={index}
+              className={
+                dot.kind === "start" ? "howFlowDot howFlowDotStart" : "howFlowDot howFlowDotEnd"
+              }
+              cx={dot.x}
+              cy={dot.y}
+              r={dot.kind === "start" ? 4 : 6}
+            />
+          ))}
+        </svg>
 
-          <div className="howStage" aria-hidden="true">
-            {mockups.map((mockup, i) => (
-              <div
-                key={i}
-                className={activeStep === i ? "howMockup isVisible" : "howMockup"}
-              >
-                {mockup}
-              </div>
-            ))}
+        <article className="howBentoCard howBentoCard1" ref={card1Ref}>
+          <span className="howBentoNum" aria-hidden="true">1</span>
+          <div className="howBentoCardBody">
+            <h3>{stepTexts[0]?.title}</h3>
+            <p>{stepTexts[0]?.description}</p>
+            <div className="howMsStrip">
+              {msApps.map((app) => (
+                <span className="howMsChip" key={app.key}>
+                  <img src={app.icon} alt="" loading="lazy" />
+                  {app.label}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        </article>
+
+        <article className="howBentoCard howBentoCard2" ref={card2Ref}>
+          <span className="howBentoNum" aria-hidden="true">2</span>
+          <div className="howBentoCardBody">
+            <h3>{stepTexts[1]?.title}</h3>
+            <p>{stepTexts[1]?.description}</p>
+          </div>
+        </article>
+
+        <article className="howBentoCard howBentoCard3" ref={card3Ref}>
+          <span className="howBentoNum" aria-hidden="true">3</span>
+          <div className="howBentoCardBody">
+            <h3>{stepTexts[2]?.title}</h3>
+            <p>{stepTexts[2]?.description}</p>
+          </div>
+        </article>
       </div>
     </section>
   );
 }
-
-/* -----------------------------------------------------------
-   Mockup 1 — Connect your stack
-   ----------------------------------------------------------- */
-
-function ConnectStackMockup({ active }: { active: boolean }) {
-  return (
-    <div className={active ? "mockupCard mockupDark mockupStack isActive" : "mockupCard mockupDark mockupStack"}>
-      <div className="mockupDarkLabel">Connect your stack</div>
-      <h4 className="mockupDarkTitle">What systems do you work with?</h4>
-      <p className="mockupDarkSub">
-        Select one or more. You can always add, remove, or scope connectors later from Admin → Integrations.
-      </p>
-
-      <div className="mockupStackCard">
-        <div className="mockupStackHead">
-          <div className="mockupStackIcon">
-            <span /><span /><span /><span />
-          </div>
-          <div className="mockupStackTitle">
-            <strong>Microsoft 365</strong>
-            <span className="mockupStackBadge">12 services</span>
-          </div>
-          <div className="mockupStackCheck">
-            <Check size={14} />
-          </div>
-        </div>
-        <p className="mockupStackDesc">
-          Users, groups, teams, sites, licenses, mailboxes, devices, security policies and more.
-        </p>
-      </div>
-    </div>
-  );
-}
-
-/* -----------------------------------------------------------
-   Mockup 2 — Authorize Microsoft 365
-   ----------------------------------------------------------- */
-
-function AuthorizeMockup({ active }: { active: boolean }) {
-  const capabilities = [
-    { icon: Users, title: "Scan users, groups & licenses", sub: "Full inventory of your tenant" },
-    { icon: FolderOpen, title: "Analyze SharePoint & OneDrive", sub: "Sites, storage and activity" },
-    { icon: MessageSquare, title: "Review Teams & mailboxes", sub: "Activity, status and configuration" },
-    { icon: ShieldCheck, title: "Read security & access policies", sub: "Conditional access and Entra ID" }
-  ];
-
-  return (
-    <div className={active ? "mockupCard mockupDark mockupAuth isActive" : "mockupCard mockupDark mockupAuth"}>
-      <div className="mockupDarkLabel">Connector 1 of 1 · Microsoft 365</div>
-      <h4 className="mockupDarkTitle">Connect your Microsoft 365</h4>
-      <p className="mockupDarkSub">
-        Sign in with your Microsoft account. Zelynto will get to know your environment so it can answer your questions and take action, instantly.
-      </p>
-
-      <div className="mockupAuthGrid">
-        <div className="mockupAuthList">
-          <div className="mockupAuthItems">
-            {capabilities.map((cap, idx) => (
-              <div
-                className="mockupAuthItem"
-                key={cap.title}
-                style={{ "--i": idx } as React.CSSProperties}
-              >
-                <span className="mockupAuthItemIcon">
-                  <cap.icon size={14} />
-                </span>
-                <div>
-                  <strong>{cap.title}</strong>
-                  <span>{cap.sub}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mockupAuthPanel">
-          <div className="mockupAuthOrbit">
-            <img src={zelyntoMark} alt="" />
-            <span className="mockupAuthMsLogo">
-              <span /><span /><span /><span />
-            </span>
-          </div>
-          <span className="mockupAuthEyebrow">OAuth 2.0 · Entra ID</span>
-          <strong className="mockupAuthHeading">Ready to authorize</strong>
-          <p className="mockupAuthDesc">
-            A Microsoft consent window will open. Approve once, revoke anytime from your admin console.
-          </p>
-          <button type="button" className="mockupAuthButton" tabIndex={-1} aria-hidden="true">
-            <span className="mockupAuthMsBadge">
-              <span /><span /><span /><span />
-            </span>
-            Authorize with Microsoft
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* -----------------------------------------------------------
-   Mockup 3 — Set governance rules
-   ----------------------------------------------------------- */
-
-function GovernanceMockup({ active }: { active: boolean }) {
-  const rules = [
-    {
-      title: "Always require human approval",
-      sub: "Every agent action, even safe reads, asks for explicit confirmation before executing.",
-      on: true
-    },
-    {
-      title: "Block destructive actions",
-      sub: "Hard-stop delete, drop, overwrite, or mass-update operations.",
-      on: true,
-      badge: "Recommended"
-    },
-    {
-      title: "Require approval for write operations",
-      sub: "Sends, updates, creations, and status changes need a thumbs-up.",
-      on: true
-    }
-  ];
-
-  const previews = [
-    {
-      kind: "block" as const,
-      action: "delete 38 closed opportunities",
-      state: "Blocked: destructive"
-    },
-    {
-      kind: "approve" as const,
-      action: "send 6 follow-up emails",
-      state: "Approval required"
-    },
-    {
-      kind: "approve" as const,
-      action: "read 12 SharePoint documents",
-      state: "Approval required"
-    }
-  ];
-
-  return (
-    <div className={active ? "mockupCard mockupDark mockupGov isActive" : "mockupCard mockupDark mockupGov"}>
-      <div className="mockupDarkLabel">Governance</div>
-      <h4 className="mockupDarkTitle">Set your governance rules</h4>
-      <p className="mockupDarkSub">
-        Zelynto always asks before acting. Configure when, how loudly, and who's in the loop.
-      </p>
-
-      <div className="mockupGovGrid">
-        <div className="mockupGovRules">
-          {rules.map((rule, i) => (
-            <div
-              className="mockupGovRule"
-              key={rule.title}
-              style={{ "--i": i } as React.CSSProperties}
-            >
-              <div className="mockupGovRuleBody">
-                <strong>{rule.title}</strong>
-                <span>{rule.sub}</span>
-              </div>
-              {rule.badge ? <span className="mockupGovBadge">{rule.badge}</span> : null}
-              <span className={rule.on ? "mockupToggle isOn" : "mockupToggle"}>
-                <span />
-              </span>
-            </div>
-          ))}
-
-          <div
-            className="mockupGovRule mockupGovSlider"
-            style={{ "--i": rules.length } as React.CSSProperties}
-          >
-            <div className="mockupGovRuleBody">
-              <strong>Minimum risk level requiring validation</strong>
-              <span>Operations at or above this level trigger approval.</span>
-            </div>
-            <span className="mockupGovBadge mockupGovBadgeNeutral">Medium</span>
-            <div className="mockupGovTrack">
-              <div className="mockupGovTrackFill" />
-              <span className="mockupGovTrackThumb" />
-              <div className="mockupGovTrackLabels">
-                <span>Low</span>
-                <span className="isOn">Medium</span>
-                <span>High</span>
-                <span>Critical</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mockupGovPreview">
-          <div className="mockupGovPreviewLabel">Live preview</div>
-          {previews.map((p, i) => (
-            <div
-              className="mockupGovPreviewBlock"
-              key={p.action}
-              style={{ "--i": i } as React.CSSProperties}
-            >
-              <span className="mockupGovPreviewAction">
-                Agent wants to <strong>{p.action}</strong>.
-              </span>
-              <div className={`mockupGovVerdict ${p.kind === "block" ? "isBlocked" : "isApprove"}`}>
-                {p.kind === "block" ? <XCircle size={14} /> : <ShieldCheck size={14} />}
-                <div>
-                  <strong>{p.state}</strong>
-                  <span>Decision will be logged to the audit trail.</span>
-                </div>
-              </div>
-            </div>
-          ))}
-          <p className="mockupGovAuditNote">
-            All decisions, approvals, and refusals are written to an immutable audit log. Tenant admins can replay any session.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* -----------------------------------------------------------
-   Mockup 4 — You're all set
-   ----------------------------------------------------------- */
-
-function AllSetMockup({ active }: { active: boolean }) {
-  return (
-    <div className={active ? "mockupCard mockupDark mockupAllSet isActive" : "mockupCard mockupDark mockupAllSet"}>
-      <div className="mockupAllSetCheck">
-        <CheckCircle2 size={28} />
-      </div>
-      <div className="mockupDarkLabel mockupAllSetLabel">Workspace provisioned</div>
-      <h4 className="mockupAllSetTitle">You're all set !</h4>
-      <p className="mockupAllSetSub">
-        Your connector are authorized. Start a conversation and Zelynto will handle the rest.
-      </p>
-
-      <div className="mockupAllSetCards">
-        <div className="mockupAllSetCard">
-          <span className="mockupAllSetCardIcon">
-            <span /><span /><span /><span />
-          </span>
-          <div>
-            <strong>Microsoft 365</strong>
-            <span>Connected · 4 scopes</span>
-          </div>
-          <span className="mockupAllSetLive"><span />Live</span>
-        </div>
-        <div className="mockupAllSetCard">
-          <span className="mockupAllSetCardIcon mockupAllSetCardIconGov">
-            <Lock size={16} />
-          </span>
-          <div>
-            <strong>Governance policy</strong>
-            <span>Strict · 3 rules · audit on</span>
-          </div>
-          <span className="mockupAllSetLive"><span />Live</span>
-        </div>
-      </div>
-
-      <button type="button" className="mockupAllSetCta" tabIndex={-1} aria-hidden="true">
-        Start using Zelynto
-        <ChevronRight size={16} />
-      </button>
-    </div>
-  );
-}
-
