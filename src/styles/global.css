@@ -175,9 +175,6 @@ button {
 }
 
 .primaryLink {
-  --hover-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --hover-dur: 280ms;
-
   position: relative;
   display: inline-flex;
   min-height: 30px;
@@ -191,41 +188,6 @@ button {
   color: var(--on-brand);
   background: var(--gradient-brand);
   box-shadow: var(--shadow-brand);
-  overflow: hidden;
-  isolation: isolate;
-  transition: box-shadow var(--hover-dur) var(--hover-ease),
-    filter var(--hover-dur) var(--hover-ease);
-}
-
-.primaryLink > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Shine sweep — signature reveal on hover */
-.primaryLink::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.32) 50%,
-    transparent 70%
-  );
-  transform: translateX(-110%);
-  transition: transform 720ms var(--hover-ease);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.primaryLink:hover {
-  filter: brightness(1.06) saturate(1.08);
-  box-shadow: 0 22px 46px -18px rgba(91, 99, 217, 0.4);
-}
-
-.primaryLink:hover::after {
-  transform: translateX(110%);
 }
 
 .primaryLink:focus-visible {

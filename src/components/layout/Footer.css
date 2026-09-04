@@ -33,7 +33,8 @@
 
 .footerGrid {
   display: grid;
-  grid-template-columns: minmax(260px, 1.4fr) repeat(3, minmax(140px, 0.7fr));
+  grid-template-columns: minmax(260px, 1.2fr) repeat(2, minmax(140px, 0.7fr)) auto;
+  align-items: start;
   gap: 34px;
   padding: 42px 0;
 }
@@ -50,10 +51,118 @@
   line-height: 1.65;
 }
 
-.footerGrid div:not(.footerBrand) {
+.footerGrid div:not(.footerBrand):not(.footerLangSelect) {
   display: grid;
   align-content: start;
   gap: 12px;
+}
+
+/* ────── Language selector ────── */
+.footerLangSelect {
+  position: relative;
+  width: 228px;
+  align-self: start;
+  justify-self: end;
+}
+
+.footerLangSelectTrigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 12px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  background: var(--surface-1);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.footerLangSelectTrigger > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footerLangSelectTrigger:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text-strong);
+}
+
+.footerLangSelectTrigger:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.35);
+}
+
+.footerLangSelectTrigger svg:last-child {
+  transition: transform 200ms ease;
+}
+
+.footerLangSelectTrigger svg.isOpen {
+  transform: rotate(180deg);
+}
+
+/* Opens downward, same width as the trigger. z-index is set above the fixed
+   WhatsApp button (1000) so the menu overlays it instead of running under it. */
+.footerLangSelectMenu {
+  position: absolute;
+  z-index: 1001;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  display: grid;
+  width: 100%;
+  gap: 2px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-1);
+  box-shadow: var(--shadow-md);
+}
+
+.footerLangSelectMenu button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  border: 0;
+  border-radius: 7px;
+  padding: 9px 12px;
+  color: var(--text);
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.footerLangFlag {
+  flex: 0 0 auto;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.footerLangSelectMenu button:hover {
+  color: var(--text-strong);
+  background: var(--surface-3);
+}
+
+.footerLangSelectMenu button.isActive {
+  color: var(--on-brand);
+  background: var(--gradient-brand);
 }
 
 .footerGrid strong {
@@ -148,6 +257,12 @@
 
   .footerBrand p {
     max-width: none;
+  }
+
+  .footerLangSelect {
+    grid-column: 1 / -1;
+    align-self: start;
+    justify-self: start;
   }
 }
 

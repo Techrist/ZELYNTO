@@ -2,26 +2,20 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
-import { MagneticButton } from "../utility/MagneticButton";
+import { FooterLanguageSelect } from "../ui/FooterLanguageSelect";
 import "./Footer.css";
 
-const productLinks: Array<{ key: string; href: string }> = [
-  { key: "chat", href: "#exploration" },
-  { key: "graph", href: "#exploration" },
-  { key: "provisioning", href: "#automation" },
-  { key: "pricing", href: "#/pricing" }
-];
-
-const securityLinks: Array<{ key: string; href: string }> = [
-  { key: "alerting", href: "#security-copilot" },
-  { key: "audit", href: "#compliance" },
-  { key: "governance", href: "#security-copilot" }
+const quickLinks: Array<{ key: string; href: string }> = [
+  { key: "reporting", href: "#/inventories" },
+  { key: "pricing", href: "#/pricing" },
+  { key: "contact", href: "#/contact" }
 ];
 
 const resourcesLinks: Array<{ key: string; href: string }> = [
-  { key: "demo", href: "#demo" },
-  { key: "graph", href: "#exploration" },
-  { key: "contact", href: "#/contact" }
+  { key: "privacy", href: "#" },
+  { key: "terms", href: "#" },
+  { key: "dpa", href: "#" },
+  { key: "aup", href: "#" }
 ];
 
 export function Footer() {
@@ -34,12 +28,10 @@ export function Footer() {
           <span>{t("footer.ctaEyebrow")}</span>
           <h2>{t("footer.ctaTitle")}</h2>
         </div>
-        <MagneticButton strength={22}>
-          <a className="primaryLink large" href="https://cestfredy.github.io/zelynto-onboarding/">
-            {t("common.getStarted")}
-            <ArrowRight size={18} />
-          </a>
-        </MagneticButton>
+        <a className="primaryLink large" href="https://cestfredy.github.io/zelynto-onboarding/">
+          {t("common.getStarted")}
+          <ArrowRight size={18} />
+        </a>
       </div>
 
       <div className="footerGrid">
@@ -49,19 +41,10 @@ export function Footer() {
         </div>
 
         <div>
-          <strong>{t("footer.columns.product.title")}</strong>
-          {productLinks.map((link) => (
-            <a key={`product-${link.key}`} href={link.href}>
-              {t(`footer.columns.product.links.${link.key}`)}
-            </a>
-          ))}
-        </div>
-
-        <div>
-          <strong>{t("footer.columns.security.title")}</strong>
-          {securityLinks.map((link) => (
-            <a key={`security-${link.key}`} href={link.href}>
-              {t(`footer.columns.security.links.${link.key}`)}
+          <strong>{t("footer.columns.quickLinks.title")}</strong>
+          {quickLinks.map((link) => (
+            <a key={`quick-${link.key}`} href={link.href}>
+              {t(`footer.columns.quickLinks.links.${link.key}`)}
             </a>
           ))}
         </div>
@@ -74,6 +57,8 @@ export function Footer() {
             </a>
           ))}
         </div>
+
+        <FooterLanguageSelect />
       </div>
 
       <div className="footerBottom">

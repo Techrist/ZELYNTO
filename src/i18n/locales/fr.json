@@ -277,31 +277,26 @@
     "ctaTitle": "Centralisez votre administration Microsoft 365 avec Zelynto",
     "brandTagline": "Le copilote d'administration conçu pour explorer, sécuriser, automatiser et auditer votre environnement Microsoft 365.",
     "columns": {
-      "product": {
-        "title": "Produit",
+      "quickLinks": {
+        "title": "Liens rapides",
         "links": {
-          "chat": "Chat M365",
-          "graph": "Graph Explorer",
-          "provisioning": "Provisioning",
-          "pricing": "Pricing"
-        }
-      },
-      "security": {
-        "title": "Sécurité",
-        "links": {
-          "alerting": "Alerting",
-          "audit": "Audit continu",
-          "governance": "Gouvernance"
+          "reporting": "Reporting",
+          "pricing": "Tarifs",
+          "contact": "Contact"
         }
       },
       "resources": {
         "title": "Ressources",
         "links": {
-          "demo": "Démo produit",
-          "graph": "Microsoft Graph",
-          "contact": "Contact"
+          "privacy": "Politique de confidentialité",
+          "terms": "Conditions d'utilisation",
+          "dpa": "Accord de traitement des données (DPA)",
+          "aup": "Politique d'utilisation acceptable"
         }
       }
+    },
+    "language": {
+      "label": "Sélectionner la langue"
     },
     "copyright": "© 2026 Zelynto. Tous droits réservés.",
     "legal": {
@@ -882,7 +877,15 @@
   "language": {
     "label": "Langue",
     "en": "EN",
-    "fr": "FR"
+    "fr": "FR",
+    "de": "DE",
+    "it": "IT",
+    "es": "ES",
+    "enFull": "English",
+    "frFull": "Français",
+    "deFull": "Deutsch",
+    "itFull": "Italiano",
+    "esFull": "Español"
   },
   "theme": {
     "label": "Thème",

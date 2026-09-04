@@ -1,0 +1,897 @@
+{
+  "common": {
+    "inventories": "Inventari",
+    "getStarted": "Inizia",
+    "signIn": "Accedi",
+    "contact": "Contatti",
+    "pricing": "Prezzi",
+    "faq": "FAQ"
+  },
+  "header": {
+    "product": "Prodotto",
+    "productLinks": {
+      "exploration": "Esplorazione intelligente M365",
+      "security": "Security Copilot e Alerting",
+      "automation": "Automazione e Provisioning",
+      "compliance": "Copilot di audit e conformità"
+    },
+    "howItWorks": "Come funziona",
+    "mobileMenu": {
+      "open": "Apri il menu",
+      "close": "Chiudi il menu"
+    },
+    "reporting": "Reporting",
+    "reportingLinks": {
+      "savings": "Risparmi",
+      "audit": "Audit"
+    }
+  },
+  "hero": {
+    "eyebrow": "Copilota amministrativo per Microsoft 365",
+    "title": "Amministra Microsoft 365 in linguaggio naturale",
+    "description": "Zelynto trasforma le complesse console di Microsoft 365 in un'esperienza conversazionale semplice per esplorare, proteggere, provisionare e verificare il tuo tenant.",
+    "trust": {
+      "graph": "Microsoft Graph-first",
+      "audit": "Audit tracciabile",
+      "actions": "Azioni confermate"
+    },
+    "mockup": {
+      "ariaLabel": "Flusso di lavoro Zelynto",
+      "prompt": "Analizza il tenant alla ricerca di siti SharePoint inattivi e licenze sottoutilizzate, correla l'utilizzo tra Teams e OneDrive e genera un piano d'azione prioritario per ridurre i costi e migliorare la sicurezza.",
+      "nodes": {
+        "plan": {
+          "title": "Piano",
+          "text": "5 passaggi · M365 …"
+        },
+        "sharepoint": {
+          "title": "SharePoint",
+          "text": "Siti inattivi · 9…"
+        },
+        "licenses": {
+          "title": "Licenze",
+          "text": "Sottoutilizzate · E…"
+        },
+        "correlate": {
+          "title": "Correlazione",
+          "text": "Teams · OneDri…"
+        },
+        "action": {
+          "title": "Piano d'azione",
+          "text": "Costi · Sicurezza · …"
+        }
+      },
+      "approval": {
+        "title": "In attesa di approvazione",
+        "summary": "Archivia 14 siti · recupera 38 licenze · risparmia 42k €/anno",
+        "cta": "Rivedi"
+      }
+    }
+  },
+  "integrations": {
+    "ariaLabel": "Integrazioni Microsoft 365"
+  },
+  "brand": {
+    "label": "Ecco Zelynto",
+    "title": "Un'unica intelligenza, mille forme",
+    "description": "Dietro ogni risposta, lo stesso motore: un esperto di Microsoft 365 che ascolta, ragiona e agisce. Zelynto assume la forma della tua domanda, mai il contrario.",
+    "captionBlob": "Sta pensando…",
+    "captionZ": "Zelynto"
+  },
+  "problem": {
+    "label": "Il problema",
+    "title": "Microsoft 365 è diventato impossibile da gestire manualmente",
+    "description": "Più il tenant cresce, più aumenta lo sforzo operativo. I team IT hanno bisogno di una visione chiara, azioni sicure e una tracciabilità completa.",
+    "items": [
+      {
+        "title": "Troppe console",
+        "description": "Entra ID, Defender, Purview, Teams, SharePoint… i tuoi amministratori destreggiano tra dieci portali solo per rispondere a una domanda."
+      },
+      {
+        "title": "Tempo perso",
+        "description": "Le query Graph e i report manuali richiedono ore, mentre la maggior parte delle domande si ripresenta ogni settimana."
+      },
+      {
+        "title": "Punti ciechi",
+        "description": "Gli avvisi critici affogano nel rumore, gli account inattivi mantengono le licenze e la condivisione esterna sfugge al controllo."
+      },
+      {
+        "title": "Nessuna tracciabilità",
+        "description": "Le azioni amministrative sono raramente registrate end-to-end. Gli audit interni diventano un incubo da ricostruire."
+      }
+    ]
+  },
+  "capabilities": {
+    "explore": {
+      "label": "Esplorazione intelligente M365",
+      "title": "Interroga Microsoft 365 come se parlassi con un esperto",
+      "description": "Zelynto traduce le tue domande in richieste Graph, incrocia i dati del tenant e fornisce una risposta chiara, strutturata e attuabile.",
+      "bullets": [
+        "Domande su utenti, gruppi, email, file e licenze",
+        "Riepiloghi leggibili per i team IT e i CIO",
+        "Prove e dati di origine conservati"
+      ]
+    },
+    "security": {
+      "label": "Security Copilot e Alerting",
+      "title": "Trasforma i tuoi avvisi M365 in decisioni rapide",
+      "description": "Zelynto centralizza i segnali di Defender e Identity, spiega gli avvisi critici e assegna priorità agli account o alle configurazioni da gestire.",
+      "bullets": [
+        "Vista unificata degli avvisi critici",
+        "Spiegazione in linguaggio naturale di ogni incidente",
+        "Raccomandazioni di correzione contestualizzate"
+      ]
+    },
+    "automation": {
+      "label": "Automazione e Provisioning",
+      "title": "Automatizza le azioni amministrative senza perdere il controllo",
+      "description": "Crea risorse Microsoft 365 tramite prompt, con anteprima, convenzioni di denominazione, governance e conferma prima dell'esecuzione.",
+      "bullets": [
+        "Creazione di gruppi, siti SharePoint e risorse Entra ID",
+        "Piano di esecuzione leggibile prima di ogni modifica",
+        "Registrazione automatica delle azioni"
+      ]
+    },
+    "compliance": {
+      "label": "Copilot di audit e conformità",
+      "title": "Mantieni il tuo tenant costantemente conforme",
+      "description": "Zelynto monitora le deviazioni di configurazione, calcola un punteggio di postura e spiega perché ogni elemento è prioritario.",
+      "bullets": [
+        "Punteggio per categoria: identità, collaborazione, licenze, governance",
+        "Raccomandazioni basate sulle best practice M365",
+        "Accesso conversazionale ai risultati degli audit"
+      ]
+    }
+  },
+  "howItWorks": {
+    "label": "Come funziona",
+    "title": "Dall'accesso alla prima azione in meno di un'ora",
+    "description": "Tre passaggi, nessuna distribuzione complessa, nessun agente da installare.",
+    "steps": [
+      {
+        "title": "Collega il tuo stack",
+        "description": "Scegli le superfici Microsoft 365 che Zelynto può vedere. Aggiungi, rimuovi o limita i connettori in qualsiasi momento dall'area Admin."
+      },
+      {
+        "title": "Autorizza Microsoft 365",
+        "description": "Accesso unico tramite Entra ID. Zelynto mappa il tuo tenant e si connette a Graph in pochi secondi."
+      },
+      {
+        "title": "Definisci le tue regole di governance",
+        "description": "Decidi cosa richiede un'approvazione, cosa viene bloccato e chi resta coinvolto. Il registro di audit è sempre attivo."
+      }
+    ]
+  },
+  "security": {
+    "label": "Sicurezza e conformità",
+    "title": "Progettato per i reparti IT più esigenti",
+    "description": "Zelynto applica il principio del privilegio minimo, conserva le prove necessarie per gli audit e riduce al minimo l'impronta sui tuoi dati.",
+    "pillars": [
+      {
+        "title": "Dati isolati",
+        "description": "I tuoi dati restano all'interno del tuo perimetro. Nessuna informazione del tenant viene condivisa con terze parti, nessun addestramento di modelli sui tuoi contenuti."
+      },
+      {
+        "title": "Permessi minimi",
+        "description": "Zelynto si connette tramite un'applicazione Entra ID dedicata, con un ambito Graph strettamente limitato alle tue esigenze reali."
+      },
+      {
+        "title": "Nessuna memorizzazione dei prompt",
+        "description": "Le conversazioni non vengono conservate per impostazione predefinita. Mantieni il controllo su cosa viene registrato e per quanto tempo."
+      },
+      {
+        "title": "Audit immutabile",
+        "description": "Ogni azione eseguita viene registrata in un registro append-only, firmato ed esportabile per i tuoi audit interni."
+      }
+    ]
+  },
+  "pricing": {
+    "label": "Prezzi",
+    "title": "Piani semplici per adottare Zelynto in base alla tua maturità M365",
+    "description": "Inizia con l'audit e l'esplorazione, poi attiva gradualmente l'automazione e i controlli avanzati.",
+    "popularBadge": "Il più richiesto",
+    "cta": {
+      "eyebrow": "Prezzi",
+      "title": "Un piano per ogni livello di maturità Microsoft 365",
+      "description": "Dall'audit iniziale alla governance avanzata: confronta i piani e trova quello adatto al tuo tenant.",
+      "button": "Vedi i prezzi"
+    },
+    "plans": {
+      "starter": {
+        "label": "Starter",
+        "title": "Audit ed esplorazione",
+        "description": "Per iniziare con una visione chiara del tuo tenant Microsoft 365.",
+        "ctaLabel": "Richiedi una demo",
+        "bullets": [
+          "Chat di esplorazione M365",
+          "Audit continuo iniziale",
+          "Report dei rischi prioritari",
+          "Fino a 500 utenti"
+        ]
+      },
+      "business": {
+        "label": "Business",
+        "title": "Copilot M365 completo",
+        "description": "Per gestire sicurezza, alerting, raccomandazioni e azioni governate.",
+        "ctaLabel": "Pianifica una chiamata",
+        "bullets": [
+          "Tutto di Starter",
+          "Alerting Defender e Identity",
+          "Anteprima delle azioni Graph",
+          "Raccomandazioni di correzione",
+          "Fino a 2.500 utenti"
+        ]
+      },
+      "enterprise": {
+        "label": "Enterprise",
+        "title": "Governance avanzata",
+        "description": "Per grandi tenant, MSP e organizzazioni con forti esigenze di conformità.",
+        "price": "Su richiesta",
+        "ctaLabel": "Contatta il team",
+        "bullets": [
+          "Tutto di Business",
+          "Multi-tenant e MSP",
+          "Regole di audit personalizzate",
+          "SSO, SLA e supporto prioritario"
+        ]
+      }
+    },
+    "monthly": "/mese"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Le risposte alle domande più frequenti",
+    "items": [
+      {
+        "question": "Dobbiamo distribuire un agente o un connettore nel nostro tenant?",
+        "answer": "No. Zelynto utilizza Microsoft Graph tramite un'applicazione Entra ID che crei in pochi minuti. Nessuna installazione lato server, nessun agente da distribuire sui dispositivi."
+      },
+      {
+        "question": "Quali permessi di Microsoft Graph sono necessari?",
+        "answer": "L'ambito è calibrato in base ai moduli attivati. Per l'esplorazione e l'audit bastano i permessi di lettura (Directory.Read.All, AuditLog.Read.All). Il provisioning aggiunge le relative scritture."
+      },
+      {
+        "question": "I miei dati escono dal mio ambiente?",
+        "answer": "Le query Graph vengono eseguite da Zelynto, ma per impostazione predefinita nessun dato del tenant viene conservato oltre la durata della conversazione. Puoi attivare un registro delle azioni on-prem per la tracciabilità."
+      },
+      {
+        "question": "Come funzionano le azioni automatizzate?",
+        "answer": "Ogni azione passa prima da un'anteprima leggibile: creazione di un gruppo, modifica di una policy, archiviazione di un sito. Nulla viene eseguito senza la tua conferma esplicita."
+      },
+      {
+        "question": "Zelynto è adatto agli MSP che gestiscono più tenant?",
+        "answer": "Sì. Il piano Enterprise è pensato per configurazioni multi-tenant: isolamento dei contesti, regole di audit per cliente e una dashboard consolidata."
+      },
+      {
+        "question": "Quanto tempo serve per iniziare?",
+        "answer": "Meno di un'ora tra la creazione dell'app Entra ID, la connessione di Zelynto e la tua prima sessione di esplorazione."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Per una V1 pronta all'uso",
+    "title": "Fai di Zelynto il tuo cockpit Microsoft 365",
+    "description": "Una semplice chat in superficie, con uno strato di Graph, sicurezza, provisioning e audit in profondità."
+  },
+  "footer": {
+    "ctaEyebrow": "Pronto per Zelynto?",
+    "ctaTitle": "Centralizza l'amministrazione di Microsoft 365 con Zelynto",
+    "brandTagline": "Il copilota amministrativo pensato per esplorare, proteggere, automatizzare e verificare il tuo ambiente Microsoft 365.",
+    "columns": {
+      "quickLinks": {
+        "title": "Link rapidi",
+        "links": {
+          "reporting": "Reporting",
+          "pricing": "Prezzi",
+          "contact": "Contatti"
+        }
+      },
+      "resources": {
+        "title": "Risorse",
+        "links": {
+          "privacy": "Informativa sulla privacy",
+          "terms": "Termini di utilizzo",
+          "dpa": "Accordo sul trattamento dei dati (DPA)",
+          "aup": "Politica di utilizzo accettabile"
+        }
+      }
+    },
+    "language": {
+      "label": "Seleziona lingua"
+    },
+    "copyright": "© 2026 Zelynto. Tutti i diritti riservati.",
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Termini",
+      "status": "Stato"
+    }
+  },
+  "contact": {
+    "label": "Contatti",
+    "title": "Parliamo del tuo tenant Microsoft 365",
+    "description": "Richiedi una demo e scopri come Zelynto semplifica l'amministrazione: esplorazione in linguaggio naturale, alerting prioritario, azioni governate e audit continuo.",
+    "trust": {
+      "response": "Risposta entro 24 ore lavorative",
+      "demo": "Demo personalizzata",
+      "commitment": "Senza impegno"
+    },
+    "form": {
+      "intro": {
+        "label": "La tua richiesta",
+        "title": "Alcuni dettagli per preparare la nostra conversazione"
+      },
+      "fields": {
+        "name": "Nome completo",
+        "namePlaceholder": "Camille Rossi",
+        "email": "Email aziendale",
+        "emailPlaceholder": "camille@azienda.com",
+        "company": "Azienda",
+        "companyPlaceholder": "Nome dell'azienda",
+        "role": "Ruolo",
+        "rolePlaceholder": "CIO, CISO, Admin M365…",
+        "tenantSize": "Dimensione del tenant",
+        "tenantPlaceholder": "Scegli un intervallo…",
+        "tenantOptions": {
+          "lt500": "Meno di 500 utenti",
+          "500to2500": "500 – 2.500 utenti",
+          "2500to10000": "2.500 – 10.000 utenti",
+          "gt10000": "Più di 10.000 utenti"
+        },
+        "subject": "Oggetto",
+        "subjectOptions": [
+          "Richiedi una demo",
+          "Valutare Zelynto sul mio tenant",
+          "Domanda commerciale",
+          "Domanda tecnica",
+          "Partnership / MSP",
+          "Altro"
+        ],
+        "message": "Messaggio",
+        "messagePlaceholder": "Le tue sfide attuali, cosa vorresti esplorare durante la demo…"
+      },
+      "submit": "Invia richiesta",
+      "privacyNote": "I tuoi dati vengono utilizzati solo per ricontattarti.",
+      "success": "Grazie! La tua richiesta è stata registrata. Il nostro team ti risponderà entro 24 ore."
+    },
+    "aside": {
+      "email": "Email",
+      "demoTitle": "Demo entro 24h",
+      "demoText": "Appuntamento personalizzato in base al tuo fuso orario e ai tuoi casi d'uso.",
+      "audience": "Destinatari",
+      "audienceText": "CIO, CISO, amministratori M365, MSP che gestiscono più tenant.",
+      "benefitsTitle": "Cosa ottieni",
+      "benefits": [
+        "Audit express del tuo tenant",
+        "Demo personalizzata sui tuoi casi d'uso",
+        "Raccomandazioni quantificate prima di ogni impegno"
+      ]
+    }
+  },
+  "whatsapp": {
+    "defaultMessage": "Ciao, ti contatto dal tuo sito web!",
+    "ariaLabel": "Contattaci su WhatsApp",
+    "buttonLabel": "Contatta via WhatsApp"
+  },
+  "auth": {
+    "title": "Accedi",
+    "description": "Accedi al tuo futuro cockpit M365.",
+    "login": {
+      "title": "Accesso",
+      "email": "Email",
+      "password": "Password",
+      "cta": "Entra"
+    },
+    "signup": {
+      "title": "Registrati",
+      "name": "Nome",
+      "email": "Email",
+      "cta": "Crea account"
+    }
+  },
+  "chat": {
+    "sidebar": {
+      "reporting": "Reporting",
+      "microsoft365": "Microsoft 365",
+      "newChat": "Nuova chat",
+      "searchChats": "Cerca chat",
+      "administration": "Amministrazione",
+      "audit": "Audit",
+      "security": "Sicurezza",
+      "recents": "Recenti",
+      "user": "Zelynto Developer"
+    },
+    "recents": [
+      "Audit MFA amministratori",
+      "Siti SharePoint inattivi",
+      "Inventario licenze M365",
+      "Account inattivi > 90gg",
+      "Condivisione esterna a rischio",
+      "Policy di accesso condizionale attive"
+    ],
+    "welcome": {
+      "title": "Pensato per chi gestisce tutto",
+      "description": "Risposte basate sull'IA per Microsoft 365.",
+      "placeholder": "Interroga il tuo tenant",
+      "chips": [
+        "Amministratori senza MFA",
+        "Licenze sovradimensionate",
+        "Autenticazione legacy",
+        "Team inutilizzati"
+      ]
+    },
+    "inventories": {
+      "label": "Reporting",
+      "title": "Il tuo Microsoft 365, completamente censito",
+      "description": "Ogni utente, licenza, sito e dispositivo del tuo tenant raccolto, valutato e pronto per l'esportazione in un unico posto.",
+      "tabs": {
+        "inventories": "Inventari",
+        "savings": "Risparmi",
+        "audit": "Audit"
+      },
+      "updated": "Aggiornato 7h fa",
+      "refresh": "Aggiorna",
+      "thresholds": {
+        "30d": "30g",
+        "90d": "90g",
+        "180d": "180g"
+      },
+      "items": {
+        "entraId": {
+          "name": "Entra ID",
+          "subtitle": "220 utenti · 195 gruppi · 7 dispositivi",
+          "stats": [
+            "12 amministratori",
+            "209 senza MFA"
+          ]
+        },
+        "exchange": {
+          "name": "Exchange",
+          "subtitle": "202 caselle postali",
+          "stats": [
+            "202 attive",
+            "0 inattive"
+          ]
+        },
+        "sharepoint": {
+          "name": "SharePoint",
+          "subtitle": "97 siti",
+          "stats": [
+            "0 attivo",
+            "97 inattivi"
+          ]
+        },
+        "onedrive": {
+          "name": "OneDrive",
+          "subtitle": "21 OneDrive",
+          "stats": [
+            "1 attivo",
+            "20 inattivi"
+          ]
+        },
+        "teams": {
+          "name": "Teams",
+          "subtitle": "24 team",
+          "stats": [
+            "5 attivi",
+            "19 inattivi"
+          ]
+        },
+        "powerPlatform": {
+          "name": "Power Platform",
+          "subtitle": "4 ambienti",
+          "stats": [
+            "0 disabilitato",
+            "3 inattivi"
+          ]
+        },
+        "intune": {
+          "name": "Intune",
+          "subtitle": "3 registrati",
+          "stats": [
+            "1 conforme",
+            "2 non conformi"
+          ]
+        }
+      }
+    },
+    "variants": {
+      "explore": {
+        "prompt": "Elenca gli utenti inattivi da oltre 30 giorni",
+        "title": "14 utenti inattivi rilevati",
+        "answer": "Ho trovato 14 account senza accesso recente. 9 di questi consumano ancora una licenza attiva.",
+        "bullets": [
+          "Utenti: 14 account",
+          "Licenze collegate: 9",
+          "Rischio: accesso dormiente"
+        ]
+      },
+      "security": {
+        "prompt": "Quali avvisi critici sono aperti?",
+        "title": "3 avvisi critici attivi",
+        "answer": "3 avvisi critici sono aperti. La priorità assoluta è un account amministratore segnalato per viaggio impossibile.",
+        "bullets": [
+          "Viaggio impossibile · admin@",
+          "Affaticamento MFA · 4 utenti",
+          "Escalation dei privilegi · account di servizio"
+        ]
+      },
+      "automation": {
+        "prompt": "Crea 5 gruppi marketing con governance",
+        "title": "Piano d'azione pronto",
+        "answer": "5 gruppi M365 pronti da creare, con convenzione di denominazione MKT-*, proprietari assegnati e registrazione.",
+        "bullets": [
+          "Conferma la convenzione MKT-*",
+          "Crea i 5 gruppi M365",
+          "Registra nel registro delle azioni"
+        ]
+      },
+      "compliance": {
+        "prompt": "Mostra le lacune critiche di conformità",
+        "title": "Punteggio di postura: 72 / 100",
+        "answer": "3 lacune critiche rilevate: MFA amministratori, account inattivi con licenza e condivisione esterna SharePoint.",
+        "bullets": [
+          "MFA amministratori: 4 / 12 senza MFA",
+          "Account inattivi: 14 con licenza",
+          "SharePoint esterno: 8 siti pubblici"
+        ]
+      }
+    }
+  },
+  "inventories": {
+    "label": "Reporting",
+    "title": "Il tuo Microsoft 365, completamente censito",
+    "description": "Ogni utente, licenza, sito e dispositivo del tuo tenant raccolto, valutato e pronto per l'esportazione in un unico posto.",
+    "tabs": {
+      "inventories": "Inventari",
+      "savings": "Risparmi",
+      "audit": "Audit"
+    },
+    "updated": "Aggiornato 7h fa",
+    "refresh": "Aggiorna",
+    "thresholds": {
+      "30d": "30g",
+      "90d": "90g",
+      "180d": "180g"
+    },
+    "items": {
+      "entraId": {
+        "name": "Entra ID",
+        "subtitle": "220 utenti · 195 gruppi · 7 dispositivi",
+        "stats": [
+          "12 amministratori",
+          "209 senza MFA"
+        ]
+      },
+      "exchange": {
+        "name": "Exchange",
+        "subtitle": "202 caselle postali",
+        "stats": [
+          "202 attive",
+          "0 inattive"
+        ]
+      },
+      "sharepoint": {
+        "name": "SharePoint",
+        "subtitle": "97 siti",
+        "stats": [
+          "0 attivo",
+          "97 inattivi"
+        ]
+      },
+      "onedrive": {
+        "name": "OneDrive",
+        "subtitle": "21 OneDrive",
+        "stats": [
+          "1 attivo",
+          "20 inattivi"
+        ]
+      },
+      "teams": {
+        "name": "Teams",
+        "subtitle": "24 team",
+        "stats": [
+          "5 attivi",
+          "19 inattivi"
+        ]
+      },
+      "powerPlatform": {
+        "name": "Power Platform",
+        "subtitle": "4 ambienti",
+        "stats": [
+          "0 disabilitato",
+          "3 inattivi"
+        ]
+      },
+      "intune": {
+        "name": "Intune",
+        "subtitle": "3 registrati",
+        "stats": [
+          "1 conforme",
+          "2 non conformi"
+        ]
+      }
+    },
+    "detail": {
+      "labels": {
+        "132d-ago": "132gg fa",
+        "134d-ago": "134gg fa",
+        "141d-ago": "141gg fa",
+        "176d-ago": "176gg fa",
+        "21d-ago": "21gg fa",
+        "277d-ago": "277gg fa",
+        "30d-ago": "30gg fa",
+        "3d-ago": "3gg fa",
+        "51d-ago": "51gg fa",
+        "5d-ago": "5gg fa",
+        "738d-ago": "738gg fa",
+        "90d": "+90g",
+        "99d-ago": "99gg fa",
+        "account-status": "Stato account",
+        "accounts": "Account",
+        "active": "Attivo",
+        "activity": "Attività",
+        "all": "Tutti",
+        "all-selected-must-match": "(tutti i filtri selezionati devono corrispondere)",
+        "an-administrator-can-disable-this-in-the-microsoft-365-admin-center-settings-org-settings-reports-to-show-owner-upn-normally": "Un amministratore può disattivare questa opzione nell'Admin Center di Microsoft 365 (Impostazioni > Impostazioni organizzazione > Report) per mostrare normalmente Proprietario/UPN.",
+        "anonymous-links": "Link anonimi",
+        "archive-enabled": "Archiviazione abilitata",
+        "archive-litigation-hold-ext-forwarding": "Archivio · Conservazione legale · Inoltro esterno",
+        "archived": "Archiviato",
+        "attributes-risk": "Attributi e rischio",
+        "azure-ad-registered": "Registrato in Azure AD",
+        "breakglass-accounts-2-excluded-from-the-filters-below": "Account breakglass: 2. Esclusi dai filtri seguenti.",
+        "cloud-only": "Solo cloud",
+        "compliance-state": "Conformità e stato",
+        "compliant": "Conforme",
+        "compliant-active": "Conforme · Attivo",
+        "corporate": "Aziendale",
+        "counters-follow-your-selection": "I contatori seguono la tua selezione",
+        "data-completion-in-progress-the-list-below-updates-automatically-99": "Completamento dei dati in corso l'elenco sottostante si aggiorna automaticamente (99%).",
+        "device": "Dispositivo",
+        "devices": "Dispositivi",
+        "disabled": "Disabilitato",
+        "discovery": "Discovery",
+        "distribution-list": "Lista di distribuzione",
+        "download": "Scarica",
+        "dynamic": "Dinamico",
+        "dynamic-dl": "Lista di distribuzione dinamica",
+        "empty": "Vuoto",
+        "enabled": "Abilitato",
+        "entra-id-joined": "Aggiunto a Entra ID",
+        "entra-id-overview": "Panoramica Entra ID",
+        "environment": "Ambiente",
+        "environments-apps-and-flows-across-the-tenant-with-inactive-and-disabled-items-surfaced": "Ambienti, app e flussi nell'intero tenant, con elementi inattivi e disabilitati evidenziati.",
+        "equipment": "Attrezzatura",
+        "exchange-overview": "Panoramica Exchange",
+        "external-forwarding": "Inoltro esterno",
+        "external-members": "Membri esterni",
+        "external-sharing": "Condivisione esterna",
+        "external-sharing-anonymous-links-unavailable-on-onedrive": "(Condivisione esterna / link anonimi non disponibili su OneDrive)",
+        "external-sharing-enabled": "Condivisione esterna abilitata",
+        "files": "File",
+        "forwarding-enabled": "Inoltro abilitato",
+        "governance-risk": "Governance e rischio",
+        "group": "Gruppo",
+        "group-type": "Tipo di gruppo",
+        "groups": "Gruppi",
+        "guest": "Ospite",
+        "guests": "Ospiti",
+        "identities-groups-and-devices-across-your-tenant-with-risk-signals-surfaced-up-front": "Identità, gruppi e dispositivi nel tuo tenant, con segnali di rischio evidenziati in primo piano.",
+        "inactive": "Inattivo",
+        "inactivity": "Inattività:",
+        "intune-overview": "Panoramica Intune",
+        "join-type": "Tipo di aggiunta",
+        "last-activity": "Ultima attività",
+        "legacy-auth": "Autenticazione legacy",
+        "licensed": "Con licenza",
+        "lists-contacts": "Elenchi e contatti",
+        "litigation-hold": "Conservazione legale",
+        "mail-contact": "Contatto di posta",
+        "mail-enabled-group": "Gruppo abilitato alla posta",
+        "mail-user": "Utente di posta",
+        "mailbox": "Casella postale",
+        "mailbox-type": "Tipo di casella postale",
+        "mailboxes": "Caselle postali",
+        "mailboxes-shared-resources-and-distribution-lists-flagged-for-retention-and-forwarding-risks": "Caselle postali, risorse condivise ed elenchi di distribuzione, con rischi di conservazione e inoltro segnalati.",
+        "managed": "Gestito",
+        "managed-devices-and-their-compliance-status-across-platforms": "Dispositivi gestiti e il loro stato di conformità su tutte le piattaforme.",
+        "management": "Gestione",
+        "member": "Membro",
+        "name": "Nome",
+        "never-expires": "Non scade mai",
+        "no-active-filter": "Nessun filtro attivo",
+        "no-manager": "Senza responsabile",
+        "no-mfa": "Senza MFA",
+        "no-mfa-never-expires": "Senza MFA · Non scade mai",
+        "no-mfa-no-manager": "Senza MFA · Senza responsabile",
+        "no-owner": "Senza proprietario",
+        "non-compliant": "Non conforme",
+        "non-compliant-inactive": "Non conforme · Inattivo",
+        "object-type": "Tipo di oggetto",
+        "onedrive-overview": "Panoramica OneDrive",
+        "operating-system": "Sistema operativo",
+        "orphan": "Orfano",
+        "orphaned": "Orfano",
+        "orphans": "Orfani",
+        "other": "Altro",
+        "others": "Altri",
+        "oversized-100gb": "Sovradimensionato (>100 GB)",
+        "overview": "Panoramica",
+        "owner": "Proprietario",
+        "owners": "Proprietari",
+        "ownership": "Proprietà",
+        "personal": "Personale",
+        "personal-drives-and-their-storage-footprint-with-orphaned-accounts-flagged": "Unità personali e il loro ingombro di archiviazione, con account orfani segnalati.",
+        "platform": "Piattaforma",
+        "power-platform-overview": "Panoramica Power Platform",
+        "private": "Privato",
+        "private-channel": "Canale privato",
+        "public": "Pubblico",
+        "refine": "Affina",
+        "risk-signals": "Segnali di rischio",
+        "room": "Sala",
+        "room-list": "Elenco sale",
+        "security": "Sicurezza",
+        "selection": "Selezione",
+        "shared": "Condiviso",
+        "sharepoint-overview": "Panoramica SharePoint",
+        "signals": "Segnali",
+        "site-type": "Tipo di sito",
+        "sites-storage-and-sharing-across-the-tenant-with-governance-risks-called-out": "Siti, archiviazione e condivisione nell'intero tenant, con rischi di governance evidenziati.",
+        "size-gb": "Dimensione (GB)",
+        "soft-deleted": "Eliminato (recuperabile)",
+        "stale": "Obsoleto",
+        "state-apps-and-flows-only": "Stato solo app e flussi",
+        "status": "Stato",
+        "storage-gb": "Archiviazione (GB)",
+        "storage-used": "Archiviazione utilizzata",
+        "summary-informative": "Riepilogo informativo",
+        "sync": "Sincronizzazione",
+        "synced": "Sincronizzato",
+        "synchronization": "Sincronizzazione",
+        "team": "Team",
+        "team-connected": "Connesso a un team",
+        "teams-and-their-visibility-across-the-tenant-with-archived-and-guest-owned-teams-flagged": "I team e la loro visibilità nell'intero tenant, con i team archiviati o di proprietà di ospiti segnalati.",
+        "teams-overview": "Panoramica Teams",
+        "template": "Modello",
+        "threshold": "Soglia:",
+        "type-source": "Tipo e origine",
+        "unmanaged": "Non gestito",
+        "unused": "Inutilizzato",
+        "usage-based-on-message-trace-window-shown-per-row": "Utilizzo (basato sulla finestra di Message Trace mostrata per riga)",
+        "used": "Utilizzato",
+        "user": "Utente",
+        "user-names-are-hidden-in-this-tenant-s-reports": "I nomi utente sono nascosti nei report di questo tenant",
+        "users": "Utenti",
+        "visibility": "Visibilità",
+        "with-guests": "Con ospiti",
+        "without-delegates": "Senza delegati"
+      }
+    }
+  },
+  "savings": {
+    "label": "Reporting",
+    "title": "Trova il denaro nascosto nel tuo tenant Microsoft 365",
+    "description": "Licenze inutilizzate, account inattivi, siti SharePoint abbandonati Zelynto calcola i tuoi risparmi potenziali, quantificati e pronti per l'esportazione.",
+    "highlights": {
+      "licenses": {
+        "title": "Ottimizzazione delle licenze",
+        "description": "Zelynto rileva automaticamente le licenze a pagamento assegnate ad account che non le utilizzano più, così paghi solo per ciò che serve davvero."
+      },
+      "users": {
+        "title": "Account inattivi identificati",
+        "description": "Nessuna attività su Teams, Exchange o OneDrive da 30, 60 o 90 giorni? Zelynto li segnala e ti lascia scegliere il periodo di analisi."
+      },
+      "storage": {
+        "title": "Archiviazione sottoutilizzata",
+        "description": "Siti SharePoint abbandonati, volumi di archiviazione sprecati scopri cosa pesa sulla tua fattura senza portare valore."
+      }
+    },
+    "mock": {
+      "productName": "Reporting – Microsoft 365",
+      "productSubtitle": "Monitora e analizza il tuo ambiente Microsoft 365",
+      "metaSummary": "{{unused}} licenze inutilizzate · {{inactive}} utenti inattivi",
+      "periods": {
+        "30d": "30g",
+        "60d": "60g",
+        "90d": "90g"
+      },
+      "heroLabel": "Risparmio annuo potenziale",
+      "heroValue": "{{amount}} €/anno",
+      "heroCaption": "Calcolato automaticamente · periodo di {{days}} giorni",
+      "sections": {
+        "licenses": {
+          "label": "Ottimizzazione delle licenze",
+          "emptyBanner": "Nessuna SKU di licenza a pagamento trovata su questo tenant."
+        },
+        "usage": {
+          "label": "Ottimizzazione di utenti e archiviazione"
+        }
+      },
+      "rows": {
+        "inactiveUsers": {
+          "title": "Utenti inattivi",
+          "subtitle": "{{count}} utenti · nessuna attività su Teams, Exchange, OneDrive",
+          "value": "{{amount}} €"
+        },
+        "inactiveSites": {
+          "title": "Siti SharePoint inattivi",
+          "subtitle": "{{count}} siti · {{size}} TB",
+          "value": "{{amount}} €"
+        }
+      }
+    }
+  },
+  "audit": {
+    "label": "Reporting",
+    "title": "Concentrati su ciò che conta davvero per la tua conformità Microsoft 365",
+    "description": "Zelynto valuta costantemente la postura di sicurezza del tuo tenant e trasforma decine di controlli tecnici in azioni chiare e prioritarie.",
+    "highlights": {
+      "scoring": {
+        "title": "Punteggio di conformità continuo",
+        "description": "Un punteggio globale ricalcolato automaticamente, basato sui controlli davvero rilevanti per il tuo tenant."
+      },
+      "prioritized": {
+        "title": "Controlli prioritari e spiegati",
+        "description": "Ogni lacuna è classificata per gravità e accompagnata da una spiegazione chiara, senza gergo inutile."
+      },
+      "exportReady": {
+        "title": "Report pronto per l'esportazione",
+        "description": "Esporta un report completo con un clic per le tue revisioni di sicurezza interne o gli audit esterni."
+      }
+    },
+    "mock": {
+      "updatedAt": "Verificato {{hours}}h fa",
+      "runAudit": "Avvia nuovo audit",
+      "category": "Governance e sicurezza",
+      "controlsCount": "{{count}} controlli",
+      "filters": {
+        "all": "Tutti",
+        "toFix": "Da correggere",
+        "compliant": "Conformi",
+        "overridden": "Ignorati",
+        "unknown": "Sconosciuti"
+      },
+      "complianceLabel": "Punteggio di conformità",
+      "complianceScore": "{{score}} %",
+      "complianceCaption": "{{passed}} controlli su {{total}} superati o senza azione richiesta",
+      "controlsSectionLabel": "Controlli di sicurezza",
+      "severity": {
+        "high": "Alta",
+        "medium": "Media",
+        "low": "Bassa"
+      },
+      "sources": {
+        "outlook": "Outlook",
+        "entraId": "Entra ID"
+      },
+      "controls": {
+        "external-tags": "Tag esterni",
+        "global-admins-range": "Tra 2 e 4 amministratori globali",
+        "security-defaults-disabled": "Impostazioni di sicurezza predefinite disabilitate a favore dell'accesso condizionale",
+        "guest-access-restricted": "Accesso ospiti limitato",
+        "app-creation-restricted": "Creazione di app limitata agli amministratori"
+      },
+      "exportReport": "Esporta report di audit"
+    }
+  },
+  "language": {
+    "label": "Lingua",
+    "en": "EN",
+    "fr": "FR",
+    "de": "DE",
+    "it": "IT",
+    "es": "ES",
+    "enFull": "English",
+    "frFull": "Français",
+    "deFull": "Deutsch",
+    "itFull": "Italiano",
+    "esFull": "Español"
+  },
+  "theme": {
+    "label": "Tema",
+    "switchTo": {
+      "light": "Passa al tema chiaro",
+      "dark": "Passa al tema scuro"
+    }
+  }
+}
