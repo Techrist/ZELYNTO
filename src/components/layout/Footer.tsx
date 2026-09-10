@@ -18,11 +18,11 @@ const quickLinks: Array<{ key: string; page: PageKey }> = [
   { key: "contact", page: "contact" }
 ];
 
-const resourcesLinks: Array<{ key: string; href: string }> = [
-  { key: "privacy", href: "#" },
-  { key: "terms", href: "#" },
-  { key: "dpa", href: "#" },
-  { key: "aup", href: "#" }
+const resourcesLinks: Array<{ key: string; page: PageKey }> = [
+  { key: "privacy", page: "privacy" },
+  { key: "terms", page: "terms" },
+  { key: "dpa", page: "dpa" },
+  { key: "aup", page: "acceptable-use" }
 ];
 
 export function Footer({ page }: FooterProps) {
@@ -60,7 +60,7 @@ export function Footer({ page }: FooterProps) {
         <div>
           <strong>{t("footer.columns.resources.title")}</strong>
           {resourcesLinks.map((link) => (
-            <a key={`resources-${link.key}`} href={link.href}>
+            <a key={`resources-${link.key}`} href={localizedHref(link.page, lang)}>
               {t(`footer.columns.resources.links.${link.key}`)}
             </a>
           ))}
@@ -72,8 +72,8 @@ export function Footer({ page }: FooterProps) {
       <div className="footerBottom">
         <span>{t("footer.copyright")}</span>
         <div>
-          <a href="#top">{t("footer.legal.privacy")}</a>
-          <a href="#top">{t("footer.legal.terms")}</a>
+          <a href={localizedHref("privacy", lang)}>{t("footer.legal.privacy")}</a>
+          <a href={localizedHref("terms", lang)}>{t("footer.legal.terms")}</a>
           <a href="#top">{t("footer.legal.status")}</a>
         </div>
       </div>

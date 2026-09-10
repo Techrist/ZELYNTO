@@ -893,5 +893,13 @@
       "light": "Zum hellen Design wechseln",
       "dark": "Zum dunklen Design wechseln"
     }
+  },
+  "legal": {
+    "eyebrow": "Rechtliches",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "onThisPage": "Auf dieser Seite",
+    "backToTop": "Nach oben",
+    "resourcesNote": "Dieses Dokument ist Teil der Zelynto-Vereinbarung. Fragen:",
+    "contactEmail": "legal@zelynto.com"
   }
 }

@@ -3,8 +3,9 @@ import fr from "../i18n/locales/fr.json";
 import de from "../i18n/locales/de.json";
 import it from "../i18n/locales/it.json";
 import es from "../i18n/locales/es.json";
-import { SITE_URL, localizedHref, type PageKey } from "../routing";
+import { SITE_URL, localizedHref, isLegalPage, type PageKey } from "../routing";
 import { SUPPORTED_LANGS, type Lang } from "../i18n/config";
+import { getLegalDoc } from "../content/legal";
 
 const DICT: Record<Lang, unknown> = { en, fr, de, it, es };
 const BRAND = "Zelynto";
@@ -153,6 +154,28 @@ export function buildHead(page: PageKey, lang: Lang): HeadData {
   let description = clamp(tr(lang, "hero.description"));
   let noindex = false;
   const graph: Array<Record<string, unknown>> = [];
+
+  if (isLegalPage(page)) {
+    const doc = getLegalDoc(page, lang);
+    title = `${doc.title} — ${BRAND}`;
+    description = clamp(doc.summary);
+    graph.push(breadcrumb(page, lang, doc.title));
+    const alternates = [
+      ...SUPPORTED_LANGS.map((l) => ({ hreflang: l, href: abs(page, l) })),
+      { hreflang: "x-default", href: abs(page, "en") }
+    ];
+    return {
+      lang,
+      title,
+      description,
+      canonical: abs(page, lang),
+      ogLocale: OG_LOCALE[lang],
+      ogImage: OG_IMAGE,
+      noindex,
+      alternates,
+      jsonLd: jsonLd({ "@context": "https://schema.org", "@graph": graph })
+    };
+  }
 
   switch (page) {
     case "":

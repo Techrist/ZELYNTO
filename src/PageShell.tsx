@@ -15,6 +15,8 @@ import { InventoriesPage } from "./screens/Inventories/InventoriesPage";
 import { PricingPage } from "./screens/Pricing/PricingPage";
 import { SavingsShowcase } from "./screens/SavingsShowcase/SavingsShowcase";
 import { AuditShowcase } from "./screens/Audit/AuditShowcase";
+import { LegalPage } from "./screens/Legal/LegalPage";
+import { isLegalPage } from "./routing";
 import "./styles/global.css";
 
 interface PageShellProps {
@@ -23,6 +25,16 @@ interface PageShellProps {
 }
 
 function PageBody({ page, lang }: PageShellProps) {
+  if (isLegalPage(page)) {
+    return (
+      <>
+        <Header variant="simple" page={page} lang={lang} />
+        <LegalPage page={page} lang={lang} />
+        <Footer page={page} />
+      </>
+    );
+  }
+
   switch (page) {
     case "pricing":
       return (

@@ -1,0 +1,194 @@
+.legalPage {
+  padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 40px) clamp(72px, 10vw, 128px);
+  background: transparent;
+}
+
+.legalContainer {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.legalEyebrow {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.legalTitle {
+  margin: 14px 0 0;
+  color: var(--text-strong);
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.legalMeta {
+  margin: 18px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ---- Intro ---- */
+.legalIntro {
+  margin-top: 30px;
+  padding-bottom: 8px;
+}
+
+.legalIntro p {
+  margin: 16px 0 0;
+  color: var(--text-body);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ---- Table of contents ---- */
+.legalToc {
+  margin: 36px 0 8px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-1);
+}
+
+.legalToc strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.legalToc ol {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 9px;
+}
+
+.legalToc li {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.legalToc a {
+  color: var(--text-body);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.legalToc a:hover {
+  color: var(--accent-text);
+}
+
+/* ---- Body ---- */
+.legalSection {
+  scroll-margin-top: 96px;
+}
+
+.legalBody h2 {
+  margin: 56px 0 0;
+  color: var(--text-strong);
+  font-size: clamp(24px, 3.4vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.legalBody h3 {
+  margin: 30px 0 0;
+  color: var(--text-strong);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.legalBody p {
+  margin: 16px 0 0;
+  color: var(--text-body);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.legalBody ul {
+  margin: 14px 0 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 9px;
+}
+
+.legalBody li {
+  color: var(--text-body);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.legalBody a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Tables (DPA annexes) ---- */
+.legalTableWrap {
+  margin-top: 20px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.legalTableWrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.legalTableWrap th,
+.legalTableWrap td {
+  padding: 11px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.legalTableWrap th {
+  color: var(--text-strong);
+  font-weight: 700;
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+
+.legalTableWrap td {
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.legalTableWrap tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---- Footnote ---- */
+.legalFootnote {
+  margin: 64px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.legalFootnote a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .legalToc {
+    padding: 18px 18px 18px 16px;
+  }
+}

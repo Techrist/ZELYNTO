@@ -893,5 +893,13 @@
       "light": "Cambiar a tema claro",
       "dark": "Cambiar a tema oscuro"
     }
+  },
+  "legal": {
+    "eyebrow": "Aviso legal",
+    "lastUpdated": "Última actualización",
+    "onThisPage": "En esta página",
+    "backToTop": "Volver arriba",
+    "resourcesNote": "Este documento forma parte del acuerdo de Zelynto. Consultas:",
+    "contactEmail": "legal@zelynto.com"
   }
 }

@@ -11,9 +11,21 @@ export const PAGE_KEYS = [
   "inventories",
   "savings",
   "audit",
-  "connexion"
+  "connexion",
+  "privacy",
+  "terms",
+  "dpa",
+  "acceptable-use"
 ] as const;
 export type PageKey = (typeof PAGE_KEYS)[number];
+
+/** Legal / policy pages listed under the footer "Resources" column. */
+export const LEGAL_PAGES = ["privacy", "terms", "dpa", "acceptable-use"] as const;
+export type LegalPageKey = (typeof LEGAL_PAGES)[number];
+
+export function isLegalPage(page: PageKey): page is LegalPageKey {
+  return (LEGAL_PAGES as readonly string[]).includes(page);
+}
 
 const PAGE_SET = new Set<string>(PAGE_KEYS);
 
@@ -24,7 +36,11 @@ export const INDEXABLE_PAGES: PageKey[] = [
   "contact",
   "inventories",
   "savings",
-  "audit"
+  "audit",
+  "privacy",
+  "terms",
+  "dpa",
+  "acceptable-use"
 ];
 
 /** Build an internal href for a page in a given language. */
