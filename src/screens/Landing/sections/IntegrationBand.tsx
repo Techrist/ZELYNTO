@@ -16,7 +16,14 @@ export function IntegrationBand() {
           amount={0.4}
           duration={0.55}
         >
-          <img className="integrationLogo" src={icon} alt={alt} width={24} height={24} />
+          <img
+            className="integrationLogo"
+            src={icon}
+            alt={alt}
+            width={26}
+            height={26}
+            decoding="async"
+          />
           <span>{label}</span>
         </Reveal>
       ))}

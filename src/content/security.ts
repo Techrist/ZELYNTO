@@ -7,8 +7,8 @@ export interface SecurityPillarDefinition {
 
 // Order must match the i18n array security.pillars
 export const securityPillars: SecurityPillarDefinition[] = [
-  { icon: ShieldHalf }, // Données isolées — périmètre
-  { icon: KeyRound }, // Permissions minimales — moindre privilège
-  { icon: MessageSquareLock }, // Aucun stockage prompt — conversations éphémères
-  { icon: FileLock2 } // Audit immuable — journal signé
+  { icon: ShieldHalf }, // Données isolées : périmètre
+  { icon: KeyRound }, // Permissions minimales : moindre privilège
+  { icon: MessageSquareLock }, // Aucun stockage prompt : conversations éphémères
+  { icon: FileLock2 } // Audit immuable : journal signé
 ];

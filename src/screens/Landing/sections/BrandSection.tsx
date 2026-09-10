@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
 import { SectionFade } from "../../../components/utility/SectionFade";
 import { LazyLottie } from "../../../components/utility/LazyLottie";
-import zelyntoAnimation from "../../../assets/zelynto-animation.json";
+
+const loadZelyntoAnimation = () => import("../../../assets/zelynto-animation.json");
 
 export function BrandSection() {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ export function BrandSection() {
           <div className="brandMorph" aria-hidden="true">
             <div className="brandMorphRing" />
             <LazyLottie
-              animationData={zelyntoAnimation}
+              loadAnimationData={loadZelyntoAnimation}
               loop
               autoplay
               className="brandLottie"

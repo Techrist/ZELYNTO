@@ -112,7 +112,9 @@ export function Hero() {
     raf = requestAnimationFrame(measure);
   };
 
-  scheduleMeasure();
+  // First pass runs synchronously so the connectors are drawn the moment the
+  // island hydrates, without waiting for an animation frame.
+  measure();
 
   const observer = new ResizeObserver(scheduleMeasure);
   observer.observe(canvas);
@@ -132,7 +134,7 @@ export function Hero() {
     document.fonts.ready.then(() => {
       const canvas = canvasRef.current;
       if (!canvas) return;
-      // trigger ResizeObserver indirectly by reading layout — easiest is to dispatch a resize event
+      // trigger ResizeObserver indirectly by reading layout - easiest is to dispatch a resize event
       window.dispatchEvent(new Event("resize"));
     });
   }, []);

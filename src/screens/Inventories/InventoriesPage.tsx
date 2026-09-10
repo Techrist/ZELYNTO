@@ -172,7 +172,7 @@ const ghostSections: GhostServiceSection[] = [
     id: "entra-id",
     heading: "Entra ID",
     subheading: "Identities, groups and devices across your tenant, with risk signals surfaced up front.",
-    title: "Entra ID — overview",
+    title: "Entra ID overview",
     description: "Counters follow your selection",
     tabs: [
       { key: "users", label: "Users" },
@@ -228,7 +228,7 @@ const ghostSections: GhostServiceSection[] = [
         rows: [
           ["Adele Vance", "Member", "Enabled", "738d ago", "No MFA · Never expires"],
           ["Alex Wilber", "Member", "Enabled", "738d ago", "No MFA · Never expires"],
-          ["ATS_Fredy", "Member", "Enabled", "—", "No MFA · No manager"],
+          ["ATS_Fredy", "Member", "Enabled", "-", "No MFA · No manager"],
           ["Diego Siciliani", "Member", "Enabled", "738d ago", "No MFA"]
         ]
       },
@@ -324,7 +324,7 @@ const ghostSections: GhostServiceSection[] = [
         rows: [
           ["IAMSURFACE", "Windows", "Entra ID joined", "Corporate", "5d ago", "Compliant · Active"],
           ["TECNOTECNO KJ5", "Android", "Azure AD registered", "Corporate", "99d ago", "Inactive"],
-          ["DESKTOP-EGE856T", "Windows", "—", "Personal", "277d ago", "Non-compliant · Inactive"],
+          ["DESKTOP-EGE856T", "Windows", "-", "Personal", "277d ago", "Non-compliant · Inactive"],
           ["samsungSM-A716S", "Android", "Azure AD registered", "Corporate", "3d ago", "Active"]
         ]
       }
@@ -334,7 +334,7 @@ const ghostSections: GhostServiceSection[] = [
     id: "exchange",
     heading: "Exchange",
     subheading: "Mailboxes, shared resources and distribution lists, flagged for retention and forwarding risks.",
-    title: "Exchange — overview",
+    title: "Exchange overview",
     description: "Counters follow your selection",
     tabs: [
       { key: "mailboxes", label: "Mailboxes" },
@@ -344,7 +344,7 @@ const ghostSections: GhostServiceSection[] = [
       mailboxes: {
         banner: {
           tone: "progress",
-          text: "Data completion in progress — the list below updates automatically (99%).",
+          text: "Data completion in progress. The list below updates automatically (99%).",
           percent: 99
         },
         statGroups: [
@@ -387,17 +387,17 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Mailbox", "Type", "Size (GB)", "Last activity", "Signals"],
         rows: [
-          ["Joseph MBA", "User", "2.4", "—", "—"],
-          ["Megan Bowen", "User", "0.8", "—", "Archive · Litigation hold · Ext. forwarding"],
-          ["Isaiah Langer", "User", "1.1", "—", "—"],
-          ["Grace NGUESSI", "User", "3.6", "—", "—"],
-          ["Grady Archie", "User", "0.3", "—", "—"]
+          ["Joseph MBA", "User", "2.4", "-", "-"],
+          ["Megan Bowen", "User", "0.8", "-", "Archive · Litigation hold · Ext. forwarding"],
+          ["Isaiah Langer", "User", "1.1", "-", "-"],
+          ["Grace NGUESSI", "User", "3.6", "-", "-"],
+          ["Grady Archie", "User", "0.3", "-", "-"]
         ]
       },
       listsContacts: {
         banner: {
           tone: "progress",
-          text: "Data completion in progress — the list below updates automatically (99%).",
+          text: "Data completion in progress. The list below updates automatically (99%).",
           percent: 99
         },
         statGroups: [
@@ -414,7 +414,7 @@ const ghostSections: GhostServiceSection[] = [
             ]
           },
           {
-            title: "Usage (based on Message Trace — window shown per row)",
+            title: "Usage (based on Message Trace, window shown per row)",
             cards: [
               { value: 106, label: "All", icon: Grid2x2, active: true },
               { value: 64, label: "Used", icon: CheckCircle2 },
@@ -427,11 +427,11 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Name", "Type", "Status"],
         rows: [
-          ["—", "Distribution list", "—"],
-          ["—", "Mail-enabled group", "—"],
-          ["—", "Dynamic DL", "—"],
-          ["External Contact Test", "Mail contact", "—"],
-          ["zltseed-contact-0001", "Mail contact", "—"]
+          ["-", "Distribution list", "-"],
+          ["-", "Mail-enabled group", "-"],
+          ["-", "Dynamic DL", "-"],
+          ["External Contact Test", "Mail contact", "-"],
+          ["zltseed-contact-0001", "Mail contact", "-"]
         ]
       }
     }
@@ -440,7 +440,7 @@ const ghostSections: GhostServiceSection[] = [
     id: "sharepoint",
     heading: "SharePoint",
     subheading: "Sites, storage and sharing across the tenant, with governance risks called out.",
-    title: "SharePoint — overview",
+    title: "SharePoint overview",
     description: "Counters follow your selection",
     tabs: [{ key: "sites", label: "Sites" }],
     content: {
@@ -453,7 +453,7 @@ const ghostSections: GhostServiceSection[] = [
         headerThreshold: { label: "Inactivity:", options: ["30d", "90d", "180d"], active: "90d" },
         statGroups: [
           {
-            title: "Summary — informative",
+            title: "Summary (informative)",
             cards: [
               { value: "15,842", label: "Files", icon: FileText },
               { value: "184 GB", label: "Storage used", icon: Database },
@@ -495,10 +495,10 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Site", "Template", "Storage (GB)", "Owners", "Last activity", "Signals"],
         rows: [
-          ["Joseph MBA", "Other", "2.4", "1", "—", "—"],
-          ["Grace NGUESSI", "Other", "1.1", "1", "—", "—"],
-          ["Test Teams 6", "Other", "0.4", "0", "—", "Orphan"],
-          ["Test orphan 4", "Other", "0.2", "0", "—", "Orphan"]
+          ["Joseph MBA", "Other", "2.4", "1", "-", "-"],
+          ["Grace NGUESSI", "Other", "1.1", "1", "-", "-"],
+          ["Test Teams 6", "Other", "0.4", "0", "-", "Orphan"],
+          ["Test orphan 4", "Other", "0.2", "0", "-", "Orphan"]
         ]
       }
     }
@@ -507,7 +507,7 @@ const ghostSections: GhostServiceSection[] = [
     id: "onedrive",
     heading: "OneDrive",
     subheading: "Personal drives and their storage footprint, with orphaned accounts flagged.",
-    title: "OneDrive — overview",
+    title: "OneDrive overview",
     description: "Counters follow your selection",
     tabs: [{ key: "accounts", label: "Accounts" }],
     content: {
@@ -520,7 +520,7 @@ const ghostSections: GhostServiceSection[] = [
         headerThreshold: { label: "Inactivity:", options: ["30d", "90d", "180d"], active: "90d" },
         statGroups: [
           {
-            title: "Summary — informative",
+            title: "Summary (informative)",
             cards: [
               { value: 70, label: "Files", icon: FileText },
               { value: "16 MB", label: "Storage used", icon: Database }
@@ -546,9 +546,9 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Owner", "UPN", "Storage (GB)", "Last activity", "Signals"],
         rows: [
-          ["2352592493D36BA883FCB25A3789684F", "635A15A9C5BE6817F41175F26C39B7E8", "0.04", "—", "—"],
-          ["EC0FCCDD7C1CAAE3463EF4020E325E41", "75E15CC2A31AD93A77385DC4FE4BB1CB", "2.10", "—", "—"],
-          ["A46EC9FBA75C50F15B1728A154FA7768", "18F09C2397B9940454AB5264A885CB43", "0.01", "21d ago", "—"]
+          ["2352592493D36BA883FCB25A3789684F", "635A15A9C5BE6817F41175F26C39B7E8", "0.04", "-", "-"],
+          ["EC0FCCDD7C1CAAE3463EF4020E325E41", "75E15CC2A31AD93A77385DC4FE4BB1CB", "2.10", "-", "-"],
+          ["A46EC9FBA75C50F15B1728A154FA7768", "18F09C2397B9940454AB5264A885CB43", "0.01", "21d ago", "-"]
         ]
       }
     }
@@ -557,7 +557,7 @@ const ghostSections: GhostServiceSection[] = [
     id: "teams",
     heading: "Teams",
     subheading: "Teams and their visibility across the tenant, with archived and guest-owned teams flagged.",
-    title: "Teams — overview",
+    title: "Teams overview",
     description: "Counters follow your selection",
     tabs: [{ key: "teams", label: "Teams" }],
     content: {
@@ -595,8 +595,8 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Team", "Visibility", "Last activity", "Status"],
         rows: [
-          ["MSFT", "Public", "—", ["Inactive"]],
-          ["U.S. Sales", "Public", "—", ["Inactive"]],
+          ["MSFT", "Public", "-", ["Inactive"]],
+          ["U.S. Sales", "Public", "-", ["Inactive"]],
           ["Equipe Zelynto", "Public", "176d ago", ["Inactive", "Guests"]],
           ["Projet Test_MCP", "Private", "134d ago", ["Inactive", "Archived"]]
         ]
@@ -607,7 +607,7 @@ const ghostSections: GhostServiceSection[] = [
     id: "power-platform",
     heading: "Power Platform",
     subheading: "Environments, apps and flows across the tenant, with inactive and disabled items surfaced.",
-    title: "Power Platform — overview",
+    title: "Power Platform overview",
     description: "Counters follow your selection",
     tabs: [{ key: "overview", label: "Overview" }],
     content: {
@@ -636,7 +636,7 @@ const ghostSections: GhostServiceSection[] = [
         ],
         badgeGroups: [
           {
-            title: "State — Apps and Flows only",
+            title: "State (Apps and Flows only)",
             badges: [{ label: "Disabled", value: 1, icon: Ban, checkbox: true }]
           }
         ],
@@ -644,8 +644,8 @@ const ghostSections: GhostServiceSection[] = [
         selectionNote: "No active filter",
         tableColumns: ["Name", "Type", "Environment", "Last activity", "Status"],
         rows: [
-          ["dev-test-zelynto", "Environment", "—", "30d ago", "—"],
-          ["MSFT", "Environment", "—", "132d ago", "—"],
+          ["dev-test-zelynto", "Environment", "-", "30d ago", "-"],
+          ["MSFT", "Environment", "-", "132d ago", "-"],
           ["DemandesInternes", "Canvas Apps", "MSFT (default)", "141d ago", "Enabled"],
           ["Cas d'usage APP Gouvernance V2", "Canvas Apps", "[DEV] - Vinci Solutions", "51d ago", "Enabled"],
           ["Approval - Expense Report", "Cloud Flows", "MSFT (default)", "12d ago", "Enabled"]
@@ -657,7 +657,7 @@ const ghostSections: GhostServiceSection[] = [
     id: "intune",
     heading: "Intune",
     subheading: "Managed devices and their compliance status across platforms.",
-    title: "Intune — overview",
+    title: "Intune overview",
     description: "Counters follow your selection",
     tabs: [{ key: "devices", label: "Devices" }],
     content: {
@@ -773,7 +773,7 @@ export function InventoriesPage() {
         {ghostSections.map((section) => {
           // activeTabKey is always defined: the initial state sets one entry per
           // section, and setActiveTabs only ever writes a key taken from
-          // section.tabs — so it always matches a key in section.content.
+          // section.tabs, so it always matches a key in section.content.
           const activeTabKey = activeTabs[section.id] ?? section.tabs[0]?.key ?? "";
           const currentGhost = section.content[activeTabKey]!;
           const tableGridStyle = {
@@ -797,7 +797,7 @@ export function InventoriesPage() {
                 className="inventoriesStage"
                 style={{ minHeight: stageHeights[section.id] ?? 640 }}
               >
-              {/* Background ghost — blurred detail preview, interactive tabs */}
+              {/* Background ghost - blurred detail preview, interactive tabs */}
               <div
                 className="inventoriesDetailGhost"
                 ref={(node) => {
@@ -992,7 +992,7 @@ export function InventoriesPage() {
                 </div>
               </div>
 
-              {/* Foreground — the list card */}
+              {/* Foreground - the list card */}
               <div className="inventoriesListCard">
                 <div className="inventoriesListHeader">
                   <nav className="inventoriesTabs">

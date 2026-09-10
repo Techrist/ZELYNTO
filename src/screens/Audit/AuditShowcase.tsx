@@ -58,7 +58,7 @@ function useDrawLoop<T extends HTMLElement>(delay = 0, duration = 3200) {
 }
 
 /* 
-   Icônes — même style filaire isométrique */
+   Icônes - même style filaire isométrique */
 
 function ScoringIcon() {
   return (

@@ -58,7 +58,7 @@
   grid-column: 3;
 }
 
-/* ────── Nav links — animated underline ────── */
+/* ────── Nav links - animated underline ────── */
 .siteHeader nav > a,
 .navDropdown > button {
   position: relative;

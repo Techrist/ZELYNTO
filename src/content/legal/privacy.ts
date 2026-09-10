@@ -13,7 +13,7 @@ const en: LegalDoc = {
     },
     {
       type: "p",
-      text: "When we act as a processor for personal data contained in your Microsoft 365 tenant, that processing is governed first by our Data Processing Agreement. This Policy describes the processing for which Zelynto is the controller — principally account, billing, support and website data."
+      text: "When we act as a processor for personal data contained in your Microsoft 365 tenant, that processing is governed first by our Data Processing Agreement. This Policy describes the processing for which Zelynto is the controller, principally account, billing, support and website data."
     },
     {
       type: "p",
@@ -82,10 +82,10 @@ const en: LegalDoc = {
         {
           type: "ul",
           items: [
-            "Performance of a contract — to create and operate your account, execute the requests you make, provide support, and bill you.",
-            "Legitimate interests — to secure the service, prevent abuse and fraud, understand product usage in aggregate, and communicate about material changes. We balance these against your rights and you may object at any time.",
-            "Consent — for non-essential cookies and for optional marketing emails. You can withdraw consent at any time without affecting prior processing.",
-            "Legal obligation — to keep accounting records and to respond to lawful requests from authorities."
+            "Performance of a contract: to create and operate your account, execute the requests you make, provide support, and bill you.",
+            "Legitimate interests: to secure the service, prevent abuse and fraud, understand product usage in aggregate, and communicate about material changes. We balance these against your rights and you may object at any time.",
+            "Consent: for non-essential cookies and for optional marketing emails. You can withdraw consent at any time without affecting prior processing.",
+            "Legal obligation: to keep accounting records and to respond to lawful requests from authorities."
           ]
         }
       ]
@@ -102,10 +102,10 @@ const en: LegalDoc = {
           type: "ul",
           items: [
             "Sub-processors that host and support the service, under written contracts that impose confidentiality and security obligations (see “Sub-processors and international transfers”).",
-            "Microsoft — requests to your tenant are transmitted to Microsoft Graph to be executed; Microsoft acts as your data processor under your Microsoft agreement, not ours.",
-            "Professional advisers — lawyers, auditors and insurers, where necessary and subject to confidentiality.",
-            "Authorities — where required by law, and after review of the request; we notify you unless legally prohibited.",
-            "A successor entity — in connection with a merger, acquisition or asset sale, subject to this Policy or a policy at least as protective."
+            "Microsoft: requests to your tenant are transmitted to Microsoft Graph to be executed; Microsoft acts as your data processor under your Microsoft agreement, not ours.",
+            "Professional advisers: lawyers, auditors and insurers, where necessary and subject to confidentiality.",
+            "Authorities: where required by law, and after review of the request; we notify you unless legally prohibited.",
+            "A successor entity: in connection with a merger, acquisition or asset sale, subject to this Policy or a policy at least as protective."
           ]
         }
       ]
@@ -148,7 +148,7 @@ const en: LegalDoc = {
         },
         {
           type: "p",
-          text: "To exercise a right, contact us using the details below. You also have the right to lodge a complaint with your supervisory authority — in France, the Commission nationale de l’informatique et des libertés (CNIL)."
+          text: "To exercise a right, contact us using the details below. You also have the right to lodge a complaint with your supervisory authority. In France, this is the Commission nationale de l’informatique et des libertés (CNIL)."
         }
       ]
     },
@@ -192,7 +192,7 @@ const en: LegalDoc = {
         },
         {
           type: "p",
-          text: "Postal address: Zelynto — [legal entity name, registered address, company registration number to be completed]."
+          text: "Postal address: Zelynto, [legal entity name, registered address and company registration number to be completed]."
         }
       ]
     }
@@ -211,7 +211,7 @@ const fr: LegalDoc = {
     },
     {
       type: "p",
-      text: "Lorsque nous agissons en tant que sous-traitant pour des données contenues dans votre tenant Microsoft 365, ce traitement est régi en priorité par notre Accord de traitement des données. La présente politique décrit les traitements pour lesquels Zelynto est responsable de traitement — principalement les données de compte, de facturation, de support et de navigation."
+      text: "Lorsque nous agissons en tant que sous-traitant pour des données contenues dans votre tenant Microsoft 365, ce traitement est régi en priorité par notre Accord de traitement des données. La présente politique décrit les traitements pour lesquels Zelynto est responsable de traitement, principalement les données de compte, de facturation, de support et de navigation."
     },
     {
       type: "p",
@@ -277,10 +277,10 @@ const fr: LegalDoc = {
         {
           type: "ul",
           items: [
-            "Exécution d’un contrat — créer et exploiter votre compte, exécuter vos demandes, fournir le support et vous facturer.",
-            "Intérêts légitimes — sécuriser le service, prévenir les abus et la fraude, comprendre l’usage du produit de manière agrégée, et communiquer sur les changements importants. Nous les mettons en balance avec vos droits et vous pouvez vous y opposer à tout moment.",
-            "Consentement — pour les cookies non essentiels et les e-mails marketing facultatifs. Vous pouvez le retirer à tout moment, sans effet sur les traitements antérieurs.",
-            "Obligation légale — tenir la comptabilité et répondre aux demandes légales des autorités."
+            "Exécution d’un contrat : créer et exploiter votre compte, exécuter vos demandes, fournir le support et vous facturer.",
+            "Intérêts légitimes : sécuriser le service, prévenir les abus et la fraude, comprendre l’usage du produit de manière agrégée, et communiquer sur les changements importants. Nous les mettons en balance avec vos droits et vous pouvez vous y opposer à tout moment.",
+            "Consentement : pour les cookies non essentiels et les e-mails marketing facultatifs. Vous pouvez le retirer à tout moment, sans effet sur les traitements antérieurs.",
+            "Obligation légale : tenir la comptabilité et répondre aux demandes légales des autorités."
           ]
         }
       ]
@@ -294,10 +294,10 @@ const fr: LegalDoc = {
           type: "ul",
           items: [
             "Les sous-traitants qui hébergent et exploitent le service, sous contrat écrit imposant des obligations de confidentialité et de sécurité (voir « Sous-traitants et transferts internationaux »).",
-            "Microsoft — les demandes vers votre tenant sont transmises à Microsoft Graph pour exécution ; Microsoft agit comme votre sous-traitant au titre de votre contrat Microsoft, pas du nôtre.",
-            "Les conseils professionnels — avocats, auditeurs et assureurs, lorsque nécessaire et sous confidentialité.",
-            "Les autorités — lorsque la loi l’exige, après examen de la demande ; nous vous en informons sauf interdiction légale.",
-            "Un repreneur — dans le cadre d’une fusion, acquisition ou cession d’actifs, sous réserve de la présente politique ou d’une politique au moins aussi protectrice."
+            "Microsoft : les demandes vers votre tenant sont transmises à Microsoft Graph pour exécution ; Microsoft agit comme votre sous-traitant au titre de votre contrat Microsoft, pas du nôtre.",
+            "Les conseils professionnels : avocats, auditeurs et assureurs, lorsque nécessaire et sous confidentialité.",
+            "Les autorités : lorsque la loi l’exige, après examen de la demande ; nous vous en informons sauf interdiction légale.",
+            "Un repreneur : dans le cadre d’une fusion, acquisition ou cession d’actifs, sous réserve de la présente politique ou d’une politique au moins aussi protectrice."
           ]
         }
       ]
@@ -340,7 +340,7 @@ const fr: LegalDoc = {
         },
         {
           type: "p",
-          text: "Pour exercer un droit, contactez-nous aux coordonnées ci-dessous. Vous avez également le droit d’introduire une réclamation auprès de votre autorité de contrôle — en France, la Commission nationale de l’informatique et des libertés (CNIL)."
+          text: "Pour exercer un droit, contactez-nous aux coordonnées ci-dessous. Vous avez également le droit d’introduire une réclamation auprès de votre autorité de contrôle. En France, il s’agit de la Commission nationale de l’informatique et des libertés (CNIL)."
         }
       ]
     },
@@ -384,7 +384,7 @@ const fr: LegalDoc = {
         },
         {
           type: "p",
-          text: "Adresse postale : Zelynto — [dénomination sociale, siège social, numéro d’immatriculation à compléter]."
+          text: "Adresse postale : Zelynto, [dénomination sociale, siège social et numéro d’immatriculation à compléter]."
         }
       ]
     }

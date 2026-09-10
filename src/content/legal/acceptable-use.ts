@@ -80,7 +80,7 @@ const en: LegalDoc = {
           type: "ul",
           items: [
             "review AI-generated findings, recommendations and drafts before relying on them",
-            "keep a human in the loop for any change to security, identity, licensing or data-governance configuration — Zelynto executes such actions only after you approve them, and you must not build automation that removes that review",
+            "keep a human in the loop for any change to security, identity, licensing or data-governance configuration. Zelynto executes such actions only after you approve them, and you must not build automation that removes that review",
             "not present AI output as professional (legal, security-certification, financial) advice without independent review by a qualified person",
             "not use the AI features to generate disinformation, to impersonate a person or organisation, or to deceive people about whether they are interacting with AI",
             "not attempt to bypass the Service’s safety controls or extract its system instructions"
@@ -94,7 +94,7 @@ const en: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "You must not submit into natural-language requests any data that requires heightened legal protection — for example health data subject to specific regimes, payment card data subject to PCI DSS, or government identifiers — unless we have agreed in writing that the Service may be used for that purpose. Zelynto reads such data only where it already exists in your tenant configuration and is necessary to answer your request."
+          text: "You must not submit into natural-language requests any data that requires heightened legal protection (for example health data subject to specific regimes, payment card data subject to PCI DSS, or government identifiers) unless we have agreed in writing that the Service may be used for that purpose. Zelynto reads such data only where it already exists in your tenant configuration and is necessary to answer your request."
         }
       ]
     },
@@ -124,7 +124,7 @@ const en: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "If we reasonably believe you have violated this AUP, we may remove offending content, throttle or suspend affected functionality, or suspend or terminate access — with notice where practical, and immediately where necessary to protect the Service, Microsoft 365 or another customer. We may report unlawful activity to the competent authorities."
+          text: "If we reasonably believe you have violated this AUP, we may remove offending content, throttle or suspend affected functionality, or suspend or terminate access, with notice where practical and immediately where necessary to protect the Service, Microsoft 365 or another customer. We may report unlawful activity to the competent authorities."
         }
       ]
     },
@@ -220,7 +220,7 @@ const fr: LegalDoc = {
           type: "ul",
           items: [
             "vérifier les constats, recommandations et brouillons générés par l’IA avant de vous y fier",
-            "maintenir une intervention humaine pour toute modification de configuration de sécurité, d’identité, de licences ou de gouvernance des données — Zelynto n’exécute de telles actions qu’après votre validation, et vous ne devez pas mettre en place d’automatisation supprimant cette revue",
+            "maintenir une intervention humaine pour toute modification de configuration de sécurité, d’identité, de licences ou de gouvernance des données. Zelynto n’exécute de telles actions qu’après votre validation, et vous ne devez pas mettre en place d’automatisation supprimant cette revue",
             "ne pas présenter les résultats de l’IA comme un conseil professionnel (juridique, de certification de sécurité, financier) sans revue indépendante par une personne qualifiée",
             "ne pas utiliser les fonctionnalités d’IA pour produire de la désinformation, usurper l’identité d’une personne ou d’une organisation, ou tromper des personnes sur le fait qu’elles interagissent avec une IA",
             "ne pas tenter de contourner les contrôles de sécurité du Service ni d’extraire ses instructions système"
@@ -234,7 +234,7 @@ const fr: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Vous ne devez pas soumettre dans les requêtes en langage naturel des données nécessitant une protection juridique renforcée — par exemple des données de santé soumises à des régimes spécifiques, des données de carte de paiement soumises à la norme PCI DSS, ou des identifiants d’État — sauf accord écrit de notre part pour un tel usage. Zelynto ne lit de telles données que lorsqu’elles existent déjà dans la configuration de votre tenant et sont nécessaires pour répondre à votre demande."
+          text: "Vous ne devez pas soumettre dans les requêtes en langage naturel des données nécessitant une protection juridique renforcée (par exemple des données de santé soumises à des régimes spécifiques, des données de carte de paiement soumises à la norme PCI DSS, ou des identifiants d’État) sauf accord écrit de notre part pour un tel usage. Zelynto ne lit de telles données que lorsqu’elles existent déjà dans la configuration de votre tenant et sont nécessaires pour répondre à votre demande."
         }
       ]
     },
@@ -264,7 +264,7 @@ const fr: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Si nous estimons raisonnablement que vous avez enfreint la présente PUA, nous pouvons retirer les contenus en cause, brider ou suspendre les fonctionnalités concernées, ou suspendre ou résilier l’accès — avec préavis lorsque cela est possible, et immédiatement lorsque cela est nécessaire pour protéger le Service, Microsoft 365 ou un autre client. Nous pouvons signaler toute activité illicite aux autorités compétentes."
+          text: "Si nous estimons raisonnablement que vous avez enfreint la présente PUA, nous pouvons retirer les contenus en cause, brider ou suspendre les fonctionnalités concernées, ou suspendre ou résilier l’accès, avec préavis lorsque cela est possible et immédiatement lorsque cela est nécessaire pour protéger le Service, Microsoft 365 ou un autre client. Nous pouvons signaler toute activité illicite aux autorités compétentes."
         }
       ]
     },

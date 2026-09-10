@@ -149,7 +149,7 @@ const en: LegalDoc = {
     },
     {
       id: "annex-1",
-      heading: "Annex 1 — Details of processing",
+      heading: "Annex 1: Details of processing",
       blocks: [
         { type: "h3", text: "Subject matter and duration" },
         {
@@ -190,7 +190,7 @@ const en: LegalDoc = {
     },
     {
       id: "annex-2",
-      heading: "Annex 2 — Sub-Processors",
+      heading: "Annex 2: Sub-Processors",
       blocks: [
         {
           type: "p",
@@ -202,16 +202,16 @@ const en: LegalDoc = {
           rows: [
             ["Microsoft (Azure)", "Cloud hosting and platform infrastructure", "European Union"],
             ["Microsoft (Graph API)", "Execution of requests against Customer’s tenant", "Operated by Customer’s Microsoft tenant"],
-            ["[Payment provider — to be confirmed]", "Billing and payment processing", "European Union"],
-            ["[Error monitoring / logging provider — to be confirmed]", "Operational monitoring and diagnostics", "European Union"],
-            ["[Transactional email provider — to be confirmed]", "Account and service notifications", "European Union"]
+            ["[Payment provider, to be confirmed]", "Billing and payment processing", "European Union"],
+            ["[Error monitoring / logging provider, to be confirmed]", "Operational monitoring and diagnostics", "European Union"],
+            ["[Transactional email provider, to be confirmed]", "Account and service notifications", "European Union"]
           ]
         }
       ]
     },
     {
       id: "annex-3",
-      heading: "Annex 3 — Technical and organisational measures",
+      heading: "Annex 3: Technical and organisational measures",
       blocks: [
         {
           type: "ul",
@@ -391,7 +391,7 @@ const fr: LegalDoc = {
     },
     {
       id: "annex-1",
-      heading: "Annexe 1 — Détails du traitement",
+      heading: "Annexe 1 : Détails du traitement",
       blocks: [
         { type: "h3", text: "Objet et durée" },
         {
@@ -432,7 +432,7 @@ const fr: LegalDoc = {
     },
     {
       id: "annex-2",
-      heading: "Annexe 2 — Sous-traitants ultérieurs",
+      heading: "Annexe 2 : Sous-traitants ultérieurs",
       blocks: [
         {
           type: "p",
@@ -444,16 +444,16 @@ const fr: LegalDoc = {
           rows: [
             ["Microsoft (Azure)", "Hébergement cloud et infrastructure de plateforme", "Union européenne"],
             ["Microsoft (API Graph)", "Exécution des demandes sur le tenant du Client", "Opéré par le tenant Microsoft du Client"],
-            ["[Prestataire de paiement — à confirmer]", "Facturation et traitement des paiements", "Union européenne"],
-            ["[Prestataire de supervision / journalisation — à confirmer]", "Supervision opérationnelle et diagnostic", "Union européenne"],
-            ["[Prestataire d’e-mails transactionnels — à confirmer]", "Notifications de compte et de service", "Union européenne"]
+            ["[Prestataire de paiement, à confirmer]", "Facturation et traitement des paiements", "Union européenne"],
+            ["[Prestataire de supervision / journalisation, à confirmer]", "Supervision opérationnelle et diagnostic", "Union européenne"],
+            ["[Prestataire d’e-mails transactionnels, à confirmer]", "Notifications de compte et de service", "Union européenne"]
           ]
         }
       ]
     },
     {
       id: "annex-3",
-      heading: "Annexe 3 — Mesures techniques et organisationnelles",
+      heading: "Annexe 3 : Mesures techniques et organisationnelles",
       blocks: [
         {
           type: "ul",

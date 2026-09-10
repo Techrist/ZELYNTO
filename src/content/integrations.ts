@@ -1,7 +1,7 @@
-import outlookIcon from "../assets/icons/outlook.svg";
-import teamsIcon from "../assets/icons/teams.svg";
-import sharepointIcon from "../assets/icons/sharepoint.svg";
-import entraIcon from "../assets/icons/entra-id.svg";
+import outlookIcon from "../assets/icons/outlook.webp";
+import teamsIcon from "../assets/icons/teams.webp";
+import sharepointIcon from "../assets/icons/sharepoint.webp";
+import entraIcon from "../assets/icons/entra-id.webp";
 import { assetUrl } from "../assets/asset";
 
 export interface Integration {

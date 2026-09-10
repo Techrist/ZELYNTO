@@ -1,4 +1,4 @@
-# Zelynto — Site vitrine
+# Zelynto - Site vitrine
 
 Landing page de présentation de **Zelynto**, le copilote d'administration Microsoft 365.
 
@@ -22,10 +22,10 @@ Le site démarre sur `http://127.0.0.1:5173`.
 
 ## Scripts
 
-- `npm run dev` — serveur de dev avec hot reload
-- `npm run build` — build de production dans `dist/`
-- `npm run preview` — sert le build de prod localement
-- `npm run typecheck` — vérification TypeScript
+- `npm run dev` - serveur de dev avec hot reload
+- `npm run build` - build de production dans `dist/`
+- `npm run preview` - sert le build de prod localement
+- `npm run typecheck` - vérification TypeScript
 
 ## Déploiement
 

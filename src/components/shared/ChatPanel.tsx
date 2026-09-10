@@ -16,7 +16,6 @@ import {
 import { useTranslation } from "react-i18next";
 import { LazyLottie } from "../utility/LazyLottie";
 import zelyntoMark from "../../assets/zelynto-mark.svg";
-import blobZelynto from "../../assets/blob-zelynto.json";
 import microsoft365Logo from "../../assets/microsoft-365-logo.png";
 import { assetUrl } from "../../assets/asset";
 import "./ChatPanel.css";
@@ -33,6 +32,8 @@ interface VariantContent {
 }
 
 type Phase = "idle" | "typing" | "submitted" | "loading" | "answering" | "rows" | "done";
+
+const loadBlobZelynto = () => import("../../assets/blob-zelynto.json");
 
 const TYPE_PROMPT_MS = 38;
 const TYPE_ANSWER_MS = 18;
@@ -221,7 +222,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
           <div className="chatWelcome">
             <div className="chatWelcomeBrand">
               <LazyLottie
-                animationData={blobZelynto}
+                loadAnimationData={loadBlobZelynto}
                 loop
                 autoplay
                 className="chatWelcomeMark"
@@ -282,7 +283,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
               {phase === "loading" && (
                 <div className="chatBubble chatAssistant" key={`load-${playId}`}>
                   <LazyLottie
-                    animationData={blobZelynto}
+                    loadAnimationData={loadBlobZelynto}
                     loop
                     autoplay
                     className="chatAssistantAvatar"
@@ -297,7 +298,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
               {showAssistant && (
                 <div className="chatBubble chatAssistant" key={`ans-${playId}`}>
                   <LazyLottie
-                    animationData={blobZelynto}
+                    loadAnimationData={loadBlobZelynto}
                     loop
                     autoplay
                     className="chatAssistantAvatar"

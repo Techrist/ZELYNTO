@@ -803,13 +803,13 @@
   }
 
   /* The hero illustration only makes sense next to the intro text at
-     desktop width — it just eats vertical space above the fold on mobile. */
+     desktop width - it just eats vertical space above the fold on mobile. */
   .inventoriesIntroImage {
     display: none;
   }
 }
 
-/* ----- Mobile list card (shown once, normal flow — no absolute offsets) ----- */
+/* ----- Mobile list card (shown once, normal flow - no absolute offsets) ----- */
 
 .inventoriesMobileListCard {
   position: relative;
@@ -826,7 +826,7 @@
 }
 
 /* ----- Mobile detail card: estompé, à l'image de la ligne "Cursor" grisée
-   sur la capture de référence — opacité réduite sur toute la carte, plus
+   sur la capture de référence - opacité réduite sur toute la carte, plus
    un fondu (mask-image) qui accentue le flou aux extrémités inférieures,
    comme si le contenu se prolongeait au-delà de ce qui est visible. ----- */
 
@@ -919,7 +919,7 @@
     grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
   }
 
-  /* Le tableau garde beaucoup de colonnes étroites — on préfère le scroll
+  /* Le tableau garde beaucoup de colonnes étroites - on préfère le scroll
      horizontal plutôt que de les écraser en colonnes illisibles. */
   .inventoriesMobileDetailCard .ghostTable {
     overflow-x: auto;
@@ -1191,7 +1191,7 @@
   overflow-x: hidden;
 }
 
-/* ────────── Card mock : troncature mobile propre à Audit — contenu plus
+/* ────────── Card mock : troncature mobile propre à Audit - contenu plus
    long que Savings (5 contrôles + pagination), donc point de coupe plus
    bas pour laisser passer la bannière de score en entier. Hérite de
    overflow/mask-image via .savingsCardMock (SavingsShowcase.css) ; la

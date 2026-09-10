@@ -1,4 +1,4 @@
-# Zelynto — https://www.zelynto.com
+# Zelynto - https://www.zelynto.com
 
 User-agent: *
 Allow: /

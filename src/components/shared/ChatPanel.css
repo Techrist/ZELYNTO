@@ -1,5 +1,5 @@
 /* ============================================================
-   ChatPanel — reproduction de l'interface Zelynto (light)
+   ChatPanel - reproduction de l'interface Zelynto (light)
    ============================================================ */
 
 .chatPanel {
@@ -436,6 +436,18 @@
   flex: 0 0 auto;
   overflow: hidden;
   border-radius: 50%;
+}
+
+.chatWelcomeMark > div,
+.chatAssistantAvatar > div {
+  width: 100%;
+  height: 100%;
+}
+
+.chatWelcomeMark svg,
+.chatAssistantAvatar svg {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .chatAssistantBody {

@@ -83,7 +83,7 @@ function faqPage(lang: Lang) {
 function pricingProduct(lang: Lang) {
   return {
     "@type": "Product",
-    name: `${BRAND} — Microsoft 365 admin copilot`,
+    name: `${BRAND} · Microsoft 365 admin copilot`,
     description: clamp(tr(lang, "pricing.description")),
     brand: { "@type": "Brand", name: BRAND },
     offers: (["starter", "business", "enterprise"] as const).map((id, i) => ({
@@ -150,14 +150,14 @@ export interface HeadData {
 }
 
 export function buildHead(page: PageKey, lang: Lang): HeadData {
-  let title = `${BRAND} — ${tr(lang, "hero.eyebrow")}`;
+  let title = `${BRAND} · ${tr(lang, "hero.eyebrow")}`;
   let description = clamp(tr(lang, "hero.description"));
   let noindex = false;
   const graph: Array<Record<string, unknown>> = [];
 
   if (isLegalPage(page)) {
     const doc = getLegalDoc(page, lang);
-    title = `${doc.title} — ${BRAND}`;
+    title = `${doc.title} · ${BRAND}`;
     description = clamp(doc.summary);
     graph.push(breadcrumb(page, lang, doc.title));
     const alternates = [
@@ -182,32 +182,32 @@ export function buildHead(page: PageKey, lang: Lang): HeadData {
       graph.push(faqPage(lang));
       break;
     case "pricing":
-      title = `${tr(lang, "common.pricing")} — ${BRAND}`;
+      title = `${tr(lang, "common.pricing")} · ${BRAND}`;
       description = clamp(tr(lang, "pricing.description"));
       graph.push(breadcrumb("pricing", lang, tr(lang, "common.pricing")), pricingProduct(lang));
       break;
     case "contact":
-      title = `${tr(lang, "contact.label")} — ${BRAND}`;
+      title = `${tr(lang, "contact.label")} · ${BRAND}`;
       description = clamp(tr(lang, "contact.description"));
       graph.push(breadcrumb("contact", lang, tr(lang, "contact.label")));
       break;
     case "inventories":
-      title = `${tr(lang, "inventories.title")} — ${BRAND}`;
+      title = `${tr(lang, "inventories.title")} · ${BRAND}`;
       description = clamp(tr(lang, "inventories.description"));
       graph.push(breadcrumb("inventories", lang, tr(lang, "common.inventories")));
       break;
     case "savings":
-      title = `${tr(lang, "savings.title")} — ${BRAND}`;
+      title = `${tr(lang, "savings.title")} · ${BRAND}`;
       description = clamp(tr(lang, "savings.description"));
       graph.push(breadcrumb("savings", lang, tr(lang, "header.reportingLinks.savings")));
       break;
     case "audit":
-      title = `${tr(lang, "audit.title")} — ${BRAND}`;
+      title = `${tr(lang, "audit.title")} · ${BRAND}`;
       description = clamp(tr(lang, "audit.description"));
       graph.push(breadcrumb("audit", lang, tr(lang, "header.reportingLinks.audit")));
       break;
     case "connexion":
-      title = `${tr(lang, "auth.title")} — ${BRAND}`;
+      title = `${tr(lang, "auth.title")} · ${BRAND}`;
       description = clamp(tr(lang, "auth.description"));
       noindex = true;
       break;

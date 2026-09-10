@@ -41,7 +41,7 @@ const EMPTY_FLOW: FlowGeometry = { w: 1200, h: 640, oneTwo: "", twoThree: "", do
 
 /**
  * Connectors are drawn from the cards' real measured rectangles (relative to
- * .howBento), the same measure-then-draw pattern used in Hero.tsx — no guessed
+ * .howBento), the same measure-then-draw pattern used in Hero.tsx - no guessed
  * SVG coordinates, so the dashed paths always land on the right corners
  * whatever the viewport width or font metrics.
  */
