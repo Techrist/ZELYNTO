@@ -4,10 +4,15 @@ import { useTranslation } from "react-i18next";
 import { pricingPlans } from "../../content/pricing";
 import { RevealCard } from "../../components/ui/RevealCard";
 import { SectionFade } from "../../components/utility/SectionFade";
+import { localizedHref } from "../../routing";
+import { SUPPORTED_LANGS, type Lang } from "../../i18n/config";
 import "./Pricing.css";
 
 export function PricingPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang: Lang = (SUPPORTED_LANGS as readonly string[]).includes(i18n.language)
+    ? (i18n.language as Lang)
+    : "en";
 
   return (
     <section className="pricingPage">
@@ -41,7 +46,7 @@ export function PricingPage() {
               </div>
               <a
                 className={plan.featured ? "planButton primary" : "planButton"}
-                href={plan.ctaHref}
+                href={localizedHref(plan.ctaPage, lang)}
               >
                 {t(`${base}.ctaLabel`)}
               </a>

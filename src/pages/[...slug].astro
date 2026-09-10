@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../PageShell";
+import { staticRoutes } from "../routing";
+import { buildHead } from "../seo/head";
+
+export function getStaticPaths() {
+  return staticRoutes().map(({ slug, lang, page }) => ({
+    params: { slug },
+    props: { lang, page }
+  }));
+}
+
+const { lang, page } = Astro.props;
+const head = buildHead(page, lang);
+---
+
+<Base head={head}>
+  <PageShell lang={lang} page={page} client:load />
+</Base>

@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Lottie from "lottie-react";
 import { SectionLabel } from "../../../components/ui/SectionLabel";
 import { SectionFade } from "../../../components/utility/SectionFade";
+import { LazyLottie } from "../../../components/utility/LazyLottie";
 import zelyntoAnimation from "../../../assets/zelynto-animation.json";
 
 export function BrandSection() {
@@ -22,7 +22,7 @@ export function BrandSection() {
         <div className="brandVisual">
           <div className="brandMorph" aria-hidden="true">
             <div className="brandMorphRing" />
-            <Lottie
+            <LazyLottie
               animationData={zelyntoAnimation}
               loop
               autoplay

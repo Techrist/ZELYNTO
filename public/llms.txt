@@ -1,0 +1,41 @@
+# Zelynto
+
+> Zelynto is a Microsoft 365 administration copilot driven by natural language.
+> It turns the dozens of Microsoft 365 admin consoles (Entra ID, Defender,
+> Purview, Exchange, SharePoint, Teams, OneDrive, Intune, Power Platform) into a
+> single conversational interface to explore a tenant, understand security
+> alerts, provision resources with governance, and audit configuration
+> continuously.
+
+Zelynto connects through a dedicated Entra ID application using Microsoft
+Graph, with a scope limited to actual needs. Conversations are not stored by
+default and every executed action goes through a readable preview before
+running. Setup takes under an hour and requires no agent or connector inside
+the tenant.
+
+Audience: CIOs, CISOs, Microsoft 365 administrators, and MSPs managing multiple
+tenants. Available in English, French, German, Italian and Spanish.
+
+## Key pages
+
+- [Home](https://www.zelynto.com/): product overview, capabilities, how it works
+- [Pricing](https://www.zelynto.com/pricing): Starter (490 €/mo, up to 500 users), Business (1 490 €/mo, up to 2 500 users), Enterprise (custom, multi-tenant/MSP)
+- [Contact](https://www.zelynto.com/contact): request a personalized demo
+- [Reporting — Inventories](https://www.zelynto.com/inventories): every user, licence, site and device inventoried and scored
+- [Reporting — Savings](https://www.zelynto.com/savings): unused licences, inactive accounts and abandoned sites, quantified
+- [Reporting — Audit](https://www.zelynto.com/audit): continuous compliance score with prioritized, explained controls
+
+## Capabilities
+
+- Intelligent M365 exploration: ask questions about users, groups, mail, files and licences in natural language
+- Security copilot & alerting: unified view of Defender and Identity signals, plain-language explanations, prioritized remediation
+- Automation & provisioning: create groups, SharePoint sites and Entra ID resources from a prompt, with preview and logging
+- Audit & compliance: posture score by category, recommendations from M365 best practices, append-only signed action log
+
+## Facts
+
+- Name: Zelynto
+- Category: Microsoft 365 administration / BusinessApplication
+- Interface: web, conversational
+- Data: Microsoft Graph-first, no tenant data retained by default, no model training on customer content
+- Languages: English, French, German, Italian, Spanish

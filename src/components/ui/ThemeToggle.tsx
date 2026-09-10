@@ -9,11 +9,19 @@ interface ThemeToggleProps {
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const { t } = useTranslation();
-  const [theme, setTheme] = useState<Theme>(() => getStoredTheme());
+  // Server render + first client render must match, so start from the static
+  // default and adopt the stored preference only after mount.
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    setStoredTheme(theme);
-  }, [theme]);
+    setTheme(getStoredTheme());
+  }, []);
+
+  function toggle() {
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    setStoredTheme(next);
+  }
 
   const rootClass = className ? "themeToggle " + className : "themeToggle";
   const next: Theme = theme === "dark" ? "light" : "dark";
@@ -22,7 +30,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     <button
       type="button"
       className={rootClass}
-      onClick={() => setTheme(next)}
+      onClick={toggle}
       aria-label={t(`theme.switchTo.${next}`)}
       title={t(`theme.switchTo.${next}`)}
     >

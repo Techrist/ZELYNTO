@@ -4,6 +4,7 @@ import { problems } from "../../../content/problems";
 import { RevealCard } from "../../../components/ui/RevealCard";
 import { SectionFade } from "../../../components/utility/SectionFade";
 import problemShowcase from "../../../assets/problem-showcase.png";
+import { assetUrl } from "../../../assets/asset";
 
 interface ProblemItem {
   title: string;
@@ -40,7 +41,7 @@ export function ProblemSection() {
         })}
 
         <RevealCard className="problemCard problemCardShowcase" delay={problems.length * 90}>
-          <img src={problemShowcase} alt="" />
+          <img src={assetUrl(problemShowcase)} alt="" />
         </RevealCard>
       </div>
     </section>

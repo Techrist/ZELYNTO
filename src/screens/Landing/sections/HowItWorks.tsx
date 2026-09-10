@@ -7,6 +7,7 @@ import sharepointIcon from "../../../assets/ms365-icons/sharepoint.webp";
 import exchangeIcon from "../../../assets/ms365-icons/exchange.webp";
 import onedriveIcon from "../../../assets/ms365-icons/onedrive.png";
 import intuneIcon from "../../../assets/ms365-icons/intune.webp";
+import { assetUrl } from "../../../assets/asset";
 
 interface StepText {
   title: string;
@@ -184,7 +185,7 @@ export function HowItWorks() {
             <div className="howMsStrip">
               {msApps.map((app) => (
                 <span className="howMsChip" key={app.key}>
-                  <img src={app.icon} alt="" loading="lazy" />
+                  <img src={assetUrl(app.icon)} alt="" loading="lazy" />
                   {app.label}
                 </span>
               ))}

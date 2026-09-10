@@ -1,0 +1,65 @@
+---
+import { GLOBAL_JSON_LD, type HeadData } from "../seo/head";
+
+interface Props {
+  head: HeadData;
+}
+
+const { head } = Astro.props;
+const robots = head.noindex ? "noindex, follow" : "index, follow, max-image-preview:large";
+---
+
+<!doctype html>
+<html lang={head.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#5b63d9" />
+
+    <title>{head.title}</title>
+    <meta name="description" content={head.description} />
+    <link rel="canonical" href={head.canonical} />
+    <meta name="robots" content={robots} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zelynto" />
+    <meta property="og:title" content={head.title} />
+    <meta property="og:description" content={head.description} />
+    <meta property="og:url" content={head.canonical} />
+    <meta property="og:image" content={head.ogImage} />
+    <meta property="og:locale" content={head.ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={head.title} />
+    <meta name="twitter:description" content={head.description} />
+    <meta name="twitter:image" content={head.ogImage} />
+
+    {
+      head.alternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <link rel="apple-touch-icon" href="/favicon.svg?v=3" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    />
+
+    <script type="application/ld+json" is:inline set:html={GLOBAL_JSON_LD} />
+    {head.jsonLd && <script type="application/ld+json" is:inline set:html={head.jsonLd} />}
+
+    <script is:inline>
+      try {
+        var t = localStorage.getItem("zelynto.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

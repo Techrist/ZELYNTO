@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { SUPPORTED_LANGS, type Lang } from "../../i18n/config";
+import { SUPPORTED_LANGS, isLang, type Lang } from "../../i18n/config";
+import { localizedHref, type PageKey } from "../../routing";
 
 const FLAGS: Record<Lang, string> = {
   en: "🇬🇧",
@@ -11,13 +12,15 @@ const FLAGS: Record<Lang, string> = {
   es: "🇪🇸"
 };
 
-export function FooterLanguageSelect() {
+interface Props {
+  page: PageKey;
+}
+
+export function FooterLanguageSelect({ page }: Props) {
   const { i18n, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const current: Lang = (SUPPORTED_LANGS as readonly string[]).includes(i18n.language)
-    ? (i18n.language as Lang)
-    : "en";
+  const current: Lang = isLang(i18n.language) ? i18n.language : "en";
 
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {
@@ -59,21 +62,18 @@ export function FooterLanguageSelect() {
         <ul className="footerLangSelectMenu" role="listbox">
           {SUPPORTED_LANGS.map((lang) => (
             <li key={lang}>
-              <button
-                type="button"
+              <a
+                href={localizedHref(page, lang)}
                 role="option"
                 aria-selected={lang === current}
                 className={lang === current ? "isActive" : undefined}
-                onClick={() => {
-                  i18n.changeLanguage(lang);
-                  setOpen(false);
-                }}
+                hrefLang={lang}
               >
                 <span className="footerLangFlag" aria-hidden="true">
                   {FLAGS[lang]}
                 </span>
                 {t(`language.${lang}Full`)}
-              </button>
+              </a>
             </li>
           ))}
         </ul>

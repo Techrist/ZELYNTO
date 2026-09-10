@@ -14,10 +14,11 @@ import {
   SquarePen
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import Lottie from "lottie-react";
+import { LazyLottie } from "../utility/LazyLottie";
 import zelyntoMark from "../../assets/zelynto-mark.svg";
 import blobZelynto from "../../assets/blob-zelynto.json";
 import microsoft365Logo from "../../assets/microsoft-365-logo.png";
+import { assetUrl } from "../../assets/asset";
 import "./ChatPanel.css";
 
 interface ChatPanelProps {
@@ -161,7 +162,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
       <aside className="chatSidebar">
         <div className="chatSidebarHeader">
           <span className="chatSidebarLogo" aria-hidden="true">
-            <img src={zelyntoMark} alt="" />
+            <img src={assetUrl(zelyntoMark)} alt="" />
           </span>
           <button
             type="button"
@@ -183,7 +184,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
         <div className="chatSidebarSection">
           <span className="chatSidebarLabel">{t("chat.sidebar.reporting")}</span>
           <button type="button" className="chatSidebarItem isActive" tabIndex={-1}>
-            <img src={microsoft365Logo} alt="" className="chatSidebarMsIcon" />
+            <img src={assetUrl(microsoft365Logo)} alt="" className="chatSidebarMsIcon" />
             {t("chat.sidebar.microsoft365")}
           </button>
         </div>
@@ -219,7 +220,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
         {!showThread ? (
           <div className="chatWelcome">
             <div className="chatWelcomeBrand">
-              <Lottie
+              <LazyLottie
                 animationData={blobZelynto}
                 loop
                 autoplay
@@ -280,7 +281,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
 
               {phase === "loading" && (
                 <div className="chatBubble chatAssistant" key={`load-${playId}`}>
-                  <Lottie
+                  <LazyLottie
                     animationData={blobZelynto}
                     loop
                     autoplay
@@ -295,7 +296,7 @@ export function ChatPanel({ variant }: ChatPanelProps) {
 
               {showAssistant && (
                 <div className="chatBubble chatAssistant" key={`ans-${playId}`}>
-                  <Lottie
+                  <LazyLottie
                     animationData={blobZelynto}
                     loop
                     autoplay

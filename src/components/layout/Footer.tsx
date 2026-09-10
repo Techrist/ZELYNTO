@@ -2,13 +2,20 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
+import { assetUrl } from "../../assets/asset";
 import { FooterLanguageSelect } from "../ui/FooterLanguageSelect";
+import { localizedHref, type PageKey } from "../../routing";
+import { isLang, type Lang } from "../../i18n/config";
 import "./Footer.css";
 
-const quickLinks: Array<{ key: string; href: string }> = [
-  { key: "reporting", href: "#/inventories" },
-  { key: "pricing", href: "#/pricing" },
-  { key: "contact", href: "#/contact" }
+interface FooterProps {
+  page: PageKey;
+}
+
+const quickLinks: Array<{ key: string; page: PageKey }> = [
+  { key: "reporting", page: "inventories" },
+  { key: "pricing", page: "pricing" },
+  { key: "contact", page: "contact" }
 ];
 
 const resourcesLinks: Array<{ key: string; href: string }> = [
@@ -18,8 +25,9 @@ const resourcesLinks: Array<{ key: string; href: string }> = [
   { key: "aup", href: "#" }
 ];
 
-export function Footer() {
-  const { t } = useTranslation();
+export function Footer({ page }: FooterProps) {
+  const { t, i18n } = useTranslation();
+  const lang: Lang = isLang(i18n.language) ? i18n.language : "en";
 
   return (
     <footer className="siteFooter">
@@ -36,14 +44,14 @@ export function Footer() {
 
       <div className="footerGrid">
         <div className="footerBrand">
-          <img src={logo} alt="Zelynto" />
+          <img src={assetUrl(logo)} alt="Zelynto" />
           <p>{t("footer.brandTagline")}</p>
         </div>
 
         <div>
           <strong>{t("footer.columns.quickLinks.title")}</strong>
           {quickLinks.map((link) => (
-            <a key={`quick-${link.key}`} href={link.href}>
+            <a key={`quick-${link.key}`} href={localizedHref(link.page, lang)}>
               {t(`footer.columns.quickLinks.links.${link.key}`)}
             </a>
           ))}
@@ -58,7 +66,7 @@ export function Footer() {
           ))}
         </div>
 
-        <FooterLanguageSelect />
+        <FooterLanguageSelect page={page} />
       </div>
 
       <div className="footerBottom">

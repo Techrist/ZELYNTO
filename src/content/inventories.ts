@@ -7,6 +7,7 @@ import powerPlatformLogo from "../assets/ms365-icons/power-platform.webp";
 import intuneLogo from "../assets/ms365-icons/intune.webp";
 import { Crown, ShieldAlert, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { assetUrl } from "../assets/asset";
 
 export interface InventoryStatDefinition {
   icon: LucideIcon;
@@ -26,7 +27,7 @@ export const inventoryDefinitions: InventoryDefinition[] = [
   {
     id: "entra-id",
     i18nKey: "entraId",
-    logo: entraIdLogo,
+    logo: assetUrl(entraIdLogo),
     stats: [
       { icon: Crown, tone: "neutral" },
       { icon: ShieldAlert, tone: "danger" }
@@ -35,7 +36,7 @@ export const inventoryDefinitions: InventoryDefinition[] = [
   {
     id: "exchange",
     i18nKey: "exchange",
-    logo: exchangeLogo,
+    logo: assetUrl(exchangeLogo),
     stats: [
       { icon: Users, tone: "success" },
       { icon: Users, tone: "neutral" }
@@ -45,7 +46,7 @@ export const inventoryDefinitions: InventoryDefinition[] = [
   {
     id: "sharepoint",
     i18nKey: "sharepoint",
-    logo: sharepointLogo,
+    logo: assetUrl(sharepointLogo),
     stats: [
       { icon: Users, tone: "neutral" },
       { icon: Users, tone: "danger" }
@@ -55,7 +56,7 @@ export const inventoryDefinitions: InventoryDefinition[] = [
   {
     id: "onedrive",
     i18nKey: "onedrive",
-    logo: onedriveLogo,
+    logo: assetUrl(onedriveLogo),
     stats: [
       { icon: Users, tone: "success" },
       { icon: Users, tone: "danger" }
@@ -65,7 +66,7 @@ export const inventoryDefinitions: InventoryDefinition[] = [
   {
     id: "teams",
     i18nKey: "teams",
-    logo: teamsLogo,
+    logo: assetUrl(teamsLogo),
     stats: [
       { icon: Users, tone: "success" },
       { icon: Users, tone: "danger" }
@@ -75,7 +76,7 @@ export const inventoryDefinitions: InventoryDefinition[] = [
   {
     id: "power-platform",
     i18nKey: "powerPlatform",
-    logo: powerPlatformLogo,
+    logo: assetUrl(powerPlatformLogo),
     stats: [
       { icon: ShieldAlert, tone: "neutral" },
       { icon: Users, tone: "danger" }
@@ -85,7 +86,7 @@ export const inventoryDefinitions: InventoryDefinition[] = [
   {
     id: "intune",
     i18nKey: "intune",
-    logo: intuneLogo,
+    logo: assetUrl(intuneLogo),
     stats: [
       { icon: Users, tone: "success" },
       { icon: ShieldAlert, tone: "danger" }

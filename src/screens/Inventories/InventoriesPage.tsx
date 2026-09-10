@@ -50,6 +50,7 @@ import type { LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { inventoryDefinitions } from "../../content/inventories";
 import inventoriesHeroImage from "../../assets/inventories-hero.png";
+import { assetUrl } from "../../assets/asset";
 import "./Inventories.css";
 
 interface InventoryItemText {
@@ -762,7 +763,7 @@ export function InventoriesPage() {
           <p>{t("inventories.description")}</p>
         </div>
         <img
-          src={inventoriesHeroImage}
+          src={assetUrl(inventoriesHeroImage)}
           alt=""
           className="inventoriesIntroImage"
         />

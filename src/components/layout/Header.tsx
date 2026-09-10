@@ -2,35 +2,29 @@ import React, { useEffect, useState } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/zelynto-long.png";
+import { assetUrl } from "../../assets/asset";
 import { ThemeToggle } from "../ui/ThemeToggle";
+import { localizedHref, type PageKey } from "../../routing";
+import type { Lang } from "../../i18n/config";
 import "./Header.css";
 
 interface HeaderProps {
   variant?: "full" | "simple";
+  page: PageKey;
+  lang: Lang;
 }
 
 const reportingLinks = [
-  { href: "#/inventories", key: "inventories" },
-  { href: "#/savings", key: "savings" },
-  { href: "#/audit", key: "audit" }
+  { page: "inventories", key: "inventories" },
+  { page: "savings", key: "savings" },
+  { page: "audit", key: "audit" }
 ] as const;
 
-export function Header({ variant = "full" }: HeaderProps) {
+export function Header({ variant = "full", page, lang }: HeaderProps) {
   const { t } = useTranslation();
   const compact = variant === "simple";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentHash, setCurrentHash] = useState(() =>
-    typeof window !== "undefined" ? window.location.hash || "#/" : "#/"
-  );
-
-  useEffect(() => {
-    const onHashChange = () => setCurrentHash(window.location.hash || "#/");
-    window.addEventListener("hashchange", onHashChange);
-    return () => {
-      window.removeEventListener("hashchange", onHashChange);
-    };
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -65,10 +59,12 @@ export function Header({ variant = "full" }: HeaderProps) {
   if (menuOpen) classes.push("menuOpen");
   if (scrolled) classes.push("isScrolled");
 
+  const reportingActive = reportingLinks.some((link) => link.page === page);
+
   return (
     <header className={classes.join(" ")}>
-      <a className="brand" href="#/" aria-label="Zelynto" onClick={close}>
-        <img src={logo} alt="Zelynto" />
+      <a className="brand" href={localizedHref("", lang)} aria-label="Zelynto" onClick={close}>
+        <img src={assetUrl(logo)} alt="Zelynto" />
       </a>
 
       <div className="mobileBar">
@@ -87,19 +83,14 @@ export function Header({ variant = "full" }: HeaderProps) {
       <div className="headerCollapsible">
         <nav>
           <a
-            href="#/pricing"
+            href={localizedHref("pricing", lang)}
             onClick={close}
-            className={currentHash === "#/pricing" ? "isActive" : undefined}
+            className={page === "pricing" ? "isActive" : undefined}
           >
             {t("common.pricing")}
           </a>
           <div className="navDropdown">
-            <button
-              type="button"
-              className={
-                reportingLinks.some((link) => link.href === currentHash) ? "isActive" : undefined
-              }
-            >
+            <button type="button" className={reportingActive ? "isActive" : undefined}>
               {t("header.reporting")}
               <ChevronDown size={14} />
             </button>
@@ -111,10 +102,10 @@ export function Header({ variant = "full" }: HeaderProps) {
                     : t(`header.reportingLinks.${link.key}`);
                 return (
                   <a
-                    key={link.href}
-                    href={link.href}
+                    key={link.page}
+                    href={localizedHref(link.page, lang)}
                     onClick={close}
-                    className={currentHash === link.href ? "isActive" : undefined}
+                    className={page === link.page ? "isActive" : undefined}
                   >
                     {compact ? label.split(" ").slice(0, 2).join(" ") : label}
                   </a>
@@ -123,9 +114,9 @@ export function Header({ variant = "full" }: HeaderProps) {
             </div>
           </div>
           <a
-            href="#/contact"
+            href={localizedHref("contact", lang)}
             onClick={close}
-            className={currentHash === "#/contact" ? "isActive" : undefined}
+            className={page === "contact" ? "isActive" : undefined}
           >
             {t("common.contact")}
           </a>
